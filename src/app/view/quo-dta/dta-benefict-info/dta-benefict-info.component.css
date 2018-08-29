@@ -1,0 +1,82 @@
+.benf_div{
+    border-top: solid 1px #0c3da3;
+    border-left: solid 1px #f37022;
+    box-shadow: 2px 2px 2px #777777;
+    margin-bottom: 10px; 
+    min-height: 240px;
+}
+
+.img_active{
+    position: absolute;
+    width: 80px; 
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto;
+    
+}
+.frm_lbl{
+    font-size: 10px;
+    height: 12px;
+}
+
+.form-group{
+    height: 38px;
+}
+
+
+#schedule_div{
+    min-height: 220px;
+    overflow-x: auto;
+}
+
+.errors{
+    border-color: red;
+}
+
+.tBody{
+    font-family: 'Biryani', "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+    font-size: 11px;
+    font-weight: bolder;
+}
+
+.tBody tr{
+    height: 10px;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+    background: #CCC;
+    background: url(/assets/images/deve.gif);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+  }
+
+@media screen and (max-width: 1309px) {
+    
+
+  }
+
+  /* width */
+  ::-webkit-scrollbar {
+      width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+      background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+      border-radius: 2px;
+      background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+      background: #555; 
+  }
+ 

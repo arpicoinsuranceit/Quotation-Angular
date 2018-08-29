@@ -1,0 +1,11 @@
+<div class="mainBody" [ngClass]="{'disabled': isDisableDiv == true}">
+    <div class="text-left col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <app-aip-personal-info (onSetCalObj)="onSetCalObj($event)" (setValidity)="setValidity($event)"  [_mainLife]="_mainLife"></app-aip-personal-info>
+    </div>
+    <div class="text-left col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <app-aip-plan-info (onSetPlanInfo)="onSetPlanInfo($event)" (onSetPlanCal)="onSetPlanCal($event)" [_plan]="_plan" [_mainLife]="_mainLife"></app-aip-plan-info>
+    </div>
+    <div class="text-left col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <app-summery-aip [_plan]="_plan" [total]="total" [isEditUI]="isEditUI" [_aibSummery]="_aibSummery" (setClear)="setClear($event)" (save)="save($event)" (edit)="edit($event)"></app-summery-aip>
+    </div>
+</div>

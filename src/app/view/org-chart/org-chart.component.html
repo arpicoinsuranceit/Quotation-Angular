@@ -1,0 +1,116 @@
+<div class="main_div" [ngClass]="{'disabled': isDisableDiv == true}">
+  <div class="header_div">
+    <h2>Org Chart</h2>
+  </div>
+  <div class="container-fluid content-div" style="margin-top: 10px; min-height: 520px;">
+
+    <ul>
+      <li *ngFor="let dataLvl1 of orgData">
+        <input type="text" #data style="display: none" value="{{dataLvl1.id}}" />
+        <div class="row mainBox lvl1">
+          <div class="col-md-4 text-box1 col-xs-6">
+            {{dataLvl1.name}}
+          </div>
+          <div class="col-md-4 text-box2 col-xs-6">
+            {{dataLvl1.designation}} | {{dataLvl1.desCod}}
+          </div>
+          <div class="col-md-2 col-xs-6 text-box3">
+            {{dataLvl1.locationName}} | {{dataLvl1.location}}
+          </div>
+          <div class="col-md-2 col-xs-6" align="right" style="margin-top: 10px; margin-bottom: 10px;">
+            <input class="btn btn-info btn-xs" type="button" value="Show" (click)="loadDetails(data.value)">
+          </div>
+        </div>
+
+        <ul *ngIf="dataLvl1.childs.length > 0">
+          <li *ngFor="let dataLvl2 of dataLvl1.childs">
+
+            <input type="text" #data2 style="display: none" value="{{dataLvl2.id}}" />
+            <div class="row mainBox lvl2">
+              <div class="col-md-4 text-box1 col-xs-6">
+                {{dataLvl2.name}}
+              </div>
+              <div class="col-md-4 text-box2 col-xs-6">
+                {{dataLvl2.designation}} | {{dataLvl2.desCod}}
+              </div>
+              <div class="col-md-2 col-xs-6 text-box3">
+                {{dataLvl2.locationName}} | {{dataLvl2.location}}
+              </div>
+              <div class="col-md-2 col-xs-6" align="right" style="margin-top: 10px; margin-bottom: 10px;">
+                <input class="btn btn-info btn-xs" type="button" value="Show" (click)="loadDetails(data2.value)">
+              </div>
+            </div>
+
+            <ul *ngIf="dataLvl2.childs.length > 0">
+              <li *ngFor="let dataLvl3 of dataLvl2.childs">
+
+                <input #data3 type="text" style="display: none" value="{{dataLvl3.id}}" />
+                <div class="row mainBox lvl3">
+                  <div class="col-md-4 text-box1 col-xs-6">
+                    {{dataLvl3.name}}
+                  </div>
+                  <div class="col-md-4 text-box2 col-xs-6">
+                    {{dataLvl3.designation}} | {{dataLvl3.desCod}}
+                  </div>
+                  <div class="col-md-2 col-xs-6 text-box3">
+                    {{dataLvl3.locationName}} | {{dataLvl3.location}}
+                  </div>
+                  <div class="col-md-2 col-xs-6" align="right" style="margin-top: 10px; margin-bottom: 10px;">
+                    <input class="btn btn-info btn-xs" type="button" value="Show" (click)="loadDetails(data3.value)">
+                  </div>
+                </div>
+
+
+
+                <ul *ngIf="dataLvl3.childs.length > 0">
+                  <li *ngFor="let dataLvl4 of dataLvl3.childs">
+
+                    <input type="text" #data4 style="display: none" value="{{dataLvl4.id}}" />
+                    <div class="row mainBox lvl4">
+                      <div class="col-md-4 text-box1 col-xs-6">
+                        {{dataLvl4.name}}
+                      </div>
+                      <div class="col-md-4 text-box2 col-xs-6">
+                        {{dataLvl4.designation}} | {{dataLvl4.desCod}}
+                      </div>
+                      <div class="col-md-2 col-xs-6 text-box3">
+                        {{dataLvl4.locationName}} | {{dataLvl4.location}}
+                      </div>
+                      <div class="col-md-2 col-xs-6" align="right" style="margin-top: 10px; margin-bottom: 10px;">
+                        <input class="btn btn-info btn-xs" type="button" value="Show" (click)="loadDetails(data4.value)">
+                      </div>
+                    </div>
+
+                    <ul *ngIf="dataLvl4.childs.length > 0">
+                      <li *ngFor="let dataLvl5 of dataLvl4.childs">
+
+                        <input type="text" #data5 style="display: none" value="{{dataLvl5.id}}" />
+                        <div class="row mainBox lvl5">
+                          <div class="col-md-4 text-box1 col-xs-6">
+                            {{dataLvl5.name}}
+                          </div>
+                          <div class="col-md-4 text-box2 col-xs-6">
+                            {{dataLvl5.designation}} | {{dataLvl5.desCod}}
+                          </div>
+                          <div class="col-md-2 col-xs-6 text-box3">
+                            {{dataLvl5.locationName}} | {{dataLvl5.location}}
+                          </div>
+                          <div class="col-md-2 col-xs-6" align="right" style="margin-top: 10px; margin-bottom: 10px;">
+                            <input class="btn btn-info btn-xs" type="button" value="Show" (click)="loadDetails(data5.value)">
+                          </div>
+                        </div>
+
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+      </li>
+    </ul>
+
+  </div>
+</div>

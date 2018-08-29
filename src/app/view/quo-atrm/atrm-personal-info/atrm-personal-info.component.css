@@ -1,0 +1,16 @@
+.a{
+    font-size: 10px !important;
+}
+
+.alert{
+    height: 17px;
+    font-size: 12px;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin: 0;
+    background-color: wheat;
+}
+
+.errors{
+    border-color: red;
+}

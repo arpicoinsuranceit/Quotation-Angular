@@ -1,0 +1,226 @@
+<nav class="navbar navbar-inverse" *ngIf="isLog()">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample" type="button"
+                class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Arpico Insurance</a>
+        </div>
+        <div [ngbCollapse]="isCollapsed" class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li routerLinkActive="active current">
+                    <a (click)="loadDashboard()" style="cursor:pointer;">Dashboard</a>
+                </li>
+                <li ngbDropdown routerLinkActive="active current" class="dropdown">
+                    <a ngbDropdownToggle class="dropdown-toggle" data-toggle="dropdown">Quotation
+                        <span class="caret"></span>
+                    </a>
+                    <ul ngbDropdownMenu class="dropdown-menu">
+                        <li routerLinkActive="active current" *ngIf="productArray.includes('END1')">
+                            <a routerLink="quoend1">ARPICO ENDOWMENT PLAN - END1</a>
+                        </li>
+                       <li routerLinkActive="active current" *ngIf="productArray.includes('ARP')">
+                            <a routerLink="quoarp">ARPICO RELIEF PLAN - ARP</a>
+                        </li>
+
+
+                        <li routerLinkActive="active current" *ngIf="productArray.includes('ASFP')">
+                            <a routerLink="quoasfp">ARPICO SCHOOL FEES PLAN - ASFP</a>
+                        </li>
+                        <li routerLinkActive="active current" *ngIf="productArray.includes('INVP')">
+                            <a routerLink="quoinvp">ARPICO INVESTMENT PLAN - INVP</a>
+                        </li>
+                        <li routerLinkActive="active current" *ngIf="productArray.includes('ATRM')">
+                            <a routerLink="quoatrm">ARPICO TERM PLAN - ATRM</a>
+                        </li>
+                        <li routerLinkActive="active current" *ngIf="productArray.includes('ASIP')">
+                            <a routerLink="quosip">ARPICO SUPER INVESTMENT PLAN - ASIP</a>
+                        </li>
+                        <li routerLinkActive="active current" *ngIf="productArray.includes('ARTM')">
+                            <a routerLink="quoartm">ARPICO RETIREMENT PLAN - ARTM</a>
+                        </li>
+                        <li routerLinkActive="active current" *ngIf="productArray.includes('AIP')">
+                            <a routerLink="quoaip">ARPICO INVESTMENT PLUS - AIP</a>
+                        </li>
+                        <li routerLinkActive="active current" *ngIf="productArray.includes('DTA')">
+                            <a routerLink="quodta">ARPICO DECREASING TERM ASSURANCE FOR HOUSING LOAN - DTA</a>
+                        </li>
+                        <li routerLinkActive="active current" *ngIf="productArray.includes('DTAPL')">
+                            <a routerLink="quodtapl">ARPICO DECREASING TERM ASSURANCE FOR PERSONEL LOAN - DTAPL</a>
+                        </li>
+                        
+                        <li routerLinkActive="active current" >
+                            <a routerLink="loadQuo">LOAD QUOTATIONS</a>
+                        </li>
+                        <li routerLinkActive="active current">
+                            <a routerLink="printQuo">PRINT QUOTATIONS</a>
+                        </li>
+
+
+                    </ul>
+
+                </li>
+                <li routerLinkActive="active current" *ngIf="userType != 'IC' && userType != 'UNL' && userType != 'REGION'">
+                    <a routerLink="commitment">Commitment</a>
+                </li>
+                
+                <li routerLinkActive="active current">
+                    <a routerLink="loadinquiries">Inquiries</a>
+                </li>
+                
+
+                <li ngbDropdown routerLinkActive="active current" class="dropdown" >
+                    <a ngbDropdownToggle class="dropdown-toggle" data-toggle="dropdown">Reports
+                        <span class="caret"></span>
+                    </a>
+
+                    <ul ngbDropdownMenu class="dropdown-menu" *ngIf="lockReports == true">
+                        <li style="color: black;">Report is loading....</li>
+                    </ul>
+                    
+
+                    <ul ngbDropdownMenu class="dropdown-menu" *ngIf="lockReports == false">
+                        <li ngbDropdown  class="dropdown">
+                            <a ngbDropdownToggle class="dropdown-toggle" data-toggle="dropdown">Policy Administration
+                                <span class="caret"></span>
+                            </a>
+
+                            <ul >
+                                <li style="color: black;">
+                                    <a (click)="mcfpReport()">MCFP Report</a>
+                                </li>
+                                <li *ngIf="userType != 'IC'">
+                                    <a (click)="proposalRegister()">Proposal Register</a>
+                                </li>
+                                <li>
+                                    <a (click)="pendingRequirements()">Pending Requirements</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li ngbDropdown  class="dropdown">
+                            <a ngbDropdownToggle class="dropdown-toggle" data-toggle="dropdown">Sales Administration
+                                <span class="caret"></span>
+                            </a>
+
+                            <ul >
+                                <li *ngIf="userType == 'BRANCH' || userType == 'ZONE' || userType == 'REGION' || userType == 'HO'">
+                                    <a (click)="retentionUnit()">Retention - Unit</a>
+                                </li>
+                                <li *ngIf="userType == 'BRANCH' || userType == 'ZONE' || userType == 'REGION' || userType == 'HO'">
+                                    <a (click)="retentionCode()">Retention - Code</a>
+                                </li>
+                                <li *ngIf="userType == 'BRANCH' || userType == 'ZONE' || userType == 'REGION' || userType == 'HO'">
+                                    <a (click)="retentionBranch()">Retention - Branch</a>
+                                </li>
+                                <li>
+                                    <a (click)="detailsOfPolicies()">Details of Policies</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li ngbDropdown  class="dropdown">
+                            <a ngbDropdownToggle class="dropdown-toggle" data-toggle="dropdown">Reports
+                                <span class="caret"></span>
+                            </a>
+
+                            <ul >
+                                <li *ngIf="userType == 'ZONE'|| userType == 'HO'">
+                                    <a (click)="premiumDueReportLive()">Premium Due Report Live</a>
+                                </li>
+                                <li>
+                                    <a (click)="premiumDueReport()">Premium Due Report</a>
+                                </li>
+                                <li *ngIf="userType == 'BRANCH' || userType == 'ZONE' || userType == 'REGION' || userType == 'HO'">
+                                    <a (click)="grantStmtBranch()">Business Grant Statement Branch</a>
+                                </li>
+                                <li *ngIf="userType == 'BRANCH' || userType == 'ZONE' || userType == 'REGION' || userType == 'HO'">
+                                    <a (click)="firstPremiumLapSummary()">First Premium Lap Summary</a>
+                                </li>
+                                <li *ngIf="userType == 'BRANCH' || userType == 'REGION' || userType == 'HO'">
+                                    <a (click)="policyAcknowledgement()">Policy Acknowledgement</a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+                        <li ngbDropdown  class="dropdown">
+                            <a ngbDropdownToggle class="dropdown-toggle" data-toggle="dropdown">Sales Performance
+                                <span class="caret"></span>
+                            </a>
+
+                            <ul >
+                                <li *ngIf="userType != 'IC' && userType != 'UNL'">
+                                    <a (click)="salesPerfSummaryCode()">Sales Perf. Summary - Codes Wise</a>
+                                </li>
+                                <li *ngIf="userType != 'IC' && userType != 'UNL'">
+                                    <a (click)="salesPerfSummary()">Sales Perf. Summary</a>
+                                </li>
+                                <li *ngIf="userType != 'IC'">
+                                    <a (click)="unitIsPerfSummary()">Unit-IS Perf. Summary</a>
+                                </li>
+                                <li>
+                                    <a (click)="salesPerfDetail()">Sales Perf. Detail</a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+                        <li ngbDropdown  class="dropdown" *ngIf="userType == 'UNL' || userType == 'HO'">
+                            <a ngbDropdownToggle class="dropdown-toggle" data-toggle="dropdown">Sales Info
+                                <span class="caret"></span>
+                            </a>
+
+                            <ul >
+                                <li *ngIf="userType == 'UNL' || userType == 'HO'">
+                                    <a (click)="unitIsPerfDetails()">Unit-IS Perf Details </a>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                    </ul>
+
+                </li>
+
+                <li ngbDropdown routerLinkActive="active current" class="dropdown">
+                    <a ngbDropdownToggle class="dropdown-toggle" data-toggle="dropdown">Other
+                        <span class="caret"></span>
+                    </a>
+                    <ul ngbDropdownMenu class="dropdown-menu">
+                        <li routerLinkActive="active current">
+                            <a routerLink="orgchart">Org Chart</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <img [src]="imgUserUrl" [alt]="imgUserAlt" class="roundImg">
+                </li>
+
+                <li ngbDropdown routerLinkActive="active current" class="dropdown">
+                    <a ngbDropdownToggle class="dropdown-toggle" data-toggle="dropdown">
+                        {{curUser}}
+                        <span class="caret"></span>
+                    </a>
+
+                    <ul ngbDropdownMenu class="dropdown-menu">
+                        <li>
+                            <a (click)="logOut()">Log Out</a>
+                        </li>
+                        <li>
+                            <a routerLink="changePw">Change Password</a>
+                        </li>
+                        <li>
+                            <a routerLink="profile">Profile</a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,121 @@
+<div class="container-fluid" [ngClass]="{'disabled': isDisableDiv == true}">
+  <div class="header_div">
+    <h2 *ngIf="userType ==  'ZONE'">ZONE COMMITMENT</h2>
+    <h2 *ngIf="userType ==  'BRANCH'">BRANCH COMMITMENT</h2>
+  </div>
+  <div class="body_div" style="max-height: 550px;overflow-y:auto;">
+    <div class="row" style="min-height: 40px;" *ngIf="userType == 'ZONE' || userType == 'HO'">
+      <form class="form" style="margin: 10px;" [formGroup]="form_zone_commitment">
+        <div class="form-group col-md-12 col-lg-12 col-xs-12 col-sm-12">
+          <label class="control-label col-md-1 col-lg-1 col-xs-2 col-sm-2" for="zoneYear">Year:</label>
+          <div class="col-md-2 col-lg-2 col-xs-4 col-sm-4">
+            <input type="text" class="form-control" formControlName="zoneYear" id="txt-year" [(ngModel)]="_zoneyear" placeholder="YYYY"
+              name="zoneYear" (blur)="loadData()">
+              <div class="alert alert-danger" *ngIf="zoneYear.touched && zoneYear.invalid">
+                  Year is Required</div>
+          </div>
+        </div>
+        <div class="form-group col-md-12 col-lg-12 col-xs-12 col-sm-12">
+          <label class="control-label col-md-1 col-lg-1 col-xs-2 col-sm-2" for="zoneCode">Zone Code:</label>
+          <div class="col-md-2 col-lg-2 col-xs-4 col-sm-4">
+            <select class="form-control" formControlName="zoneCode" name="zoneCode" [(ngModel)]="_zoneCode" (change)="loadData()">
+              <option  *ngFor="let code of dashParam" value="{{code}}">{{code}}</option>
+            </select>
+          </div>
+        </div>
+
+      </form>
+    </div>
+    <!-- if log branch -->
+    <div class="row" style="min-height: 40px;" *ngIf="userType == 'BRANCH' && zonecode == 'SOU' || zonecode == 'WEST' || zonecode == 'NCN'">
+        <form class="form" style="margin: 10px;" [formGroup]="form_branch_commitment">
+          <div class="form-group col-md-12 col-lg-12 col-xs-12 col-sm-12">
+            <label class="control-label col-md-1 col-lg-1 col-xs-2 col-sm-2" for="brnYear">Year:</label>
+            <div class="col-md-2 col-lg-2 col-xs-4 col-sm-4">
+              <input type="text" class="form-control" formControlName="brnYear" id="txt-year" [(ngModel)]="_brnyear" placeholder="YYYY"
+                name="brnYear" (blur)="loadDataBranch()">
+                <div class="alert alert-danger" *ngIf="brnYear.touched && brnYear.invalid">
+                    Year is Required</div>
+            </div>
+          </div>
+          <div class="form-group col-md-12 col-lg-12 col-xs-12 col-sm-12">
+            <label class="control-label col-md-1 col-lg-1 col-xs-2 col-sm-2" for="brnCode">Location Code:</label>
+            <div class="col-md-2 col-lg-2 col-xs-4 col-sm-4">
+              <select class="form-control" formControlName="brnCode" name="brnCode" [(ngModel)]="_brnCode" (change)="loadDataBranch()" >
+                <option *ngFor="let code of dashParam" value="{{code}}">{{code}}</option>
+              </select>
+            </div>
+          </div>
+          <!--<div class="form-group col-md-12 col-lg-12 col-xs-12 col-sm-12">
+              <label class="control-label col-md-1 col-lg-1 col-xs-2 col-sm-2" for="rgnCode">Region Code:</label>
+              <div class="col-md-2 col-lg-2 col-xs-4 col-sm-4">
+                <input type="text" class="form-control" formControlName="rgnCode" id="txt-rgnCode" [(ngModel)]="_rgncode" 
+                  name="rgnCode" (blur)="loadDataBranch()">
+                  <div class="alert alert-danger" *ngIf="rgnCode.touched && rgnCode.invalid">
+                      Region Code is Required</div>
+              </div>
+          </div>
+          <div class="form-group col-md-12 col-lg-12 col-xs-12 col-sm-12">
+                <label class="control-label col-md-1 col-lg-1 col-xs-2 col-sm-2" for="zoneCodeBr">Zone Code:</label>
+                <div class="col-md-2 col-lg-2 col-xs-4 col-sm-4">
+                  <input type="text" class="form-control" formControlName="zoneCodeBr" id="txt-zoneCode" [(ngModel)]="_zonecodeBr" 
+                    name="zoneCodeBr" (blur)="loadDataBranch()">
+                    <div class="alert alert-danger" *ngIf="zoneCodeBr.touched && zoneCodeBr.invalid">
+                        Zone Code is Required</div>
+                </div>
+              </div>-->
+  
+        </form>
+      </div>
+
+      <table class="table table-striped table-hover table-responsive">
+          <thead>
+            <tr>
+              <th>Zone Code</th>
+              <th>Region Code</th>
+              <th>Location Code</th>
+              <th></th>
+              <th>Year</th>
+              <th>January</th>
+              <th>February</th>
+              <th>March</th>
+              <th>April</th>
+              <th>May</th>
+              <th>June</th>
+              <th>July</th>
+              <th>August</th>
+              <th>September</th>
+              <th>October</th>
+              <th>November</th>
+              <th>December</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let comm of rows">
+            <tr>
+              <td>{{comm.zoneCode}}</td>
+              <td>{{comm.regionCode}}</td>
+              <td>{{comm.locationName}}</td>
+              <td>{{comm.para}}</td>
+              <td>{{comm.year}}</td>
+              <td style="text-align:right;">{{comm.janCommitment.toLocaleString()}}</td>
+              <td style="text-align:right;">{{comm.febCommitment.toLocaleString()}}</td>
+              <td style="text-align:right;">{{comm.marCommitment.toLocaleString()}}</td>
+              <td style="text-align:right;">{{comm.aprCommitment.toLocaleString()}}</td>
+              <td style="text-align:right;">{{comm.mayCommitment.toLocaleString()}}</td>
+              <td style="text-align:right;">{{comm.junCommitment.toLocaleString()}}</td>
+              <td style="text-align:right;">{{comm.julCommitment.toLocaleString()}}</td>
+              <td style="text-align:right;">{{comm.augCommitment.toLocaleString()}}</td>
+              <td style="text-align:right;">{{comm.sepCommitment.toLocaleString()}}</td>
+              <td style="text-align:right;">{{comm.octCommitment.toLocaleString()}}</td>
+              <td style="text-align:right;">{{comm.novCommitment.toLocaleString()}}</td>
+              <td style="text-align:right;">{{comm.decCommitment.toLocaleString()}}</td>
+              <td>
+                  <input class="btn btn-info btn-xs" type="button" value="EDIT" (click)="editTarget(comm)">
+              </td>
+            </tr>
+    
+          </tbody>
+        </table>
+  </div>
+</div>

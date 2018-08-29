@@ -1,0 +1,928 @@
+<div class="container-fluid " id="outer_div">
+  <div *ngFor="let quo of quotationDetails">
+    <!--load latest quotation-->
+    <div class="row" *ngIf="quo == quotationDetails[0]">
+
+      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" [hidden]="!isHidden">
+        <div class="header_div">
+          <h2>Quotation Details</h2>
+        </div>
+
+        <div>
+          <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+
+            <div class="row">
+              <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                <h2 style="font-size: 18px;">{{quo.productName}}</h2>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6" style="border-right: solid 1px #b6b6b6">
+                Quotation Number : {{quo.quotationId}} - {{quo.seqId}}
+              </div>
+
+              <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
+                Date : {{quo.quotationDate}}
+              </div>
+            </div>
+
+            <div class="row" style="margin-top: 10px;">
+              <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6" style="border-right: solid 1px #b6b6b6">
+
+                <table>
+                  <tbody>
+
+                    <tr *ngIf="product == 'AIB' || product == 'AIP' || product == 'ASFP' || product == 'ASIP' ||
+                         product == 'ATRM' || product == 'DTA' || product == 'DTAPL' || product == 'END1' || product == 'INVP'">
+                      <td>Paying Term </td>
+                      <td>:</td>
+                      <td>{{quo._plan._term}}</td>
+                    </tr>
+
+                    <tr *ngIf="product == 'ARP' || product == 'ARTM'">
+                      <td>Paying Term </td>
+                      <td>:</td>
+                      <td>{{quo._plan._payingterm}}</td>
+                    </tr>
+
+                    <tr *ngIf="product == 'ARP' || product == 'ARTM'">
+                      <td>Policy Term </td>
+                      <td>:</td>
+                      <td>{{quo._plan._term}}</td>
+                    </tr>
+
+                    <tr *ngIf="product == 'ARTM'">
+                      <td>Pension Paying Term </td>
+                      <td>:</td>
+                      <td>{{quo._plan.pensionPaingTerm}}</td>
+                    </tr>
+
+                    <tr *ngIf="product == 'ASFP'">
+                      <td>MSFB </td>
+                      <td>:</td>
+                      <td>{{quo._plan._msfb.toLocaleString()}}</td>
+                    </tr>
+
+                    <tr *ngIf="product == 'AIB' || product == 'AIP' || product == 'ARP' || product == 'ASFP' ||
+                         product == 'ASIP' || product == 'ATRM' || product == 'DTA' || !product == 'DTAPL' || product == 'END1' || 
+                         product == 'INVP' || product == 'ARTM'">
+                      <td>Pay Frequency </td>
+                      <td>:</td>
+                      <td>{{quo._plan._frequance}}</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+
+              </div>
+
+              <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6" style="border-left: solid 1px #b6b6b6">
+
+                <table>
+                  <tbody>
+                    <tr *ngIf="product == 'DTA' || product == 'DTAPL'">
+                      <td>Interest Rate </td>
+                      <td>:</td>
+                      <td>{{quo._plan._interestRate}}</td>
+                    </tr>
+
+                    <tr *ngIf="product == 'DTA' || product == 'DTAPL'">
+                      <td>Loan Amount </td>
+                      <td>:</td>
+                      <td>{{quo._plan._bsa.toLocaleString()}}</td>
+                    </tr>
+
+                    <tr *ngIf="product == 'ARP' || product == 'ASFP' || product == 'ASIP' || product == 'ATRM' ||
+                         product == 'END1' || product == 'INVP'">
+                      <td>Basic Sum Assured </td>
+                      <td>:</td>
+                      <td>{{quo._plan._bsa.toLocaleString()}}</td>
+                    </tr>
+
+                    <tr *ngIf="product == 'ARP' || product == 'ASFP' || product == 'ASIP' || product == 'ATRM' ||
+                         product == 'DTA' || product == 'DTAPL' || product == 'END1' || product == 'INVP'">
+                      <td>Premium (BSA) </td>
+                      <td>:</td>
+                      <td>{{quo._plan.contribution.toLocaleString()}}</td>
+                    </tr>
+
+                    <tr *ngIf="product == 'ARTM'">
+                      <td>Retirement Age </td>
+                      <td>:</td>
+                      <td>{{quo._plan.retAge}}</td>
+                    </tr>
+
+                    <tr *ngIf="product == 'AIB' || product == 'AIP' || product == 'ARTM'">
+                      <td>Contribution </td>
+                      <td>:</td>
+                      <td>{{quo._plan.contribution.toLocaleString()}}</td>
+                    </tr>
+
+                    <tr>
+                      <td>Total Premium </td>
+                      <td>:</td>
+                      <td>{{quo._plan._bsaTotal.toLocaleString()}}</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+
+            <div class="row" style="margin-top: 10px;">
+              <div class="col-md-12">
+                <table>
+                  <tr *ngFor="let quoBenf of quo._mainLifeBenefits" style="font-weight: bold;">
+                    <ng-container *ngIf="quoBenf.riderCode == 'L1' || quoBenf.riderCode == 'L3' || quoBenf.riderCode == 'L4' || quoBenf.riderCode == 'L5'
+                      || quoBenf.riderCode == 'L6' || quoBenf.riderCode == 'L7' || quoBenf.riderCode == 'L8' || quoBenf.riderCode == 'L9' 
+                      || quoBenf.riderCode == 'L10' || quoBenf.riderCode == 'L11' || quoBenf.riderCode == 'L12' || quoBenf.riderCode == 'L13'
+                      || quoBenf.riderCode == 'IAIB'">
+                      <td>{{quoBenf.benfName}}</td>
+                      <td>:</td>
+                      <td style="margin-left: 10px;">{{quoBenf.riderSum.toLocaleString()}}</td>
+                    </ng-container>
+
+                    <ng-container *ngIf="quoBenf.riderCode == 'L14' || quoBenf.riderCode == 'L15' || quoBenf.riderCode == 'L16'">
+                    <td *ngIf="quoBenf.riderCode == 'L14'">Retirement Payment At 7%</td>
+                    <td *ngIf="quoBenf.riderCode == 'L15'">Retirement Payment At 8%</td>
+                    <td *ngIf="quoBenf.riderCode == 'L16'">Retirement Payment At 9%</td>
+                    <td>:</td>
+                    <td style="margin-left: 10px;">{{quoBenf.premium.toLocaleString()}}</td>
+                  </ng-container>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12" style="margin-top: 10px;">
+
+            <div style="float:right;">
+              <button class="btn btn-danger" (click)="editQuoDetails(quo.quoDetailId)">Edit</button>
+            </div>
+            <div style="float:right;margin-right:10px;">
+              <button class="btn btn-warning" style="background-color:0c3da3;" (click)="printQuoDetails(quo.quoDetailId)">Print</button>
+            </div>
+            <div style="float:right;margin-right:10px;">
+              <button class="btn btn-primary" style="background-color:0c3da3;" (click)="scheduleDetails(quo.quoDetailId)" *ngIf="product == 'DTA' || product == 'DTAPL'">Schedule</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" [hidden]="!isHidden">
+        <div class="header_div">
+          <h2>Customer Details</h2>
+        </div>
+        <div class="body_div">
+          <div class="container-fluid">
+            <ngb-tabset type="pills">
+              <ngb-tab title="Main Life">
+                <ng-template ngbTabContent>
+                  <div style="margin: 10px;">
+                    <table>
+                      <tbody>
+                        <tr>
+                          <td>Title </td>
+                          <td>:</td>
+                          <td>{{quo._mainlife._mTitle}}</td>
+                        </tr>
+
+                        <tr>
+                          <td>Insured Name </td>
+                          <td>:</td>
+                          <td>{{quo._mainlife._mName}}</td>
+                        </tr>
+
+                        <tr>
+                          <td>NIC No </td>
+                          <td>:</td>
+                          <td>{{quo._mainlife._mNic}}</td>
+                        </tr>
+
+                        <tr>
+                          <td>Email </td>
+                          <td>:</td>
+                          <td>{{quo._mainlife._mEmail}}</td>
+                        </tr>
+
+                        <tr>
+                          <td>Gender </td>
+                          <td>:</td>
+                          <td>{{quo._mainlife._mGender}}</td>
+                        </tr>
+
+                        <tr>
+                          <td>Date of Birth </td>
+                          <td>:</td>
+                          <td>{{quo._mainlife._mDob}}</td>
+                        </tr>
+
+                        <tr>
+                          <td>Age </td>
+                          <td>:</td>
+                          <td>{{quo._mainlife._mAge}}</td>
+                        </tr>
+
+                        <tr>
+                          <td>Smoking </td>
+                          <td>:</td>
+                          <td>{{quo._mainlife._mSmoking}}</td>
+                        </tr>
+
+                        <tr>
+                          <td>Mobile </td>
+                          <td>:</td>
+                          <td>{{quo._mainlife._mMobile}}</td>
+                        </tr>
+
+                        <tr>
+                          <td>Occ. Cat </td>
+                          <td>:</td>
+                          <td>{{quo._mainlife._mOccupation}}</td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+
+                </ng-template>
+              </ngb-tab>
+
+              <ngb-tab title="Spouse" *ngIf="quo._spouse._sActive == true">
+                <ng-template ngbTabContent>
+                  <div style="margin: 10px;">
+                    <table>
+                      <tbody>
+                        <tr>
+                          <td>Title </td>
+                          <td>:</td>
+                          <td>{{quo._spouse._sTitle}}</td>
+                        </tr>
+
+                        <tr>
+                          <td>Spouse Name </td>
+                          <td>:</td>
+                          <td>{{quo._spouse._sName}}</td>
+                        </tr>
+
+                        <tr>
+                          <td>NIC No </td>
+                          <td>:</td>
+                          <td>{{quo._spouse._sNic}}</td>
+                        </tr>
+
+                        <tr>
+                          <td>Email </td>
+                          <td>:</td>
+                          <td>{{quo._spouse._sEmail}}</td>
+                        </tr>
+
+                        <tr>
+                          <td>Gender </td>
+                          <td>:</td>
+                          <td>{{quo._spouse._sGender}}</td>
+                        </tr>
+
+                        <tr>
+                          <td>Date of Birth </td>
+                          <td>:</td>
+                          <td>{{quo._spouse._sDob}}</td>
+                        </tr>
+
+                        <tr>
+                          <td>Age </td>
+                          <td>:</td>
+                          <td>{{quo._spouse._sAge}}</td>
+                        </tr>
+
+                        <tr>
+                          <td>Smoking </td>
+                          <td>:</td>
+                          <td>{{quo._spouse._sSmoking}}</td>
+                        </tr>
+
+                        <tr>
+                          <td>Mobile </td>
+                          <td>:</td>
+                          <td>{{quo._spouse._sMobile}}</td>
+                        </tr>
+
+                        <tr>
+                          <td>Occ. Cat </td>
+                          <td>:</td>
+                          <td>{{quo._spouse._sOccupation}}</td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+
+                </ng-template>
+              </ngb-tab>
+
+              <ngb-tab title="Children" *ngIf="quo._children.length > 0">
+                <ng-template ngbTabContent>
+                  <div style="margin: 10px;">
+                    <table class="table" style="font-size: 16px;">
+                      <thead>
+                        <tr>
+                          <th scope="col">Title</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Age</th>
+                          <th scope="col">Dob</th>
+                          <th scope="col">Nic</th>
+                          <th scope="col">CIBC</th>
+                          <th scope="col">HCBIC</th>
+                          <th scope="col">HCBFC</th>
+                          <th scope="col">SHCBIC</th>
+                          <th scope="col">SHCBFC</th>
+                          <th scope="col">HBC</th>
+
+                        </tr>
+                      </thead>
+                      <tbody *ngFor="let child of quo._children">
+                        <tr>
+                          <td scope="col">{{child._cTitle}}</td>
+                          <td scope="col">{{child._cName}}</td>
+                          <td scope="col">{{child._cAge}}</td>
+                          <td scope="col">{{child._cDob}}</td>
+                          <td scope="col">{{child._cNic}}</td>
+                          <td scope="col">{{child._cCibc==true ? 'Yes' : 'No'}}</td>
+                          <td scope="col">{{child._cHrbic==true ? 'Yes' : 'No'}}</td>
+                          <td scope="col">{{child._cHrbfc==true ? 'Yes' : 'No'}}</td>
+                          <td scope="col">{{child._cSuhrbc==true ? 'Yes' : 'No'}}</td>
+                          <td scope="col">{{child._cShcbfc==true ? 'Yes' : 'No'}}</td>
+                          <td scope="col">{{child._cHbc==true ? 'Yes' : 'No'}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </ng-template>
+              </ngb-tab>
+
+
+            </ngb-tabset>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 benefDiv" [hidden]="!isHidden" *ngIf="quo.productCode != 'AIP' && quo.productCode != 'AIB'">
+        <div class="header_div">
+          <h2>Benefit Details</h2>
+        </div>
+        <ngb-tabset type="pills">
+          <ngb-tab title="Main Life" *ngIf="quo._mainLifeBenefits.length > 0">
+            <ng-template ngbTabContent>
+              <div class="body_div">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Additional Benefits</th>
+                      <th>Term</th>
+                      <th>Sum Assured</th>
+                      <th>Premium</th>
+                    </tr>
+                  </thead>
+                  <tbody *ngFor="let quoBenf of quo._mainLifeBenefits">
+                    <tr *ngIf="quoBenf.riderCode != 'L1' && quoBenf.riderCode != 'L3' && quoBenf.riderCode != 'L4' && quoBenf.riderCode != 'L5'
+                    && quoBenf.riderCode != 'L6' && quoBenf.riderCode != 'L7' && quoBenf.riderCode != 'L8' && quoBenf.riderCode != 'L9' 
+                    && quoBenf.riderCode != 'L10' && quoBenf.riderCode != 'L11' && quoBenf.riderCode != 'L12' && quoBenf.riderCode != 'L13'
+                    && quoBenf.riderCode != 'IAIB' && quoBenf.riderCode != 'L14' && quoBenf.riderCode != 'L15' && quoBenf.riderCode != 'L16'">
+                      <td>{{quoBenf.benfName}} </td>
+                      <td>{{quoBenf.riderTerm}}</td>
+                      <td>Rs. {{quoBenf.riderSum.toLocaleString()}}</td>
+                      <td>Rs. {{quoBenf.premium.toLocaleString()}}</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </ng-template>
+          </ngb-tab>
+
+          <ngb-tab title="Spouse" *ngIf="quo._spouseBenefits.length > 0">
+            <ng-template ngbTabContent>
+              <div class="body_div">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Additional Benefits</th>
+                      <th>Term</th>
+                      <th>Sum Assured</th>
+                      <th>Premium</th>
+                    </tr>
+                  </thead>
+                  <tbody *ngFor="let quoSBenf of quo._spouseBenefits">
+                    <tr>
+                      <td>{{quoSBenf.benfName}} </td>
+                      <td>{{quoSBenf.riderTerm}}</td>
+                      <td>Rs. {{quoSBenf.riderSum.toLocaleString()}}</td>
+                      <td>Rs. {{quoSBenf.premium.toLocaleString()}}</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </ng-template>
+          </ngb-tab>
+
+          <ngb-tab title="Children" *ngIf="quo._childrenBenefits.length > 0">
+            <ng-template ngbTabContent>
+              <div class="body_div">
+                <table class="table table-striped ">
+                  <thead>
+                    <tr>
+                      <th>Additional Benefits</th>
+                      <th>Term</th>
+                      <th>Sum Assured</th>
+                      <th>Premium</th>
+                    </tr>
+                  </thead>
+                  <tbody *ngFor="let quoCBenf of quo._childrenBenefits">
+                    <tr>
+                      <td colspan="4" class="child_name" style="color: white">
+                        <label>Name : {{quoCBenf.child.childName}}</label> &nbsp;&nbsp;
+                        <label>RelationShip : {{quoCBenf.child.childRelation}}</label>
+                      </td>
+                    </tr>
+
+                    <tr *ngFor="let quoChBenf of quoCBenf.benfs">
+                      <td>{{quoChBenf.benfName}}</td>
+                      <td>{{quoChBenf.riderTerm}}</td>
+                      <td>Rs. {{quoChBenf.riderSum.toLocaleString()}}</td>
+                      <td>Rs. {{quoChBenf.premium.toLocaleString()}}</td>
+                    </tr>
+
+
+                  </tbody>
+                </table>
+              </div>
+            </ng-template>
+          </ngb-tab>
+        </ngb-tabset>
+      </div>
+
+      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" *ngIf="quo == quotationDetails[0]">
+        <div class="header_div">
+          <h2>Previous Quotation Details
+            <a (click)="viewPrevious()">
+              <img style="float:right;padding-right:5px;width:30px;height:25px;" src="assets/images/arrow.png"/>
+            </a>
+          </h2>
+        </div>
+      </div>
+
+    </div>
+
+    <!--load previous quotation-->
+    <div class="row" *ngIf="quo != quotationDetails[0]" [hidden]="isHidden">
+
+      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" [hidden]="isHidden">
+        <div class="header_div">
+          <h2>Quotation Details</h2>
+        </div>
+
+        <div>
+          <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+
+            <div class="row">
+              <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                <h2 style="font-size: 18px;">{{quo.productName}}</h2>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6" style="border-right: solid 1px #b6b6b6">
+                Quotation Number : {{quo.quotationId}} - {{quo.seqId}}
+              </div>
+
+              <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
+                Date : {{quo.quotationDate}}
+              </div>
+            </div>
+
+            <div class="row" style="margin-top: 10px;">
+              <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6" style="border-right: solid 1px #b6b6b6">
+
+                <table>
+                  <tbody>
+
+                    <tr *ngIf="product == 'AIB' || product == 'AIP' || product == 'ASFP' || product == 'ASIP' ||
+                         product == 'ATRM' || product == 'DTA' || product == 'DTAPL' || product == 'END1' || product == 'INVP'">
+                      <td>Paying Term </td>
+                      <td>:</td>
+                      <td>{{quo._plan._term}}</td>
+                    </tr>
+
+                    <tr *ngIf="product == 'ARP' || product == 'ARTM'">
+                      <td>Paying Term </td>
+                      <td>:</td>
+                      <td>{{quo._plan._payingterm}}</td>
+                    </tr>
+
+                    <tr *ngIf="product == 'ARP' || product == 'ARTM'">
+                      <td>Policy Term </td>
+                      <td>:</td>
+                      <td>{{quo._plan._term}}</td>
+                    </tr>
+
+                    <tr *ngIf="product == 'ARTM'">
+                      <td>Pension Paying Term </td>
+                      <td>:</td>
+                      <td>{{quo._plan.pensionPaingTerm}}</td>
+                    </tr>
+
+                    <tr *ngIf="product == 'ASFP'">
+                      <td>MSFB </td>
+                      <td>:</td>
+                      <td>{{quo._plan._msfb.toLocaleString()}}</td>
+                    </tr>
+
+                    <tr *ngIf="product == 'AIB' || product == 'AIP' || product == 'ARP' || product == 'ASFP' ||
+                         product == 'ASIP' || product == 'ATRM' || product == 'DTA' || !product == 'DTAPL' || product == 'END1' || 
+                         product == 'INVP' || product == 'ARTM'">
+                      <td>Pay Frequency </td>
+                      <td>:</td>
+                      <td>{{quo._plan._frequance}}</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+
+              </div>
+
+              <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6" style="border-left: solid 1px #b6b6b6">
+
+                <table>
+                  <tbody>
+                    <tr *ngIf="product == 'DTA' || product == 'DTAPL'">
+                      <td>Interest Rate </td>
+                      <td>:</td>
+                      <td>{{quo._plan._interestRate}}</td>
+                    </tr>
+
+                    <tr *ngIf="product == 'DTA' || product == 'DTAPL'">
+                      <td>Loan Amount </td>
+                      <td>:</td>
+                      <td>{{quo._plan._bsa.toLocaleString()}}</td>
+                    </tr>
+
+                    <tr *ngIf="product == 'ARP' || product == 'ASFP' || product == 'ASIP' || product == 'ATRM' ||
+                         product == 'END1' || product == 'INVP'">
+                      <td>Basic Sum Assured </td>
+                      <td>:</td>
+                      <td>{{quo._plan._bsa.toLocaleString()}}</td>
+                    </tr>
+
+                    <tr *ngIf="product == 'ARP' || product == 'ASFP' || product == 'ASIP' || product == 'ATRM' ||
+                         product == 'DTA' || product == 'DTAPL' || product == 'END1' || product == 'INVP'">
+                      <td>Premium (BSA) </td>
+                      <td>:</td>
+                      <td>{{quo._plan.contribution.toLocaleString()}}</td>
+                    </tr>
+
+                    <tr *ngIf="product == 'ARTM'">
+                      <td>Retirement Age </td>
+                      <td>:</td>
+                      <td>{{quo._plan.retAge}}</td>
+                    </tr>
+
+                    <tr *ngIf="product == 'AIB' || product == 'AIP' || product == 'ARTM'">
+                      <td>Contribution </td>
+                      <td>:</td>
+                      <td>{{quo._plan.contribution.toLocaleString()}}</td>
+                    </tr>
+
+                    <tr>
+                      <td>Total Premium </td>
+                      <td>:</td>
+                      <td>{{quo._plan._bsaTotal.toLocaleString()}}</td>
+                    </tr>
+
+
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+
+            <div class="row" style="margin-top: 10px;">
+              <div class="col-md-12">
+                <table>
+                  <tr *ngFor="let quoBenf of quo._mainLifeBenefits" style="font-weight: bold;">
+                    <ng-container *ngIf="quoBenf.riderCode == 'L1' || quoBenf.riderCode == 'L3' || quoBenf.riderCode == 'L4' || quoBenf.riderCode == 'L5'
+                      || quoBenf.riderCode == 'L6' || quoBenf.riderCode == 'L7' || quoBenf.riderCode == 'L8' || quoBenf.riderCode == 'L9' 
+                      || quoBenf.riderCode == 'L10' || quoBenf.riderCode == 'L11' || quoBenf.riderCode == 'L12' || quoBenf.riderCode == 'L13'
+                      || quoBenf.riderCode == 'IAIB'">
+                      <td>{{quoBenf.benfName}}</td>
+                      <td>:</td>
+                      <td style="margin-left: 10px;">{{quoBenf.riderSum.toLocaleString()}}</td>
+                    </ng-container>
+
+                    <ng-container *ngIf="quoBenf.riderCode == 'L14' || quoBenf.riderCode == 'L15' || quoBenf.riderCode == 'L16'">
+                      <td *ngIf="quoBenf.riderCode == 'L14'">Retirement Payment At 7%</td>
+                      <td *ngIf="quoBenf.riderCode == 'L15'">Retirement Payment At 8%</td>
+                      <td *ngIf="quoBenf.riderCode == 'L16'">Retirement Payment At 9%</td>
+                      <td>:</td>
+                      <td style="margin-left: 10px;">{{quoBenf.premium.toLocaleString()}}</td>
+                    </ng-container>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+        <div class="header_div">
+          <h2>Customer Details</h2>
+        </div>
+        <ngb-tabset type="pills">
+          <ngb-tab title="Main Life">
+            <ng-template ngbTabContent>
+              <div style="margin: 10px;">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>Title </td>
+                      <td>:</td>
+                      <td>{{quo._mainlife._mTitle}}</td>
+                    </tr>
+
+                    <tr>
+                      <td>Insured Name </td>
+                      <td>:</td>
+                      <td>{{quo._mainlife._mName}}</td>
+                    </tr>
+
+                    <tr>
+                      <td>NIC No </td>
+                      <td>:</td>
+                      <td>{{quo._mainlife._mNic}}</td>
+                    </tr>
+
+                    <tr>
+                      <td>Email </td>
+                      <td>:</td>
+                      <td>{{quo._mainlife._mEmail}}</td>
+                    </tr>
+
+                    <tr>
+                      <td>Gender </td>
+                      <td>:</td>
+                      <td>{{quo._mainlife._mGender}}</td>
+                    </tr>
+
+                    <tr>
+                      <td>Date of Birth </td>
+                      <td>:</td>
+                      <td>{{quo._mainlife._mDob}}</td>
+                    </tr>
+
+                    <tr>
+                      <td>Age </td>
+                      <td>:</td>
+                      <td>{{quo._mainlife._mAge}}</td>
+                    </tr>
+
+                    <tr>
+                      <td>Smoking </td>
+                      <td>:</td>
+                      <td>{{quo._mainlife._mSmoking}}</td>
+                    </tr>
+
+                    <tr>
+                      <td>Mobile </td>
+                      <td>:</td>
+                      <td>{{quo._mainlife._mMobile}}</td>
+                    </tr>
+
+                    <tr>
+                      <td>Occ. Cat </td>
+                      <td>:</td>
+                      <td>{{quo._mainlife._mOccupation}}</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+
+            </ng-template>
+          </ngb-tab>
+
+          <ngb-tab title="Spouse" *ngIf="quo._spouse._sActive == true">
+            <ng-template ngbTabContent>
+              <div style="margin: 10px;">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>Title </td>
+                      <td>:</td>
+                      <td>{{quo._spouse._sTitle}}</td>
+                    </tr>
+
+                    <tr>
+                      <td>Spouse Name </td>
+                      <td>:</td>
+                      <td>{{quo._spouse._sName}}</td>
+                    </tr>
+
+                    <tr>
+                      <td>NIC No </td>
+                      <td>:</td>
+                      <td>{{quo._spouse._sNic}}</td>
+                    </tr>
+
+                    <tr>
+                      <td>Email </td>
+                      <td>:</td>
+                      <td>{{quo._spouse._sEmail}}</td>
+                    </tr>
+
+                    <tr>
+                      <td>Gender </td>
+                      <td>:</td>
+                      <td>{{quo._spouse._sGender}}</td>
+                    </tr>
+
+                    <tr>
+                      <td>Date of Birth </td>
+                      <td>:</td>
+                      <td>{{quo._spouse._sDob}}</td>
+                    </tr>
+
+                    <tr>
+                      <td>Age </td>
+                      <td>:</td>
+                      <td>{{quo._spouse._sAge}}</td>
+                    </tr>
+
+                    <tr>
+                      <td>Smoking </td>
+                      <td>:</td>
+                      <td>{{quo._spouse._sSmoking}}</td>
+                    </tr>
+
+                    <tr>
+                      <td>Mobile </td>
+                      <td>:</td>
+                      <td>{{quo._spouse._sMobile}}</td>
+                    </tr>
+
+                    <tr>
+                      <td>Occ. Cat </td>
+                      <td>:</td>
+                      <td>{{quo._spouse._sOccupation}}</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+
+            </ng-template>
+          </ngb-tab>
+
+          <ngb-tab title="Children" *ngIf="quo._children.length > 0">
+            <ng-template ngbTabContent>
+              <div style="margin: 10px;">
+                <table class="table" style="font-size: 16px;">
+                  <thead>
+                    <tr>
+                      <th scope="col">Title</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Age</th>
+                      <th scope="col">Dob</th>
+                      <th scope="col">Nic</th>
+                      <th scope="col">CIBC</th>
+                      <th scope="col">HRBC</th>
+                      <th scope="col">SUHRBC</th>
+                      <th scope="col">HBC</th>
+
+                    </tr>
+                  </thead>
+                  <tbody *ngFor="let child of quo._children">
+                    <tr>
+                      <td scope="col">{{child._cTitle}}</td>
+                      <td scope="col">{{child._cName}}</td>
+                      <td scope="col">{{child._cAge}}</td>
+                      <td scope="col">{{child._cDob}}</td>
+                      <td scope="col">{{child._cNic}}</td>
+                      <td scope="col">{{child._cCibc}}</td>
+                      <td scope="col">{{child._cHrbc}}</td>
+                      <td scope="col">{{child._cSuhrbc}}</td>
+                      <td scope="col">{{child._cHbc}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </ng-template>
+          </ngb-tab>
+        </ngb-tabset>
+        <div style="float:right;margin-right:10px;">
+          <button class="btn btn-primary" style="background-color:0c3da3;" (click)="scheduleDetails(quo.quoDetailId)" *ngIf="product == 'DTA' || product == 'DTAPL'">Schedule</button>
+        </div>
+
+      </div>
+
+      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 benefDiv" *ngIf="quo.productCode != 'AIP' && quo.productCode != 'AIB'">
+        <div class="header_div">
+          <h2>Benefit Details</h2>
+        </div>
+        <ngb-tabset type="pills">
+          <ngb-tab title="Main Life" *ngIf="quo._mainLifeBenefits.length > 0">
+            <ng-template ngbTabContent>
+              <div class="body_div">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Additional Benefits</th>
+                      <th>Term</th>
+                      <th>Sum Assured</th>
+                      <th>Premium</th>
+                    </tr>
+                  </thead>
+                  <tbody *ngFor="let quoBenf of quo._mainLifeBenefits">
+                    <tr *ngIf="quoBenf.riderCode != 'L1' && quoBenf.riderCode != 'L3' && quoBenf.riderCode != 'L4' && quoBenf.riderCode != 'L5'
+                    && quoBenf.riderCode != 'L6' && quoBenf.riderCode != 'L7' && quoBenf.riderCode != 'L8' && quoBenf.riderCode != 'L9' 
+                    && quoBenf.riderCode != 'L10' && quoBenf.riderCode != 'L11' && quoBenf.riderCode != 'L12' && quoBenf.riderCode != 'L13'
+                    && quoBenf.riderCode != 'IAIB' && quoBenf.riderCode != 'L14' && quoBenf.riderCode != 'L15' && quoBenf.riderCode != 'L16'">
+                      <td>{{quoBenf.benfName}} </td>
+                      <td>{{quoBenf.riderTerm}}</td>
+                      <td>Rs. {{quoBenf.riderSum.toLocaleString()}}</td>
+                      <td>Rs. {{quoBenf.premium.toLocaleString()}}</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </ng-template>
+          </ngb-tab>
+
+          <ngb-tab title="Spouse" *ngIf="quo._spouseBenefits.length > 0">
+            <ng-template ngbTabContent>
+              <div class="body_div">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Additional Benefits</th>
+                      <th>Term</th>
+                      <th>Sum Assured</th>
+                      <th>Premium</th>
+                    </tr>
+                  </thead>
+                  <tbody *ngFor="let quoSBenf of quo._spouseBenefits">
+                    <tr>
+                      <td>{{quoSBenf.benfName}} </td>
+                      <td>{{quoSBenf.riderTerm}}</td>
+                      <td>Rs. {{quoSBenf.riderSum.toLocaleString()}}</td>
+                      <td>Rs. {{quoSBenf.premium.toLocaleString()}}</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </ng-template>
+          </ngb-tab>
+
+          <ngb-tab title="Children" *ngIf="quo._childrenBenefits.length > 0">
+            <ng-template ngbTabContent>
+              <div class="body_div">
+                <table class="table table-striped ">
+                  <thead>
+                    <tr>
+                      <th>Additional Benefits</th>
+                      <th>Term</th>
+                      <th>Sum Assured</th>
+                      <th>Premium</th>
+                    </tr>
+                  </thead>
+                  <tbody *ngFor="let quoCBenf of quo._childrenBenefits">
+                    <tr>
+                      <td colspan="3" class="child_name" style="color: white">
+                        <label>Name : {{quoCBenf.child.childName}}</label> &nbsp;&nbsp;
+                        <label>RelationShip : {{quoCBenf.child.childRelation}}</label>
+                      </td>
+                    </tr>
+
+                    <tr *ngFor="let quoChBenf of quoCBenf.benfs">
+                      <td>{{quoChBenf.benfName}}</td>
+                      <td>{{quoChBenf.riderTerm}}</td>
+                      <td>Rs. {{quoChBenf.riderSum.toLocaleString()}}</td>
+                      <td>Rs. {{quoChBenf.premium.toLocaleString()}}</td>
+                    </tr>
+
+
+                  </tbody>
+                </table>
+              </div>
+            </ng-template>
+          </ngb-tab>
+        </ngb-tabset>
+      </div>
+
+    </div>
+
+
+  </div>
+</div>

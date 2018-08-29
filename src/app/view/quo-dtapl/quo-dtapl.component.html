@@ -1,0 +1,27 @@
+<div class="mainBody" [ngClass]="{'disabled': isDisableDiv == true}">
+  <div class="text-left col-lg-4 col-md-4 col-sm-12 col-xs-12">
+      <app-dtapl-personal-info (onSetSpActive)="onSetSpActive($event)"
+        (setBsa) = "setBsa($event)"
+        (calPreviousRiskM) = "calPreviousRiskM($event)"
+        (calPreviousRiskS) = "calPreviousRiskS($event)"
+        (clearbenef)="clearbenef($event)"
+        (clearbenefAll)="clearbenefAll($event)"
+        (onSet)="onSet($event)" [activeSp]="activeSp" [_personalInfo]="personalInfo" [summeryInfo]="summeryInfo" (onSetCalObj)="onSetCalObj($event)" (setValidity)="setValidity($event)"></app-dtapl-personal-info>
+  </div>
+  <div class="text-left col-lg-4 col-md-4 col-sm-12 col-xs-12">
+      <app-dtapl-benefict-info (onsetBenifMainlife)="onsetBenifMainlife($event)"
+      (onsetBenifSpouse)="onsetBenifSpouse($event)"
+      (onsetBenifMainlifeForm)="onsetBenifMainlifeForm($event)"
+      (onsetBenifSpouseForm)="onsetBenifSpouseForm($event)"
+      [summeryInfo]="summeryInfo"
+      [personalInfo]="_quotationCalculation._personalInfo"
+      [activeSp]="activeSp"[isImgTPDDTASPLGActive]="isImgTPDDTASPLGActive"
+      [isImgTPDDTASPLActive]="isImgTPDDTASPLActive"
+      [isImgJLBPLGActive]="isImgJLBPLGActive" [isImgJLBPLActive]="isImgJLBPLActive"
+      [isImgTPDDTAPLGActive]="isImgTPDDTAPLGActive" [isImgTPDDTAPLActive]="isImgTPDDTAPLActive"></app-dtapl-benefict-info>
+  </div>
+  <div class="text-left col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <app-dtapl-summery [summeryInfo]="summeryInfo" [isEditUI]="isEditUI" (save)="save($event)" (edit)="edit($event)" (clearquo)="clearquo()"></app-dtapl-summery>
+  </div>
+
+</div>

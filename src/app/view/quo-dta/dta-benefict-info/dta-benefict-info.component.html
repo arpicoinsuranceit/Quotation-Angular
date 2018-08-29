@@ -1,0 +1,164 @@
+<div class="main_div">
+  <div class="header_div">
+    <h2>Additional Benefits (DTA)</h2>
+  </div>
+
+  <div class="row container-fluid">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div style=" background: rgb(240, 240, 240); margin-bottom: 15px;">
+            <table style="width: 100%; margin-top: 5px;">
+                
+                <tbody class="tBody">
+                    <tr>
+                        <th class="center thead">Term</th>
+                        <td class="center thead">: {{personalInfo.term}}</td>
+                        <th class="center thead">Frequency</th>
+                        <td class="center thead">: {{summeryInfo._summery._payType}}</td>
+                    </tr>
+                    <tr>
+                        <th class="center thead">Loan Amount</th>
+                        <td class="center thead">: {{personalInfo.bsa.toLocaleString()}}</td>
+                        <th class="center thead">Premium (BSA) </th>
+                        <td class="center thead">: {{summeryInfo._summery.sumAssured.toLocaleString()}}</td>
+                    </tr>
+                </tbody>
+                
+            </table>
+        </div>
+    </div>
+</div>
+  <div class="body_div" style="height: 420px;" id="benefits_div">
+
+    <ngb-tabset >
+      <ngb-tab title="Main Life">
+        <!-- mainlife................................................................
+            .........................................................................
+            ...........................-->
+        <ng-template ngbTabContent>
+          <form class="form-horizontal" [formGroup]="abmForm">
+            <div class="content-div4" style="margin-top: 10px;">
+
+
+
+
+              <div class="col-sm-4 " [ngClass]="{'disabled': activeRiders.includes('TPDDTA') == false}">
+                <div class="benf_div container-fluid">
+
+                  <div>
+                    <img [src]="imgwpbGUrl" class=" img_active" [style.display]="isImgTPDDTAGActive ?'block'  : 'none'">
+                  </div>
+                  <div>
+                    <img [src]="imgwpbUrl" class="img_active" [style.display]="isImgTPDDTAActive ? 'block' : 'none'">
+                  </div>
+                  <div class="container col-sm-12" style="margin-top: 80px">
+
+                    <div formGroupName="TPDDTA" class="form-group form-group-sm" style="margin-bottom: 25px;">
+
+                      <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'TPDDTA')" (change)="isActiveTPDDTA($event)">
+                      <label class="" for="sumAssured">TPDDTA</label>
+                      <label class="frm_lbl" for="sumAssured">Sum Assured</label>
+                      <input formControlName="sumAssured" type="text" class="form-control input-sm" id="txt-sumassured" (keyup.enter)="onsetBenif($event, 'TPDDTA')"
+                      (blur)="onsetBenif($event, 'TPDDTA')" [disabled]="isImgGActive" currencyMask>
+                      <label class="frm_lbl" for="sumAssured">Premium</label>
+                      <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._disablities.TPDDTA" readonly
+                        id="txt-premium" [disabled]="isImgGActive" currencyMask>
+
+                    </div>
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </ng-template>
+      </ngb-tab>
+
+      <!--END///////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////
+      ////////////////////////////////////////////////////////////////////////////////-->
+
+      <!--Spouse///////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////
+      ////////////////////////////////////////////////////////////////////////////////-->
+
+      <ngb-tab title="Spouse" *ngIf="activeSp == '1'">
+        <ng-template ngbTabContent>
+          <form class="form-horizontal" [formGroup]="absForm">
+            <div class="content-div" style="margin-top: 10px;">
+              <div *ngIf="activeSp==1">
+                
+              <div class="col-sm-4 " [ngClass]="{'disabled': activeRiders.includes('JLB') == false}">
+                  <div class="benf_div container-fluid">
+  
+                    <div>
+                      <img [src]="imgHbGUrl" class=" img_active" [style.display]="isImgJLBGActive ?'block'  : 'none'">
+                    </div>
+                    <div>
+                      <img [src]="imgHbUrl" class="img_active" [style.display]="isImgJLBActive ? 'block' : 'none'">
+                    </div>
+                    <div class="container col-sm-12" style="margin-top: 80px">
+  
+                      <div formGroupName="JLB" class="form-group form-group-sm" style="margin-bottom: 25px;">
+  
+                        <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveS($event, 'JLB')" (change)="isActiveJLB($event)">
+                        <label class="" for="sumAssured">JLB</label>
+                        <label class="frm_lbl" for="sumAssured">Sum Assured</label>
+                        <input formControlName="sumAssured" type="text" class="form-control input-sm" id="txt-sumassured" (keyup.enter)="onsetBenif($event, 'JBL')"
+                        (blur)="onsetBenif($event, 'JBL')" [disabled]="isImgGActive" currencyMask>
+                        <label class="frm_lbl" for="sumAssured">Premium</label>
+                        <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._protection.JLB" readonly
+                          id="txt-premium" [disabled]="isImgGActive" currencyMask>
+  
+                      </div>
+  
+  
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4 " [ngClass]="{'disabled': activeRiders.includes('TPDDTAS') == false}">
+                  <div class="benf_div container-fluid">
+
+                    <div>
+                      <img [src]="imgAdbsGUrl" class=" img_active" [style.display]="isImgTPDDTASGActive ?'block'  : 'none'">
+                    </div>
+                    <div>
+                      <img [src]="imgAdbsUrl" class="img_active" [style.display]="isImgTPDDTASActive ? 'block' : 'none'">
+                    </div>
+                    <div class="container col-sm-12" style="margin-top: 80px">
+
+                      <div formGroupName="TPDDTAS" class="form-group form-group-sm" style="margin-bottom: 25px;">
+
+                        <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveS($event, 'TPDDTAS')" (change)="isActiveTPDDTAS($event)">
+                        <label class="" for="sumAssured">TPDDTAS</label>
+                        <label class="frm_lbl" for="sumAssured">Sum Assured</label>
+                        <input formControlName="sumAssured" type="text" class="form-control input-sm" id="txt-sumassured" (keyup.enter)="onsetBenif($event, 'TPDDTAS')"
+                        (blur)="onsetBenif($event, 'TPDDTAS')" [disabled]="isImgGActive" currencyMask>
+                        <div>
+                          <label class="frm_lbl" for="sumAssured">Premium</label>
+                          <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._disablities.TPDDTAS"
+                            readonly id="txt-premium" [disabled]="isImgGActive" currencyMask>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </ng-template>
+      </ngb-tab>
+    </ngb-tabset>
+
+  </div>
+  <div class="header_div navbar-static-bottom" style="height: 50px;">
+      <input type="button" class="btn btn-info" value="Shedule" style="margin-top: 7px; margin-left: 10px; background: rgb(59,103,158);"
+        (click)="shedule()">
+      <input type="button" class="btn btn-info" value="Requirenments" style="margin-top: 7px; margin-left: 10px; background: rgb(59,103,158);"
+            (click)="requirenments()">
+    </div>
+</div>
+
+
+
+<!---->

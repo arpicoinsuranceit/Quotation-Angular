@@ -1,0 +1,1112 @@
+<div class="container-fluid" id="outer_div" *ngIf="userCode == 'kavinda'">
+  <div class="row">
+    <div class="col-md-12 col-sm-12">
+      <div class="row">
+        <div class="col-md-12 col-sm-12">
+          <div class="main_div div300">
+            <div class="header_div">
+              <h2>Profile Picture</h2>
+            </div>
+            <div class="container-fluid tbl-div">
+              <table class="table table-striped table-responsive">
+                <tr>
+                  <th>User Code</th>
+                  <th>User Name</th>
+                  <th>Profile</th>
+                </tr>
+                <tr *ngFor="let userProfile of userpProfileList" #data title="{{ userProfile.id }}">
+                  <td> {{ userProfile.users.userCode }}</td>
+                  <td> {{ userProfile.users.user_Name }}</td>
+                  <td>
+                    <input class="btn btn-info btn-xs" type="button" value="View" (click)="approve(data.title)">
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="margin-top: 10px;">
+
+              <div style="float:right;">
+                <button class="btn btn-info" (click)="reload()">Reload</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<div class="container-fluid" id="outer_div" *ngIf="usertype =='IC'">
+  <div class="row">
+    <div class="col-md-9 col-sm-12">
+      <div class="row">
+        <div class="col-md-4 col-sm-12">
+          <div class="main_div div300">
+            <div class="header_div">
+              <h2>Current Month Target</h2>
+            </div>
+            <div class="flex-div div200">
+              <div style="height: 60%; width: 60%">
+                <ngx-charts-linear-gauge [scheme]="colorScheme3" [value]="mainRespDto.monthlyTarget.actual" [previousValue]="mainRespDto.monthlyTarget.target"
+                  [max]="mainRespDto.monthlyTarget.targetExpand" [units]="mainRespDto.monthlyTarget.target.toLocaleString()"
+                  (select)="onMonthlyTarget($event)">
+                </ngx-charts-linear-gauge>
+              </div>
+            </div>
+            <div class="flex-div div50">No of Policies : 0
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-8 col-sm-12">
+          <div class="main_div div300">
+            <div class="header_div">
+              <h2>Yearly Target</h2>
+            </div>
+            <div class="div250">
+              <ngx-charts-bar-vertical-2d [scheme]="colorScheme3" [results]="mainRespDto.yearlyTarget" [gradient]="yearTgradient" [xAxis]="yearTshowXAxis"
+                [yAxis]="yearTshowYAxis" [legend]="yearTshowLegend" [barPadding]="yearTbarPadding" [showYAxisLabel]="yearTshowYAxisLabel"
+                [xAxisLabel]="yearTxAxisLabel" [yAxisLabel]="yearTyAxisLabel" [groupPadding]="yearTgroupPadding" (select)="onSelectYearT($event)">
+              </ngx-charts-bar-vertical-2d>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 col-sm-12">
+          <div class="main_div div300">
+            <div class="header_div">
+              <h2>Due Premium Policies</h2>
+            </div>
+            <div class="">
+              <div class="container-fluid tbl-div2">
+                <table class="table table-striped table-responsive">
+                  <tr>
+                    <th>Branch</th>
+                    <th>Policy No</th>
+                    <th>Status</th>
+                    <th>Cust. Name</th>
+                    <th>Contact No</th>
+                    <th>Premium</th>
+                    <th>No. of Arias</th>
+                    <th>Arias Premium</th>
+                  </tr>
+
+                  <tr *ngFor="let dev of mainRespDto.duePolicieList" #data>
+                    <td>{{ dev.branch }}</td>
+                    <td>{{ dev.polnum }}</td>
+                    <td>{{ dev.pprsta }}</td>
+                    <td>{{ dev.custName }}</td>
+                    <td style="display: none" #data title="{{ dev.custMobile }}"></td>
+                    <td>
+                      <input class="btn btn-info btn-xs" type="button" value="Show" (click)="shoeMobile(data.title)">
+                    </td>
+                    <td>{{ dev.premium.toLocaleString() }}</td>
+                    <td>{{ dev.nofarias }}</td>
+                    <td>{{ dev.totarias.toLocaleString() }}</td>
+                  </tr>
+                </table>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 col-sm-12">
+          <div class="main_div div300">
+            <div class="header_div">
+              <h2>Pending Requirment Policies</h2>
+            </div>
+            <div class="div335">
+              <div class="container-fluid tbl-div2">
+                <table class="table table-striped table-responsive">
+                  <tr>
+                    <th>Branch</th>
+                    <th>Proposal Number</th>
+                    <th>Agent code</th>
+                    <th>Cust Name</th>
+                    <th>Premium</th>
+                    <th>Requirment</th>
+                  </tr>
+                  <tr *ngFor="let pend of mainRespDto.pendingPolList" #data>
+                    <td> {{ pend.branch }}</td>
+                    <td> {{ pend.proposalNo }}</td>
+                    <td> {{ pend.agentCode }}</td>
+                    <td> {{ pend.custName }}</td>
+                    <td> {{ pend.premium }}</td>
+                    <td style="display: none" #data title="{{ pend.requirment }}"></td>
+                    <td>
+                      <input class="btn btn-info btn-xs" type="button" value="Requirment" (click)="shoeReq(data.title)">
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="col-md-3 col-sm-12">
+      <div class="col-md-12 col-sm-12">
+        <div class="main_div div900">
+          <div class="header_div">
+            <h2>Top 3</h2>
+          </div>
+          <div class="div250 scrollable">
+            <div class="slides" id="ic">
+              <table class="table table-responsive">
+                <caption>IC</caption>
+                <tr *ngFor="let top of mainRespDto.ic">
+                  <td>
+                    <div class="media">
+                      <div class="pull-left">
+                        <img class="image" style="height: 40px; width: 40px;border-radius: 15px;" src="assets/images/dummy.png"
+                          class="media-photo">
+                      </div>
+                      <div class="media-body">
+                        <h4 class="title">
+                          {{ top.name }}
+                        </h4>
+                        <p class="summary">{{ top.code }}</p>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="slides">
+              <table class="table table-striped table-responsive">
+                <caption>Individual Sales</caption>
+                <tr *ngFor="let top of mainRespDto.is">
+                  <td>
+                    <div class="media">
+                      <div class="pull-left">
+                        <img style="height: 30px; width: 30px;border-radius: 15px;" src="assets/images/dummy.png"
+                          class="media-photo">
+                      </div>
+                      <div class="media-body">
+                        <h4 class="title">
+                          {{ top.name }}
+                        </h4>
+                        <p class="summary">{{ top.code }}</p>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="slides">
+              <table class="table table-striped table-responsive">
+                <caption>Unit Leaders</caption>
+                <tr *ngFor="let top of mainRespDto.ul">
+                  <td>
+                    <div class="media">
+                      <div class="pull-left">
+                        <img style="height: 30px; width: 30px;border-radius: 15px;" src="assets/images/dummy.png"
+                          class="media-photo">
+                      </div>
+                      <div class="media-body">
+                        <h4 class="title">
+                          {{ top.name }}
+                        </h4>
+                        <p class="summary">{{ top.code }}</p>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="slides">
+              <table class="table table-striped table-responsive">
+                <caption>Branch</caption>
+                <tr *ngFor="let top of mainRespDto.branch">
+                  <td>
+                    <div class="media">
+                      <div class="pull-left">
+                        <img style="height: 30px; width: 30px;border-radius: 15px;" src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg"
+                          class="media-photo">
+                      </div>
+                      <div class="media-body">
+                        <h4 class="title">
+                          {{ top.name }}
+                        </h4>
+                        <p class="summary">{{ top.code }}</p>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+
+              </table>
+            </div>
+            <div class="slides">
+              <table class="table table-striped table-responsive">
+                <caption>Region</caption>
+                <tr *ngFor="let top of mainRespDto.region">
+                  <td>
+                    <div class="media">
+                      <div class="pull-left">
+                        <img style="height: 30px; width: 30px;border-radius: 15px;" src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg"
+                          class="media-photo">
+                      </div>
+                      <div class="media-body">
+                        <h4 class="title">
+                          {{ top.name }}
+                        </h4>
+                        <p class="summary">{{ top.code }}</p>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="slides">
+              <table class="table table-striped table-responsive">
+                <caption>Zone</caption>
+                <tr *ngFor="let top of mainRespDto.zone">
+                  <td>
+                    <div class="media">
+                      <div class="pull-left">
+                        <img style="height: 30px; width: 30px;border-radius: 15px;" src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg"
+                          class="media-photo">
+                      </div>
+                      <div class="media-body">
+                        <h4 class="title">
+                          {{ top.name }}
+                        </h4>
+                        <p class="summary">{{ top.code }}</p>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>-->
+
+<!--<div class="container-fluid" id="outer_div" *ngIf="usertype =='UNL'">
+  <div class="row">
+    <div class="col-md-3 col-sm-12">
+      <div class="main_div div300">
+        <div class="header_div">
+          <h2>Current Month Target</h2>
+        </div>
+        <div class="flex-div div200">
+          <div style="height: 60%; width: 60%">
+            <ngx-charts-linear-gauge [scheme]="colorScheme3" [value]="mainRespDto.monthlyTarget.actual" [previousValue]="mainRespDto.monthlyTarget.target"
+              [max]="mainRespDto.monthlyTarget.targetExpand" [units]="mainRespDto.monthlyTarget.target.toLocaleString()" (select)="onMonthlyTarget($event)">
+            </ngx-charts-linear-gauge>
+          </div>
+        </div>
+        <div class="flex-div div50">No of Policies : 0
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-sm-12">
+      <div class="main_div div300">
+        <div class="header_div">
+          <h2>Yearly Target</h2>
+        </div>
+        <div class="div250">
+          <ngx-charts-bar-vertical-2d [scheme]="colorScheme3" [results]="mainRespDto.yearlyTarget" [gradient]="yearTgradient" [xAxis]="yearTshowXAxis"
+            [yAxis]="yearTshowYAxis" [legend]="yearTshowLegend" [barPadding]="yearTbarPadding" [showYAxisLabel]="yearTshowYAxisLabel"
+            [xAxisLabel]="yearTxAxisLabel" [yAxisLabel]="yearTyAxisLabel" [groupPadding]="yearTgroupPadding" (select)="onSelectYearT($event)">
+          </ngx-charts-bar-vertical-2d>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-12">
+      <div class="col-md-12 col-sm-12">
+        <div class="main_div div300">
+          <div class="header_div">
+            <h2>Top 3</h2>
+          </div>
+          <div class="div250 scrollable">
+            <div class="slides" id="ic">
+              <table class="table table-responsive">
+                <caption>IC</caption>
+                <tr *ngFor="let top of mainRespDto.ic">
+                  <td>
+                    <div class="media">
+                      <div class="pull-left">
+                        <img class="image" style="height: 40px; width: 40px;border-radius: 15px;" src="assets/images/dummy.png"
+                          class="media-photo">
+                      </div>
+                      <div class="media-body">
+                        <h4 class="title">
+                          {{ top.name }}
+                        </h4>
+                        <p class="summary">{{ top.code }}</p>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="slides">
+              <table class="table table-striped table-responsive">
+                <caption>Individual Sales</caption>
+                <tr *ngFor="let top of mainRespDto.is">
+                  <td>
+                    <div class="media">
+                      <div class="pull-left">
+                        <img style="height: 30px; width: 30px;border-radius: 15px;" src="assets/images/dummy.png"
+                          class="media-photo">
+                      </div>
+                      <div class="media-body">
+                        <h4 class="title">
+                          {{ top.name }}
+                        </h4>
+                        <p class="summary">{{ top.code }}</p>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="slides">
+              <table class="table table-striped table-responsive">
+                <caption>Unit Leaders</caption>
+                <tr *ngFor="let top of mainRespDto.ul">
+                  <td>
+                    <div class="media">
+                      <div class="pull-left">
+                        <img style="height: 30px; width: 30px;border-radius: 15px;" src="assets/images/dummy.png"
+                          class="media-photo">
+                      </div>
+                      <div class="media-body">
+                        <h4 class="title">
+                          {{ top.name }}
+                        </h4>
+                        <p class="summary">{{ top.code }}</p>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <!--<div class="slides">
+              <table class="table table-striped table-responsive">
+                <caption>Branch</caption>
+                <tr *ngFor="let top of mainRespDto.branch">
+                  <td>
+                    <div class="media">
+                      <div class="pull-left">
+                        <img style="height: 30px; width: 30px;border-radius: 15px;" src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg"
+                          class="media-photo">
+                      </div>
+                      <div class="media-body">
+                        <h4 class="title">
+                          {{ top.name }}
+                        </h4>
+                        <p class="summary">{{ top.code }}</p>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+
+              </table>
+            </div>
+            <div class="slides">
+              <table class="table table-striped table-responsive">
+                <caption>Region</caption>
+                <tr *ngFor="let top of mainRespDto.region">
+                  <td>
+                    <div class="media">
+                      <div class="pull-left">
+                        <img style="height: 30px; width: 30px;border-radius: 15px;" src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg"
+                          class="media-photo">
+                      </div>
+                      <div class="media-body">
+                        <h4 class="title">
+                          {{ top.name }}
+                        </h4>
+                        <p class="summary">{{ top.code }}</p>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="slides">
+              <table class="table table-striped table-responsive">
+                <caption>Zone</caption>
+                <tr *ngFor="let top of mainRespDto.zone">
+                  <td>
+                    <div class="media">
+                      <div class="pull-left">
+                        <img style="height: 30px; width: 30px;border-radius: 15px;" src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg"
+                          class="media-photo">
+                      </div>
+                      <div class="media-body">
+                        <h4 class="title">
+                          {{ top.name }}
+                        </h4>
+                        <p class="summary">{{ top.code }}</p>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>-->
+  <!--<div class="row">
+    <div class="col-md-4 col-sm-12">
+      <div class="row">
+        <div class="col-md-12 col-sm-12">
+          <div class="main_div div300">
+            <div class="header_div">
+              <h2>Yearly Target with CF</h2>
+            </div>
+            <div class="div200">
+              <ngx-charts-line-chart [scheme]="colorScheme4" [results]="mainRespDto.cf" [gradient]="lineGradient" [xAxis]="lineShowXAxis"
+                [yAxis]="lineShowYAxis" [showYAxisLabel]="lineYAxisLabel" [xAxisLabel]="lineXAxisLabel" [yAxisLabel]="lineYAxisLabel"
+                (select)="onSelectYearT($event)">
+              </ngx-charts-line-chart>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 col-sm-12">
+          <div class="main_div div300">
+            <div class="header_div">
+              <h2>Cumulative Yearly Target with CF</h2>
+            </div>
+            <div class="div200">
+              <ngx-charts-line-chart [scheme]="colorScheme4" [results]="mainRespDto.cfC" [gradient]="lineGradient" [xAxis]="lineShowXAxis"
+                [yAxis]="lineShowYAxis" [showYAxisLabel]="lineYAxisLabel" [xAxisLabel]="lineXAxisLabel" [yAxisLabel]="lineYAxisLabel"
+                (select)="onSelectYearT($event)">
+              </ngx-charts-line-chart>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8 col-sm-12">
+      <div class="row">
+        <div class="col-md-12 col-sm-12">
+          <div class="main_div div300">
+            <div class="header_div">
+              <h2>Due Premium Policies</h2>
+            </div>
+            <div class="">
+              <div class="container-fluid tbl-div2">
+                <table class="table table-striped table-responsive">
+                  <tr>
+                    <th>Branch</th>
+                    <th>Policy No</th>
+                    <th>Status</th>
+                    <th>Cust. Name</th>
+                    <th>Contact No</th>
+                    <th>Premium</th>
+                    <th>No. of Arias</th>
+                    <th>Arias Premium</th>
+                  </tr>
+
+                  <tr *ngFor="let dev of mainRespDto.duePolicieList" #data>
+                    <td>{{ dev.branch }}</td>
+                    <td>{{ dev.polnum }}</td>
+                    <td>{{ dev.pprsta }}</td>
+                    <td>{{ dev.custName }}</td>
+                    <td style="display: none" #data title="{{ dev.custMobile }}"></td>
+                    <td>
+                      <input class="btn btn-info btn-xs" type="button" value="Show" (click)="shoeMobile(data.title)">
+                    </td>
+                    <td>{{ dev.premium.toLocaleString() }}</td>
+                    <td>{{ dev.nofarias }}</td>
+                    <td>{{ dev.totarias.toLocaleString() }}</td>
+                  </tr>
+                </table>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 col-sm-12">
+          <div class="main_div div300">
+            <div class="header_div">
+              <h2>Pending Requirment Policies</h2>
+            </div>
+            <div class="">
+              <div class="container-fluid tbl-div2">
+                <table class="table table-striped table-responsive">
+                  <tr>
+                    <th>Branch</th>
+                    <th>Proposal Number</th>
+                    <th>Agent code</th>
+                    <th>Cust Name</th>
+                    <th>Premium</th>
+                    <th>Requirment</th>
+                  </tr>
+                  <tr *ngFor="let pend of mainRespDto.pendingPolList" #data>
+                    <td> {{ pend.branch }}</td>
+                    <td> {{ pend.proposalNo }}</td>
+                    <td> {{ pend.agentCode }}</td>
+                    <td> {{ pend.custName }}</td>
+                    <td> {{ pend.premium }}</td>
+                    <td style="display: none" #data title="{{ pend.requirment }}"></td>
+                    <td>
+                      <input class="btn btn-info btn-xs" type="button" value="Requirment" (click)="shoeReq(data.title)">
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="container-fluid" id="outer_div" *ngIf="usertype =='BRANCH' || usertype =='REGION' || usertype == 'ZONE'">
+  <!--<div class="row">
+    <div class="col-md-12 col-sm-12" style="margin-top: 10px;">
+      <div class="container-fluid">
+        <form class="form-inline">
+          <div class="form-group mx-sm-3 mb-2">
+            <select class="form-control form-control-sm">
+              <option>Small select</option>
+            </select>
+          </div>
+          <div class="form-group mx-sm-3 mb-2">
+            <select class="form-control form-control-sm">
+              <option>Small select</option>
+            </select>
+          </div>
+          <div class="form-group mx-sm-3 mb-2">
+            <select class="form-control form-control-sm">
+              <option>Small select</option>
+            </select>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>-->
+  <!--<div class="row">
+    <div class="col-md-5 col-sm-12">
+      <div class="main_div div300">
+        <div class="header_div">
+          <h2>Current Month Target</h2>
+        </div>
+        <div class=" div250">
+          <div class="row">
+            <div class="col-md-6 col-xs-6">
+             <p style="margin-left: 5px; font-weight: bold; text-align: center; color: #0C3DA3; background: rgba(12, 60, 163, 0.548)">GWP</p>
+                <div class="flex-div" style="height: 100px;">
+                  <div style="height: 90%; width: 90% ;">
+                    <ngx-charts-linear-gauge [scheme]="colorScheme3" [value]="mainRespDto.monthlyTargetGWP.actual" [previousValue]="mainRespDto.monthlyTargetGWP.target"
+                      [max]="mainRespDto.monthlyTargetGWP.targetExpand" [units]="mainRespDto.monthlyTargetGWP.target.toLocaleString()"
+                      (select)="onMonthlyTarget($event)" style="font-size: 16px;">
+                    </ngx-charts-linear-gauge>
+                  </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xs-6">
+                <p style="margin-left: 5px; font-weight: bold; text-align: center; color: #0C3DA3; background: rgba(243, 111, 34, 0.712)">MCFP</p>
+                <div class="flex-div" style="height: 100px;">
+                  <div style="height: 90%; width: 90% ;">
+                    <ngx-charts-linear-gauge [scheme]="colorScheme3" [value]="mainRespDto.monthlyTargetMCFP.actual" [previousValue]="mainRespDto.monthlyTargetMCFP.target"
+                      [max]="mainRespDto.monthlyTargetMCFP.targetExpand" [units]="mainRespDto.monthlyTargetMCFP.target.toLocaleString()"
+                      (select)="onMonthlyTarget($event)">
+                    </ngx-charts-linear-gauge>
+                  </div>
+                </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 col-xs-6">
+                <p style="margin-left: 5px; font-weight: bold; text-align: center; color: #0C3DA3; background: rgba(243, 111, 34, 0.712)">FYP (Ach.)</p>
+                <div class="flex-div" style="height: 100px;">
+                  <div style="height: 90%; width: 90% ;">
+                    <ngx-charts-linear-gauge [scheme]="colorScheme3" [value]="mainRespDto.monthlyTargetFYP.actual" [previousValue]="mainRespDto.monthlyTargetFYP.target"
+                      [max]="mainRespDto.monthlyTargetFYP.targetExpand" [units]="mainRespDto.monthlyTargetFYP.target.toLocaleString()"
+                      (select)="onMonthlyTarget($event)">
+                    </ngx-charts-linear-gauge>
+                  </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-xs-6">
+                <p style="margin-left: 5px; font-weight: bold; text-align: center; color: #0C3DA3 ; background: rgba(12, 60, 163, 0.548)">NOP</p>
+                <div class="flex-div" style="height: 100px;">
+                  <div style="height: 90%; width: 90% ;">
+                    <ngx-charts-linear-gauge [scheme]="colorScheme3" [value]="mainRespDto.monthlyTargetNOP.actual" [previousValue]="mainRespDto.monthlyTargetNOP.target"
+                      [max]="mainRespDto.monthlyTargetNOP.targetExpand" [units]="mainRespDto.monthlyTargetNOP.target.toLocaleString()"
+                      (select)="onMonthlyTarget($event)">
+                    </ngx-charts-linear-gauge>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+
+    <div class="col-md-4 col-sm-12">
+      <div class="main_div div300">
+        <div class="header_div">
+          <h2>Policy Summary</h2>
+        </div>
+        <div class="div250">
+          <div class="row" style="margin-top: 10px;">
+            <div class="col-md-6 col-xs-6">
+              <div style="height: 70px; margin-left: 10px;">
+                <div class="card card-green">
+                  <p class="cards-p1"> {{val1.toLocaleString()}} </p>
+                  <p class="cards-p2"> {{name1}} </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-xs-6">
+              <div style="height: 70px; margin-right: 10px;">
+                <div class="card card-green">
+                  <p class="cards-p1"> {{val2.toLocaleString()}} </p>
+                  <p class="cards-p2"> {{name2}} </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" style="margin-top: 10px;">
+            <div class="col-md-6 col-xs-6">
+              <div style="height: 70px; margin-left: 10px;">
+                <div class="card card-orange">
+                  <p class="cards-p1"> {{val3.toLocaleString()}} </p>
+                  <p class="cards-p2"> {{name3}} </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-xs-6">
+              <div style="height: 70px; margin-right: 10px;">
+                <div class="card card-orange">
+                  <p class="cards-p1"> {{val4.toLocaleString()}} </p>
+                  <p class="cards-p2"> {{name4}} </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" style="margin-top: 10px;">
+            <div class="col-md-6 col-xs-6">
+              <div style="height: 70px; margin-left: 10px;">
+                <div class="card card-red">
+                  <p class="cards-p1"> {{val5.toLocaleString()}} </p>
+                  <p class="cards-p2"> {{name5}} </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-xs-6">
+              <div style="height: 70px; margin-right: 10px;">
+                <div class="card card-red">
+                  <p class="cards-p1"> {{val6.toLocaleString()}} </p>
+                  <p class="cards-p2"> {{name6}} </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+    <div class="col-md-3 col-sm-12">
+      <div class="col-md-12 col-sm-12">
+        <div class="main_div div300">
+          <div class="header_div">
+            <h2>Top 3</h2>
+          </div>
+          <div class="div250 scrollable">
+            <div class="slides" id="ic">
+              <table class="table table-responsive">
+                <caption>IC</caption>
+                <tr *ngFor="let top of mainRespDto.ic">
+                  <td>
+                    <div class="media">
+                      <div class="pull-left">
+                        <img class="image" style="height: 40px; width: 40px;border-radius: 15px;" src="assets/images/dummy.png"
+                          class="media-photo">
+                      </div>
+                      <div class="media-body">
+                        <h4 class="title">
+                          {{ top.name }}
+                        </h4>
+                        <p class="summary">{{ top.code }}</p>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="slides">
+              <table class="table table-striped table-responsive">
+                <caption>Individual Sales</caption>
+                <tr *ngFor="let top of mainRespDto.is">
+                  <td>
+                    <div class="media">
+                      <div class="pull-left">
+                        <img style="height: 30px; width: 30px;border-radius: 15px;" src="assets/images/dummy.png"
+                          class="media-photo">
+                      </div>
+                      <div class="media-body">
+                        <h4 class="title">
+                          {{ top.name }}
+                        </h4>
+                        <p class="summary">{{ top.code }}</p>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="slides">
+              <table class="table table-striped table-responsive">
+                <caption>Unit Leaders</caption>
+                <tr *ngFor="let top of mainRespDto.ul">
+                  <td>
+                    <div class="media">
+                      <div class="pull-left">
+                        <img style="height: 30px; width: 30px;border-radius: 15px;" src="assets/images/dummy.png"
+                          class="media-photo">
+                      </div>
+                      <div class="media-body">
+                        <h4 class="title">
+                          {{ top.name }}
+                        </h4>
+                        <p class="summary">{{ top.code }}</p>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <!--<div class="slides">
+              <table class="table table-striped table-responsive">
+                <caption>Branch</caption>
+                <tr *ngFor="let top of mainRespDto.branch">
+                  <td>
+                    <div class="media">
+                      <div class="pull-left">
+                        <img style="height: 30px; width: 30px;border-radius: 15px;" src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg"
+                          class="media-photo">
+                      </div>
+                      <div class="media-body">
+                        <h4 class="title">
+                          {{ top.name }}
+                        </h4>
+                        <p class="summary">{{ top.code }}</p>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+
+              </table>
+            </div>
+            <div class="slides">
+              <table class="table table-striped table-responsive">
+                <caption>Region</caption>
+                <tr *ngFor="let top of mainRespDto.region">
+                  <td>
+                    <div class="media">
+                      <div class="pull-left">
+                        <img style="height: 30px; width: 30px;border-radius: 15px;" src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg"
+                          class="media-photo">
+                      </div>
+                      <div class="media-body">
+                        <h4 class="title">
+                          {{ top.name }}
+                        </h4>
+                        <p class="summary">{{ top.code }}</p>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="slides">
+              <table class="table table-striped table-responsive">
+                <caption>Zone</caption>
+                <tr *ngFor="let top of mainRespDto.zone">
+                  <td>
+                    <div class="media">
+                      <div class="pull-left">
+                        <img style="height: 30px; width: 30px;border-radius: 15px;" src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg"
+                          class="media-photo">
+                      </div>
+                      <div class="media-body">
+                        <h4 class="title">
+                          {{ top.name }}
+                        </h4>
+                        <p class="summary">{{ top.code }}</p>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>-->
+
+ <!-- <div class="row">
+    <div class="col-md-4 col-sm-12">
+      <div class="row">
+        <div class="col-md-12 col-sm-12">
+          <div class="main_div div250">
+            <div class="header_div">
+              <h2>GWP</h2>
+            </div>
+            <div class="div200">
+              <ngx-charts-line-chart [scheme]="colorScheme" [results]="mainRespDto.gwp" [gradient]="lineGradient" [xAxis]="lineShowXAxis"
+                [yAxis]="lineShowYAxis" [showYAxisLabel]="lineYAxisLabel" [xAxisLabel]="lineXAxisLabel" [yAxisLabel]="lineYAxisLabel"
+                (select)="onSelectYearT($event)">
+              </ngx-charts-line-chart>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 col-sm-12">
+          <div class="main_div div250">
+            <div class="header_div">
+              <h2>GWP Cumulative</h2>
+            </div>
+            <div class="div200">
+              <ngx-charts-line-chart [scheme]="colorScheme" [results]="mainRespDto.gwpC" [gradient]="lineGradient" [xAxis]="lineShowXAxis"
+                [yAxis]="lineShowYAxis" [showYAxisLabel]="lineYAxisLabel" [xAxisLabel]="lineXAxisLabel" [yAxisLabel]="lineYAxisLabel"
+                (select)="onSelectYearT($event)">
+              </ngx-charts-line-chart>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-12">
+      <div class="row">
+        <div class="col-md-12 col-sm-12">
+          <div class="main_div div250">
+            <div class="header_div">
+              <h2>MCFP</h2>
+            </div>
+            <div class="div200">
+              <ngx-charts-line-chart [scheme]="colorScheme" [results]="mainRespDto.mcfp" [gradient]="lineGradient" [xAxis]="lineShowXAxis"
+                [yAxis]="lineShowYAxis" [showYAxisLabel]="lineYAxisLabel" [xAxisLabel]="lineXAxisLabel" [yAxisLabel]="lineYAxisLabel"
+                (select)="onSelectYearT($event)">
+              </ngx-charts-line-chart>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 col-sm-12">
+          <div class="main_div div250">
+            <div class="header_div">
+              <h2>MCFP Cumulative</h2>
+            </div>
+            <div class="div200">
+              <ngx-charts-line-chart [scheme]="colorScheme" [results]="mainRespDto.mcfpC" [gradient]="lineGradient" [xAxis]="lineShowXAxis"
+                [yAxis]="lineShowYAxis" [showYAxisLabel]="lineYAxisLabel" [xAxisLabel]="lineXAxisLabel" [yAxisLabel]="lineYAxisLabel"
+                (select)="onSelectYearT($event)">
+              </ngx-charts-line-chart>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-4 col-sm-12">
+      <div class="row">
+        <div class="col-md-12 col-sm-12">
+          <div class="main_div div250">
+            <div class="header_div">
+              <h2>FYP (Ach.)</h2>
+            </div>
+            <div class="div200">
+              <ngx-charts-line-chart [scheme]="colorScheme" [results]="mainRespDto.fyp" [gradient]="lineGradient" [xAxis]="lineShowXAxis"
+                [yAxis]="lineShowYAxis" [showYAxisLabel]="lineYAxisLabel" [xAxisLabel]="lineXAxisLabel" [yAxisLabel]="lineYAxisLabel"
+                (select)="onSelectYearT($event)">
+              </ngx-charts-line-chart>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 col-sm-12">
+          <div class="main_div div250">
+            <div class="header_div">
+              <h2>FYP (Ach.) Cumulative</h2>
+            </div>
+            <div class="div200">
+              <ngx-charts-line-chart [scheme]="colorScheme" [results]="mainRespDto.fypC" [gradient]="lineGradient" [xAxis]="lineShowXAxis"
+                [yAxis]="lineShowYAxis" [showYAxisLabel]="lineYAxisLabel" [xAxisLabel]="lineXAxisLabel" [yAxisLabel]="lineYAxisLabel"
+                (select)="onSelectYearT($event)">
+              </ngx-charts-line-chart>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-4 col-sm-12">
+      <div class="row">
+        <div class="col-md-12 col-sm-12">
+          <div class="main_div div250">
+            <div class="header_div">
+              <h2>NOP</h2>
+            </div>
+            <div class="div200">
+              <ngx-charts-area-chart [scheme]="colorScheme" [results]="mainRespDto.nop" [gradient]="lineGradient" [xAxis]="lineShowXAxis"
+                [yAxis]="lineShowYAxis" [showYAxisLabel]="lineYAxisLabel" [xAxisLabel]="lineXAxisLabel" [yAxisLabel]="lineYAxisLabel"
+                (select)="onSelectYearT($event)">
+              </ngx-charts-area-chart>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 col-sm-12">
+          <div class="main_div div250">
+            <div class="header_div">
+              <h2>NOP Cumulative</h2>
+            </div>
+            <div class="div200">
+              <ngx-charts-area-chart [scheme]="colorScheme" [results]="mainRespDto.nopC" [gradient]="lineGradient" [xAxis]="lineShowXAxis"
+                [yAxis]="lineShowYAxis" [showYAxisLabel]="lineYAxisLabel" [xAxisLabel]="lineXAxisLabel" [yAxisLabel]="lineYAxisLabel"
+                (select)="onSelectYearT($event)">
+              </ngx-charts-area-chart>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 col-sm-12">
+          <div class="main_div div250">
+            <div class="header_div">
+              <h2>RINY 1</h2>
+            </div>
+            <div class="div200">
+              <ngx-charts-area-chart [scheme]="colorScheme5" [results]="mainRespDto.riny1" [gradient]="lineGradient" [xAxis]="lineShowXAxis"
+                [yAxis]="lineShowYAxis" [showYAxisLabel]="lineYAxisLabel" [xAxisLabel]="lineXAxisLabel" [yAxisLabel]="lineYAxisLabel"
+                (select)="onSelectYearT($event)">
+              </ngx-charts-area-chart>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-8 col-sm-12">
+      <div class="row">
+        <div class="col-md-12 col-sm-12">
+          <div class="main_div div385">
+            <div class="header_div">
+              <h2>Due Premium Policies</h2>
+            </div>
+            <div class="div335">
+              <div class="container-fluid tbl-div1">
+                <table class="table table-striped table-responsive">
+                  <tr>
+                    <th>Branch</th>
+                    <th>Policy No</th>
+                    <th>Status</th>
+                    <th>Cust. Name</th>
+                    <th>Contact No</th>
+                    <th>Premium</th>
+                    <th>No. of Arias</th>
+                    <th>Arias Premium</th>
+                  </tr>
+
+                  <tr *ngFor="let dev of mainRespDto.duePolicieList" #data>
+                    <td>{{ dev.branch }}</td>
+                    <td>{{ dev.polnum }}</td>
+                    <td>{{ dev.pprsta }}</td>
+                    <td>{{ dev.custName }}</td>
+                    <td style="display: none" #data title="{{ dev.custMobile }}"></td>
+                    <td>
+                      <input class="btn btn-info btn-xs" type="button" value="Show" (click)="shoeMobile(data.title)">
+                    </td>
+                    <td>{{ dev.premium.toLocaleString() }}</td>
+                    <td>{{ dev.nofarias }}</td>
+                    <td>{{ dev.totarias.toLocaleString() }}</td>
+                  </tr>
+                </table>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 col-sm-12">
+          <div class="main_div div385">
+            <div class="header_div">
+              <h2>Pending Requirment Policies</h2>
+            </div>
+            <div class="div335">
+              <div class="container-fluid tbl-div1">
+                <table class="table table-striped table-responsive">
+                  <tr>
+                    <th>Branch</th>
+                    <th>Proposal Number</th>
+                    <th>Agent code</th>
+                    <th>Cust Name</th>
+                    <th>Premium</th>
+                    <th>Requirment</th>
+                  </tr>
+                  <tr *ngFor="let pend of mainRespDto.pendingPolList" #data>
+                    <td> {{ pend.branch }}</td>
+                    <td> {{ pend.proposalNo }}</td>
+                    <td> {{ pend.agentCode }}</td>
+                    <td> {{ pend.custName }}</td>
+                    <td> {{ pend.premium }}</td>
+                    <td style="display: none" #data title="{{ pend.requirment }}"></td>
+                    <td>
+                      <input class="btn btn-info btn-xs" type="button" value="Requirment" (click)="shoeReq(data.title)">
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>-->
+
+<!--<div class="container-fluid" id="outer_div" *ngIf = "usertype !='IC' && usertype != 'UNL' && usertype !='BRANCH' && usertype !='REGION' && usertype != 'ZONE'">-->
+  <div class="row">
+      <div class="col-md-12">
+          <div class="error-template" style="text-align: center">
+              <h1>
+                  Dashboard Comming Soon</h1>
+              <h2>
+                  Sorry !</h2>
+              <div class="error-details">
+                  Dashboard is under the Development Process
+              </div>
+              
+          </div>
+      </div>
+  </div>
+<!--</div>-->

@@ -1,0 +1,28 @@
+<div id="loginDiv">
+    <div id="imgDiv">
+        <img src="assets/images/logo.png" alt="ARPICO INSURANCE">
+    </div>
+    <h2>Sign in </h2>
+    <h5>with your Arpico Insurance Account</h5>
+    
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+        <div class="group">      
+            <input type="text" [(ngModel)]="username" name="userNameTxt" id="userNameTxt" (keyup.enter)="onKeyup()" required autofocus="" validate>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>User Name</label>
+        </div>
+        
+        <div class="group">      
+            <input type="password" name="passwordTxt" id="passwordTxt" [(ngModel)]="password" (keyup.enter)="onKeyup1()" required >
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Password</label>
+        </div>
+        
+        <div class="group">
+            <button type="submit" class="btn btn-primary" id="signInBtn">SIGN IN</button>
+        </div>
+        
+    </form>
+</div>

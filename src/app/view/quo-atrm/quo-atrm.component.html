@@ -1,0 +1,67 @@
+<div class="mainBody" [ngClass]="{'disabled': isDisableDiv == true}">
+  <div class="text-left col-lg-4 col-md-4 col-sm-12 col-xs-12">
+      <app-atrm-personal-info  (onSetSpActive)="onSetSpActive($event)"
+      (onSetChActive)="onSetChActive($event)"
+      (setBsa) = "setBsa($event)"
+      (calPreviousRiskM) = "calPreviousRiskM($event)"
+      (calPreviousRiskS) = "calPreviousRiskS($event)"
+      (onSet)="onSet($event)"  (clearbenef)="clearbenef($event)" (clearbenefAll)="clearbenefAll($event)" [activeSp]="activeSp" [activeCh]="activeCh" [_personalInfo]="personalInfo" [_childrens]="_childrens" [summeryInfo]="summeryInfo" (onSetCalObj)="onSetCalObj($event)" (setValidity)="setValidity($event)" ></app-atrm-personal-info>
+  </div>
+  <div class="text-left col-lg-4 col-md-4 col-sm-12 col-xs-12">
+      <app-atrm-additional-benef
+      (onsetBenifMainlife)="onsetBenifMainlife($event)"
+        (onsetBenifSpouse)="onsetBenifSpouse($event)"
+        (onsetBenifChildren)="onsetBenifChildren($event)"
+        (onsetBenifMainlifeForm)="onsetBenifMainlifeForm($event)"
+        (onsetBenifSpouseForm)="onsetBenifSpouseForm($event)"
+        (onsetBenifChildrenForm)="onsetBenifChildrenForm($event)"
+        (onsetBenifAllForm)="onsetBenifAll($event)"
+        [summeryInfo]="summeryInfo"
+        [personalInfo]="_quotationCalculation._personalInfo"
+        [activeSp]="activeSp" [activeCh]="activeCh"
+        [isGetHealthBenef]="isGetHealthBenef" [isGetHcbf]="isGetHcbf"
+        [isGetHcbi]="isGetHcbi" [isGetShcbf]="isGetShcbf"
+        [isGetShcbi]="isGetShcbi" 
+        [_childrens]="_childrens"
+        [isImgBSASGActive]="isImgBSASGActive" [isImgBSASActive]="isImgBSASActive"
+        [isImgATPBGActive]="isImgATPBGActive" [isImgATPBActive]="isImgATPBActive"
+        [isImgADBGActive]="isImgADBGActive" [isImgADBActive]="isImgADBActive"
+        [isImgADBSGActive]="isImgADBSGActive" [isImgADBSActive]="isImgADBSActive"
+        [isImgCIBGActive]="isImgCIBGActive" [isImgCIBActive]="isImgCIBActive"
+        [isImgCIBSGActive]="isImgCIBSGActive" [isImgCIBSActive]="isImgCIBSActive"
+        [isImgCIBCGActive]="isImgCIBCGActive" [isImgCIBCActive]="isImgCIBCActive"
+        [isImgFEBGActive]="isImgFEBGActive" [isImgFEBActive]="isImgFEBActive"
+        [isImgFEBSGActive]="isImgFEBSGActive" [isImgFEBSActive]="isImgFEBSActive"
+        [isImgHBGActive]="isImgHBGActive" [isImgHBActive]="isImgHBActive"
+        [isImgHBSGActive]="isImgHBSGActive" [isImgHBSActive]="isImgHBSActive"
+        [isImgHBCGActive]="isImgHBCGActive" [isImgHBCActive]="isImgHBCActive"
+        [isImgHRBIGActive]="isImgHRBIGActive" [isImgHRBIActive]="isImgHRBIActive"
+        [isImgHRBISGActive]="isImgHRBISGActive" [isImgHRBISActive]="isImgHRBISActive"
+        [isImgHRBICGActive]="isImgHRBICGActive" [isImgHRBICActive]="isImgHRBICActive"
+        [isImgHRBFGActive]="isImgHRBFGActive" [isImgHRBFActive]="isImgHRBFActive"
+        [isImgHRBFSGActive]="isImgHRBFSGActive" [isImgHRBFSActive]="isImgHRBFSActive"
+        [isImgHRBFCGActive]="isImgHRBFCGActive" [isImgHRBFCActive]="isImgHRBFCActive"
+        [isImgMFIBDGActive]="isImgMFIBDGActive" [isImgMFIBDActive]="isImgMFIBDActive"
+        [isImgMFIBDTGActive]="isImgMFIBDTGActive" [isImgMFIBDTActive]="isImgMFIBDTActive"
+        [isImgMFIBTGActive]="isImgMFIBTGActive" [isImgMFIBTActive]="isImgMFIBTActive"
+        [isImgPPDBGActive]="isImgPPDBGActive" [isImgPPDBActive]="isImgPPDBActive"
+        [isImgPPDBSGActive]="isImgPPDBSGActive" [isImgPPDBSActive]="isImgPPDBSActive"
+        [isImgSUHRBGActive]="isImgSUHRBGActive" [isImgSUHRBActive]="isImgSUHRBActive"
+        [isImgSHCBFGActive]="isImgSHCBFGActive" [isImgSHCBFActive]="isImgSHCBFActive"
+        [isImgSHCBFSGActive]="isImgSHCBFSGActive" [isImgSHCBFSActive]="isImgSHCBFSActive"
+        [isImgSHCBFCGActive]="isImgSHCBFCGActive" [isImgSHCBFCActive]="isImgSHCBFCActive"
+        [isImgSUHRBSGActive]="isImgSUHRBSGActive" [isImgSUHRBSActive]="isImgSUHRBSActive"
+        [isImgSUHRBCGActive]="isImgSUHRBCGActive" [isImgSUHRBCActive]="isImgSUHRBCActive"
+        [isImgTPDASBGActive]="isImgTPDASBGActive" [isImgTPDASBActive]="isImgTPDASBActive"
+        [isImgTPDASBSGActive]="isImgTPDASBSGActive" [isImgTPDASBSActive]="isImgTPDASBSActive"
+        [isImgTPDBGActive]="isImgTPDBGActive" [isImgTPDBActive]="isImgTPDBActive"
+        [isImgTPDBSGActive]="isImgTPDBSGActive" [isImgTPDBSActive]="isImgTPDBSActive"
+        [isImgWPBGActive]="isImgWPBGActive" [isImgWPBActive]="isImgWPBActive"
+        [isImgWPBSGActive]="isImgWPBSGActive" [isImgWPBSActive]="isImgWPBSActive"></app-atrm-additional-benef>
+  </div>
+  <div class="text-left col-lg-4 col-md-4 col-sm-12 col-xs-12">
+      <app-atrm-summery [summeryInfo]="summeryInfo" [isEditUI]="isEditUI" (save)="save($event)" (edit)="edit($event)" (clearquo)="clearquo()"
+       [activeSp]="activeSp" [activeCh]="activeCh"></app-atrm-summery>
+  </div>
+
+</div>

@@ -1,0 +1,69 @@
+<div class="main_div">
+  <div class="header_div">
+    <h2>Quotation Summary (AIP)</h2>
+  </div>
+  <div class="body_div" style="min-height: 470px;">
+    <div class="row container-fluid" style="margin-bottom: 15px; ">
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        <div>
+          <img class="payImg" [src]="payImgUrl" />
+        </div>
+        <div class="paiTitle">{{_plan._frequance}}</div>
+        <div class="paiTitle" style="font-size: 12px;">Paid</div>
+        <hr>
+        <div class="paiTitle" style="font-size: 11px;">Term of the </div>
+        <div class="paiTitle" style="font-size: 11px;">Plan {{_plan._term}}</div>
+      </div>
+
+      <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+        <table class="premiumTable" style="width: 100%">
+          <tr class="premiumTable">
+            <td>Contribution</td>
+            <td style="text-align: right">Rs. {{_plan._contribution.toLocaleString()}}</td>
+          </tr>
+          <tr class="premiumTable">
+            <td>Premium for AdminFee / Tax</td>
+            <td style="text-align: right">Rs. {{_aibSummery.extraOe.toLocaleString()}}</td>
+          </tr>
+          <tr class="premiumTable">
+            <td>Total Premium</td>
+            <td style="text-align: right">Rs. {{ total }}</td>
+          </tr>
+
+        </table>
+      </div>
+    </div>
+    <div class="row container-fluid">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div style=" background: rgb(240, 240, 240); margin-bottom: 15px;">
+          <p style="margin: 0px;">Illustrated Fund On Maturity</p>
+          <table style="width: 100%; margin-top: 5px;">
+            <tr>
+              <th class="center thead">At 9% *</th>
+              <th class="center thead">At 10%</th>
+              <th class="center thead">At 11%</th>
+            </tr>
+            <tr>
+              <td class="center tBody">Rs. {{_aibSummery.maturaty.toLocaleString()}}</td>
+              <td class="center tBody">Rs. {{_aibSummery.maturaty10.toLocaleString()}}</td>
+              <td class="center tBody">Rs. {{_aibSummery.maturaty12.toLocaleString()}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="header_div navbar-static-bottom" style="height: 50px;">
+    <input type="button" *ngIf="!isEditUI" class="btn btn-info" value="Save" style="margin-top: 7px; margin-left: 10px; background: rgb(59,103,158);"
+      (click)="saveQuo()">
+    <input type="button" *ngIf="isEditUI" class="btn btn-info" value="Edit" style="margin-top: 7px; margin-left: 10px; background: rgb(59,103,158);"
+      (click)="editQuo()">
+    <input type="button" class="btn btn-info" (click)="clear()" value="Clear" style="margin-top: 7px; margin-left: 10px;background: rgb(240,183,161);
+    background: -moz-linear-gradient(top, rgba(240,183,161,1) 0%, rgba(140,51,16,1) 50%, rgba(117,34,1,1) 51%, rgba(191,110,78,1) 100%);
+    background: -webkit-linear-gradient(top, rgba(240,183,161,1) 0%,rgba(140,51,16,1) 50%,rgba(117,34,1,1) 51%,rgba(191,110,78,1) 100%);
+    background: linear-gradient(to bottom, rgba(240,183,161,1) 0%,rgba(140,51,16,1) 50%,rgba(117,34,1,1) 51%,rgba(191,110,78,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0b7a1', endColorstr='#bf6e4e',GradientType=0 );">
+
+  </div>
+</div>

@@ -1,0 +1,156 @@
+<div class="main_div">
+    <div class="header_div">
+        <h2>Quotation Summary (DTAPL)</h2>
+    </div>
+    <div class="body_div">
+        <div class="row container-fluid" style="margin-bottom: 15px; height: 230px;">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                <div>
+                    <img class="payImg" [src]="payImgUrl" />
+                </div>
+                <div class="paiTitle">{{summeryInfo._summery._payType}}</div>
+                <div class="paiTitle" style="font-size: 12px;">Paid</div>
+                <hr>
+                <div class="paiTitle" style="font-size: 11px;">Term of the </div>
+                <div class="paiTitle" style="font-size: 11px;">Plan {{summeryInfo._summery._term}}</div>
+            </div>
+
+            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                <table class="premiumTable" style="width: 100%">
+                    <tr class="premiumTable">
+                        <td>Premium for Benefits</td>
+                        <td style="text-align: right">Rs. {{summeryInfo._summery.withoutLoadingTot}}</td>
+                    </tr>
+                    <tr class="premiumTable">
+                        <td>Premium for Occupation Loading</td>
+                        <td style="text-align: right">Rs. {{summeryInfo._summery.occuLodingTot}}</td>
+                    </tr>
+                    <tr class="premiumTable">
+                        <td>Premium for AdminFee / Tax</td>
+                        <td style="text-align: right">Rs. {{summeryInfo._summery.oc}}</td>
+                    </tr>
+
+                    <tr class="premiumTable">
+                        <td>Total Premium</td>
+                        <td style="text-align: right">Rs. {{summeryInfo._summery.totPremium}}</td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="body_div">
+        <div class="container-fluid content-div2" style="margin-top: 10px;">
+            <ngb-tabset >
+                <ngb-tab title="Protection">
+                    <ng-template ngbTabContent>
+                        <div class="container-fluid content-div3" style="margin-top: 10px;">
+                            <table style="width: 100%; margin-top: 5px;">
+                                <tr>
+                                    <th>Spouse</th>
+                                </tr>
+
+                                <tr class="premiumTable">
+                                    <td>JLBPL</td>
+                                    <td style="text-align: right">{{summeryInfo._protection.JLBPLTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._protection.JLBPL}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab title="Disability">
+                    <ng-template ngbTabContent>
+                        <div class="container-fluid content-div3" style="margin-top: 10px;">
+                            <table style="width: 100%; margin-top: 5px;">
+                                <tr>
+                                    <th>Main Life</th>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>TPDDTAPL</td>
+                                    <td style="text-align: right">{{summeryInfo._disablities.TPDDTAPLTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._disablities.TPDDTAPL}}</td>
+                                </tr>
+                                <tr>
+                                    <th>&nbsp;</th>
+                                </tr>
+
+                                <tr>
+                                    <th>Spouse</th>
+                                </tr>
+
+                                <tr class="premiumTable">
+                                    <td>TPDDTASPL</td>
+                                    <td style="text-align: right">{{summeryInfo._disablities.TPDDTASPLTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._disablities.TPDDTASPL}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab title="All">
+                    <ng-template ngbTabContent>
+                        <div class="container-fluid content-div3" style="margin-top: 10px;">
+                            <table style="width: 100%; margin-top: 5px;">
+                                <tr>
+                                    <th>Main Life</th>
+                                </tr>
+
+
+                                <tr class="premiumTable">
+                                    <td>TPDDTAPL</td>
+                                    <td style="text-align: right">{{summeryInfo._disablities.TPDDTAPLTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._disablities.TPDDTAPL}}</td>
+                                </tr>
+
+                                <tr style="height: 45px;">
+                                    <th style="font-size: 13px;">Total MainLife Premium</th>
+                                    <td style="text-align: right"></td>
+                                    <th style="text-align: right">Rs. {{summeryInfo._disablities.TPDDTAPL}}</th>
+                                </tr>
+
+                                <tr>
+                                    <th>Spouse</th>
+                                </tr>
+
+                                <tr class="premiumTable">
+                                    <td>JLBPL</td>
+                                    <td style="text-align: right">{{summeryInfo._protection.JLBPLTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._protection.JLBPL}}</td>
+                                </tr>
+                                <tr style="height: 45px;">
+                                    <th style="font-size: 13px;">Disability Benefits</th>
+                                </tr>
+
+                                <tr class="premiumTable">
+                                    <td>TPDDTASPL</td>
+                                    <td style="text-align: right">{{summeryInfo._disablities.TPDDTASPLTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._disablities.TPDDTASPL}}</td>
+                                </tr>
+
+                                <tr style="height: 45px;">
+                                    <th style="font-size: 13px;">Total MainLife Premium</th>
+                                    <td style="text-align: right"></td>
+                                    <th style="text-align: right">Rs. {{summeryInfo._disablities.TPDDTASPL+summeryInfo._protection.JLBPL}}</th>
+                                </tr>
+
+                            </table>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+            </ngb-tabset>
+        </div>
+    </div>
+    <div class="header_div navbar-static-bottom" style="height: 50px;">
+        <input type="button" *ngIf="isEditUI == false" class="btn btn-info" value="Save" style="margin-top: 7px; margin-left: 10px; background: rgb(59,103,158);"
+           (click)="saveQuo()" >
+        <input type="button" *ngIf="isEditUI == true" class="btn btn-info" value="Save" style="margin-top: 7px; margin-left: 10px; background: rgb(59,103,158);"
+           (click)="editQuo()" >
+        <input type="button" (click) = "clear()" class="btn btn-info" value="Clear" style="margin-top: 7px; margin-left: 10px;background: rgb(240,183,161);
+      background: -moz-linear-gradient(top, rgba(240,183,161,1) 0%, rgba(140,51,16,1) 50%, rgba(117,34,1,1) 51%, rgba(191,110,78,1) 100%);
+      background: -webkit-linear-gradient(top, rgba(240,183,161,1) 0%,rgba(140,51,16,1) 50%,rgba(117,34,1,1) 51%,rgba(191,110,78,1) 100%);
+      background: linear-gradient(to bottom, rgba(240,183,161,1) 0%,rgba(140,51,16,1) 50%,rgba(117,34,1,1) 51%,rgba(191,110,78,1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0b7a1', endColorstr='#bf6e4e',GradientType=0 );"
+            >
+    </div>
+</div>

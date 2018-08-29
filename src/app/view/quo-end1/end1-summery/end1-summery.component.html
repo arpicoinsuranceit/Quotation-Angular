@@ -1,0 +1,583 @@
+<div class="main_div">
+    <div class="header_div">
+        <h2>Quotation Summary (END)</h2>
+    </div>
+    <div class="body_div">
+        <div class="row container-fluid" style="margin-bottom: 15px;">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                <div>
+                    <img class="payImg" [src]="payImgUrl" />
+                </div>
+                <div class="paiTitle">{{summeryInfo._summery._payType}}</div>
+                <div class="paiTitle" style="font-size: 12px;">Paid</div>
+                <hr>
+                <div class="paiTitle" style="font-size: 11px;">Term of the </div>
+                <div class="paiTitle" style="font-size: 11px;">Plan {{summeryInfo._summery._term}}</div>
+            </div>
+
+            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                <table class="premiumTable" style="width: 100%">
+                    <tr class="premiumTable">
+                        <td>Premium for Benefits</td>
+                        <td style="text-align: right">Rs. {{summeryInfo._summery.withoutLoadingTot}}</td>
+                    </tr>
+                    <tr class="premiumTable">
+                        <td>Premium for Occupation Loading</td>
+                        <td style="text-align: right">Rs. {{summeryInfo._summery.occuLodingTot}}</td>
+                    </tr>
+                    <tr class="premiumTable">
+                        <td>Premium for AdminFee / Tax</td>
+                        <td style="text-align: right">Rs. {{summeryInfo._summery.oc}}</td>
+                    </tr>
+
+                    <tr class="premiumTable">
+                        <td>Total Premium</td>
+                        <td style="text-align: right">Rs. {{summeryInfo._summery.totPremium}}</td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+        <div class="row container-fluid">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div style=" background: rgb(240, 240, 240); margin-bottom: 15px;">
+                    <p style="margin: 0px;">Illustrated fund on maturity</p>
+                    <table style="width: 100%; margin-top: 5px;">
+                        <tr>
+                            <th class="center thead">Guaranteed Maturity</th>
+                        </tr>
+                        <tr>
+                            <td class="center tBody">Rs. {{summeryInfo._summery.at6}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="body_div">
+        <div class="container-fluid content-div2" style="margin-top: 10px;">
+            <ngb-tabset>
+                <ngb-tab title="Health">
+                    <ng-template ngbTabContent>
+                        <div class="container-fluid content-div3" style="margin-top: 10px;">
+                            <table style="width: 100%; margin-top: 5px;">
+                                <tr>
+                                    <th>Main Life</th>
+                                </tr>
+
+                                <tr class="premiumTable">
+                                    <td>CIB</td>
+                                    <td style="text-align: right">{{summeryInfo._health.CIBTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._health.CIB}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>HB</td>
+                                    <td style="text-align: right">{{summeryInfo._health.HBTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._health.HB}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>HCBI</td>
+                                    <td style="text-align: right">{{summeryInfo._health.HRBITerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._health.HRBI}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>HCBF</td>
+                                    <td style="text-align: right">{{summeryInfo._health.HRBFTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._health.HRBF}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>SHCBI</td>
+                                    <td style="text-align: right">{{summeryInfo._health.SUHRBTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._health.SUHRB}}</td>
+                                </tr>
+                                <!--<tr class="premiumTable">
+                                    <td>SHCBF</td>
+                                    <td style="text-align: right">{{summeryInfo._health.SHCBFTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._health.SHCBF}}</td>
+                                </tr>-->
+
+                                <tr style="height: 45px;">
+                                    <th style="font-size: 13px;">Total Health Premium</th>
+                                    <td style="text-align: right"></td>
+                                    <th style="text-align: right">Rs. {{summeryInfo._health.CIB+summeryInfo._health.HB+summeryInfo._health.HRBI+summeryInfo._health.HRBF+summeryInfo._health.SUHRB}}</th>
+                                </tr>
+                                <tr>
+                                    <th>Spouse</th>
+                                </tr>
+
+                                <tr class="premiumTable">
+                                    <td>SCIB</td>
+                                    <td style="text-align: right">{{summeryInfo._health.SCIBTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._health.SCIB}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>HBS</td>
+                                    <td style="text-align: right">{{summeryInfo._health.HBSTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._health.HBS}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>HCBIS</td>
+                                    <td style="text-align: right">{{summeryInfo._health.HRBISTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._health.HRBIS}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>HCBFS</td>
+                                    <td style="text-align: right">{{summeryInfo._health.HRBFSTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._health.HRBFS}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>SHCBIS</td>
+                                    <td style="text-align: right">{{summeryInfo._health.SUHRBSTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._health.SUHRBS}}</td>
+                                </tr>
+
+                                <!--<tr class="premiumTable">
+                                    <td>SHCBFS</td>
+                                    <td style="text-align: right">{{summeryInfo._health.SHCBFSTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._health.SHCBFS}}</td>
+                                </tr>-->
+
+                                <tr style="height: 45px;">
+                                    <th style="font-size: 13px;">Total Health Premium</th>
+                                    <td style="text-align: right"></td>
+                                    <th style="text-align: right">Rs. {{summeryInfo._health.SCIB+summeryInfo._health.HBS+summeryInfo._health.HRBIS+summeryInfo._health.HRBFS+summeryInfo._health.SUHRBS}}</th>
+                                </tr>
+                                <tr>
+                                    <th>Children</th>
+                                </tr>
+
+                                <tr class="premiumTable">
+                                    <td>CIBC</td>
+                                    <td style="text-align: right">{{summeryInfo._health.CIBCTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._health.CIBC}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>HBC</td>
+                                    <td style="text-align: right">{{summeryInfo._health.HBCTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._health.HBC}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>HCBIC</td>
+                                    <td style="text-align: right">{{summeryInfo._health.HRBICTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._health.HRBIC}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>HCBFC</td>
+                                    <td style="text-align: right">{{summeryInfo._health.HRBFCTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._health.HRBFC}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>SHCBIC</td>
+                                    <td style="text-align: right">{{summeryInfo._health.SUHRBCTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._health.SUHRBC}}</td>
+                                </tr>
+                                <!--<tr class="premiumTable">
+                                    <td>SHCBFC</td>
+                                    <td style="text-align: right">{{summeryInfo._health.SHCBFCTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._health.SHCBFC}}</td>
+                                </tr>-->
+
+                                <tr style="height: 45px;">
+                                    <th style="font-size: 13px;">Total Health Premium</th>
+                                    <td style="text-align: right"></td>
+                                    <th style="text-align: right">Rs. {{summeryInfo._health.CIBC+summeryInfo._health.HBC+summeryInfo._health.HRBIC+summeryInfo._health.HRBFC+summeryInfo._health.SUHRBC}}</th>
+                                </tr>
+
+                            </table>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab title="Protection">
+                    <ng-template ngbTabContent>
+                        <div class="container-fluid content-div3" style="margin-top: 10px;">
+                            <table style="width: 100%; margin-top: 5px;">
+                                <tr>
+                                    <th>Main Life</th>
+                                </tr>
+
+                                <tr class="premiumTable">
+                                    <td>ADB</td>
+                                    <td style="text-align: right">{{summeryInfo._protection.ADBTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._protection.ADB}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>ATPB</td>
+                                    <td style="text-align: right">{{summeryInfo._protection.ATPBTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._protection.ATPB}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>FEB</td>
+                                    <td style="text-align: right">{{summeryInfo._protection.FEBTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._protection.FEB}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>MFIBD</td>
+                                    <td style="text-align: right">{{summeryInfo._protection.MFIBDTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._protection.MFIBD}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>MFIBDT</td>
+                                    <td style="text-align: right">{{summeryInfo._protection.MFIBDTTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._protection.MFIBDT}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>MFIBT</td>
+                                    <td style="text-align: right">{{summeryInfo._protection.MFIBTTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._protection.MFIBT}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>WPB</td>
+                                    <td style="text-align: right">{{summeryInfo._protection.WPBTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._protection.WPB}}</td>
+                                </tr>
+
+                                <tr style="height: 45px;">
+                                    <th style="font-size: 13px;">Total Protection Premium</th>
+                                    <td style="text-align: right"></td>
+                                    <th style="text-align: right">Rs. {{summeryInfo._protection.ADB+summeryInfo._protection.ATPB+summeryInfo._protection.FEB+
+                                        summeryInfo._protection.MFIBD+summeryInfo._protection.MFIBDT+summeryInfo._protection.MFIBT+summeryInfo._protection.WPB}}
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>Spouse</th>
+                                </tr>
+
+                                <tr class="premiumTable">
+                                    <td>ADBS</td>
+                                    <td style="text-align: right">{{summeryInfo._protection.ADBSTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._protection.ADBS}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>FEBS</td>
+                                    <td style="text-align: right">{{summeryInfo._protection.FEBSTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._protection.FEBS}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>WPBS</td>
+                                    <td style="text-align: right">{{summeryInfo._protection.WPBSTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._protection.WPBS}}</td>
+                                </tr>
+
+                                <tr style="height: 45px;">
+                                    <th style="font-size: 13px;">Total Protection Premium</th>
+                                    <td style="text-align: right"></td>
+                                    <th style="text-align: right">Rs. {{summeryInfo._protection.ADBS+summeryInfo._protection.FEBS+summeryInfo._protection.WPBS}}</th>
+                                </tr>
+
+                            </table>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab title="Disability">
+                    <ng-template ngbTabContent>
+                        <div class="container-fluid content-div3" style="margin-top: 10px;">
+                            <table style="width: 100%; margin-top: 5px;">
+                                <tr>
+                                    <th>Main Life</th>
+                                </tr>
+
+                                <tr class="premiumTable">
+                                    <td>PPDB</td>
+                                    <td style="text-align: right">{{summeryInfo._disablities.PPDBTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._disablities.PPDB}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>TPDASB</td>
+                                    <td style="text-align: right">{{summeryInfo._disablities.TPDASBTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._disablities.TPDASB}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>TPDB</td>
+                                    <td style="text-align: right">{{summeryInfo._disablities.TPDBTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._disablities.TPDB}}</td>
+                                </tr>
+
+
+                                <tr style="height: 45px;">
+                                    <th style="font-size: 13px;">Total Disability Premium</th>
+                                    <td style="text-align: right"></td>
+                                    <th style="text-align: right">Rs. {{summeryInfo._disablities.PPDB+summeryInfo._disablities.TPDASB+summeryInfo._disablities.TPDB}}</th>
+                                </tr>
+                                <tr>
+                                    <th>Spouse</th>
+                                </tr>
+
+                                <tr class="premiumTable">
+                                    <td>PPDBS</td>
+                                    <td style="text-align: right">{{summeryInfo._disablities.PPDBSTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._disablities.PPDBS}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>TPDASBS</td>
+                                    <td style="text-align: right">{{summeryInfo._disablities.TPDASBSTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._disablities.TPDASBS}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>TPDBS</td>
+                                    <td style="text-align: right">{{summeryInfo._disablities.TPDBSTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._disablities.TPDBS}}</td>
+                                </tr>
+
+                                <tr style="height: 45px;">
+                                    <th style="font-size: 13px;">Total Disability Premium</th>
+                                    <th style="font-size: 13px;"></th>
+                                    <th style="text-align: right">Rs. {{summeryInfo._disablities.PPDBS+summeryInfo._disablities.TPDASBS+summeryInfo._disablities.TPDBS}}</th>
+                                </tr>
+
+                            </table>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab title="All">
+                    <ng-template ngbTabContent>
+                        <div class="container-fluid content-div3" style="margin-top: 10px;">
+                            <table style="width: 100%; margin-top: 5px;">
+                                <tr>
+                                    <th>Main Life</th>
+                                </tr>
+
+                                <tr class="premiumTable">
+                                    <td>BSA</td>
+                                    <td style="text-align: right">{{summeryInfo._summery._term}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._summery.sumAssured}}</td>
+                                </tr>
+
+                                <tr class="premiumTable">
+                                    <td>CIB</td>
+                                    <td style="text-align: right">{{summeryInfo._health.CIBTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._health.CIB}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>HB</td>
+                                    <td style="text-align: right">{{summeryInfo._health.HBTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._health.HB}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>HCBI</td>
+                                    <td style="text-align: right">{{summeryInfo._health.HRBITerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._health.HRBI}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>HCBF</td>
+                                    <td style="text-align: right">{{summeryInfo._health.HRBFTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._health.HRBF}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>SHCBI</td>
+                                    <td style="text-align: right">{{summeryInfo._health.SUHRBTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._health.SUHRB}}</td>
+                                </tr>
+                                <!--<tr class="premiumTable">
+                                    <td>SHCBF</td>
+                                    <td style="text-align: right">{{summeryInfo._health.SHCBFTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._health.SHCBF}}</td>
+                                </tr>-->
+
+
+                                <tr class="premiumTable">
+                                    <td>ADB</td>
+                                    <td style="text-align: right">{{summeryInfo._protection.ADBTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._protection.ADB}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>ATPB</td>
+                                    <td style="text-align: right">{{summeryInfo._protection.ATPBTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._protection.ATPB}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>FEB</td>
+                                    <td style="text-align: right">{{summeryInfo._protection.FEBTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._protection.FEB}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>MFIBD</td>
+                                    <td style="text-align: right">{{summeryInfo._protection.MFIBDTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._protection.MFIBD}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>MFIBDT</td>
+                                    <td style="text-align: right">{{summeryInfo._protection.MFIBDTTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._protection.MFIBDT}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>MFIBT</td>
+                                    <td style="text-align: right">{{summeryInfo._protection.MFIBTTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._protection.MFIBT}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>WPB</td>
+                                    <td style="text-align: right">{{summeryInfo._protection.WPBTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._protection.WPB}}</td>
+                                </tr>
+
+
+                                <tr class="premiumTable">
+                                    <td>PPDB</td>
+                                    <td style="text-align: right">{{summeryInfo._disablities.PPDBTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._disablities.PPDB}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>TPDASB</td>
+                                    <td style="text-align: right">{{summeryInfo._disablities.TPDASBTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._disablities.TPDASB}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>TPDB</td>
+                                    <td style="text-align: right">{{summeryInfo._disablities.TPDBTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._disablities.TPDB}}</td>
+                                </tr>
+
+
+                                <tr style="height: 45px;">
+                                    <th style="font-size: 13px;">Total MainLife Premium</th>
+                                    <th style="font-size: 13px;"></th>
+                                    <th style="text-align: right">Rs. {{summeryInfo._protection.ADB+summeryInfo._protection.ATPB+summeryInfo._protection.FEB+
+                                            summeryInfo._protection.MFIBD+summeryInfo._protection.MFIBDT+summeryInfo._protection.MFIBT+summeryInfo._protection.WPB+summeryInfo._disablities.PPDB+summeryInfo._disablities.TPDASB+summeryInfo._disablities.TPDB+
+                                            summeryInfo._health.CIB+summeryInfo._health.HB+summeryInfo._health.HRBI+summeryInfo._health.HRBF+summeryInfo._health.SUHRB}}</th>
+                                </tr>
+
+
+                                <tr>
+                                    <th>Spouse</th>
+                                </tr>
+
+                                <tr class="premiumTable">
+                                    <td>SCB</td>
+                                    <td style="text-align: right">{{summeryInfo._protection.BSASTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._protection.BSAS}}</td>
+                                </tr>
+
+                                <tr class="premiumTable">
+                                    <td>SCIB</td>
+                                    <td style="text-align: right">{{summeryInfo._health.SCIBTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._health.SCIB}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>HBS</td>
+                                    <td style="text-align: right">{{summeryInfo._health.HBSTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._health.HBS}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>HCBIS</td>
+                                    <td style="text-align: right">{{summeryInfo._health.HRBISTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._health.HRBIS}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>HCBFS</td>
+                                    <td style="text-align: right">{{summeryInfo._health.HRBFSTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._health.HRBFS}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>SHCBIS</td>
+                                    <td style="text-align: right">{{summeryInfo._health.SUHRBSTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._health.SUHRBS}}</td>
+                                </tr>
+
+                                <!--<tr class="premiumTable">
+                                    <td>SHCBFS</td>
+                                    <td style="text-align: right">{{summeryInfo._health.SHCBFSTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._health.SHCBFS}}</td>
+                                </tr>-->
+
+
+                                <tr class="premiumTable">
+                                    <td>ADBS</td>
+                                    <td style="text-align: right">{{summeryInfo._protection.ADBSTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._protection.ADBS}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>FEBS</td>
+                                    <td style="text-align: right">{{summeryInfo._protection.FEBSTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._protection.FEBS}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>WPBS</td>
+                                    <td style="text-align: right">{{summeryInfo._protection.WPBSTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._protection.WPBS}}</td>
+                                </tr>
+
+
+                                <tr class="premiumTable">
+                                    <td>PPDBS</td>
+                                    <td style="text-align: right">{{summeryInfo._disablities.PPDBSTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._disablities.PPDBS}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>TPDASBS</td>
+                                    <td style="text-align: right">{{summeryInfo._disablities.TPDASBSTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._disablities.TPDASBS}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>TPDBS</td>
+                                    <td style="text-align: right">{{summeryInfo._disablities.TPDBSTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._disablities.TPDBS}}</td>
+                                </tr>
+
+                                <tr style="height: 45px;">
+                                    <th style="font-size: 13px;">Total Spouse Premium</th>
+                                    <td style="text-align: right"></td>
+                                    <th style="text-align: right">Rs. {{summeryInfo._health.SCIB+summeryInfo._health.HBS+summeryInfo._health.HRBIS+summeryInfo._health.HRBFS+summeryInfo._health.SUHRBS + summeryInfo._disablities.PPDBS+summeryInfo._disablities.TPDASBS+summeryInfo._disablities.TPDBS
+                                        +summeryInfo._protection.ADBS+summeryInfo._protection.FEBS+summeryInfo._protection.WPBS}}</th>
+                                </tr>
+
+                                <tr>
+                                    <th>Children</th>
+                                </tr>
+
+                                <tr class="premiumTable">
+                                    <td>CIBC</td>
+                                    <td style="text-align: right">{{summeryInfo._health.CIBCTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._health.CIBC}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>HBC</td>
+                                    <td style="text-align: right">{{summeryInfo._health.HBCTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._health.HBC}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>HCBIC</td>
+                                    <td style="text-align: right">{{summeryInfo._health.HRBICTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._health.HRBIC}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>HCBFC</td>
+                                    <td style="text-align: right">{{summeryInfo._health.HRBFCTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._health.HRBFC}}</td>
+                                </tr>
+                                <tr class="premiumTable">
+                                    <td>SHCBIC</td>
+                                    <td style="text-align: right">{{summeryInfo._health.SUHRBCTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._health.SUHRBC}}</td>
+                                </tr>
+                                <!--<tr class="premiumTable">
+                                    <td>SHCBFC</td>
+                                    <td style="text-align: right">{{summeryInfo._health.SHCBFCTerm}} Years</td>
+                                    <td style="text-align: right">Rs. {{summeryInfo._health.SHCBFC}}</td>
+                                </tr>-->
+
+                                <tr style="height: 45px;">
+                                    <th style="font-size: 13px;">Total Children Premium</th>
+                                    <td style="text-align: right"></td>
+                                    <th style="text-align: right">Rs. {{summeryInfo._health.CIBC+summeryInfo._health.HBC+summeryInfo._health.HRBIC+summeryInfo._health.HRBFC+summeryInfo._health.SUHRBC}}</th>
+                                </tr>
+                            </table>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+            </ngb-tabset>
+        </div>
+    </div>
+    <div class="header_div navbar-static-bottom" style="height: 50px;">
+        <input type="button" class="btn btn-info" value="Requirenments" style="margin-top: 7px; margin-left: 10px; background: rgb(59,103,158);"
+            (click)="requirenments()">
+        <input type="button" *ngIf="isEditUI == false" class="btn btn-info" value="Save" style="margin-top: 7px; margin-left: 10px; background: rgb(59,103,158);"
+            (click)="saveQuo()">
+        <input type="button" *ngIf="isEditUI == true" class="btn btn-info" value="Save" style="margin-top: 7px; margin-left: 10px; background: rgb(59,103,158);"
+            (click)="editQuo()">
+        <input type="button" *ngIf="isEditUI == false" (click)="clear()" class="btn btn-info" value="Clear" style="margin-top: 7px; margin-left: 10px;background: rgb(240,183,161);
+      background: -moz-linear-gradient(top, rgba(240,183,161,1) 0%, rgba(140,51,16,1) 50%, rgba(117,34,1,1) 51%, rgba(191,110,78,1) 100%);
+      background: -webkit-linear-gradient(top, rgba(240,183,161,1) 0%,rgba(140,51,16,1) 50%,rgba(117,34,1,1) 51%,rgba(191,110,78,1) 100%);
+      background: linear-gradient(to bottom, rgba(240,183,161,1) 0%,rgba(140,51,16,1) 50%,rgba(117,34,1,1) 51%,rgba(191,110,78,1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0b7a1', endColorstr='#bf6e4e',GradientType=0 );">
+    </div>
+</div>

@@ -79,6 +79,12 @@ export class QuoArpService {
 
     console.log(data);
     data._product="ARP";
+    let token;
+    if(sessionStorage.getItem("isUnderwriting") == "true"){
+      token=sessionStorage.getItem("Token");
+      alert(token);
+      return this.http.post('http://localhost:8084/quoArpEditUnderwrite/'+token+'/'+qdId, data);
+    }
     
     return this.http.post('http://localhost:8084/quoArpEdit/'+this.userId+'/'+qdId, data);
   }

@@ -1,3 +1,4 @@
+import { ViewQuotationService } from './../../service/view-quo/view-quotation.service';
 import { SharedModule } from './../../shared.module';
 import { QuoArpService } from './../../service/quo-arp/quo-arp.service';
 import { ArpPersonalInfoComponent } from './arp-personal-info/arp-personal-info.component';
@@ -26,7 +27,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ArpSummeryComponent,
     ArpAdditionalBenefComponent,
     ArpPersonalInfoComponent],
-  providers: [QuoArpService, DashboardService, LoginService],
+  providers: [QuoArpService, DashboardService, LoginService, ViewQuotationService],
   
 })
 export class QuoArpModule { }

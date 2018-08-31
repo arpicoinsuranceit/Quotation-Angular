@@ -36,7 +36,7 @@ export class BenefitsValidations{
         bsa=parseFloat(bsa);
         rbsa=parseFloat(rbsa);
 
-        if (rbsa >= 250000 && (rbsa%25000==0)) {
+        if (rbsa >= 250000 && rbsa%25000==0) {
             return 1;
         } else {
             return 0;
@@ -115,7 +115,7 @@ export class BenefitsValidations{
         bsa=parseFloat(bsa);
         atpb=parseFloat(atpb);
 
-        if ((rbsa <= bsa + atpb) && (rbsa <= 6000000) && (rbsa >= 100000) && (rbsa%25000 == 0)){
+        if ((rbsa <= bsa + atpb) && (rbsa <= 6000000) && (rbsa >= 100000)  && (rbsa%25000 == 0)){
             return 1;
         }else{
             return 0;
@@ -126,7 +126,7 @@ export class BenefitsValidations{
         rbsa=parseFloat(rbsa);
         l2=parseFloat(l2);
 
-        if ((rbsa >= 100000) && (rbsa <= l2*10) && (rbsa <= 6000000) && (rbsa%100000 == 0)){
+        if ((rbsa >= 100000) && (rbsa <= l2*10) && (rbsa <= 6000000)  && (rbsa%100000 == 0)){
             return 1;
         }else{
             return 0;
@@ -228,7 +228,7 @@ export class BenefitsValidations{
     validateHB(rbsa) {
         rbsa=parseFloat(rbsa);
 
-        if ((rbsa >= 500 ) && (rbsa <= 15000) && (rbsa%100 == 0)){
+        if ((rbsa > 499 ) && (rbsa < 10001) && (rbsa%100 == 0)){
             return 1;
         }else{
             return 0;
@@ -312,7 +312,7 @@ export class BenefitsValidations{
         rbsa=parseFloat(rbsa);
         scb=parseFloat(scb);
 
-        if ((rbsa <= scb) && (rbsa <= 6000000) && (rbsa > 249999) && (rbsa%25000 == 0)){
+        if ((rbsa <= scb) && (rbsa <= 6000000) && (rbsa > 249999)  && (rbsa%25000 == 0)){
             return 1;
         }else{
             return 0;
@@ -323,7 +323,7 @@ export class BenefitsValidations{
         rbsa=parseFloat(rbsa);
         scb=parseFloat(scb);
 
-        if ((rbsa <= scb) && (rbsa <= 6000000) && (rbsa >= 100000) && (rbsa%25000 == 0)){
+        if ((rbsa <= scb) && (rbsa <= 6000000) && (rbsa >= 100000)  && (rbsa%25000 == 0)){
             return 1;
         }else{
             return 0;
@@ -389,7 +389,7 @@ export class BenefitsValidations{
         rbsa=parseFloat(rbsa);
         hb=parseFloat(hb);
 
-        if ((rbsa >= 500 ) && (rbsa <= 15000) && (rbsa == hb) && (rbsa%100 == 0)){
+        if ((rbsa > 499 ) && (rbsa < 10001) && (rbsa == hb) && (rbsa%100 == 0)){
             return 1;
         }else{
             return 0;
@@ -401,7 +401,7 @@ export class BenefitsValidations{
         bsa=parseFloat(bsa);
         atpb=parseFloat(atpb);
 
-        if ((rbsa > 249999) && (rbsa < 1000001) && (rbsa%25000 == 0)){
+        if ((rbsa > 249999) && (rbsa < 1000001)  && (rbsa%25000 == 0)){
             return 1;
         }else{
             return 0;
@@ -413,7 +413,7 @@ export class BenefitsValidations{
         bsa=parseFloat(bsa);
         atpb=parseFloat(atpb);
 
-        if ((rbsa >= 100000) && (rbsa < 1000001) && (rbsa%25000 == 0)){
+        if ((rbsa >= 100000) && (rbsa < 1000001)  && (rbsa%25000 == 0)){
             return 1;
         }else{
             return 0;
@@ -457,7 +457,7 @@ export class BenefitsValidations{
         rbsa=parseFloat(rbsa);
         hb=parseFloat(hb);
 
-        if ((rbsa >= 500 ) && (rbsa <= 15000) && (rbsa == hb) && (rbsa%100 == 0)){
+        if ((rbsa > 499 ) && (rbsa < 10001) && (rbsa == hb) && (rbsa%100 == 0)){
             return 1;
         }else{
             return 0;

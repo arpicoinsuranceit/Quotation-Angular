@@ -8,7 +8,6 @@ export class QuotationView{
     productName : string;
     quoDetailId : number;
     quotationId : number;
-    seqId : number;
     quotationDate : Date;
     _mainlife : MainLife;
     _spouse : Spouse;

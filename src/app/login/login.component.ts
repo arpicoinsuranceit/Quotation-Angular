@@ -1,9 +1,15 @@
+import { NomineeInquiry } from './../model/inquiry';
+import { Children } from './../model/childeren';
+import { Spouse } from './../model/spouse';
+import { MainLife } from './../model/mainlife';
+import { ViewQuoComponent } from './../view/view-quo/view-quo.component';
 import swal from 'sweetalert2';
 import { Logins } from './../model/Logins';
 import { LoginService } from './../service/login.service';
 import { NgModel } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router,ActivatedRoute } from '@angular/router/';
+import { ViewQuotationService } from '../service/view-quo/view-quotation.service';
 
 @Component({
   selector: 'app-login',
@@ -14,9 +20,43 @@ export class LoginComponent implements OnInit {
   username: string;
   password: string;
   logins : Logins;
+  
 
   constructor(private loginService: LoginService,
-            private router: Router,private route: ActivatedRoute) { }
+            private router: Router,private route: ActivatedRoute,private viewQuoService:ViewQuotationService) {
+
+    this.route.queryParams.subscribe(params => {
+      console.log("view quo");
+      console.log(params['data']);
+
+      if(params['data'] != undefined){
+        var data ;
+        data=JSON.parse(params['data']);
+
+        let token=data.token;
+        let quoNum = data.quoNum;
+        let qdId = data.qdId;
+        let mainlife: MainLife = data.mainlife;
+        let spouse: Spouse = data.spouse;
+        let children: Children[] = data.children;
+        let nominee: NomineeInquiry = data.nominee;
+
+        console.log(token);
+        console.log(mainlife);
+        
+        sessionStorage.setItem("Token",token);
+        sessionStorage.setItem("isUnderwriting","true");
+        sessionStorage.setItem("mainlife",JSON.stringify(mainlife));
+        sessionStorage.setItem("spouse",JSON.stringify(spouse));
+        sessionStorage.setItem("children",JSON.stringify(children));
+        sessionStorage.setItem("nominee",JSON.stringify(nominee));
+
+        this.viewQuoService.editQuoDetails(qdId);
+      }
+
+    });
+
+  }
 
   ngOnInit() {
 

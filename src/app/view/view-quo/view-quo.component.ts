@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 import { ViewQuotationService } from '../../service/view-quo/view-quotation.service';
 import { Router } from '@angular/router';
 import { ResponseType, Response } from '@angular/http';
+import { JwtHelper } from 'angular2-jwt';
 
 @Component({
   selector: 'app-view-quo',
@@ -26,6 +27,7 @@ export class ViewQuoComponent implements OnInit {
   personalInfo: personalInfo;
 
   constructor(private route: ActivatedRoute, private router: Router, private viewQuoService: ViewQuotationService) {
+    
     this.route.params.subscribe(params => {
       this.quoNum = params.id;
       this.viewQuotationDetails();
@@ -33,6 +35,8 @@ export class ViewQuoComponent implements OnInit {
       swal("Error", "Error code - 1301 <br>", "error");
       document.onkeydown = function (e) { return true; }
     });
+
+    
   }
 
   ngOnInit() {
@@ -40,7 +44,6 @@ export class ViewQuoComponent implements OnInit {
 
   viewQuotationDetails() {
     return this.viewQuoService.getQuotationDetails(this.quoNum).subscribe(response => {
-      console.log(response.json());
       this.quotationDetails = response.json();
       this.product=this.quotationDetails[0].productCode;
       this.quotationDetails = this.quotationDetails.sort();
@@ -73,7 +76,7 @@ export class ViewQuoComponent implements OnInit {
   }
 
   load(schedules : Shedule[]){  
-    console.log(schedules);
+    //console.log(schedules);
     let htmlTxt="<table class=\"table table-striped\" style=\"font-size:10px;overflow-x:auto;\"><thead style=\"background-color:#0c3da3;color:white;\"><th>Policy Year</th>"+
               "<th>Out Term</th>"+
               "<th>Sum at Risk</th>"+
@@ -83,7 +86,7 @@ export class ViewQuoComponent implements OnInit {
               
     for(let s=0; s<schedules.length; s++){
       let dtaShedule : Shedule = schedules[s];
-      console.log(dtaShedule);
+      //console.log(dtaShedule);
       htmlTxt+="<tr><td>"+dtaShedule.policyYear+"</td>"
             +"<td>"+dtaShedule.outYear+"</td>"
             +"<td>"+dtaShedule.outSum+"</td>"
@@ -112,62 +115,62 @@ export class ViewQuoComponent implements OnInit {
       switch (response.text()) {
 
         case "AIB": {
-          console.log("AIB");
+          //console.log("AIB");
           url = "/quoaib/" + qdId + "";
           break;
         }
         case "AIP": {
-          console.log("AIP");
+          //console.log("AIP");
           url = "/quoaip/" + qdId + "";
           break;
         }
         case "ARP": {
-          console.log("ARP");
+          //console.log("ARP");
           url = "/quoarp/" + qdId + "";
           break;
         }
         case "ASFP": {
-          console.log("ASFP");
+          //console.log("ASFP");
           url = "/quoasfp/" + qdId + "";
           break;
         }
         case "ASIP": {
-          console.log("ASIP");
+          //console.log("ASIP");
           url = "/quosip/" + qdId + "";
           break;
         }
         case "ATRM": {
-          console.log("ATRM");
+          //console.log("ATRM");
           url = "/quoatrm/" + qdId + "";
           break;
         }
         case "DTA": {
-          console.log("DTA");
+          //console.log("DTA");
           url = "/quodta/" + qdId + "";
           break;
         }
         case "DTAPL": {
-          console.log("DTAPL");
+          //console.log("DTAPL");
           url = "/quodtapl/" + qdId + "";
           break;
         }
         case "END1": {
-          console.log("END1");
+         // console.log("END1");
           url = "/quoend1/" + qdId + "";
           break;
         }
         case "INVP": {
-          console.log("INVP");
+          //console.log("INVP");
           url = "/quoinvp/" + qdId + "";
           break;
         }
         case "ARTM": {
-          console.log("ARTM");
+          //console.log("ARTM");
           url = "/quoartm/" + qdId + "";
           break;
         }
         default: {
-          console.log("Invalid choice");
+          //console.log("Invalid choice");
           break;
         }
       }

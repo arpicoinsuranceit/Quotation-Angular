@@ -153,25 +153,26 @@ export class ArtmPersonalInfoComponent implements OnInit {
     if (this._personalInfo._plan._frequance == "Single Premium") {
       this.setContribution();
       this._personalInfo._plan._payingterm = "0";
-      
+
       this._personalInfo._childrenList = new Array();
-      //this.activeCh = "2";
       this.check();
 
       document.getElementById("txt-payterm").setAttribute("readonly", "true");
-    } else {
       
+    } else {
+
       if(this._personalInfo._plan._payingterm == "0"){
         this._personalInfo._plan._payingterm="10";
       }
-
+      
       this.setContribution();
+
       this._personalInfo._childrenList = this._childrens;
       this.check();
+
       document.getElementById("txt-payterm").removeAttribute("readonly");
     }
-
-   
+    
   }
 
   addChild(e) {
@@ -236,7 +237,7 @@ export class ArtmPersonalInfoComponent implements OnInit {
   onRemove(e, child) {
     let index = this._childrens.indexOf(child);
     this._childrens.splice(index, 1);
-    this.change(new Event("e"));
+    this.change("e");
   }
 
   removeChild(e) {

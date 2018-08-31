@@ -2291,7 +2291,7 @@ export class ArpAdditionalBenefComponent implements OnInit {
         this.checkValidateHBC();
       }
     } else {
-      swal("Error!", "HB must be greater than or equal 500 and less than or equal 15,000 and multi value of 100  and Less than 20% of Yearly Premium", "error");
+      swal("Error!", "HB must be greater than or equal 500 and less than or equal 10,000 and multi value of 100  and Less than 10% of Yearly Premium", "error");
     }
     this.allForms.abmForm = this.abmForm;
     this.allForms.absForm = this.absForm;
@@ -2427,7 +2427,7 @@ export class ArpAdditionalBenefComponent implements OnInit {
 
     if (this.validateSCIB == 1) {
     } else {
-      swal("Error!", "SCIB must be greater than or equal 250,000 and less than or equal 6,000,000 and less than or equal SCB  and SCIB mod 25,000 must be equal to 0", "error");
+      swal("Error!", "SCIB must be greater than or equal 250,000 and less than or equal 6,000,000 and less than or equal SCB and SCIB mod 25,000 must be equal to 0", "error");
     }
     this.allForms.abmForm = this.abmForm; this.allForms.absForm = this.absForm; this.allForms.abcForm = this.abcForm; this.onsetBenifAll("", "");
   }

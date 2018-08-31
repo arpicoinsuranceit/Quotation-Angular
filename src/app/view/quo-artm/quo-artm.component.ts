@@ -1,4 +1,4 @@
-import { WPB, WPBS } from './../../model/benificts';
+import { WPB, WPBS, CIB } from './../../model/benificts';
 import { ArtmSummeryComponent } from './artm-summery/artm-summery.component';
 import { SaveArtmQuotationService } from './../../service/quo-artm/save-artm-quotation.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -87,13 +87,13 @@ export class QuoArtmComponent implements OnInit {
       sumAssured: new FormControl({ value: '0', disabled: true }),
       premium: new FormControl({ value: '0', disabled: true })
     }),
-    WPB: new FormGroup({
-      isActice: new FormControl(''),
+    HB: new FormGroup({
+      isActice: new FormControl(null),
       sumAssured: new FormControl({ value: '0', disabled: true }),
       premium: new FormControl({ value: '0', disabled: true })
     }),
-    HB: new FormGroup({
-      isActice: new FormControl(null),
+    WPB: new FormGroup({
+      isActice: new FormControl(''),
       sumAssured: new FormControl({ value: '0', disabled: true }),
       premium: new FormControl({ value: '0', disabled: true })
     }),
@@ -185,8 +185,7 @@ export class QuoArtmComponent implements OnInit {
   validity: any = false;
 
   isDisableDiv = false;
-
-  beforeFrequency:string="Monthly";
+  beforeFrequency: string="Monthly";
 
   constructor(private loginService: LoginService, private quoArtmService: SaveArtmQuotationService, private router: Router, private route: ActivatedRoute,
     private dashboardService: DashboardService) {
@@ -279,6 +278,7 @@ export class QuoArtmComponent implements OnInit {
 
     this.benif = this._mainLifeBenefForm;
     this.riderDetails._mRiders = new Array();
+    
     for (var i in this._mainLifeBenefForm.value) {
       let benifict = this._mainLifeBenefForm.value[i];
       if (benifict.isActice == true) {
@@ -291,15 +291,15 @@ export class QuoArtmComponent implements OnInit {
 
           this.riderDetails._mRiders.push(benifict1);
         }
-        if(i == "WPB"){
-           let benifict1 = new Benifict();
-           benifict1.active = "true";
-           benifict1.type = i;
-           benifict1.premium = benifict.premium;
-           benifict1.sumAssured = benifict.sumAssured;
+        if (i == "WPB") {
+          let benifict1 = new Benifict();
+          benifict1.active = "true";
+          benifict1.type = i;
+          benifict1.premium = benifict.premium;
+          benifict1.sumAssured = benifict.sumAssured;
 
-           this.riderDetails._mRiders.push(benifict1);
-         }
+          this.riderDetails._mRiders.push(benifict1);
+        }
       }
     }
 
@@ -321,7 +321,7 @@ export class QuoArtmComponent implements OnInit {
       }
       
     }
-    
+
     this._quotationCalculation._riderDetails = this.riderDetails;
 
     this.benif = this._spouseBenefForm;
@@ -462,9 +462,9 @@ export class QuoArtmComponent implements OnInit {
 
   sendQuo() {
     this.isDisableDiv = true;
-    
-    console.log("///////////////////////////////////");
-    console.log(this._quotationCalculation);
+
+    //console.log("///////////////////////////////////");
+    //console.log(this._quotationCalculation);
     let payTerm = parseInt(this.personalInfo._plan._payingterm);
     let age = parseInt(this.personalInfo._mainlife._mAge.toString());
     let rtAge = parseInt(this.personalInfo._plan.retAge.toString());
@@ -550,11 +550,10 @@ export class QuoArtmComponent implements OnInit {
               this.quoArtmService.getQouCal(this._quotationCalculation).subscribe(response => {
                 document.onkeydown = function (e) { return true; }
                 this.isDisableDiv = false;
-                console.log(response.json());
+                //console.log(response.json());
                 if (response.json().errorExist == true) {
                   swal("Error!", "Error exist in " + response.json().error, "error");
                 }
-
                 this.summeryInfo._summery.healthBenMain = response.json().mainLifeHealthReq;
                 this.summeryInfo._summery.healthBenSpouse = response.json().spouseHealthReq;
                 this.summeryInfo._summery.sumAssured = response.json().basicSumAssured.toLocaleString();
@@ -666,7 +665,6 @@ export class QuoArtmComponent implements OnInit {
         this._quotationCalculation._riderDetails._sRiders=new Array();
         this._quotationCalculation._riderDetails._cRiders=new Array();
         this.artmAdditionalBenefComponent.loadDefaultNew();
-        
       }
 
 
@@ -767,7 +765,7 @@ export class QuoArtmComponent implements OnInit {
     this.isDisableDiv = true;
     this.quoArtmService.getArtmShedule(this._quotationCalculation).subscribe(response => {
       document.onkeydown = function (e) { return true; }
-      console.log(response.json());
+      //console.log(response.json());
 
       this.isDisableDiv = false;
       this.artmSummeryComponent.displaySchedule(response.json().pensionShedules);
@@ -779,7 +777,7 @@ export class QuoArtmComponent implements OnInit {
 
     this.isImgL2GActive = false;
     this.isImgL2Active = true;
-    console.log(this._mainLifeBenefForm);
+    //console.log(this._mainLifeBenefForm);
     this._mainLifeBenefForm.get("L2").get("isActice").setValue(true);
     this._mainLifeBenefForm.get("L2").get("sumAssured").setValue('100000');
     this._mainLifeBenefForm.get("L2").get("sumAssured").enable();
@@ -808,13 +806,25 @@ export class QuoArtmComponent implements OnInit {
 
   editCal() {
     this.quoArtmService.getArtmQuotationDetailsForEdit(this.qdId).subscribe(response => {
-      console.log(response.json());
-      this._mainLife = response.json()._mainlife;
+
+      if(sessionStorage.getItem("isUnderwriting") == "true"){
+        this._mainLife=JSON.parse(sessionStorage.getItem("mainlife"));
+        this._spouse = JSON.parse(sessionStorage.getItem("spouse"));
+        this._childrens = JSON.parse(sessionStorage.getItem("children"));
+
+        console.log(this._mainLife);
+      }else{
+        this._mainLife = response.json()._mainlife;
+        this._spouse = response.json()._spouse;
+        this._childrens = response.json()._children;
+      }
+      
+      //this._mainLife = response.json()._mainlife;
       this._plan = response.json()._plan;
       this._plan._bsa = this._plan.contribution;
-      this._spouse = response.json()._spouse;
+      //this._spouse = response.json()._spouse;
 
-      this._childrens = response.json()._children;
+     // this._childrens = response.json()._children;
 
       if (this._spouse._sActive) {
         this.activeSp = "1";
@@ -861,17 +871,23 @@ export class QuoArtmComponent implements OnInit {
       this.summeryInfo._summery._payType = this.personalInfo._plan._frequance;
 
 
+      //console.log(this._quotationCalculation._riderDetails);
       if (this._mainLife._mNic != null && (this._mainLife._mNic.length > 0 || this._mainLife._mNic != "")) {
         //this.end1PersonalInfoComponent.readOnlyDob();
+        //console.log(this._quotationCalculation._riderDetails);
         this.calPreviousRiskM(this._mainLife._mNic);
+        
+        
       }
 
       if (this._spouse._sActive) {
         if (this._spouse._sNic != null && (this._spouse._sNic.length > 0 || this._spouse._sNic != "")) {
-         // this.end1PersonalInfoComponent.readOnlyDobS();
+          // this.end1PersonalInfoComponent.readOnlyDobS();
+          //console.log(this._quotationCalculation._riderDetails);
           this.calPreviousRiskS(this._spouse._sNic);
         }
       }
+      
 
 
       this.validity = true;
@@ -1183,7 +1199,6 @@ export class QuoArtmComponent implements OnInit {
             this.riderDetails._sRiders.push(benifict);
             break;
           }
-
           case "HBS": {
             this.isImgHBSGActive = false;
             this.isImgHBSActive = true;
@@ -1199,7 +1214,6 @@ export class QuoArtmComponent implements OnInit {
             this.riderDetails._sRiders.push(benifict);
             break;
           }
-
           default: {
 
           }
@@ -1371,7 +1385,9 @@ export class QuoArtmComponent implements OnInit {
 
       this._quotationCalculation._riderDetails = this.riderDetails;
 
-      this.sendQuo()
+      this.sendQuo();
+
+      
 
     }, error => {
       swal("Error", "Error code - 1614 <br>", "error");
@@ -1399,13 +1415,16 @@ export class QuoArtmComponent implements OnInit {
       //remove WPB rider from array if frequency is single premium
       if (this.personalInfo._plan._frequance == "Single Premium") {
         for (let i in this._quotationCalculation._riderDetails._mRiders) {
-          if (this._quotationCalculation._riderDetails._mRiders[i].type != "L2") {
+          if (this._quotationCalculation._riderDetails._mRiders[i].type == "WPB") {
             this._quotationCalculation._riderDetails._mRiders.splice(parseInt(i), 1);
           }
         }
-        this._quotationCalculation._riderDetails._sRiders=new Array();
-        this._quotationCalculation._riderDetails._cRiders=new Array();
-        this.artmAdditionalBenefComponent.loadDefaultNew();
+
+        for (let i in this._quotationCalculation._riderDetails._sRiders) {
+          if (this._quotationCalculation._riderDetails._sRiders[i].type == "WPBS") {
+            this._quotationCalculation._riderDetails._sRiders.splice(parseInt(i), 1);
+          }
+        }
       }
 
       //alert(this._plan._term);
@@ -1431,7 +1450,11 @@ export class QuoArtmComponent implements OnInit {
                       document.onkeydown = function (e) { return true; }
                       if (response.json().status == "Success") {
                         swal("Success", "Quotation has been saved Successfully <br> Quotation No : " + response.json().code, "success");
-                        this.router.navigate(['/loadQuo']);
+                        if(sessionStorage.getItem("isUnderwriting") == "true"){
+                          window.location.reload();
+                        }else{
+                          this.router.navigate(['/loadQuo']);
+                        }
                       }
                       else {
                         swal("Oopz...", response.json().status, "error");
@@ -1458,7 +1481,11 @@ export class QuoArtmComponent implements OnInit {
                     document.onkeydown = function (e) { return true; }
                     if (response.json().status == "Success") {
                       swal("Success", "Quotation has been saved Successfully <br> Quotation No : " + response.json().code, "success");
-                      this.router.navigate(['/loadQuo']);
+                      if(sessionStorage.getItem("isUnderwriting") == "true"){
+                        window.location.reload();
+                      }else{
+                        this.router.navigate(['/loadQuo']);
+                      }
                     }
                     else {
                       swal("Oopz...", response.json().status, "error");
@@ -1517,56 +1544,59 @@ export class QuoArtmComponent implements OnInit {
   }
 
   calPreviousRiskM(e) {
-    if(e.length >0){
-    this.isDisableDiv = true;
-    document.onkeydown = function (e) { return false; }
-    this.dashboardService.getSumAtRiskMainLife(e).subscribe(resp => {
-      this.isDisableDiv = false;
-      this.artmPersonalInfoComponent.loadDOBFromNic();
-      document.onkeydown = function (e) { return true; }
-      if (resp.json()) {
-        this.personalInfo._mainlife._mCustomerCode = resp.json().custCode;
-      }
-      if (resp.json()) {
-        this.sumAtRiskMain = resp.json().sumAtRisk;
-        this._quotationCalculation._personalInfo.mPreviousSumAtRisk = resp.json().sumAtRisk;
-        this.previousSumMain = resp.json().sumAtRisk;
-      } else {
-        this.previousSumMain = 0;
-      }
-      this.sendQuo();
-    }, error => {
-      swal("Error", "Error code - 1615 <br> ", "error");
-      document.onkeydown = function (e) { return true; }
-      this.isDisableDiv = false;
-    });
-  }
+    if (e.length > 0) {
+      this.isDisableDiv = true;
+      document.onkeydown = function (e) { return false; }
+      this.dashboardService.getSumAtRiskMainLife(e).subscribe(resp => {
+        this.isDisableDiv = false;
+        this.artmPersonalInfoComponent.loadDOBFromNic();
+
+        document.onkeydown = function (e) { return true; }
+        
+        if (resp.json()) {
+          this.personalInfo._mainlife._mCustomerCode = resp.json().custCode;
+        }
+        if (resp.json()) {
+          this.sumAtRiskMain = resp.json().sumAtRisk;
+          this._quotationCalculation._personalInfo.mPreviousSumAtRisk = resp.json().sumAtRisk;
+          this.previousSumMain = resp.json().sumAtRisk;
+        } else {
+          this.previousSumMain = 0;
+        }
+        this.sendQuo();
+      }, error => {
+        swal("Error", "Error code - 1615 <br> ", "error");
+        document.onkeydown = function (e) { return true; }
+        this.isDisableDiv = false;
+      });
+    }
   }
 
   calPreviousRiskS(e) {
-    if(e.length >0){
-    this.isDisableDiv = true;
-    document.onkeydown = function (e) { return false; }
-    this.dashboardService.getSumAtRiskMainLife(e).subscribe(resp => {
-      this.isDisableDiv = false;
-      this.artmPersonalInfoComponent.loadSpouseDOBFromNic();
-      document.onkeydown = function (e) { return true; }
-      if (resp.json()) {
-        this.personalInfo._spouse._sCustomerCode = resp.json().custCode;
-      }
-      if (resp.json()) {
-        this.sumAtRiskSpouse = resp.json().sumAtRisk;
-        this._quotationCalculation._personalInfo.sPreviousSumAtRisk = resp.json().sumAtRisk;
-        this.previousSumSpouse = resp.json().sumAtRisk;
-      } else {
-        this.previousSumSpouse = 0;
-      }
-      this.sendQuo();
-    }, error => {
-      swal("Error", "Error code - 1616 <br> ", "error");
-      document.onkeydown = function (e) { return true; }
-      this.isDisableDiv = false;
-    });
-  }
+    if (e.length > 0) {
+      this.isDisableDiv = true;
+      document.onkeydown = function (e) { return false; }
+      this.dashboardService.getSumAtRiskMainLife(e).subscribe(resp => {
+        this.isDisableDiv = false;
+        this.artmPersonalInfoComponent.loadSpouseDOBFromNic();
+       
+        document.onkeydown = function (e) { return true; }
+        if (resp.json()) {
+          this.personalInfo._spouse._sCustomerCode = resp.json().custCode;
+        }
+        if (resp.json()) {
+          this.sumAtRiskSpouse = resp.json().sumAtRisk;
+          this._quotationCalculation._personalInfo.sPreviousSumAtRisk = resp.json().sumAtRisk;
+          this.previousSumSpouse = resp.json().sumAtRisk;
+        } else {
+          this.previousSumSpouse = 0;
+        }
+        this.sendQuo();
+      }, error => {
+        swal("Error", "Error code - 1616 <br> ", "error");
+        document.onkeydown = function (e) { return true; }
+        this.isDisableDiv = false;
+      });
+    }
   }
 }

@@ -2087,7 +2087,7 @@ export class AditionalBenifInvpComponent implements OnInit {
 
     if (this.validateCIB == 1) {
     } else {
-      swal("Error!", "CIB must be greater than or equal 250,000 and less than or equal 6,000,000 and less than or equal sum of ATPB and BSA and CIB mod 25,000 must be equal to 0", "error");
+      swal("Error!", "CIB must be greater than or equal 250,000 and less than or equal 6,000,000 and less than or equal sum of ATPB and BSA  and CIB mod 25,000 must be equal to 0", "error");
     }
 
     this.allForms.abmForm = this.abmForm;
@@ -2261,7 +2261,7 @@ export class AditionalBenifInvpComponent implements OnInit {
         this.checkValidateHBC();
       }
     } else {
-      swal("Error!", "HB must be greater than or equal 500 and less than or equal 15,000 and multi value of 100  and Less than 20% of Yearly Premium", "error");
+      swal("Error!", "HB must be greater than or equal 500 and less than or equal 10,000 and multi value of 100  and Less than 10% of Yearly Premium", "error");
     }
     this.allForms.abmForm = this.abmForm;
     this.allForms.absForm = this.absForm;
@@ -2478,7 +2478,7 @@ export class AditionalBenifInvpComponent implements OnInit {
 
       if (this.validateCIBC == 1) {
       } else {
-        swal("Error!", "CIBC must be greater than or equal 250,000 and less than or equal 1,000,000 and less than or equal sum of ATPB and BSA  and CIBC mod 25,000 must be equal to 0", "error");
+        swal("Error!", "CIBC must be greater than or equal 250,000 and less than or equal 1,000,000 and less than or equal sum of ATPB and BSA and CIBC mod 25,000 must be equal to 0", "error");
       }
     //} else {
       //swal("ATPB Required!", "Can't get this benefict without getting ATPB..!", "warning");

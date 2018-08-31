@@ -101,7 +101,6 @@ export class AipPersonalInfoComponent implements OnInit {
 
   loadDOBFromNic(e) {
     if (this._mainLife._mNic != null && this._mainLife._mNic.length > 0) {
-      
       this.ageCalculationService.loadAgeAndDOBFromNic(e.target.value).subscribe(response => {
         this._mainLife._mGender = response.json().Gender;
         this._mainLife._mAge = response.json().Age;

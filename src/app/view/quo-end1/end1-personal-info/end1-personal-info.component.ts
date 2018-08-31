@@ -238,7 +238,6 @@ export class End1PersonalInfoComponent implements OnInit {
     }
     if (this._personalInfo._plan._bsa != this._personalInfo._plan._hidbsa) {
       this._personalInfo._plan._hidbsa = this._personalInfo._plan._bsa;
-
       this._childrens.forEach(e => {
         e._cHbc = false;
         e._cHcbc = false;
@@ -248,7 +247,6 @@ export class End1PersonalInfoComponent implements OnInit {
         e._cShcbfc = false;
         e._cCibc = false;
       });
-
       this.setBsa.emit(this._personalInfo._plan._bsa);
       this.clearbenefAll.emit(true);
       this.check();

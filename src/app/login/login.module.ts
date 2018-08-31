@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login.component';
 import { LoginRoutingModule } from './login-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ViewQuotationService } from '../service/view-quo/view-quotation.service';
 
 @NgModule({
   imports: [
@@ -13,6 +14,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
   ],
   declarations: [LoginComponent],
-  providers: [LoginService],
+  providers: [LoginService,ViewQuotationService],
 })
 export class LoginModule { }

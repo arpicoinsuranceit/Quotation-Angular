@@ -73,6 +73,12 @@ export class SaveEnd1QuotationService {
 
     data._product = "END1";
 
+    let token;
+    if(sessionStorage.getItem("isUnderwriting") == "true"){
+      token=sessionStorage.getItem("Token");
+      return this.http.post('http://localhost:8084/quoEndEditUnderwrite/'+token+'/'+qdId, data);
+    }
+
     return this.http.post('http://localhost:8084/quoEndEdit/' + this.userId + '/' + qdId, data);
   }
 

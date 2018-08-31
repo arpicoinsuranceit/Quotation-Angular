@@ -75,6 +75,13 @@ export class QuoDtaService {
     }
     console.log(data);
     data._product = "DTA";
+
+    let token;
+    if(sessionStorage.getItem("isUnderwriting") == "true"){
+      token=sessionStorage.getItem("Token");
+      return this.http.post('http://localhost:8084/quoDtaEditUnderwrite/'+token+'/'+qdId, data);
+    }
+
     return this.http.post('http://localhost:8084/quoDtaEdit/' + this.userId + '/' + qdId, data);
   }
 }

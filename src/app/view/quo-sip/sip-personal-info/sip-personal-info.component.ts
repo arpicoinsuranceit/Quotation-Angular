@@ -177,7 +177,6 @@ export class SipPersonalInfoComponent implements OnInit {
       return;
     }
     if(this._personalInfo._plan._bsa != this._personalInfo._plan._hidbsa){
-      //alert("ok");
       this._personalInfo._plan._hidbsa=this._personalInfo._plan._bsa;
       this._childrens.forEach(e => {
         e._cHbc = false;
@@ -192,7 +191,6 @@ export class SipPersonalInfoComponent implements OnInit {
       this.clearbenefAll.emit(true);
       this.check();
     }else{
-      //alert("okkk.");
     }
   }
 

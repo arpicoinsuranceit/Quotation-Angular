@@ -1,7 +1,7 @@
 import { LoginService } from './../../service/login.service';
 import { SipAdditionalBenefComponent } from './sip-additional-benef/sip-additional-benef.component';
 import { SipPersonalInfoComponent } from './sip-personal-info/sip-personal-info.component';
-import { QuoBenf } from './../../model/quotationView';
+import { QuoBenf, Child } from './../../model/quotationView';
 import { Plan } from './../../model/plan';
 import { Children } from './../../model/childeren';
 import { Spouse } from './../../model/spouse';
@@ -198,7 +198,7 @@ export class QuoSipComponent implements OnInit {
 
     this.route.params.subscribe(params => {
       this.qdId = params.id;
-    },error => { swal("Error", "Error code - 710 <br>", "error") });
+    }, error => { swal("Error", "Error code - 710 <br>", "error") });
 
     this._plan._bsa = 250000;
     this._plan._frequance = "Monthly";
@@ -575,7 +575,7 @@ export class QuoSipComponent implements OnInit {
         this.summeryInfo._protection.BSAS = response.json().bsas;
         this.summeryInfo._protection.BSASTerm = response.json().bsasTerm;
 
-      },error => {
+      }, error => {
         swal("Error", "Error code - 711 <br>", "error");
         document.onkeydown = function (e) { return true; }
         this.isDisableDiv = false;
@@ -708,7 +708,7 @@ export class QuoSipComponent implements OnInit {
                     swal("Oopz...", response.json().status, "error");
 
                   }
-                },error => {
+                }, error => {
                   swal("Error", "Error code - 712 <br>", "error");
                   document.onkeydown = function (e) { return true; }
                   this.isDisableDiv = false;
@@ -734,7 +734,7 @@ export class QuoSipComponent implements OnInit {
                   swal("Oopz...", response.json().status, "error");
 
                 }
-              },error => {
+              }, error => {
                 swal("Error", "Error code - 712 <br>", "error");
                 document.onkeydown = function (e) { return true; }
                 this.isDisableDiv = false;
@@ -886,13 +886,17 @@ export class QuoSipComponent implements OnInit {
               document.onkeydown = function (e) { return true; }
               if (response.json().status == "Success") {
                 swal("Success", "Quotation has been saved Successfully <br> Quotation No : " + response.json().code, "success");
-                this.router.navigate(['/loadQuo']);
+                if(sessionStorage.getItem("isUnderwriting") == "true"){
+                  window.location.reload();
+                }else{
+                  this.router.navigate(['/loadQuo']);
+                }
               }
               else {
                 swal("Oopz...", response.json().status, "error");
 
               }
-            },error => {
+            }, error => {
               swal("Error", "Error code - 713 <br>", "error");
               document.onkeydown = function (e) { return true; }
               this.isDisableDiv = false;
@@ -912,13 +916,17 @@ export class QuoSipComponent implements OnInit {
             document.onkeydown = function (e) { return true; }
             if (response.json().status == "Success") {
               swal("Success", "Quotation has been saved Successfully <br> Quotation No : " + response.json().code, "success");
-              this.router.navigate(['/loadQuo']);
+              if(sessionStorage.getItem("isUnderwriting") == "true"){
+                window.location.reload();
+              }else{
+                this.router.navigate(['/loadQuo']);
+              }
             }
             else {
               swal("Oopz...", response.json().status, "error");
 
             }
-          },error => {
+          }, error => {
             swal("Error", "Error code - 713 <br>", "error");
             document.onkeydown = function (e) { return true; }
             this.isDisableDiv = false;
@@ -939,12 +947,24 @@ export class QuoSipComponent implements OnInit {
 
   editCal() {
     this.saveAsipQuotationService.getAsipQuotationDetailsForEdit(this.qdId).subscribe(response => {
-      console.log(response.json());
-      this._mainLife = response.json()._mainlife;
-      this._plan = response.json()._plan;
-      this._spouse = response.json()._spouse;
+      if(sessionStorage.getItem("isUnderwriting") == "true"){
+        this._mainLife=JSON.parse(sessionStorage.getItem("mainlife"));
+        this._spouse = JSON.parse(sessionStorage.getItem("spouse"));
+        this._childrens = JSON.parse(sessionStorage.getItem("children"));
 
-      this._childrens = response.json()._children;
+        console.log(this._mainLife);
+      }else{
+        this._mainLife = response.json()._mainlife;
+        this._spouse = response.json()._spouse;
+        this._childrens = response.json()._children;
+      }
+      console.log("/////////////////////////////////");
+      console.log(this._childrens);
+      //this._mainLife = response.json()._mainlife;
+      this._plan = response.json()._plan;
+      //this._spouse = response.json()._spouse;
+
+      //this._childrens = response.json()._children;
 
       if (this._spouse._sActive) {
         this.activeSp = "1";
@@ -989,7 +1009,7 @@ export class QuoSipComponent implements OnInit {
 
       if (this._spouse._sActive) {
         if (this._spouse._sNic != null && (this._spouse._sNic.length > 0 || this._spouse._sNic != "")) {
-         // this.end1PersonalInfoComponent.readOnlyDobS();
+          // this.end1PersonalInfoComponent.readOnlyDobS();
           this.calPreviousRiskS(this._spouse._sNic);
         }
       }
@@ -1743,7 +1763,7 @@ export class QuoSipComponent implements OnInit {
 
       this.sendQuo()
 
-    },error => {
+    }, error => {
       swal("Error", "Error code - 714 <br>", "error");
       document.onkeydown = function (e) { return true; }
       this.isDisableDiv = false;
@@ -1777,57 +1797,59 @@ export class QuoSipComponent implements OnInit {
   }
 
   calPreviousRiskM(e) {
-    if(e.length >0){
-    this.isDisableDiv = true;
-    document.onkeydown = function (e) { return false; }
-    this.dashboardService.getSumAtRiskMainLife(e).subscribe(resp => {
-      this.isDisableDiv = false;
-      this.sipPersonolInfoComponent.loadDOBFromNic();
-      document.onkeydown = function (e) { return true; }
-      if (resp.json()) {
-        this.personalInfo._mainlife._mCustomerCode = resp.json().custCode;
-      }
-      if (resp.json()) {
-        this.sumAtRiskMain = resp.json().sumAtRisk;
-        this._quotationCalculation._personalInfo.mPreviousSumAtRisk = resp.json().sumAtRisk;
-        this.previousSumMain = resp.json().sumAtRisk;
-      } else{
-        this.previousSumMain = 0;
-      }
-      this.sendQuo();
-    },error => {
-      swal("Error", "Error code - 715 <br>", "error");
-      document.onkeydown = function (e) { return true; }
-      this.isDisableDiv = false;
-    });
-  }
+    if (e.length > 0) {
+      this.isDisableDiv = true;
+      document.onkeydown = function (e) { return false; }
+      this.dashboardService.getSumAtRiskMainLife(e).subscribe(resp => {
+
+        this.isDisableDiv = false;
+
+        this.sipPersonolInfoComponent.loadDOBFromNic();
+        document.onkeydown = function (e) { return true; }
+        if (resp.json()) {
+          this.personalInfo._mainlife._mCustomerCode = resp.json().custCode;
+        }
+        if (resp.json()) {
+          this.sumAtRiskMain = resp.json().sumAtRisk;
+          this._quotationCalculation._personalInfo.mPreviousSumAtRisk = resp.json().sumAtRisk;
+          this.previousSumMain = resp.json().sumAtRisk;
+        } else {
+          this.previousSumMain = 0;
+        }
+        this.sendQuo();
+      }, error => {
+        swal("Error", "Error code - 715 <br>", "error");
+        document.onkeydown = function (e) { return true; }
+        this.isDisableDiv = false;
+      });
+    }
   }
 
   calPreviousRiskS(e) {
-    if(e.length >0){
-    document.onkeydown = function (e) { return false; }
-    this.isDisableDiv = true;
-    this.dashboardService.getSumAtRiskMainLife(e).subscribe(resp => {
-      this.isDisableDiv = false;
-      document.onkeydown = function (e) { return true; }
-      this.sipPersonolInfoComponent.loadSpouseDOBFromNic();
-      if (resp.json()) {
-        this.personalInfo._spouse._sCustomerCode = resp.json().custCode;
-      }
-      if (resp.json()) {
-        this.sumAtRiskSpouse = resp.json().sumAtRisk;
-        this._quotationCalculation._personalInfo.sPreviousSumAtRisk = resp.json().sumAtRisk;
-        this.previousSumSpouse = resp.json().sumAtRisk;
-      } else {
-        this.previousSumMain = 0;
-      }
-      this.sendQuo();
-    },error => {
-      swal("Error", "Error code - 716 <br>", "error");
-      document.onkeydown = function (e) { return true; }
-      this.isDisableDiv = false;
-    });
-  }
+    if (e.length > 0) {
+      document.onkeydown = function (e) { return false; }
+      this.isDisableDiv = true;
+      this.dashboardService.getSumAtRiskMainLife(e).subscribe(resp => {
+        this.isDisableDiv = false;
+        document.onkeydown = function (e) { return true; }
+        this.sipPersonolInfoComponent.loadSpouseDOBFromNic();
+        if (resp.json()) {
+          this.personalInfo._spouse._sCustomerCode = resp.json().custCode;
+        }
+        if (resp.json()) {
+          this.sumAtRiskSpouse = resp.json().sumAtRisk;
+          this._quotationCalculation._personalInfo.sPreviousSumAtRisk = resp.json().sumAtRisk;
+          this.previousSumSpouse = resp.json().sumAtRisk;
+        } else {
+          this.previousSumMain = 0;
+        }
+        this.sendQuo();
+      }, error => {
+        swal("Error", "Error code - 716 <br>", "error");
+        document.onkeydown = function (e) { return true; }
+        this.isDisableDiv = false;
+      });
+    }
   }
 
 

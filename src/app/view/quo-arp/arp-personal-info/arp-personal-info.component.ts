@@ -371,7 +371,7 @@ export class ArpPersonalInfoComponent implements OnInit {
   }
 
   loadDOBFromNic() {
-   // alert("called");
+
     if (this._personalInfo._mainlife._mNic != null && this._personalInfo._mainlife._mNic.length > 0) {
       this.ageCalculationService.loadAgeAndDOBFromNic(this._personalInfo._mainlife._mNic).subscribe(response => {
         this._personalInfo._mainlife._mGender = response.json().Gender;
@@ -399,11 +399,9 @@ export class ArpPersonalInfoComponent implements OnInit {
         this.checkValidity();
         this.check();
 
-      },error => {swal("Error", "Error code - 205 <br>","error")}
-    );
+      },error => {swal("Error", "Error code - 205 <br>","error")});
 
     } else {
-      //alert("called");
       this.mainLifeForm.get("mDob").enable();
     }
 

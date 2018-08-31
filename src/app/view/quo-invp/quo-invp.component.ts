@@ -192,7 +192,7 @@ export class QuoInvpComponent implements OnInit {
 
     this.route.params.subscribe(params => {
       this.qdId = params.id;
-    },error => {swal("Error", "Error code - 610 <br>","error")});
+    }, error => { swal("Error", "Error code - 610 <br>", "error") });
 
     this._plan._bsa = 250000;
     this._plan._frequance = "Monthly";
@@ -460,7 +460,7 @@ export class QuoInvpComponent implements OnInit {
       if (this.personalInfo._mainlife._mAge < 66 && this.personalInfo._mainlife._mAge > 17) {
         if (this.activeSp == "1") {
           if (this.personalInfo._spouse._sAge < 66 && this.personalInfo._spouse._sAge > 17) {
-  
+
           } else {
             swal("Oopz..", "Spouse age must be greater than or equal 18 and less than or equal 65..", "error");
             return;
@@ -472,7 +472,7 @@ export class QuoInvpComponent implements OnInit {
       }
 
       document.onkeydown = function (e) { return false; }
-      
+
       this._quotationCalculation._personalInfo.mPreviousSumAtRisk = this.previousSumMain;
       this._quotationCalculation._personalInfo.sPreviousSumAtRisk = this.previousSumSpouse;
       this.isDisableDiv = true;
@@ -567,8 +567,8 @@ export class QuoInvpComponent implements OnInit {
         this.summeryInfo._protection.BSAS = response.json().bsas;
         this.summeryInfo._protection.BSASTerm = response.json().bsasTerm;
 
-      },error => {
-        swal("Error", "Error code - 611 <br>","error");
+      }, error => {
+        swal("Error", "Error code - 611 <br>", "error");
         document.onkeydown = function (e) { return true; }
         this.isDisableDiv = false;
       });
@@ -701,8 +701,8 @@ export class QuoInvpComponent implements OnInit {
                     swal("Oopz...", response.json().status, "error");
 
                   }
-                },error => {
-                  swal("Error", "Error code - 612 <br>","error");
+                }, error => {
+                  swal("Error", "Error code - 612 <br>", "error");
                   document.onkeydown = function (e) { return true; }
                   this.isDisableDiv = false;
                 });
@@ -727,8 +727,8 @@ export class QuoInvpComponent implements OnInit {
                   swal("Oopz...", response.json().status, "error");
 
                 }
-              },error => {
-                swal("Error", "Error code - 612 <br>","error");
+              }, error => {
+                swal("Error", "Error code - 612 <br>", "error");
                 document.onkeydown = function (e) { return true; }
                 this.isDisableDiv = false;
               });
@@ -856,7 +856,7 @@ export class QuoInvpComponent implements OnInit {
         if (this.personalInfo._mainlife._mAge < 66 && this.personalInfo._mainlife._mAge > 17) {
           if (this.activeSp == "1") {
             if (this.personalInfo._spouse._sAge < 66 && this.personalInfo._spouse._sAge > 17) {
-    
+
             } else {
               swal("Oopz..", "Spouse age must be greater than or equal 18 and less than or equal 65..", "error");
               return;
@@ -891,14 +891,18 @@ export class QuoInvpComponent implements OnInit {
                   document.onkeydown = function (e) { return true; }
                   if (response.json().status == "Success") {
                     swal("Success", "Quotation has been saved Successfully <br> Quotation No : " + response.json().code, "success");
-                    this.router.navigate(['/loadQuo']);
+                    if(sessionStorage.getItem("isUnderwriting") == "true"){
+                      window.location.reload();
+                    }else{
+                      this.router.navigate(['/loadQuo']);
+                    }
                   }
                   else {
                     swal("Oopz...", response.json().status, "error");
 
                   }
-                },error => {
-                  swal("Error", "Error code - 613 <br>","error");
+                }, error => {
+                  swal("Error", "Error code - 613 <br>", "error");
                   document.onkeydown = function (e) { return true; }
                   this.isDisableDiv = false;
                 });
@@ -917,14 +921,18 @@ export class QuoInvpComponent implements OnInit {
                 document.onkeydown = function (e) { return true; }
                 if (response.json().status == "Success") {
                   swal("Success", "Quotation has been saved Successfully <br> Quotation No : " + response.json().code, "success");
-                  this.router.navigate(['/loadQuo']);
+                  if(sessionStorage.getItem("isUnderwriting") == "true"){
+                    window.location.reload();
+                  }else{
+                    this.router.navigate(['/loadQuo']);
+                  }
                 }
                 else {
                   swal("Oopz...", response.json().status, "error");
 
                 }
-              },error => {
-                swal("Error", "Error code - 613 <br>","error");
+              }, error => {
+                swal("Error", "Error code - 613 <br>", "error");
                 document.onkeydown = function (e) { return true; }
                 this.isDisableDiv = false;
               });
@@ -949,12 +957,24 @@ export class QuoInvpComponent implements OnInit {
 
   editCal() {
     this.saveInvpQuotationService.getInvpQuotationDetailsForEdit(this.qdId).subscribe(response => {
-      console.log(response.json());
-      this._mainLife = response.json()._mainlife;
-      this._plan = response.json()._plan;
-      this._spouse = response.json()._spouse;
 
-      this._childrens = response.json()._children;
+      if(sessionStorage.getItem("isUnderwriting") == "true"){
+        this._mainLife=JSON.parse(sessionStorage.getItem("mainlife"));
+        this._spouse = JSON.parse(sessionStorage.getItem("spouse"));
+        this._childrens = JSON.parse(sessionStorage.getItem("children"));
+
+        console.log(this._mainLife);
+      }else{
+        this._mainLife = response.json()._mainlife;
+        this._spouse = response.json()._spouse;
+        this._childrens = response.json()._children;
+      }
+
+      //this._mainLife = response.json()._mainlife;
+      this._plan = response.json()._plan;
+      //this._spouse = response.json()._spouse;
+
+      //this._childrens = response.json()._children;
 
       if (this._spouse._sActive) {
         this.activeSp = "1";
@@ -999,7 +1019,7 @@ export class QuoInvpComponent implements OnInit {
 
       if (this._spouse._sActive) {
         if (this._spouse._sNic != null && (this._spouse._sNic.length > 0 || this._spouse._sNic != "")) {
-         // this.end1PersonalInfoComponent.readOnlyDobS();
+          // this.end1PersonalInfoComponent.readOnlyDobS();
           this.calPreviousRiskS(this._spouse._sNic);
         }
       }
@@ -1753,8 +1773,8 @@ export class QuoInvpComponent implements OnInit {
 
       this.sendQuo()
 
-    },error =>{
-      swal("Error", "Error code - 614 <br>","error");
+    }, error => {
+      swal("Error", "Error code - 614 <br>", "error");
       document.onkeydown = function (e) { return true; }
       this.isDisableDiv = false;
     });
@@ -1786,56 +1806,57 @@ export class QuoInvpComponent implements OnInit {
   }
 
   calPreviousRiskM(e) {
-    if(e.length >0){
-    this.isDisableDiv = true;
-    document.onkeydown = function (e) { return false; }
-    this.dashboardService.getSumAtRiskMainLife(e).subscribe(resp => {
-      this.isDisableDiv = false;
-      this.invpPersonolInfoComponent.loadDOBFromNic();
-      document.onkeydown = function (e) { return true; }
-      if (resp.json()) {
-        this.personalInfo._mainlife._mCustomerCode = resp.json().custCode;
-      }
-      if (resp.json()) {
-        this.sumAtRiskMain = resp.json().sumAtRisk;
-        this._quotationCalculation._personalInfo.mPreviousSumAtRisk = resp.json().sumAtRisk;
-        this.previousSumMain = resp.json().sumAtRisk;
-      }else{
-        this.previousSumMain = 0;
-      }
-      this.sendQuo();
-    },error => {
-      swal("Error", "Error code - 615 <br>","error");
-      document.onkeydown = function (e) { return true; }
-      this.isDisableDiv = false;
-    });
-  }
+    if (e.length > 0) {
+      this.isDisableDiv = true;
+      document.onkeydown = function (e) { return false; }
+      this.dashboardService.getSumAtRiskMainLife(e).subscribe(resp => {
+        this.isDisableDiv = false;
+
+        this.invpPersonolInfoComponent.loadDOBFromNic();
+        document.onkeydown = function (e) { return true; }
+        if (resp.json()) {
+          this.personalInfo._mainlife._mCustomerCode = resp.json().custCode;
+        }
+        if (resp.json()) {
+          this.sumAtRiskMain = resp.json().sumAtRisk;
+          this._quotationCalculation._personalInfo.mPreviousSumAtRisk = resp.json().sumAtRisk;
+          this.previousSumMain = resp.json().sumAtRisk;
+        } else {
+          this.previousSumMain = 0;
+        }
+        this.sendQuo();
+      }, error => {
+        swal("Error", "Error code - 615 <br>", "error");
+        document.onkeydown = function (e) { return true; }
+        this.isDisableDiv = false;
+      });
+    }
   }
 
   calPreviousRiskS(e) {
-    if(e.length >0){
-    this.isDisableDiv = true;
-    document.onkeydown = function (e) { return false; }
-    this.dashboardService.getSumAtRiskMainLife(e).subscribe(resp => {
-      this.isDisableDiv = false;
-      this.invpPersonolInfoComponent.loadSpouseDOBFromNic();
-      document.onkeydown = function (e) { return true; }
-      if (resp.json()) {
-        this.personalInfo._spouse._sCustomerCode = resp.json().custCode;
-      }
-      if (resp.json()) {
-        this.sumAtRiskSpouse = resp.json().sumAtRisk;
-        this._quotationCalculation._personalInfo.sPreviousSumAtRisk = resp.json().sumAtRisk;
-        this.previousSumSpouse =  resp.json().sumAtRisk;
-      }else {
-        this.previousSumSpouse = 0;
-      }
-      this.sendQuo();
-    },error => {
-      swal("Error", "Error code - 616 <br>","error");
-      document.onkeydown = function (e) { return true; }
-      this.isDisableDiv = false;
-    });
-  }
+    if (e.length > 0) {
+      this.isDisableDiv = true;
+      document.onkeydown = function (e) { return false; }
+      this.dashboardService.getSumAtRiskMainLife(e).subscribe(resp => {
+        this.isDisableDiv = false;
+        this.invpPersonolInfoComponent.loadSpouseDOBFromNic();
+        document.onkeydown = function (e) { return true; }
+        if (resp.json()) {
+          this.personalInfo._spouse._sCustomerCode = resp.json().custCode;
+        }
+        if (resp.json()) {
+          this.sumAtRiskSpouse = resp.json().sumAtRisk;
+          this._quotationCalculation._personalInfo.sPreviousSumAtRisk = resp.json().sumAtRisk;
+          this.previousSumSpouse = resp.json().sumAtRisk;
+        } else {
+          this.previousSumSpouse = 0;
+        }
+        this.sendQuo();
+      }, error => {
+        swal("Error", "Error code - 616 <br>", "error");
+        document.onkeydown = function (e) { return true; }
+        this.isDisableDiv = false;
+      });
+    }
   }
 }

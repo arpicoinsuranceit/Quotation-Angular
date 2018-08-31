@@ -309,7 +309,14 @@ export class QuoAipComponent implements OnInit {
     this.quoAipService.getAipQuotationDetailsForEdit(this.qdId).subscribe(response => {
       console.log(response.json());
 
-      this._mainLife = response.json()._mainlife;
+      if(sessionStorage.getItem("isUnderwriting") == "true"){
+        this._mainLife=JSON.parse(sessionStorage.getItem("mainlife"));
+        console.log(this._mainLife);
+      }else{
+        this._mainLife = response.json()._mainlife;
+      }
+
+      //this._mainLife = response.json()._mainlife;
       this._quoCalReq.mainLife = this._mainLife;
       this.personalInfomation._mainlife = this._mainLife;
       this.personalInfomation._mainlife._mCivilStatus = this._mainLife._mCivilStatus;
@@ -398,7 +405,11 @@ export class QuoAipComponent implements OnInit {
                 document.onkeydown = function (e) { return true; }
                 if (response.json().status == "Success") {
                   swal("Success", "Quotation has been saved Successfully <br> Quotation No : " + response.json().code, "success");
-                  this.router.navigate(['/loadQuo']);
+                  if(sessionStorage.getItem("isUnderwriting") == "true"){
+                    window.location.reload();
+                  }else{
+                    this.router.navigate(['/loadQuo']);
+                  }
                 }
                 else {
                   swal("Oopz...", response.json().status, "error");

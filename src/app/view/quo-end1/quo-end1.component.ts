@@ -923,7 +923,11 @@ export class QuoEnd1Component implements OnInit {
               document.onkeydown = function (e) { return true; }
               if (response.json().status == "Success") {
                 swal("Success", "Quotation has been updated Successfully <br> Quotation No : " + response.json().code, "success");
-                this.router.navigate(['/loadQuo']);
+                if(sessionStorage.getItem("isUnderwriting") == "true"){
+                  window.location.reload();
+                }else{
+                  this.router.navigate(['/loadQuo']);
+                }
               }
               else {
                 swal("Oopz...", response.json().status, "error");
@@ -949,7 +953,11 @@ export class QuoEnd1Component implements OnInit {
             document.onkeydown = function (e) { return true; }
             if (response.json().status == "Success") {
               swal("Success", "Quotation has been updated Successfully <br> Quotation No : " + response.json().code, "success");
-              this.router.navigate(['/loadQuo']);
+              if(sessionStorage.getItem("isUnderwriting") == "true"){
+                window.location.reload();
+              }else{
+                this.router.navigate(['/loadQuo']);
+              }
             }
             else {
               swal("Oopz...", response.json().status, "error");
@@ -980,13 +988,24 @@ export class QuoEnd1Component implements OnInit {
     this.saveEndQuotationService.getEndQuotationDetailsForEdit(this.qdId).subscribe(response => {
       document.onkeydown = function (e) { return true; }
       this.isDisableDiv = false;
-      
-      console.log(response.json());
-      this._mainLife = response.json()._mainlife;
-      this._plan = response.json()._plan;
-      this._spouse = response.json()._spouse;
 
-      this._childrens = response.json()._children;
+      if(sessionStorage.getItem("isUnderwriting") == "true"){
+        this._mainLife=JSON.parse(sessionStorage.getItem("mainlife"));
+        this._spouse = JSON.parse(sessionStorage.getItem("spouse"));
+        this._childrens = JSON.parse(sessionStorage.getItem("children"));
+
+        console.log(this._mainLife);
+      }else{
+        this._mainLife = response.json()._mainlife;
+        this._spouse = response.json()._spouse;
+        this._childrens = response.json()._children;
+      }
+
+      //this._mainLife = response.json()._mainlife;
+      this._plan = response.json()._plan;
+      //this._spouse = response.json()._spouse;
+
+      //this._childrens = response.json()._children;
 
       if (this._spouse._sActive) {
         this.activeSp = "1";
@@ -1032,7 +1051,7 @@ export class QuoEnd1Component implements OnInit {
 
       if (this._spouse._sActive) {
         if (this._spouse._sNic != null && (this._spouse._sNic.length > 0 || this._spouse._sNic != "")) {
-         // this.end1PersonalInfoComponent.readOnlyDobS();
+          // this.end1PersonalInfoComponent.readOnlyDobS();
           this.calPreviousRiskS(this._spouse._sNic);
         }
       }
@@ -1818,57 +1837,57 @@ export class QuoEnd1Component implements OnInit {
   }
 
   calPreviousRiskM(e) {
-    if(e.length >0){
-    this.isDisableDiv = true;
-    document.onkeydown = function (e) { return false; }
-    this.dashboardService.getSumAtRiskMainLife(e).subscribe(resp => {
-      this.isDisableDiv = false;
-      this.end1PersonalInfoComponent.loadDOBFromNic();
-      document.onkeydown = function (e) { return true; }
-      if (resp.json()) {
-        this.personalInfo._mainlife._mCustomerCode = resp.json().custCode;
-      }
-      if (resp.json()) {
-        this.sumAtRiskMain = resp.json().sumAtRisk;
-        this._quotationCalculation._personalInfo.mPreviousSumAtRisk = resp.json().sumAtRisk;
-        this.previousSumMain = resp.json().sumAtRisk;
-      } else {
-        this.previousSumMain = 0;
-      }
+    if (e.length > 0) {
+      this.isDisableDiv = true;
+      document.onkeydown = function (e) { return false; }
+      this.dashboardService.getSumAtRiskMainLife(e).subscribe(resp => {
+        this.isDisableDiv = false;
+        this.end1PersonalInfoComponent.loadDOBFromNic();
+        document.onkeydown = function (e) { return true; }
+        if (resp.json()) {
+          this.personalInfo._mainlife._mCustomerCode = resp.json().custCode;
+        }
+        if (resp.json()) {
+          this.sumAtRiskMain = resp.json().sumAtRisk;
+          this._quotationCalculation._personalInfo.mPreviousSumAtRisk = resp.json().sumAtRisk;
+          this.previousSumMain = resp.json().sumAtRisk;
+        } else {
+          this.previousSumMain = 0;
+        }
 
-      this.sendQuo();
-    }, error => {
-      swal("Error", "Error code - 515 <br>", "error");
-      document.onkeydown = function (e) { return true; }
-      this.isDisableDiv = false;
-    });
-  }
+        this.sendQuo();
+      }, error => {
+        swal("Error", "Error code - 515 <br>", "error");
+        document.onkeydown = function (e) { return true; }
+        this.isDisableDiv = false;
+      });
+    }
   }
 
   calPreviousRiskS(e) {
-    if(e.length >0){
-    this.isDisableDiv = true;
-    document.onkeydown = function (e) { return false; }
-    this.dashboardService.getSumAtRiskMainLife(e).subscribe(resp => {
-      this.isDisableDiv = false;
-      this.end1PersonalInfoComponent.loadSpouseDOBFromNic();
-      document.onkeydown = function (e) { return true; }
-      if (resp.json()) {
-        this.personalInfo._spouse._sCustomerCode = resp.json().custCode;
-      }
-      if (resp.json()) {
-        this.sumAtRiskSpouse = resp.json().sumAtRisk;
-        this._quotationCalculation._personalInfo.sPreviousSumAtRisk = resp.json().sumAtRisk;
-        this.previousSumSpouse = resp.json().sumAtRisk;
-      } else {
-        this.previousSumSpouse = 0;
-      }
-      this.sendQuo();
-    }, error => {
-      swal("Error", "Error code - 516 <br>", "error");
-      document.onkeydown = function (e) { return true; }
-      this.isDisableDiv = false;
-    });
-  }
+    if (e.length > 0) {
+      this.isDisableDiv = true;
+      document.onkeydown = function (e) { return false; }
+      this.dashboardService.getSumAtRiskMainLife(e).subscribe(resp => {
+        this.isDisableDiv = false;
+        this.end1PersonalInfoComponent.loadSpouseDOBFromNic();
+        document.onkeydown = function (e) { return true; }
+        if (resp.json()) {
+          this.personalInfo._spouse._sCustomerCode = resp.json().custCode;
+        }
+        if (resp.json()) {
+          this.sumAtRiskSpouse = resp.json().sumAtRisk;
+          this._quotationCalculation._personalInfo.sPreviousSumAtRisk = resp.json().sumAtRisk;
+          this.previousSumSpouse = resp.json().sumAtRisk;
+        } else {
+          this.previousSumSpouse = 0;
+        }
+        this.sendQuo();
+      }, error => {
+        swal("Error", "Error code - 516 <br>", "error");
+        document.onkeydown = function (e) { return true; }
+        this.isDisableDiv = false;
+      });
+    }
   }
 }

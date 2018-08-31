@@ -13,7 +13,6 @@ import { JwtHelper } from 'angular2-jwt';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-
   curUser = null;
   imgUserUrl = null;
   imgUserAlt = "assets/images/alt_user.png";
@@ -92,8 +91,8 @@ export class NavBarComponent implements OnInit {
     map.set(data, input.value);
   }
 
-  ///////////////////////////////MCFP REPORT//////////////////////////////////
-  mcfpReport() {
+   ///////////////////////////////MCFP REPORT//////////////////////////////////
+   mcfpReport() {
     this.init();
     let htmlTxt = "";
     let status = "N";

@@ -79,9 +79,10 @@
                 </tr>
                 <tr style="padding-top: 10px;">
                   <td></td>
-                  <td></td>
-                  <td style="float: right;padding-top: 15px;"><button class="btn btn-warning" type="button" (click)="printQuoDetails()">Print</button></td>
+                  <td style="float: right;padding-top: 15px;padding-right: 5px;" *ngIf="userType == 'HO'"><button class="btn btn-danger" type="button" (click)="editQuoDetails(quotationDetails.quotationDetId)">Edit</button></td>
+                  <td style="float: right;padding-top: 15px;padding-right: 5px;"><button class="btn btn-warning" type="button" (click)="printQuoDetails()">Print</button></td>
                 </tr>
+                
               </tbody>
             </table>
           </div>

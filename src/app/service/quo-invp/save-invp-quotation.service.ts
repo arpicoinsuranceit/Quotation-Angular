@@ -32,7 +32,7 @@ export class SaveInvpQuotationService {
 
     console.log(data);
     data._product = "INVP";
-    return this.http.post('http://localhost:8084/quoInvpCal', data);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quoInvpCal', data);
   }
 
   saveInvp(data: any) {
@@ -50,11 +50,11 @@ export class SaveInvpQuotationService {
     }
 
     data._product = "INVP";
-    return this.http.post('http://localhost:8084/quoInvpsave/' + this.userId, data);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quoInvpsave/' + this.userId, data);
   }
 
   getInvpQuotationDetailsForEdit(qdId) {
-    return this.http.post('http://localhost:8084/quotationDetails', qdId);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quotationDetails', qdId);
   }
 
   editInvp(data: any, qdId: number) {
@@ -90,10 +90,10 @@ export class SaveInvpQuotationService {
     let token;
     if(sessionStorage.getItem("isUnderwriting") == "true"){
       token=sessionStorage.getItem("Token");
-      return this.http.post('http://localhost:8084/quoInvpEditUnderwrite/'+token+'/'+qdId, data);
+      return this.http.post('http://10.10.10.120:8084/Quotation/quoInvpEditUnderwrite/'+token+'/'+qdId, data);
     }
 
-    return this.http.post('http://localhost:8084/quoInvpEdit/' + this.userId + '/' + qdId, data);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quoInvpEdit/' + this.userId + '/' + qdId, data);
   }
 
 }

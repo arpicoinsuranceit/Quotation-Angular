@@ -9,24 +9,24 @@ export class CommitmentService {
   constructor(private http:Http) { }
 
   getBranchTargetCommitmentSummaryZonalM(year:string,zoneCode:string){
-    return this.http.get('http://localhost:8085/targetsummaryz/'+year+"/"+zoneCode);
+    return this.http.get('http://10.10.10.120:8084/Infosys/targetsummaryz/'+year+"/"+zoneCode);
   }
 
   getBranchTargetCommitmentSummaryBranchM(year: string, brnCode: string){
-    return this.http.get('http://localhost:8085/targetsummaryb/'+year+"/"+brnCode);
+    return this.http.get('http://10.10.10.120:8084/Infosys/targetsummaryb/'+year+"/"+brnCode);
   }
 
   getZoneCode(agnCode:string){
-    return this.http.get('http://localhost:8085/zonecode/'+agnCode);
+    return this.http.get('http://10.10.10.120:8084/Infosys/zonecode/'+agnCode);
   }
 
   getAllZoneCode(){
-    return this.http.get('http://localhost:8085/getAllZone');
+    return this.http.get('http://10.10.10.120:8084/Infosys/getAllZone');
   }
 
   editCommitment(commitmentSummary:BranchTargetSummary){
       console.log(commitmentSummary);
-      return this.http.post('http://localhost:8085/updatecommitment',commitmentSummary);
+      return this.http.post('http://10.10.10.120:8084/Infosys/updatecommitment',commitmentSummary);
   }
 
 }

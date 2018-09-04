@@ -30,17 +30,17 @@ export class QuoAsipService {
     }
     console.log(data);
     data._product = "ASIP";
-    return this.http.post('http://localhost:8084/asipCal', data);
+    return this.http.post('http://10.10.10.120:8084/Quotation/asipCal', data);
 
   }
 
   saveAsip(data) {
     data._product = "ASIP";
-    return this.http.post('http://localhost:8084/quoAsipsave/' + this.userId, data);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quoAsipsave/' + this.userId, data);
   }
 
   getAsipQuotationDetailsForEdit(qdId) {
-    return this.http.post('http://localhost:8084/quotationDetails', qdId);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quotationDetails', qdId);
   }
 
   editAsip(data: any, qdId: number) {
@@ -75,9 +75,9 @@ export class QuoAsipService {
     let token;
     if(sessionStorage.getItem("isUnderwriting") == "true"){
       token=sessionStorage.getItem("Token");
-      return this.http.post('http://localhost:8084/quoAsipEditUnderwrite/'+token+'/'+qdId, data);
+      return this.http.post('http://10.10.10.120:8084/Quotation/quoAsipEditUnderwrite/'+token+'/'+qdId, data);
     }
 
-    return this.http.post('http://localhost:8084/quoAsipEdit/' + this.userId + '/' + qdId, data);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quoAsipEdit/' + this.userId + '/' + qdId, data);
   }
 }

@@ -32,7 +32,7 @@ export class SaveArtmQuotationService {
     }
     console.log(data);
     data._product = "ARTM";
-    return this.http.post('http://localhost:8084/artmCal', data);
+    return this.http.post('http://10.10.10.120:8084/Quotation/artmCal', data);
   }
 
   getArtmShedule(data) {
@@ -54,7 +54,7 @@ export class SaveArtmQuotationService {
 
     console.log(data);
     data._product = "ARTM";
-    return this.http.post('http://localhost:8084/artmSchedule', data);
+    return this.http.post('http://10.10.10.120:8084/Quotation/artmSchedule', data);
   }
 
   saveQuo(data) {
@@ -77,11 +77,11 @@ export class SaveArtmQuotationService {
 
     console.log(data);
     data._product = "ARTM";
-    return this.http.post('http://localhost:8084/artmSavequo/' + this.userId, data);
+    return this.http.post('http://10.10.10.120:8084/Quotation/artmSavequo/' + this.userId, data);
   }
 
   getArtmQuotationDetailsForEdit(qdId) {
-    return this.http.post('http://localhost:8084/quotationDetails', qdId);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quotationDetails', qdId);
   }
 
   editArtm(data: any, qdId: number) {
@@ -118,10 +118,10 @@ export class SaveArtmQuotationService {
     let token;
     if(sessionStorage.getItem("isUnderwriting") == "true"){
       token=sessionStorage.getItem("Token");
-      return this.http.post('http://localhost:8084/quoArtmEditUnderwrite/'+token+'/'+qdId, data);
+      return this.http.post('http://10.10.10.120:8084/Quotation/quoArtmEditUnderwrite/'+token+'/'+qdId, data);
     }
 
-    return this.http.post('http://localhost:8084/quoArtmEdit/' + this.userId + '/' + qdId, data);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quoArtmEdit/' + this.userId + '/' + qdId, data);
   }
 
 }

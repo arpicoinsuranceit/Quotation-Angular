@@ -10,7 +10,7 @@ export class OccupationService {
     
     
     loadOccupation(){
-        return this.http.get('http://localhost:8084/occupation');
+        return this.http.get('http://10.10.10.120:8084/Quotation/occupation');
         
     }
 

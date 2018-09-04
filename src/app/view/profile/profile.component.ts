@@ -29,7 +29,7 @@ export class ProfileComponent implements OnInit {
       this.loginService.navigateLigin();
     }
 
-    this.url ="http://localhost:8084/uploadProf/"+this.loginService.currentUser.userCode;
+    this.url ="http://10.10.10.120:8084/Quotation/uploadProf/"+this.loginService.currentUser.userCode;
   }
 
   ngOnInit() {

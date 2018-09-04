@@ -29,17 +29,17 @@ export class SaveAsfpQuotationService {
     }
     console.log(data);
     data._product = "ASFP";
-    return this.http.post('http://localhost:8084/quoAsfpCal', data);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quoAsfpCal', data);
   }
 
   saveInvp(data: any) {
     console.log(data);
     data._product = "ASFP";
-    return this.http.post('http://localhost:8084/quoAsfpsave/' + this.userId, data);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quoAsfpsave/' + this.userId, data);
   }
 
   getAsfpQuotationDetailsForEdit(qdId) {
-    return this.http.post('http://localhost:8084/quotationDetails', qdId);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quotationDetails', qdId);
   }
 
   editAsfp(data: any, qdId: number) {
@@ -75,10 +75,10 @@ export class SaveAsfpQuotationService {
     let token;
     if(sessionStorage.getItem("isUnderwriting") == "true"){
       token=sessionStorage.getItem("Token");
-      return this.http.post('http://localhost:8084/quoAsfpEditUnderwrite/'+token+'/'+qdId, data);
+      return this.http.post('http://10.10.10.120:8084/Quotation/quoAsfpEditUnderwrite/'+token+'/'+qdId, data);
     }
 
-    return this.http.post('http://localhost:8084/quoAsfpEdit/' + this.userId + '/' + qdId, data);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quoAsfpEdit/' + this.userId + '/' + qdId, data);
   }
 
 }

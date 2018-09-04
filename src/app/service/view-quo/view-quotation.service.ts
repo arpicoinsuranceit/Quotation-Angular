@@ -18,23 +18,23 @@ export class ViewQuotationService {
   }
 
   getQuotationDetails(quoNum){
-    return this.http.post('http://localhost:8084/quodetails',quoNum);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quodetails',quoNum);
   }
 
   getQuotationDetailsForEdit(qdId){
-    return this.http.post('http://localhost:8084/quotationDetailsView',qdId);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quotationDetailsView',qdId);
   }
 
   getProduct(qdId){
-    return this.http.post('http://localhost:8084/product',qdId);
+    return this.http.post('http://10.10.10.120:8084/Quotation/product',qdId);
   }
 
   getSchedule(qdId){
-    return this.http.get('http://localhost:8084/scheduledetails/'+qdId);
+    return this.http.get('http://10.10.10.120:8084/Quotation/scheduledetails/'+qdId);
   }
 
   printQuotation(qdId){
-    return this.http.get('http://localhost:8084/printQuotation/'+qdId,this.options);
+    return this.http.get('http://10.10.10.120:8084/Quotation/printQuotation/'+qdId,this.options);
   }
 
   editQuoDetails(qdId) {

@@ -34,17 +34,17 @@ export class QuoDtaplService {
     }
     data._product = "DTAPL";
     console.log(data);
-    return this.http.post('http://localhost:8084/quoDtaplCal', data);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quoDtaplCal', data);
   }
 
   saveDta(data: any) {
     data._product = "DTAPL";
     console.log(data);
-    return this.http.post('http://localhost:8084/quoDtaplsave/' + this.userId, data);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quoDtaplsave/' + this.userId, data);
   }
 
   getDtaplQuotationDetailsForEdit(qdId) {
-    return this.http.post('http://localhost:8084/quotationDetails', qdId);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quotationDetails', qdId);
   }
 
   editDtapl(data: any, qdId: number) {
@@ -79,10 +79,10 @@ export class QuoDtaplService {
     let token;
     if(sessionStorage.getItem("isUnderwriting") == "true"){
       token=sessionStorage.getItem("Token");
-      return this.http.post('http://localhost:8084/quoDtaplEditUnderwrite/'+token+'/'+qdId, data);
+      return this.http.post('http://10.10.10.120:8084/Quotation/quoDtaplEditUnderwrite/'+token+'/'+qdId, data);
     }
 
-    return this.http.post('http://localhost:8084/quoDtaplEdit/' + this.userId + '/' + qdId, data);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quoDtaplEdit/' + this.userId + '/' + qdId, data);
   }
 
 }

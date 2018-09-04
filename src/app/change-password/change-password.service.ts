@@ -9,7 +9,7 @@ export class ChangePasswordService {
 
   loginToChangePw(credentials){
     
-    return this.http.post('http://localhost:8084/checks',credentials)
+    return this.http.post('http://10.10.10.120:8084/Quotation/checks',credentials)
     .map(response =>{
       let result=JSON.stringify(response);
       let vars=result.split(",")[0];
@@ -26,7 +26,7 @@ export class ChangePasswordService {
   }
 
   changePassword(passwords){
-    return this.http.post('http://localhost:8084/password',passwords)
+    return this.http.post('http://10.10.10.120:8084/Quotation/password',passwords)
     .map(response =>{
       let result=JSON.stringify(response);
       let vars=result.split(",")[0];

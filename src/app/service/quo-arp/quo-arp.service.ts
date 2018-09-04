@@ -36,18 +36,18 @@ export class QuoArpService {
 
     data._product="ARP";
 
-    return this.http.post('http://localhost:8084/arpCal', data);
+    return this.http.post('http://10.10.10.120:8084/Quotation/arpCal', data);
  
   }
 
   saveArp(data){
     data._product="ARP";
 
-    return this.http.post('http://localhost:8084/quoArpsave/'+this.userId, data);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quoArpsave/'+this.userId, data);
   }
 
   getArpQuotationDetailsForEdit(qdId){
-    return this.http.post('http://localhost:8084/quotationDetails',qdId);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quotationDetails',qdId);
   }
 
   editArp(data : any,qdId : number){
@@ -83,10 +83,10 @@ export class QuoArpService {
     if(sessionStorage.getItem("isUnderwriting") == "true"){
       token=sessionStorage.getItem("Token");
       alert(token);
-      return this.http.post('http://localhost:8084/quoArpEditUnderwrite/'+token+'/'+qdId, data);
+      return this.http.post('http://10.10.10.120:8084/Quotation/quoArpEditUnderwrite/'+token+'/'+qdId, data);
     }
     
-    return this.http.post('http://localhost:8084/quoArpEdit/'+this.userId+'/'+qdId, data);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quoArpEdit/'+this.userId+'/'+qdId, data);
   }
 
 

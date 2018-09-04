@@ -34,17 +34,17 @@ export class QuoDtaService {
     }
     data._product = "DTA";
     console.log(data);
-    return this.http.post('http://localhost:8084/quoDtaCal', data);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quoDtaCal', data);
   }
 
   saveDta(data: any) {
     data._product = "DTA";
     console.log(data);
-    return this.http.post('http://localhost:8084/quoDtasave/' + this.userId, data);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quoDtasave/' + this.userId, data);
   }
 
   getDtaQuotationDetailsForEdit(qdId) {
-    return this.http.post('http://localhost:8084/quotationDetails', qdId);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quotationDetails', qdId);
   }
 
   editDta(data: any, qdId: number) {
@@ -79,9 +79,9 @@ export class QuoDtaService {
     let token;
     if(sessionStorage.getItem("isUnderwriting") == "true"){
       token=sessionStorage.getItem("Token");
-      return this.http.post('http://localhost:8084/quoDtaEditUnderwrite/'+token+'/'+qdId, data);
+      return this.http.post('http://10.10.10.120:8084/Quotation/quoDtaEditUnderwrite/'+token+'/'+qdId, data);
     }
 
-    return this.http.post('http://localhost:8084/quoDtaEdit/' + this.userId + '/' + qdId, data);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quoDtaEdit/' + this.userId + '/' + qdId, data);
   }
 }

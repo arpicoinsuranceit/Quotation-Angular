@@ -30,16 +30,16 @@ export class SaveEnd1QuotationService {
 
     data._product = "END1";
 
-    return this.http.post('http://localhost:8084/quoEndCal', data);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quoEndCal', data);
   }
 
   saveEnd(data: any) {
     data._product = "END1";
-    return this.http.post('http://localhost:8084/quoEndsave/' + this.userId, data);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quoEndsave/' + this.userId, data);
   }
 
   getEndQuotationDetailsForEdit(qdId) {
-    return this.http.post('http://localhost:8084/quotationDetails', qdId);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quotationDetails', qdId);
   }
 
   editEnd(data: any, qdId: number) {
@@ -76,10 +76,10 @@ export class SaveEnd1QuotationService {
     let token;
     if(sessionStorage.getItem("isUnderwriting") == "true"){
       token=sessionStorage.getItem("Token");
-      return this.http.post('http://localhost:8084/quoEndEditUnderwrite/'+token+'/'+qdId, data);
+      return this.http.post('http://10.10.10.120:8084/Quotation/quoEndEditUnderwrite/'+token+'/'+qdId, data);
     }
 
-    return this.http.post('http://localhost:8084/quoEndEdit/' + this.userId + '/' + qdId, data);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quoEndEdit/' + this.userId + '/' + qdId, data);
   }
 
 }

@@ -17,19 +17,19 @@ export class QuoAibService {
 
   getQouCal(data) {
     console.log(data);
-    return this.http.post('http://localhost:8084/aibCal/', data);
+    return this.http.post('http://10.10.10.120:8084/Quotation/aibCal/', data);
   }
   save(data: personalInfo) {
     console.log(data);
-    return this.http.post('http://localhost:8084/quoAibsave/' + this.userId, data);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quoAibsave/' + this.userId, data);
   }
 
   edit(data: personalInfo, qdId: number) {
     console.log(data);
-    return this.http.post('http://localhost:8084/quoAibEdit/' + this.userId + '/' + qdId, data);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quoAibEdit/' + this.userId + '/' + qdId, data);
   }
 
   getAibQuotationDetailsForEdit(qdId) {
-    return this.http.post('http://localhost:8084/quotationDetails', qdId);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quotationDetails', qdId);
   }
 }

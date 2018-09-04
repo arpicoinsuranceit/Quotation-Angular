@@ -12,9 +12,9 @@ export class LoadQuotationService {
     if(sessionStorage.getItem("isUnderwriting") == "true"){
       token=sessionStorage.getItem("Token");
       //alert(token);
-      return this.http.post('http://localhost:8084/quo/'+token,userId);
+      return this.http.post('http://10.10.10.120:8084/Quotation/quo/'+token,userId);
     }
-    return this.http.post('http://localhost:8084/quo',userId);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quo',userId);
   }
 
 }

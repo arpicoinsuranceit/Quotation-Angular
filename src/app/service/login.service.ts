@@ -14,7 +14,7 @@ export class LoginService {
   }
 
   pwResetDate(){
-    return this.http.post('http://localhost:8084/pwreset',this.currentUser.userId).subscribe(response => {
+    return this.http.post('http://10.10.10.120:8084/Quotation/pwreset',this.currentUser.userId).subscribe(response => {
       if(response.json() <= 3){
         if(response.json() == -1){
           swal("Reminder..","You must change your password within today","warning");
@@ -26,7 +26,7 @@ export class LoginService {
 
   login(logins){
     
-    return this.http.post('http://localhost:8084/checks',logins).map(response =>{
+    return this.http.post('http://10.10.10.120:8084/Quotation/checks',logins).map(response =>{
       let result=JSON.stringify(response);
       let vars=result.split(",")[0];
       let body=vars.split(":")[1];

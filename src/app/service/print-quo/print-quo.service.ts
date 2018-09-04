@@ -8,7 +8,7 @@ export class PrintQuoService {
   constructor(private http:Http) { }
 
   getQuotations(quoId:string,userType:string){
-    return this.http.post('http://localhost:8084/findQuotation/'+userType,quoId);
+    return this.http.post('http://10.10.10.120:8084/Quotation/findQuotation/'+userType,quoId);
   }
 
 }

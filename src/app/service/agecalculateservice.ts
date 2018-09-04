@@ -9,11 +9,11 @@ export class AgeCalculationService {
     
     
     loadAge(dob){
-        return this.http.post('http://localhost:8084/ageCal', dob);
+        return this.http.post('http://10.10.10.120:8084/Quotation/ageCal', dob);
     }
 
     loadAgeNominee(dob){
-        return this.http.post('http://localhost:8084/ageCalNominee', dob);
+        return this.http.post('http://10.10.10.120:8084/Quotation/ageCalNominee', dob);
     }
 
     loadAgeAndDOBFromNic(nic:string){
@@ -46,7 +46,7 @@ export class AgeCalculationService {
         }
 
         if(nic.length==12 || nic.length==9){
-            return this.http.post('http://localhost:8084/ageCalculate', nic);
+            return this.http.post('http://10.10.10.120:8084/Quotation/ageCalculate', nic);
         }
        
     }

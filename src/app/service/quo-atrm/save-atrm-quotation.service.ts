@@ -28,16 +28,16 @@ export class SaveAtrmQuotationService {
       data._personalInfo.frequance = "Y";
     }
     data._product = "ATRM";
-    return this.http.post('http://localhost:8084/quoAtrmCal', data);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quoAtrmCal', data);
   }
 
   saveAtrm(data: any) {
     data._product = "ATRM";
-    return this.http.post('http://localhost:8084/quoAtrmsave/' + this.userId, data);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quoAtrmsave/' + this.userId, data);
   }
 
   getAtrmQuotationDetailsForEdit(qdId) {
-    return this.http.post('http://localhost:8084/quotationDetails', qdId);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quotationDetails', qdId);
   }
 
   editAtrm(data: any, qdId: number) {
@@ -74,10 +74,10 @@ export class SaveAtrmQuotationService {
     let token;
     if(sessionStorage.getItem("isUnderwriting") == "true"){
       token=sessionStorage.getItem("Token");
-      return this.http.post('http://localhost:8084/quoAtrmEditUnderwrite/'+token+'/'+qdId, data);
+      return this.http.post('http://10.10.10.120:8084/Quotation/quoAtrmEditUnderwrite/'+token+'/'+qdId, data);
     }
 
-    return this.http.post('http://localhost:8084/quoAtrmEdit/' + this.userId + '/' + qdId, data);
+    return this.http.post('http://10.10.10.120:8084/Quotation/quoAtrmEdit/' + this.userId + '/' + qdId, data);
   }
 
 }

@@ -18,13 +18,13 @@ export class AgentService {
 
 
   getUser() {
-    return this.http.get('http://localhost:8085/getagent/' + this.userCode);
+    return this.http.get('http://10.10.10.120:8084/Infosys/getagent/' + this.userCode);
 
   }
 
   getImage() {
     console.log("called");
-    return this.http.get("http://localhost:8084/downloadProfPic/" + this.userCode)
+    return this.http.get("http://10.10.10.120:8084/Quotation/downloadProfPic/" + this.userCode)
       .map((response: Response) => {
         console.log(response);
         return response.json();

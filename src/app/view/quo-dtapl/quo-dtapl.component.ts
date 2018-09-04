@@ -402,7 +402,9 @@ export class QuoDtaplComponent implements OnInit {
                       if (response.json().status == "Success") {
                         swal("Success", "Quotation has been saved Successfully <br> Quotation No : " + response.json().code, "success");
                         if(sessionStorage.getItem("isUnderwriting") == "true"){
-                          window.location.reload();
+                          setTimeout(function (){
+                            window.close();
+                          }, 5000);
                         }else{
                           this.router.navigate(['/loadQuo']);
                         }
@@ -429,7 +431,9 @@ export class QuoDtaplComponent implements OnInit {
                     if (response.json().status == "Success") {
                       swal("Success", "Quotation has been saved Successfully <br> Quotation No : " + response.json().code, "success");
                       if(sessionStorage.getItem("isUnderwriting") == "true"){
-                        window.location.reload();
+                        setTimeout(function (){
+                          window.close();
+                        }, 5000);
                       }else{
                         this.router.navigate(['/loadQuo']);
                       }

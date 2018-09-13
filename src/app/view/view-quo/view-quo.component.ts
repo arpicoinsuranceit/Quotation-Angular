@@ -193,7 +193,7 @@ export class ViewQuoComponent implements OnInit {
       
       resp=response;
       let arr:ArrayBuffer;
-
+      
       var file = new Blob([response], {type: 'application/pdf'});
       var fileURL = URL.createObjectURL(file);
 

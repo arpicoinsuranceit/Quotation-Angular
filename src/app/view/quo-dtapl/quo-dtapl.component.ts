@@ -81,7 +81,7 @@ export class QuoDtaplComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.qdId = params.id;
     }, error => {
-      swal("Error", "Error code - 910 <br> ", "error")
+      swal("Error", error.text() , "error")
     });
 
     this._plan._bsa = 250000;
@@ -245,7 +245,7 @@ export class QuoDtaplComponent implements OnInit {
               this.summeryInfo._protection.JLBPLTerm = response.json().jlbplTerm;
               this.summeryInfo._summery.dtaShedules = response.json().dtaShedules;
             }, error => {
-              swal("Error", "Error code - 911 <br>", "error");
+              swal("Error", error.text() , "error");
               document.onkeydown = function (e) { return true; }
               this.isDisableDiv = false;
             });
@@ -285,7 +285,7 @@ export class QuoDtaplComponent implements OnInit {
       this._invpSaveQuotation._personalInfo = this.personalInfo;
       this._invpSaveQuotation._riderDetails = this.riderDetails;
       this._invpSaveQuotation._calPersonalInfo = this._quotationCalculation._personalInfo;
-      console.log(this._invpSaveQuotation);
+      //console.log(this._invpSaveQuotation);
 
       if (this.personalInfo._plan._interestRate != "" && this.personalInfo._plan._interestRate != "0") {
         if (this._plan._bsa >= 250000 && !Number.isNaN(this._plan._bsa)) {
@@ -308,7 +308,7 @@ export class QuoDtaplComponent implements OnInit {
 
                       }
                     }, error => {
-                      swal("Error", "Error code - 912 <br>", "error");
+                      swal("Error", error.text() , "error");
                       document.onkeydown = function (e) { return true; }
                       this.isDisableDiv = false;
                     });
@@ -331,7 +331,7 @@ export class QuoDtaplComponent implements OnInit {
 
                     }
                   }, error => {
-                    swal("Error", "Error code - 912 <br>", "error");
+                    swal("Error", error.text() , "error");
                     document.onkeydown = function (e) { return true; }
                     this.isDisableDiv = false;
                   });
@@ -408,7 +408,7 @@ export class QuoDtaplComponent implements OnInit {
 
                       }
                     }, error => {
-                      swal("Error", "Error code - 913 <br>", "error");
+                      swal("Error", error.text() , "error");
                       document.onkeydown = function (e) { return true; }
                       this.isDisableDiv = false;
                     });
@@ -431,7 +431,7 @@ export class QuoDtaplComponent implements OnInit {
 
                     }
                   }, error => {
-                    swal("Error", "Error code - 913 <br>", "error");
+                    swal("Error", error.text() , "error");
                     document.onkeydown = function (e) { return true; }
                     this.isDisableDiv = false;
                   });
@@ -589,7 +589,7 @@ export class QuoDtaplComponent implements OnInit {
       this.setValidity(true);
 
     }, error => {
-      swal("Error", "Error code - 914 <br>", "error");
+      swal("Error", error.text() , "error");
       document.onkeydown = function (e) { return true; }
       this.isDisableDiv = false;
     });
@@ -638,7 +638,7 @@ export class QuoDtaplComponent implements OnInit {
       }
       this.sendQuo();
     }, error => {
-      swal("Error", "Error code - 915 <br>", "error");
+      swal("Error", error.text() , "error");
       document.onkeydown = function (e) { return true; }
       this.isDisableDiv = false;
     });
@@ -665,7 +665,7 @@ export class QuoDtaplComponent implements OnInit {
       }
       this.sendQuo();
     }, error => {
-      swal("Error", "Error code - 916 <br>", "error");
+      swal("Error", error.text() , "error");
       document.onkeydown = function (e) { return true; }
       this.isDisableDiv = false;
     });

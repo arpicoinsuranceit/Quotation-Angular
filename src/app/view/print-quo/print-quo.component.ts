@@ -60,7 +60,7 @@ export class PrintQuoComponent implements OnInit {
         console.log(this.quotationDetails);
       }
     }, error => {
-      swal("Error", "Error code - 1201 <br> ", "error");
+      swal("Error", error.text() , "error");
       document.onkeydown = function (e) { return true; }
       this.isDisableDiv = false;
     });
@@ -86,7 +86,7 @@ export class PrintQuoComponent implements OnInit {
         swal("Error", "This Quotation must Recalcutate, <br> Goto Edit View", "error");
         document.onkeydown = function (e) { return true; }
       }else{
-        swal("Error", "Error code - 1305 <br>", "error");
+        swal("Error", error.text() , "error");
         document.onkeydown = function (e) { return true; }
       }
      

@@ -135,7 +135,7 @@ export class DashboardComponent implements OnInit {
       }
       */
     }, error => {
-      swal("Error", "Error code - 1501 <br> ", "error");
+      swal("Error", error.text() , "error");
     });
 
     
@@ -146,7 +146,7 @@ export class DashboardComponent implements OnInit {
       this.userpProfileList = response.json();
       //console.log(this.userpProfileList);
     }, error => {
-      swal("Error", "Error code - 1502 <br> ", "error");
+      swal("Error", error.text() , "error");
     });
   }
 
@@ -184,7 +184,7 @@ export class DashboardComponent implements OnInit {
         //console.log(this.mainRespDto.monthlyTarget);
         //console.log(this.mainRespDto.yearlyTarget);
       }, error => {
-        swal("Error", "Error code - 1503 <br> ", "error");
+        swal("Error", error.text(), "error");
       });
     }
 
@@ -200,7 +200,7 @@ export class DashboardComponent implements OnInit {
         //console.log(this.mainRespDto.cf);
         //console.log(this.mainRespDto.cfC);
       }, error => {
-        swal("Error", "Error code - 1504 <br> ", "error");
+        swal("Error", error.text(), "error");
         document.onkeydown = function (e) { return true; }
       });
     }
@@ -215,7 +215,7 @@ export class DashboardComponent implements OnInit {
         //console.log(this.mainRespDto.gwp);
         //console.log(this.mainRespDto.gwpC);
       }, error => {
-        swal("Error", "Error code - 1505 <br> ", "error");
+        swal("Error", error.text(), "error");
       });
 
       this.dashboardService.getMCFPAndMCFPC(this.dashpara, this.usertype).subscribe(response => {
@@ -226,7 +226,7 @@ export class DashboardComponent implements OnInit {
         //console.log(this.mainRespDto.mcfp);
         //console.log(this.mainRespDto.mcfpC);
       }, error => {
-        swal("Error", "Error code - 1506 <br> ", "error");
+        swal("Error", error.text(), "error");
       });
 
       this.dashboardService.getFYPAndFYPC(this.dashpara, this.usertype).subscribe(response => {
@@ -237,7 +237,7 @@ export class DashboardComponent implements OnInit {
         //console.log(this.mainRespDto.fyp);
         //console.log(this.mainRespDto.fypC);
       }, error => {
-        swal("Error", "Error code - 1507 <br> ", "error");
+        swal("Error", error.text(), "error");
       });
 
       this.dashboardService.getNOPAndNOPC(this.dashpara, this.usertype).subscribe(response => {
@@ -248,13 +248,13 @@ export class DashboardComponent implements OnInit {
         //console.log(this.mainRespDto.nop);
         //console.log(this.mainRespDto.nopC);
       }, error => {
-        swal("Error", "Error code - 1508 <br> ", "error");
+        swal("Error", error.text() , "error");
       });
 
       this.dashboardService.getRINY(this.dashpara, this.usertype).subscribe(response => {
         this.mainRespDto.riny1 = response.json();
       }, error => {
-        swal("Error", "Error code - 1509 <br> ", "error");
+        swal("Error", error.text() , "error");
       });
 
       this.dashboardService.getPolicySummery(this.dashpara, this.usertype).subscribe(response => {
@@ -274,7 +274,7 @@ export class DashboardComponent implements OnInit {
         this.name5 = this.mainRespDto.policySummery[4].name;
         this.name6 = this.mainRespDto.policySummery[5].name;
       }, error => {
-        swal("Error", "Error code - 1510 <br> ", "error");
+        swal("Error", error.text() , "error");
       });
 
     }
@@ -284,14 +284,14 @@ export class DashboardComponent implements OnInit {
         this.mainRespDto.duePolicieList = response.json();
         //console.log(this.mainRespDto.duePolicieList);
       }, error => {
-        swal("Error", "Error code - 1511 <br> ", "error");
+        swal("Error", error.text() , "error");
       });
   
       this.dashboardService.getPendingPolicies(this.dashpara, this.usertype).subscribe(response => {
         this.mainRespDto.pendingPolList = response.json();
         //console.log(this.mainRespDto.duePolicieList);
       }, error => {
-        swal("Error", "Error code - 1512 <br> ", "error");
+        swal("Error", error.text() , "error");
       });
     }
     
@@ -300,21 +300,21 @@ export class DashboardComponent implements OnInit {
       this.mainRespDto.ic = response.json();
       //console.log(this.mainRespDto.ic);
     }, error => {
-      swal("Error", "Error code - 1513 <br> ", "error");
+      swal("Error", error.text() , "error");
     });
 
     this.dashboardService.getTopIS().subscribe(response => {
       this.mainRespDto.is = response.json();
       //console.log(this.mainRespDto.is);
     }, error => {
-      swal("Error", "Error code - 1514 <br> ", "error");
+      swal("Error", error.text() , "error");
     });
 
     this.dashboardService.getTopUL().subscribe(response => {
       this.mainRespDto.ul = response.json();
       //console.log(this.mainRespDto.ul);
     }, error => {
-      swal("Error", "Error code - 1515 <br> ", "error");
+      swal("Error", error.text() , "error");
     });
 
 
@@ -537,7 +537,7 @@ export class DashboardComponent implements OnInit {
       })
 
     }, error => {
-      swal("Error", "Error code - 1516 <br> ", "error");
+      swal("Error", error.text(), "error");
     });
   }
 
@@ -546,7 +546,7 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.approveImage(e).subscribe(response => {
       this.userpProfileList = response.json();
     }, error => {
-      swal("Error", "Error code - 1517 <br> ", "error");
+      swal("Error", error.text(), "error");
     });
   }
 
@@ -555,7 +555,7 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.rejectImage(e).subscribe(response => {
       this.userpProfileList = response.json();
     }, error => {
-      swal("Error", "Error code - 1518 <br> ", "error");
+      swal("Error", error.text(), "error");
     });
   }
 

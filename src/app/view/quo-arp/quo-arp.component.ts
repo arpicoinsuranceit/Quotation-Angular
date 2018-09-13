@@ -193,7 +193,7 @@ export class QuoArpComponent implements OnInit {
 
     this.route.params.subscribe(params => {
       this.qdId = params.id;
-    },error => {swal("Error", "Error code - 210 <br>","error")});
+    },error => {swal("Error", error.text() ,"error")});
 
     this._plan._bsa = 250000;
     this._plan._frequance = "Monthly";
@@ -595,7 +595,7 @@ export class QuoArpComponent implements OnInit {
         this.summeryInfo._protection.BSASTerm = response.json().bsasTerm;
 
       },error => {
-        swal("Error", "Error code - 211 <br>","error");
+        swal("Error", error.text() ,"error");
         document.onkeydown = function (e) { return true; }
         this.isDisableDiv = false;
       });
@@ -729,7 +729,7 @@ export class QuoArpComponent implements OnInit {
 
                   }
                 },error => {
-                  swal("Error", "Error code - 212 <br>","error");
+                  swal("Error", error.text() ,"error");
                   document.onkeydown = function (e) { return true; }
                   this.isDisableDiv = false;
                 });
@@ -760,7 +760,7 @@ export class QuoArpComponent implements OnInit {
 
               }
             },error => {
-              swal("Error", "Error code - 212 <br>","error");
+              swal("Error", error.text() ,"error");
               document.onkeydown = function (e) { return true; }
               this.isDisableDiv = false;
             });
@@ -919,7 +919,7 @@ export class QuoArpComponent implements OnInit {
 
                   }
                 },error => {
-                  swal("Error", "Error code - 213 <br>","error");
+                  swal("Error", error.text() ,"error");
                   document.onkeydown = function (e) { return true; }
                   this.isDisableDiv = false;
                 });
@@ -948,7 +948,7 @@ export class QuoArpComponent implements OnInit {
 
               }
             },error => {
-              swal("Error", "Error code - 213 <br>","error");
+              swal("Error", error.text() ,"error");
               document.onkeydown = function (e) { return true; }
               this.isDisableDiv = false;
             });
@@ -1780,7 +1780,7 @@ export class QuoArpComponent implements OnInit {
       this.sendQuo()
 
     },error => {
-      swal("Error", "Error code - 214 <br>","error");
+      swal("Error", error.text() ,"error");
       document.onkeydown = function (e) { return true; }
       this.isDisableDiv = false;
     });
@@ -1834,7 +1834,7 @@ export class QuoArpComponent implements OnInit {
         }
         this.sendQuo();
       },error => {
-        swal("Error", "Error code - 215 <br>","error");
+        swal("Error", error.text() ,"error");
         document.onkeydown = function (e) { return true; }
         this.isDisableDiv = false;
       });
@@ -1862,7 +1862,7 @@ export class QuoArpComponent implements OnInit {
       }
       this.sendQuo();
     },error => {
-      swal("Error", "Error code - 216 <br>","error");
+      swal("Error", error.text() ,"error");
       document.onkeydown = function (e) { return true; }
       this.isDisableDiv = false;
     });

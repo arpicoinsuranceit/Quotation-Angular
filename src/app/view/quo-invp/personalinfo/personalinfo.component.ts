@@ -62,7 +62,7 @@ export class PersonalinfoComponent implements OnInit {
   ngOnInit() {
     this.occupationService.loadOccupation().subscribe(response => {
       this.ocupations = response.json();
-    },error => {swal("Error", "Error code - 601 <br>","error")});
+    },error => {swal("Error", error.text() ,"error")});
 
     this._plan._bsa = 250000;
     this._plan._frequance = "Monthly";
@@ -186,7 +186,7 @@ export class PersonalinfoComponent implements OnInit {
         this.checkValidity();
         this.check();
 
-      },error => {swal("Error", "Error code - 605 <br>","error")});
+      },error => {swal("Error", error.text() ,"error")});
 
     } else {
       this.mainLifeForm.get("mDob").enable();
@@ -246,7 +246,7 @@ export class PersonalinfoComponent implements OnInit {
           }
         }
 
-      },error => {swal("Error", "Error code - 606 <br>","error")});
+      },error => {swal("Error", error.text() ,"error")});
       this.checkValidity();
     } else {
       this.spouseForm.get("sDob").enable();
@@ -621,7 +621,7 @@ export class PersonalinfoComponent implements OnInit {
       this.ageCalculationService.loadAge(this._personalInfo._spouse._sDob).subscribe(response => {
         this._personalInfo._spouse._sAge = response.json();
         this.check();
-      },error => {swal("Error", "Error code - 603 <br>","error")});
+      },error => {swal("Error", error.text() ,"error")});
     } else {
       swal("Invalid Date Format!", "Example (30-01-1990)", "error");
       this.spouseForm.get("sDob").setValue("");
@@ -634,7 +634,7 @@ export class PersonalinfoComponent implements OnInit {
       this.ageCalculationService.loadAge(this._personalInfo._mainlife._mDob).subscribe(response => {
         this._personalInfo._mainlife._mAge = response.json();
         this.check();
-      },error => {swal("Error", "Error code - 602 <br>","error")});
+      },error => {swal("Error", error.text() ,"error")});
     } else {
       swal("Invalid Date Format!", "Example (30-01-1990)", "error");
       this.mainLifeForm.get("mDob").setValue("");
@@ -649,7 +649,7 @@ export class PersonalinfoComponent implements OnInit {
     if(regex.test(this._children._cDob)){
       this.ageCalculationService.loadAge(this._children._cDob).subscribe(response => {
         this._children._cAge = response.json();
-      },error => {swal("Error", "Error code - 604 <br>","error")});
+      },error => {swal("Error", error.text() ,"error")});
     }else{
       swal("Invalid Date Format!", "Example (30-01-1990)", "error");
       this._children._cDob = "";

@@ -29,7 +29,7 @@ export class LoadQuoComponent implements OnInit {
       sessionStorage.setItem("dashpara", dashPara);
       
     }, error => {
-      swal("Error", "Error code - 1501 <br> ", "error");
+      swal("Error", error.text() , "error");
     });
     this.getQuotations();
   }
@@ -41,7 +41,7 @@ export class LoadQuoComponent implements OnInit {
     return this.loadQuoService.getQuotations(this.userId).subscribe(response => {
       this.quoDetails=response.json();
     }, error => {
-      swal("Error", "Error code - 1101 <br> ", "error");
+      swal("Error", error.text() , "error");
     });
   }
 

@@ -28,7 +28,7 @@ export class OrgChartComponent implements OnInit {
       this.orgData = response.json();
       this.isDisableDiv=false;
     }, error => {
-      swal("Error", "Error code - 1151 <br> ", "error");
+      swal("Error", error.text() , "error");
       document.onkeydown = function (e) { return true; }
       this.isDisableDiv = false;
     });

@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
           swal("Oopz...","Your account has been locked","error");
         }
       }, error => {
-        swal("Error", "Error code - 1401 <br> ", "error");
+        swal("Error", error.text() , "error");
         document.onkeydown = function (e) { return true; }
       });
     }else{

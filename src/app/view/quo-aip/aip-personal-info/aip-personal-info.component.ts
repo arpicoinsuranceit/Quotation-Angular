@@ -57,7 +57,7 @@ export class AipPersonalInfoComponent implements OnInit {
     this.occupationService.loadOccupation().subscribe(response => {
       this.ocupations = response.json();
     },error => {
-      swal("Error", "Error code - 101 <br>","error");
+      swal("Error", error.text() ,"error");
     });
 
     this.check();
@@ -70,7 +70,7 @@ export class AipPersonalInfoComponent implements OnInit {
       this.ageCalculationService.loadAge(this._mainLife._mDob).subscribe(response => {
         this._mainLife._mAge = response.json();
         this.check();
-      },error => {swal("Error", "Error code - 102 <br>","error")});
+      },error => {swal("Error", error.text() ,"error")});
     } else {
       swal("Invalid Date Format!", "Example (30-01-1990)", "error");
       this.mainLifeForm.get("mDob").setValue("");

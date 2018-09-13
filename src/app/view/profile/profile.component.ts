@@ -41,7 +41,7 @@ export class ProfileComponent implements OnInit {
       }
       console.log(this.agent);
     }, error => {
-      swal("Error", "Error code - 1251 <br> ", "error");
+      swal("Error", error.text() , "error");
       document.onkeydown = function (e) { return true; }
       this.error = true;
     });
@@ -50,7 +50,7 @@ export class ProfileComponent implements OnInit {
     .subscribe((data) => {
         this.imgUserUrl = this.imageType + data.content;
     }, error => {
-      swal("Error", "Error code - 1252 <br> ", "error");
+      swal("Error", error.text() , "error");
       document.onkeydown = function (e) { return true; }
     });
   }

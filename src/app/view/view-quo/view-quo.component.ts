@@ -30,7 +30,7 @@ export class ViewQuoComponent implements OnInit {
       this.quoNum = params.id;
       this.viewQuotationDetails();
     }, error => {
-      swal("Error", "Error code - 1301 <br>", "error");
+      swal("Error", error.text() , "error");
       document.onkeydown = function (e) { return true; }
     });
   }
@@ -46,7 +46,7 @@ export class ViewQuoComponent implements OnInit {
       this.quotationDetails = this.quotationDetails.sort();
       console.log(this.quotationDetails);
     }, error => {
-      swal("Error", "Error code - 1302 <br>", "error");
+      swal("Error", error.text() , "error");
       document.onkeydown = function (e) { return true; }
     });
   }
@@ -67,7 +67,7 @@ export class ViewQuoComponent implements OnInit {
       //console.log(response.json());
       this.load(response.json());
     }, error => {
-      swal("Error", "Error code - 1303 <br>", "error");
+      swal("Error", error.text() , "error");
       document.onkeydown = function (e) { return true; }
     });
   }
@@ -174,7 +174,7 @@ export class ViewQuoComponent implements OnInit {
       console.log(response.text());
       this.router.navigate([url]);
     }, error => {
-      swal("Error", "Error code - 1304 <br>", "error");
+      swal("Error", error.text() , "error");
       document.onkeydown = function (e) { return true; }
     });
 
@@ -200,7 +200,7 @@ export class ViewQuoComponent implements OnInit {
       window.open(resp.url);
       
     }, error => {
-      swal("Error", "Error code - 1305 <br>", "error");
+      swal("Error", error.text() , "error");
       document.onkeydown = function (e) { return true; }
     });
   }

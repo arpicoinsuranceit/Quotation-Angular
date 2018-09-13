@@ -72,7 +72,7 @@ export class AipPlanInfoComponent implements OnInit {
       console.log(schedules);
       this.load(schedules);
 
-    },error => swal("Error", "Error code - 106 <br> Schedule Not Loaded .","error"));
+    },error => swal("Error", error.text() ,"error"));
   }
 
   load(schedules) {

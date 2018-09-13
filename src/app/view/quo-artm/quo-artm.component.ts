@@ -196,7 +196,7 @@ export class QuoArtmComponent implements OnInit {
 
     this.route.params.subscribe(params => {
       this.qdId = params.id;
-    }, error => { swal("Error", "Error code - 1610 <br>", "error") });
+    }, error => { swal("Error", error.text() , "error") });
 
     this.personalInfo._mainlife._mTitle = "MR";
     this.personalInfo._mainlife._mGender = "M";
@@ -608,7 +608,7 @@ export class QuoArtmComponent implements OnInit {
                 this.summeryInfo._protection.L2 = response.json().l2;
                 this.summeryInfo._protection.L2Term = response.json().l2term;
               }, error => {
-                swal("Error", "Error code - 1611 <br>", "error");
+                swal("Error", error.text() , "error");
                 document.onkeydown = function (e) { return true; }
                 this.isDisableDiv = false;
               });
@@ -699,7 +699,7 @@ export class QuoArtmComponent implements OnInit {
 
                       }
                     }, error => {
-                      swal("Error", "Error code - 1612 <br>", "error");
+                      swal("Error", error.text() , "error");
                       document.onkeydown = function (e) { return true; }
                       this.isDisableDiv = false;
                     });
@@ -726,7 +726,7 @@ export class QuoArtmComponent implements OnInit {
 
                     }
                   }, error => {
-                    swal("Error", "Error code - 1612 <br>", "error");
+                    swal("Error", error.text() , "error");
                     document.onkeydown = function (e) { return true; }
                     this.isDisableDiv = false;
                   });
@@ -1374,7 +1374,7 @@ export class QuoArtmComponent implements OnInit {
       this.sendQuo()
 
     }, error => {
-      swal("Error", "Error code - 1614 <br>", "error");
+      swal("Error", error.text() , "error");
       document.onkeydown = function (e) { return true; }
       this.isDisableDiv = false;
     });
@@ -1438,7 +1438,7 @@ export class QuoArtmComponent implements OnInit {
 
                       }
                     }, error => {
-                      swal("Error", "Error code - 1613 <br>", "error");
+                      swal("Error", error.text() , "error");
                       document.onkeydown = function (e) { return true; }
                       this.isDisableDiv = false;
                     });
@@ -1465,7 +1465,7 @@ export class QuoArtmComponent implements OnInit {
 
                     }
                   }, error => {
-                    swal("Error", "Error code - 1613 <br>", "error");
+                    swal("Error", error.text() , "error");
                     document.onkeydown = function (e) { return true; }
                     this.isDisableDiv = false;
                   });
@@ -1536,7 +1536,7 @@ export class QuoArtmComponent implements OnInit {
       }
       this.sendQuo();
     }, error => {
-      swal("Error", "Error code - 1615 <br> ", "error");
+      swal("Error", error.text() , "error");
       document.onkeydown = function (e) { return true; }
       this.isDisableDiv = false;
     });
@@ -1563,7 +1563,7 @@ export class QuoArtmComponent implements OnInit {
       }
       this.sendQuo();
     }, error => {
-      swal("Error", "Error code - 1616 <br> ", "error");
+      swal("Error", error.text() , "error");
       document.onkeydown = function (e) { return true; }
       this.isDisableDiv = false;
     });

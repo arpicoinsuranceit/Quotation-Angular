@@ -64,7 +64,7 @@ export class SipPersonalInfoComponent implements OnInit {
   ngOnInit() {
     this.occupationService.loadOccupation().subscribe(response => {
       this.ocupations = response.json();
-    },error => {swal("Error", "Error code - 701 <br>","error")});
+    },error => {swal("Error", error.text() ,"error")});
 
     this._plan._bsa = 250000;
     this._plan._frequance = "Monthly";
@@ -340,7 +340,7 @@ export class SipPersonalInfoComponent implements OnInit {
         this.checkValidity();
         this.check();
 
-      },error => {swal("Error", "Error code - 705 <br>","error")});
+      },error => {swal("Error", error.text() ,"error")});
 
     } else {
       this.mainLifeForm.get("mDob").enable();
@@ -400,7 +400,7 @@ export class SipPersonalInfoComponent implements OnInit {
           }
         }
 
-      },error => {swal("Error", "Error code - 706 <br>","error")});
+      },error => {swal("Error", error.text() ,"error")});
       this.checkValidity();
     } else {
       this.spouseForm.get("sDob").enable();
@@ -657,7 +657,7 @@ export class SipPersonalInfoComponent implements OnInit {
       this.ageCalculationService.loadAge(this._personalInfo._spouse._sDob).subscribe(response => {
         this._personalInfo._spouse._sAge = response.json();
         this.check();
-      },error => {swal("Error", "Error code - 703 <br>","error")});
+      },error => {swal("Error", error.text() ,"error")});
     } else {
       swal("Invalid Date Format!", "Example (30-01-1990)", "error");
       this.spouseForm.get("sDob").setValue("");
@@ -670,7 +670,7 @@ export class SipPersonalInfoComponent implements OnInit {
       this.ageCalculationService.loadAge(this._personalInfo._mainlife._mDob).subscribe(response => {
         this._personalInfo._mainlife._mAge = response.json();
         this.check();
-      },error => {swal("Error", "Error code - 702 <br>","error")});
+      },error => {swal("Error", error.text() ,"error")});
     } else {
       swal("Invalid Date Format!", "Example (30-01-1990)", "error");
       this.mainLifeForm.get("mDob").setValue("");
@@ -685,7 +685,7 @@ export class SipPersonalInfoComponent implements OnInit {
     if(regex.test(this._children._cDob)){
       this.ageCalculationService.loadAge(this._children._cDob).subscribe(response => {
         this._children._cAge = response.json();
-      },error => {swal("Error", "Error code - 704 <br>","error")});
+      },error => {swal("Error", error.text() ,"error")});
     }else{
       swal("Invalid Date Format!", "Example (30-01-1990)", "error");
       this._children._cDob = "";

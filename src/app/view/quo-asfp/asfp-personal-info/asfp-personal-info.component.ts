@@ -61,7 +61,7 @@ export class AsfpPersonalInfoComponent implements OnInit {
   ngOnInit() {
     this.occupationService.loadOccupation().subscribe(response => {
       this.ocupations = response.json();
-    },error => {swal("Error", "Error code - 301 <br>","error")});
+    },error => {swal("Error", error.text() ,"error")});
 
     this._personalInfo._plan._msfb = 10000;
     this._personalInfo._plan._frequance = "Monthly";
@@ -189,7 +189,7 @@ export class AsfpPersonalInfoComponent implements OnInit {
         this.checkValidity();
         this.check();
 
-      },error => {swal("Error", "Error code - 305 <br>","error")});
+      },error => {swal("Error", error.text() ,"error")});
 
     } else {
       this.mainLifeForm.get("mDob").enable();
@@ -249,7 +249,7 @@ export class AsfpPersonalInfoComponent implements OnInit {
           }
         }
 
-      },error => {swal("Error", "Error code - 306 <br>","error")});
+      },error => {swal("Error", error.text() ,"error")});
       this.checkValidity();
     } else {
       this.spouseForm.get("sDob").enable();
@@ -690,7 +690,7 @@ export class AsfpPersonalInfoComponent implements OnInit {
       this.ageCalculationService.loadAge(this._personalInfo._spouse._sDob).subscribe(response => {
         this._personalInfo._spouse._sAge = response.json();
         this.check();
-      },error => {swal("Error", "Error code - 303 <br>","error")});
+      },error => {swal("Error", error.text() ,"error")});
     } else {
       swal("Invalid Date Format!", "Example (30-01-1990)", "error");
       this.spouseForm.get("sDob").setValue("");
@@ -703,7 +703,7 @@ export class AsfpPersonalInfoComponent implements OnInit {
       this.ageCalculationService.loadAge(this._personalInfo._mainlife._mDob).subscribe(response => {
         this._personalInfo._mainlife._mAge = response.json();
         this.check();
-      },error => {swal("Error", "Error code - 302 <br>","error")});
+      },error => {swal("Error", error.text() ,"error")});
     } else {
       swal("Invalid Date Format!", "Example (30-01-1990)", "error");
       this.mainLifeForm.get("mDob").setValue("");
@@ -718,7 +718,7 @@ export class AsfpPersonalInfoComponent implements OnInit {
     if(regex.test(this._children._cDob)){
       this.ageCalculationService.loadAge(this._children._cDob).subscribe(response => {
         this._children._cAge = response.json();
-      },error => {swal("Error", "Error code - 304 <br>","error")});
+      },error => {swal("Error", error.text() ,"error")});
     }else{
       swal("Invalid Date Format!", "Example (30-01-1990)", "error");
       this._children._cDob = "";
@@ -733,7 +733,7 @@ export class AsfpPersonalInfoComponent implements OnInit {
     if(regex.test(this._personalInfo._plan._nomineedob)){
       this.ageCalculationService.loadAgeNominee(this._personalInfo._plan._nomineedob).subscribe(response => {
         this._personalInfo._plan._nomineeAge = response.json();
-      },error => {swal("Error", "Error code - 307 <br>","error")});
+      },error => {swal("Error", error.text() ,"error")});
     }else{
       swal("Invalid Date Format!", "Example (30-01-1990)", "error");
       this._children._cDob = "";

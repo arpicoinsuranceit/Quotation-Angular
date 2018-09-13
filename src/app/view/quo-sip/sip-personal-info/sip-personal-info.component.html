@@ -373,8 +373,8 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="bsa">BSA:</label>
                                 <div class="col-sm-10">
-                                    <input style="display: none;" type="text" currencyMask class="form-control" id="txt-bsa-hidden" name="txt-bsa-hidden" [(ngModel)]="_personalInfo._plan._hidbsa">
-                                    <input type="text" currencyMask class="form-control" id="txt-bsa" [(ngModel)]="_personalInfo._plan._bsa" (keyup.enter)="checkBSA()"
+                                    <input style="display: none;" type="number" currencyMask class="form-control" id="txt-bsa-hidden" name="txt-bsa-hidden" [(ngModel)]="_personalInfo._plan._hidbsa">
+                                    <input type="number" currencyMask class="form-control" id="txt-bsa" [(ngModel)]="_personalInfo._plan._bsa" (keyup.enter)="checkBSA()"
                                         (blur)="checkBSA()" name="txt-bsa" (keyup)="keyup($event)">
                                 </div>
 
@@ -386,8 +386,6 @@
                                     <input type="text" readonly class="form-control" id="txt-premium" [(ngModel)]="summeryInfo._summery.sumAssured" name="txt-premium">
                                 </div>
                             </div>
-
-
 
                         </form>
                     </div>

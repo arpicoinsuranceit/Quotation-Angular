@@ -17,48 +17,67 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6" style="border-right: solid 1px #b6b6b6">
-                Quotation Number : {{quo.quotationId}} - {{quo.seqId}}
+              <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12" style="border-right: solid 1px #b6b6b6">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td style="width: 150px;">Quotation Number </td>
+                      <td>:</td>
+                      <td>{{quo.quotationId}} - {{quo.seqId}}</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
 
-              <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
-                Date : {{quo.quotationDate}}
+              <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+
+                <table>
+                  <tbody>
+                    <tr>
+                      <td style="width: 150px;">Date </td>
+                      <td>:</td>
+                      <td>{{quo.quotationDate}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+
               </div>
             </div>
 
             <div class="row" style="margin-top: 10px;">
-              <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6" style="border-right: solid 1px #b6b6b6">
+              <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12" style="border-right: solid 1px #b6b6b6">
 
                 <table>
                   <tbody>
 
                     <tr *ngIf="product == 'AIB' || product == 'AIP' || product == 'ASFP' || product == 'ASIP' ||
                          product == 'ATRM' || product == 'DTA' || product == 'DTAPL' || product == 'END1' || product == 'INVP'">
-                      <td>Paying Term </td>
+                      <td style="width: 150px;">Paying Term </td>
                       <td>:</td>
                       <td>{{quo._plan._term}}</td>
                     </tr>
 
                     <tr *ngIf="product == 'ARP' || product == 'ARTM'">
-                      <td>Paying Term </td>
+                      <td style="width: 150px;">Paying Term </td>
                       <td>:</td>
                       <td>{{quo._plan._payingterm}}</td>
                     </tr>
 
                     <tr *ngIf="product == 'ARP' || product == 'ARTM'">
-                      <td>Policy Term </td>
+                      <td style="width: 150px;">Policy Term </td>
                       <td>:</td>
                       <td>{{quo._plan._term}}</td>
                     </tr>
 
                     <tr *ngIf="product == 'ARTM'">
-                      <td>Pension Paying Term </td>
+                      <td style="width: 150px;">Pension Paying Term </td>
                       <td>:</td>
                       <td>{{quo._plan.pensionPaingTerm}}</td>
                     </tr>
 
                     <tr *ngIf="product == 'ASFP'">
-                      <td>MSFB </td>
+                      <td style="width: 150px;">MSFB </td>
                       <td>:</td>
                       <td>{{quo._plan._msfb.toLocaleString()}}</td>
                     </tr>
@@ -66,7 +85,7 @@
                     <tr *ngIf="product == 'AIB' || product == 'AIP' || product == 'ARP' || product == 'ASFP' ||
                          product == 'ASIP' || product == 'ATRM' || product == 'DTA' || !product == 'DTAPL' || product == 'END1' || 
                          product == 'INVP' || product == 'ARTM'">
-                      <td>Pay Frequency </td>
+                      <td style="width: 150px;">Pay Frequency </td>
                       <td>:</td>
                       <td>{{quo._plan._frequance}}</td>
                     </tr>
@@ -76,50 +95,50 @@
 
               </div>
 
-              <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6" style="border-left: solid 1px #b6b6b6">
+              <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12" style="border-left: solid 1px #b6b6b6">
 
                 <table>
                   <tbody>
                     <tr *ngIf="product == 'DTA' || product == 'DTAPL'">
-                      <td>Interest Rate </td>
+                      <td style="width: 150px;">Interest Rate </td>
                       <td>:</td>
                       <td>{{quo._plan._interestRate}}</td>
                     </tr>
 
                     <tr *ngIf="product == 'DTA' || product == 'DTAPL'">
-                      <td>Loan Amount </td>
+                      <td style="width: 150px;">Loan Amount </td>
                       <td>:</td>
                       <td>{{quo._plan._bsa.toLocaleString()}}</td>
                     </tr>
 
                     <tr *ngIf="product == 'ARP' || product == 'ASFP' || product == 'ASIP' || product == 'ATRM' ||
                          product == 'END1' || product == 'INVP'">
-                      <td>Basic Sum Assured </td>
+                      <td style="width: 150px;">Basic Sum Assured </td>
                       <td>:</td>
                       <td>{{quo._plan._bsa.toLocaleString()}}</td>
                     </tr>
 
                     <tr *ngIf="product == 'ARP' || product == 'ASFP' || product == 'ASIP' || product == 'ATRM' ||
                          product == 'DTA' || product == 'DTAPL' || product == 'END1' || product == 'INVP'">
-                      <td>Premium (BSA) </td>
+                      <td style="width: 150px;">Premium (BSA) </td>
                       <td>:</td>
                       <td>{{quo._plan.contribution.toLocaleString()}}</td>
                     </tr>
 
                     <tr *ngIf="product == 'ARTM'">
-                      <td>Retirement Age </td>
+                      <td style="width: 150px;">Retirement Age </td>
                       <td>:</td>
                       <td>{{quo._plan.retAge}}</td>
                     </tr>
 
                     <tr *ngIf="product == 'AIB' || product == 'AIP' || product == 'ARTM'">
-                      <td>Contribution </td>
+                      <td style="width: 150px;">Contribution </td>
                       <td>:</td>
                       <td>{{quo._plan.contribution.toLocaleString()}}</td>
                     </tr>
 
                     <tr>
-                      <td>Total Premium </td>
+                      <td style="width: 150px;">Total Premium </td>
                       <td>:</td>
                       <td>{{quo._plan._bsaTotal.toLocaleString()}}</td>
                     </tr>
@@ -144,12 +163,12 @@
                     </ng-container>
 
                     <ng-container *ngIf="quoBenf.riderCode == 'L14' || quoBenf.riderCode == 'L15' || quoBenf.riderCode == 'L16'">
-                    <td *ngIf="quoBenf.riderCode == 'L14'">Retirement Payment At 7%</td>
-                    <td *ngIf="quoBenf.riderCode == 'L15'">Retirement Payment At 8%</td>
-                    <td *ngIf="quoBenf.riderCode == 'L16'">Retirement Payment At 9%</td>
-                    <td>:</td>
-                    <td style="margin-left: 10px;">{{quoBenf.premium.toLocaleString()}}</td>
-                  </ng-container>
+                      <td *ngIf="quoBenf.riderCode == 'L14'">Retirement Payment At 7%</td>
+                      <td *ngIf="quoBenf.riderCode == 'L15'">Retirement Payment At 8%</td>
+                      <td *ngIf="quoBenf.riderCode == 'L16'">Retirement Payment At 9%</td>
+                      <td>:</td>
+                      <td style="margin-left: 10px;">{{quoBenf.premium.toLocaleString()}}</td>
+                    </ng-container>
                   </tr>
                 </table>
               </div>
@@ -164,7 +183,8 @@
               <button class="btn btn-warning" style="background-color:0c3da3;" (click)="printQuoDetails(quo.quoDetailId)">Print</button>
             </div>
             <div style="float:right;margin-right:10px;">
-              <button class="btn btn-primary" style="background-color:0c3da3;" (click)="scheduleDetails(quo.quoDetailId)" *ngIf="product == 'DTA' || product == 'DTAPL'">Schedule</button>
+              <button class="btn btn-primary" style="background-color:0c3da3;" (click)="scheduleDetails(quo.quoDetailId)"
+                *ngIf="product == 'DTA' || product == 'DTAPL'">Schedule</button>
             </div>
           </div>
         </div>
@@ -323,7 +343,7 @@
 
               <ngb-tab title="Children" *ngIf="quo._children.length > 0">
                 <ng-template ngbTabContent>
-                  <div style="margin: 10px;">
+                  <div style="margin: 10px; min-width: 860px; overflow-x: auto;">
                     <table class="table" style="font-size: 16px;">
                       <thead>
                         <tr>
@@ -374,8 +394,8 @@
         <ngb-tabset type="pills">
           <ngb-tab title="Main Life" *ngIf="quo._mainLifeBenefits.length > 0">
             <ng-template ngbTabContent>
-              <div class="body_div">
-                <table class="table table-striped">
+              <div class="body_div" style="overflow-x: auto;">
+                <table class="table table-striped" style="min-width: 500px;">
                   <thead>
                     <tr>
                       <th>Additional Benefits</th>
@@ -403,8 +423,8 @@
 
           <ngb-tab title="Spouse" *ngIf="quo._spouseBenefits.length > 0">
             <ng-template ngbTabContent>
-              <div class="body_div">
-                <table class="table table-striped">
+              <div class="body_div" style="overflow-x: auto;">
+                <table class="table table-striped" style="min-width: 500px;">
                   <thead>
                     <tr>
                       <th>Additional Benefits</th>
@@ -429,8 +449,8 @@
 
           <ngb-tab title="Children" *ngIf="quo._childrenBenefits.length > 0">
             <ng-template ngbTabContent>
-              <div class="body_div">
-                <table class="table table-striped ">
+              <div class="body_div" style="overflow-x: auto;">
+                <table class="table table-striped" style="min-width: 500px;">
                   <thead>
                     <tr>
                       <th>Additional Benefits</th>
@@ -467,7 +487,7 @@
         <div class="header_div">
           <h2>Previous Quotation Details
             <a (click)="viewPrevious()">
-              <img style="float:right;padding-right:5px;width:30px;height:25px;" src="assets/images/arrow.png"/>
+              <img style="float:right;padding-right:5px;width:30px;height:25px;" src="assets/images/arrow.png" />
             </a>
           </h2>
         </div>
@@ -820,7 +840,8 @@
           </ngb-tab>
         </ngb-tabset>
         <div style="float:right;margin-right:10px;">
-          <button class="btn btn-primary" style="background-color:0c3da3;" (click)="scheduleDetails(quo.quoDetailId)" *ngIf="product == 'DTA' || product == 'DTAPL'">Schedule</button>
+          <button class="btn btn-primary" style="background-color:0c3da3;" (click)="scheduleDetails(quo.quoDetailId)"
+            *ngIf="product == 'DTA' || product == 'DTAPL'">Schedule</button>
         </div>
 
       </div>

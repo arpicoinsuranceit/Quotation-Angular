@@ -257,7 +257,7 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="term">Term:</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="txt-term" (blur)="check()" (keyup.enter)="check()" [(ngModel)]="_personalInfo._plan._term"
+                                    <input type="number" class="form-control" name="txt-term" (blur)="check()" (keyup.enter)="check()" [(ngModel)]="_personalInfo._plan._term"
                                         oninput="this.value=this.value.replace(/[^0-9]/g,'');">
 
                                 </div>
@@ -274,16 +274,16 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="bsa">Interest Rate:</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="txt-intrate" [(ngModel)]="_personalInfo._plan._interestRate" (keyup.enter)="check()"
-                                        (blur)="check()" name="txt-intrate" oninput="this.value=this.value.replace(/[^0-9]/g,'');" (keyup)="setDecimal($event);">
+                                    <input type="number" class="form-control" id="txt-intrate" [(ngModel)]="_personalInfo._plan._interestRate" (keyup.enter)="check()"
+                                        (blur)="check()" name="txt-intrate" (keyup)="setDecimal($event);">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="bsa">Loan Amount:</label>
                                 <div class="col-sm-10">
-                                    <input style="display: none;" type="text" currencyMask class="form-control" id="txt-bsa-hidden" name="txt-bsa-hidden" [(ngModel)]="_personalInfo._plan._hidbsa">
-                                    <input type="text" currencyMask class="form-control" id="txt-bsa" [(ngModel)]="_personalInfo._plan._bsa" (keyup.enter)="checkBSA()"
+                                    <input style="display: none;" type="number" currencyMask class="form-control" id="txt-bsa-hidden" name="txt-bsa-hidden" [(ngModel)]="_personalInfo._plan._hidbsa">
+                                    <input type="number" currencyMask class="form-control" id="txt-bsa" [(ngModel)]="_personalInfo._plan._bsa" (keyup.enter)="checkBSA()"
                                         (blur)="checkBSA()" name="txt-bsa">
                                 </div>
                             </div>

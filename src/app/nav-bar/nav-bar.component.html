@@ -12,7 +12,7 @@
         <div [ngbCollapse]="isCollapsed" class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li routerLinkActive="active current">
-                    <a (click)="loadDashboard()" style="cursor:pointer;">Dashboard</a>
+                    <a routerLink="home" style="cursor:pointer;">Dashboard</a>
                 </li>
                 <li ngbDropdown routerLinkActive="active current" class="dropdown">
                     <a ngbDropdownToggle class="dropdown-toggle" data-toggle="dropdown">Quotation
@@ -46,10 +46,10 @@
                             <a routerLink="quoaip">ARPICO INVESTMENT PLUS - AIP</a>
                         </li>
                         <li routerLinkActive="active current" *ngIf="productArray.includes('DTA')">
-                            <a routerLink="quodta">ARPICO DECREASING TERM ASSURANCE FOR HOUSING LOAN - DTA</a>
+                            <a routerLink="quodta">ARPICO HOUSING LOAN - DTA</a>
                         </li>
                         <li routerLinkActive="active current" *ngIf="productArray.includes('DTAPL')">
-                            <a routerLink="quodtapl">ARPICO DECREASING TERM ASSURANCE FOR PERSONEL LOAN - DTAPL</a>
+                            <a routerLink="quodtapl">ARPICO PERSONEL LOAN - DTAPL</a>
                         </li>
                         
                         <li routerLinkActive="active current" >
@@ -197,13 +197,10 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <img [src]="imgUserUrl" [alt]="imgUserAlt" class="roundImg">
-                </li>
-
+            
                 <li ngbDropdown routerLinkActive="active current" class="dropdown">
                     <a ngbDropdownToggle class="dropdown-toggle" data-toggle="dropdown">
-                        {{curUser}}
+                        <img [src]="imgUserUrl" [alt]="imgUserAlt" class="roundImg">{{curUser}}
                         <span class="caret"></span>
                     </a>
 

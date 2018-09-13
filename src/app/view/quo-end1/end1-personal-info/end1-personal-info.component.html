@@ -89,7 +89,7 @@
                                 </div>
                                 <label class="control-label col-sm-2" for="age">Age:</label>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control" id="txt-age" formControlName="mAge" name="txt-age" placeholder="0" [(ngModel)]="_personalInfo._mainlife._mAge"
+                                    <input type="number" class="form-control" id="txt-age" formControlName="mAge" name="txt-age" placeholder="0" [(ngModel)]="_personalInfo._mainlife._mAge"
                                         (change)="check()" disabled>
                                     <div class="alert alert-danger" *ngIf="_personalInfo._mainlife._mAge>66 || _personalInfo._mainlife._mAge < 17">
                                         InValid</div>
@@ -211,7 +211,7 @@
                                     </div>
                                     <label class="control-label col-sm-2" for="age">Age:</label>
                                     <div class="col-sm-3">
-                                        <input type="text" class="form-control" formControlName="sAge" id="txt-sage" placeholder="0" [(ngModel)]="_personalInfo._spouse._sAge"
+                                        <input type="number" class="form-control" formControlName="sAge" id="txt-sage" placeholder="0" [(ngModel)]="_personalInfo._spouse._sAge"
                                             name="txt-sAge" (change)="checkSp()" disabled>
                                         <div class="alert alert-danger" *ngIf="_personalInfo._spouse._sAge > 66 || _personalInfo._spouse._sAge < 17">
                                             InValid</div>
@@ -287,7 +287,7 @@
                                         </div>
                                         <label class="control-label col-sm-2" for="age">Age:</label>
                                         <div class="col-sm-3">
-                                            <input type="text" class="form-control" id="txt-cage" placeholder="0" name="txt-cAge" [(ngModel)]="_children._cAge" disabled>
+                                            <input type="number" class="form-control" id="txt-cage" placeholder="0" name="txt-cAge" [(ngModel)]="_children._cAge" disabled>
 
 
                                             <div class="alert alert-danger" *ngIf="_children._cAge<1 || _children._cAge>18 ">
@@ -344,7 +344,7 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="term">Term:</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" name="select_term" id="txt_term" (keyup.enter)="change(e)" (blur)="change(e)" [(ngModel)]="_personalInfo._plan._term"
+                                    <input type="number" class="form-control" name="select_term" id="txt_term" (keyup.enter)="change(e)" (blur)="change(e)" [(ngModel)]="_personalInfo._plan._term"
                                         oninput="this.value=this.value.replace(/[^0-9]/g,'');">
                                     <div class="alert alert-danger" *ngIf="_personalInfo._plan._term < 5 || _personalInfo._plan._term > 45">
                                         Term must be greater than or equal 5 and less than or equal 45</div>
@@ -365,8 +365,8 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="bsa">BSA:</label>
                                 <div class="col-sm-10">
-                                    <input style="display: none;" type="text" currencyMask class="form-control" id="txt-bsa-hidden" name="txt-bsa-hidden" [(ngModel)]="_personalInfo._plan._hidbsa">
-                                    <input type="text" currencyMask class="form-control" id="txt-bsa" [(ngModel)]="_personalInfo._plan._bsa" (keyup.enter)="checkBSA()"
+                                    <input style="display: none;" type="number" currencyMask class="form-control" id="txt-bsa-hidden" name="txt-bsa-hidden" [(ngModel)]="_personalInfo._plan._hidbsa">
+                                    <input type="number" currencyMask class="form-control" id="txt-bsa" [(ngModel)]="_personalInfo._plan._bsa" (keyup.enter)="checkBSA()"
                                         (blur)="checkBSA()" name="txt-bsa" (keyup)="keyup($event)">
                                     <div class="alert alert-danger" *ngIf="_personalInfo._plan._bsa < 250000">
                                         Basic Sum Assured must be minimum 250000</div>

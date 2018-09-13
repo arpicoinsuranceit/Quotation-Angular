@@ -16,7 +16,9 @@
     border-radius: 50%;
     border: 1px solid white;
     margin-top: 5px;
-    margin-left: 15px;
+    margin-left:0px;
+
+    margin-right:10px;
 }
 .roundImg:hover{
     cursor: pointer;

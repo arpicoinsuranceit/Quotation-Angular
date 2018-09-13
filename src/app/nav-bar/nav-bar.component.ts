@@ -37,6 +37,7 @@ export class NavBarComponent implements OnInit {
       .subscribe((data) => {
         this.imgUserUrl = this.imageType + data.content;
       }, error => {
+        this.imgUserUrl = "assets/images/dummy.png";
         //swal("Error", "Error code - 1451 <br> ", "error");
         document.onkeydown = function (e) { return true; }
       });

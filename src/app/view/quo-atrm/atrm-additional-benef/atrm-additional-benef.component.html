@@ -53,7 +53,7 @@
                       (change)="isActiveADB($event)">
                     <label class="" for="sumAssured">ADB</label>
                     <label class="frm_lbl" for="sumAssured">Sum Assured</label>
-                    <input formControlName="sumAssured" type="text" class="form-control input-sm" (keyup)="removeError('ADB')" (click)="removeError('ADB')"
+                    <input formControlName="sumAssured" type="number" class="form-control input-sm" (keyup)="removeError('ADB')" (click)="removeError('ADB')"
                       (keyup.enter)="checkValidateADB()" (blur)="checkValidateADB()" id="txt-sumassured" [disabled]="isImgGActive"
                       currencyMask>
                     <div class="alert alert-danger" *ngIf="validateADB!=1">
@@ -89,7 +89,7 @@
                       (change)="isActive($event, 'TPDASB')" (change)="isActiveTPDASB($event)" *ngIf="!isImgTPDBActive">
                     <label class="" for="sumAssured">TPDASB</label>
                     <label class="frm_lbl" for="sumAssured">Sum Assured</label>
-                    <input formControlName="sumAssured" type="text" class="form-control input-sm" (keyup)="removeError('TPDASB')" (click)="removeError('TPDASB')"
+                    <input formControlName="sumAssured" type="number" class="form-control input-sm" (keyup)="removeError('TPDASB')" (click)="removeError('TPDASB')"
                       (keyup.enter)="checkValidateTPDASB()" (blur)="checkValidateTPDASB()" id="txt-sumassured" [disabled]="isImgGActive"
                       readonly>
 
@@ -125,7 +125,7 @@
                       (change)="isActiveTPDB($event)" *ngIf="!isImgTPDASBActive">
                     <label class="" for="sumAssured">TPDB</label>
                     <label class="frm_lbl" for="sumAssured">Sum Assured</label>
-                    <input formControlName="sumAssured" type="text" class="form-control input-sm" (keyup)="removeError('TPDB')" (click)="removeError('TPDB')"
+                    <input formControlName="sumAssured" type="number" class="form-control input-sm" (keyup)="removeError('TPDB')" (click)="removeError('TPDB')"
                       (keyup.enter)="checkValidateTPDB()" (blur)="checkValidateTPDB()" id="txt-sumassured" [disabled]="isImgGActive"
                       readonly>
                     <div class="alert alert-danger" *ngIf="validateTPDB!=1">
@@ -160,7 +160,7 @@
                       (change)="isActivePPDB($event)" onclick="return false">
                     <label class="" for="sumAssured">PPDB</label>
                     <label class="frm_lbl" for="sumAssured">Sum Assured</label>
-                    <input formControlName="sumAssured" type="text" class="form-control input-sm" (keyup)="removeError('PPDB')" (click)="removeError('PPDB')"
+                    <input formControlName="sumAssured" type="number" class="form-control input-sm" (keyup)="removeError('PPDB')" (click)="removeError('PPDB')"
                       (keyup.enter)="checkValidatePPDB()" (blur)="checkValidatePPDB()" id="txt-sumassured" [disabled]="isImgGActive"
                       readonly>
                     <div class="alert alert-danger" *ngIf="validatePPDB!=1">
@@ -195,7 +195,7 @@
                       (change)="isActiveCIB($event)">
                     <label class="" for="sumAssured">CIB</label>
                     <label class="frm_lbl" for="sumAssured">Sum Assured</label>
-                    <input formControlName="sumAssured" type="text" class="form-control input-sm" (keyup)="removeError('CIB')" (click)="removeError('CIB')"
+                    <input formControlName="sumAssured" type="number" class="form-control input-sm" (keyup)="removeError('CIB')" (click)="removeError('CIB')"
                       (keyup.enter)="checkValidateCIB()" (blur)="checkValidateCIB()" id="txt-sumassured" [disabled]="isImgGActive"
                       currencyMask>
                     <div class="alert alert-danger" *ngIf="validateCIB!=1">
@@ -231,7 +231,7 @@
                       (change)="isActiveFEB($event)">
                     <label class="" for="sumAssured">FEB</label>
                     <label class="frm_lbl" for="sumAssured">Sum Assured</label>
-                    <input formControlName="sumAssured" type="text" class="form-control input-sm" (keyup)="removeError('FEB')" (click)="removeError('FEB')"
+                    <input formControlName="sumAssured" type="number" class="form-control input-sm" (keyup)="removeError('FEB')" (click)="removeError('FEB')"
                       (keyup.enter)="checkValidateFEB()" (blur)="checkValidateFEB()" id="txt-sumassured" [disabled]="isImgGActive"
                       currencyMask>
 
@@ -266,7 +266,7 @@
                       (change)="isActiveMFIBD($event)" *ngIf="!isImgMFIBDTActive && !isImgMFIBTActive">
                     <label class="" for="sumAssured">MFIBD</label>
                     <label class="frm_lbl" for="sumAssured">Sum Assured</label>
-                    <input formControlName="sumAssured" type="text" class="form-control input-sm" (keyup)="removeError('MFIBD')" (click)="removeError('MFIBD')"
+                    <input formControlName="sumAssured" type="number" class="form-control input-sm" (keyup)="removeError('MFIBD')" (click)="removeError('MFIBD')"
                       (keyup.enter)="checkValidateMFIBD()" (blur)="checkValidateMFIBD()" id="txt-sumassured" [disabled]="isImgGActive"
                       currencyMask>
 
@@ -301,7 +301,7 @@
                       (change)="isActiveMFIBT($event)" *ngIf="!isImgMFIBDTActive && !isImgMFIBDActive">
                     <label class="" for="sumAssured">MFIBT</label>
                     <label class="frm_lbl" for="sumAssured">Sum Assured</label>
-                    <input formControlName="sumAssured" type="text" class="form-control input-sm" (keyup.enter)="checkValidateMFIBT()" (keyup)="removeError('MFIBT')"
+                    <input formControlName="sumAssured" type="number" class="form-control input-sm" (keyup.enter)="checkValidateMFIBT()" (keyup)="removeError('MFIBT')"
                       (click)="removeError('MFIBT')" (blur)="checkValidateMFIBT()" id="txt-sumassured" [disabled]="isImgGActive"
                       currencyMask>
                     <div class="alert alert-danger" *ngIf="validateMFIBT!=1">
@@ -335,7 +335,7 @@
                       (change)="isActiveMFIBDT($event)" *ngIf="!isImgMFIBTActive && !isImgMFIBDActive">
                     <label class="" for="sumAssured">MFIBDT</label>
                     <label class="frm_lbl" for="sumAssured">Sum Assured</label>
-                    <input formControlName="sumAssured" type="text" class="form-control input-sm" (keyup.enter)="checkValidateMFIBDT()" (blur)="checkValidateMFIBDT()"
+                    <input formControlName="sumAssured" type="number" class="form-control input-sm" (keyup.enter)="checkValidateMFIBDT()" (blur)="checkValidateMFIBDT()"
                       (keyup)="removeError('MFIBDT')" (click)="removeError('MFIBDT')" id="txt-sumassured" [disabled]="isImgGActive"
                       currencyMask>
                     <div class="alert alert-danger" *ngIf="validateMFIBDT!=1">
@@ -369,7 +369,7 @@
                       (click)="removeError('HRBI')" *ngIf="!isImgSUHRBActive && !isImgHRBFActive && !isImgSHCBFActive">
                     <label class="" for="sumAssured">HCBI</label>
                     <label class="frm_lbl" for="sumAssured">Sum Assured</label>
-                    <input formControlName="sumAssured" type="text" class="form-control input-sm" (keyup.enter)="checkValidateHRBI()" (blur)="checkValidateHRBI()"
+                    <input formControlName="sumAssured" type="number" class="form-control input-sm" (keyup.enter)="checkValidateHRBI()" (blur)="checkValidateHRBI()"
                       (keyup)="removeError('HRBI')" (click)="removeError('HRBI')" id="txt-sumassured" [disabled]="isImgGActive"
                       currencyMask>
                     <div class="alert alert-danger" *ngIf="validateHRBI!=1">
@@ -403,7 +403,7 @@
                       (click)="removeError('HRBF')" *ngIf="!isImgSUHRBActive && !isImgHRBIActive && !isImgSHCBFActive">
                     <label class="" for="sumAssured">HCBF</label>
                     <label class="frm_lbl" for="sumAssured">Sum Assured</label>
-                    <input formControlName="sumAssured" type="text" class="form-control input-sm" (keyup.enter)="checkValidateHRBF()" (blur)="checkValidateHRBF()"
+                    <input formControlName="sumAssured" type="number" class="form-control input-sm" (keyup.enter)="checkValidateHRBF()" (blur)="checkValidateHRBF()"
                       (keyup)="removeError('HRBF')" (click)="removeError('HRBF')" id="txt-sumassured" [disabled]="isImgGActive"
                       currencyMask>
                     <div class="alert alert-danger" *ngIf="validateHRBF!=1">
@@ -437,7 +437,7 @@
                       (click)="removeError('SUHRB')" *ngIf="!isImgHRBIActive && !isImgHRBFActive && !isImgSHCBFActive">
                     <label class="" for="sumAssured">SHCBI</label>
                     <label class="frm_lbl" for="sumAssured">Sum Assured</label>
-                    <input formControlName="sumAssured" type="text" class="form-control input-sm" (keyup.enter)="checkValidateSUHRB()" (blur)="checkValidateSUHRB()"
+                    <input formControlName="sumAssured" type="number" class="form-control input-sm" (keyup.enter)="checkValidateSUHRB()" (blur)="checkValidateSUHRB()"
                       (keyup)="removeError('SUHRB')" (click)="removeError('SUHRB')" id="txt-sumassured" [disabled]="isImgGActive"
                       currencyMask>
                     <div class="alert alert-danger" *ngIf="validateSUHRB!=1">
@@ -471,7 +471,7 @@
                       *ngIf="!isImgHRBIActive && !isImgHRBFActive && !isImgSUHRBActive">
                     <label class="" for="sumAssured">SHCBF</label>
                     <label class="frm_lbl" for="sumAssured">Sum Assured</label>
-                    <input formControlName="sumAssured" type="text" class="form-control input-sm" (keyup.enter)="checkValidateSHCBF()" (blur)="checkValidateSHCBF()"
+                    <input formControlName="sumAssured" type="number" class="form-control input-sm" (keyup.enter)="checkValidateSHCBF()" (blur)="checkValidateSHCBF()"
                       id="txt-sumassured" [disabled]="isImgGActive" currencyMask>
                     <div class="alert alert-danger" *ngIf="validateSHCBF!=1">
                       Error</div>
@@ -504,7 +504,7 @@
                       (click)="removeError('HB')">
                     <label class="" for="sumAssured">HB</label>
                     <label class="frm_lbl" for="sumAssured">Sum Assured</label>
-                    <input formControlName="sumAssured" type="text" class="form-control input-sm" (keyup.enter)="checkValidateHB()" (blur)="checkValidateHB()"
+                    <input formControlName="sumAssured" type="number" class="form-control input-sm" (keyup.enter)="checkValidateHB()" (blur)="checkValidateHB()"
                       (keyup)="removeError('HB')" (click)="removeError('HB')" id="txt-sumassured" [disabled]="isImgGActive"
                       currencyMask>
 
@@ -545,7 +545,7 @@
 
                     </div>
                     <label class="frm_lbl" for="sumAssured" style="display: none;">Sum Assured</label>
-                    <input formControlName="sumAssured" type="text" style="display: none;" class="form-control input-sm" readonly id="txt-sumassured"
+                    <input formControlName="sumAssured" type="number" style="display: none;" class="form-control input-sm" readonly id="txt-sumassured"
                       [disabled]="isImgGActive" (keyup)="removeError('WPB')" (click)="removeError('WPB')" currencyMask>
                     <label class="frm_lbl" for="sumAssured">Premium</label>
                     <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._protection.WPB" readonly
@@ -588,7 +588,7 @@
                         (click)="removeError('BSAS')">
                       <label class="" for="sumAssured">SCB</label>
                       <label class="frm_lbl" for="sumAssured">Sum Assured</label>
-                      <input formControlName="sumAssured" type="text" class="form-control input-sm" (keyup.enter)="checkValidateSCB()" (blur)="checkValidateSCB()"
+                      <input formControlName="sumAssured" type="number" class="form-control input-sm" (keyup.enter)="checkValidateSCB()" (blur)="checkValidateSCB()"
                         (keyup)="removeError('BSAS')" (click)="removeError('BSAS')" id="txt-sumassured" currencyMask>
                       <div class="alert alert-danger" *ngIf="validateSCB!=1">
                         Error</div>
@@ -621,7 +621,7 @@
                         (click)="removeError('ADBS')">
                       <label class="" for="sumAssured">ADBS</label>
                       <label class="frm_lbl" for="sumAssured">Sum Assured</label>
-                      <input formControlName="sumAssured" type="text" class="form-control input-sm" (keyup.enter)="checkValidateADBS()" (blur)="checkValidateADBS()"
+                      <input formControlName="sumAssured" type="number" class="form-control input-sm" (keyup.enter)="checkValidateADBS()" (blur)="checkValidateADBS()"
                         (keyup)="removeError('ADBS')" (click)="removeError('ADBS')" id="txt-sumassured" [disabled]="isImgGActive"
                         currencyMask>
                       <div class="alert alert-danger" *ngIf="validateADBS!=1">
@@ -655,7 +655,7 @@
                         (click)="removeError('TPDASBS')" *ngIf="!isImgTPDBSActive">
                       <label class="" for="sumAssured">TPDASBS</label>
                       <label class="frm_lbl" for="sumAssured">Sum Assured</label>
-                      <input formControlName="sumAssured" type="text" class="form-control input-sm" (keyup.enter)="checkValidateTPDASBS()" (blur)="checkValidateTPDASBS()"
+                      <input formControlName="sumAssured" type="number" class="form-control input-sm" (keyup.enter)="checkValidateTPDASBS()" (blur)="checkValidateTPDASBS()"
                         (keyup)="removeError('TPDASBS')" (click)="removeError('TPDASBS')" id="txt-sumassured" [disabled]="isImgGActive"
                         readonly>
                       <div class="alert alert-danger" *ngIf="validateTPDASBS!=1">
@@ -690,7 +690,7 @@
                         (click)="removeError('TPDBS')" *ngIf="!isImgTPDASBSActive">
                       <label class="" for="sumAssured">TPDBS</label>
                       <label class="frm_lbl" for="sumAssured">Sum Assured</label>
-                      <input formControlName="sumAssured" type="text" class="form-control input-sm" (keyup.enter)="checkValidateTPDBS()" (blur)="checkValidateTPDBS()"
+                      <input formControlName="sumAssured" type="number" class="form-control input-sm" (keyup.enter)="checkValidateTPDBS()" (blur)="checkValidateTPDBS()"
                         (keyup)="removeError('TPDBS')" (click)="removeError('TPDBS')" id="txt-sumassured" [disabled]="isImgGActive"
                         readonly>
                       <div class="alert alert-danger" *ngIf="validateTPDBS!=1">
@@ -724,7 +724,7 @@
                         (click)="removeError('PPDBS')" onclick="return false">
                       <label class="" for="sumAssured">PPDBS</label>
                       <label class="frm_lbl" for="sumAssured">Sum Assured</label>
-                      <input formControlName="sumAssured" type="text" class="form-control input-sm" (keyup.enter)="checkValidatePPDBS()" (blur)="checkValidatePPDBS()"
+                      <input formControlName="sumAssured" type="number" class="form-control input-sm" (keyup.enter)="checkValidatePPDBS()" (blur)="checkValidatePPDBS()"
                         (keyup)="removeError('PPDBS')" (click)="removeError('PPDBS')" id="txt-sumassured" [disabled]="isImgGActive"
                         readonly>
                       <div class="alert alert-danger" *ngIf="validatePPDBS!=1">
@@ -758,7 +758,7 @@
                         (click)="removeError('CIBS')">
                       <label class="" for="sumAssured">SCIB</label>
                       <label class="frm_lbl" for="sumAssured">Sum Assured</label>
-                      <input formControlName="sumAssured" type="text" class="form-control input-sm" id="txt-sumassured"
+                      <input formControlName="sumAssured" type="number" class="form-control input-sm" id="txt-sumassured"
                         [disabled]="isImgGActive" (keyup)="removeError('CIBS')" (click)="removeError('CIBS')" (keyup.enter)="checkValidateSCIB()" (blur)="checkValidateSCIB()" currencyMask>
                       <div class="alert alert-danger" *ngIf="validateSCIB!=1">
                         Error</div>
@@ -791,7 +791,7 @@
                         (click)="removeError('FEBS')">
                       <label class="" for="sumAssured">FEBS</label>
                       <label class="frm_lbl" for="sumAssured">Sum Assured</label>
-                      <input formControlName="sumAssured" type="text" class="form-control input-sm" (keyup.enter)="checkValidateFEBS()" (blur)="checkValidateFEBS()"
+                      <input formControlName="sumAssured" type="number" class="form-control input-sm" (keyup.enter)="checkValidateFEBS()" (blur)="checkValidateFEBS()"
                         (keyup)="removeError('FEBS')" (click)="removeError('FEBS')" id="txt-sumassured" [disabled]="isImgGActive"
                         currencyMask>
                       <div class="alert alert-danger" *ngIf="validateFEBS!=1">
@@ -821,7 +821,7 @@
                       <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveHCBS($event)" (click)="removeError('HCBS')">
                       <label class="" for="sumAssured">HCBS</label>
                       <label class="frm_lbl" for="sumAssured" style="display: none;">Sum Assured</label>
-                      <input formControlName="sumAssured" type="text" style="display: none;" class="form-control input-sm" id="txt-sumassured" [disabled]="isImgGActive"
+                      <input formControlName="sumAssured" type="number" style="display: none;" class="form-control input-sm" id="txt-sumassured" [disabled]="isImgGActive"
                         (keyup)="removeError('HCBS')" (click)="removeError('HCBS')" currencyMask>
                       <div>
                         <label class="frm_lbl" for="sumAssured">Premium</label>
@@ -855,7 +855,7 @@
 
                       </div>
                       <label class="frm_lbl" for="sumAssured" style="display: none;">Sum Assured</label>
-                      <input formControlName="sumAssured" type="text" style="display: none;" class="form-control input-sm" id="txt-sumassured"
+                      <input formControlName="sumAssured" type="number" style="display: none;" class="form-control input-sm" id="txt-sumassured"
                         readonly (keyup)="removeError('HRBIS')" (click)="removeError('HRBIS')">
                       <div class="alert alert-danger" *ngIf="validateHRBIS!=1">
                         Error</div>
@@ -892,7 +892,7 @@
 
                       </div>
                       <label class="frm_lbl" for="sumAssured" style="display: none;">Sum Assured</label>
-                      <input formControlName="sumAssured" type="text" style="display: none;" class="form-control input-sm" readonly id="txt-sumassured"
+                      <input formControlName="sumAssured" type="number" style="display: none;" class="form-control input-sm" readonly id="txt-sumassured"
                         [disabled]="isImgGActive" (keyup)="removeError('HRBFS')" (click)="removeError('HRBFS')">
                       <label class="frm_lbl" for="sumAssured">Premium</label>
                       <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._protection.HRBFS" readonly
@@ -925,7 +925,7 @@
 
                       </div>
                       <label class="frm_lbl" for="sumAssured" style="display: none;">Sum Assured</label>
-                      <input formControlName="sumAssured" type="text" style="display: none;" class="form-control input-sm" id="txt-sumassured"
+                      <input formControlName="sumAssured" type="number" style="display: none;" class="form-control input-sm" id="txt-sumassured"
                         readonly (keyup)="removeError('SUHRBS')" (click)="removeError('SUHRBS')">
                       <div class="alert alert-danger" *ngIf="validateSUHRBS!=1">
                         Error</div>
@@ -962,7 +962,7 @@
 
                       </div>
                       <label class="frm_lbl" for="sumAssured" style="display: none;">Sum Assured</label>
-                      <input formControlName="sumAssured" type="text" style="display: none;" class="form-control input-sm" id="txt-sumassured"
+                      <input formControlName="sumAssured" type="number" style="display: none;" class="form-control input-sm" id="txt-sumassured"
                         readonly (keyup)="removeError('SHCBFS')" (click)="removeError('SHCBFS')">
                       <div>
                         <label class="frm_lbl" for="sumAssured">Premium</label>
@@ -999,7 +999,7 @@
 
                       </div>
                       <label class="frm_lbl" for="sumAssured" style="display: none;">Sum Assured</label>
-                      <input formControlName="sumAssured" type="text" style="display: none;" class="form-control input-sm" id="txt-sumassured"
+                      <input formControlName="sumAssured" type="number" style="display: none;" class="form-control input-sm" id="txt-sumassured"
                         [disabled]="isImgGActive" (keyup)="removeError('HBS')" (click)="removeError('HBS')" readonly>
                       <div class="alert alert-danger" *ngIf="validateHBS!=1">
                         Error</div>
@@ -1039,7 +1039,7 @@
                       </div>
 
                       <label class="frm_lbl" for="sumAssured" style="display: none;">Sum Assured</label>
-                      <input formControlName="sumAssured" type="text" style="display: none;" class="form-control input-sm" readonly id="txt-sumassured"
+                      <input formControlName="sumAssured" type="number" style="display: none;" class="form-control input-sm" readonly id="txt-sumassured"
                         [disabled]="isImgGActive" (keyup)="removeError('WPBS')" (click)="removeError('WPBS')" currencyMask>
                       <label class="frm_lbl" for="sumAssured">Premium</label>
                       <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._protection.WPBS" readonly
@@ -1079,7 +1079,7 @@
 
 
                       <label class="frm_lbl" for="sumAssured">Sum Assured</label>
-                      <input formControlName="sumAssured" type="text" class="form-control input-sm" id="txt-sumassured"
+                      <input formControlName="sumAssured" type="number" class="form-control input-sm" id="txt-sumassured"
                          [disabled]="isImgGActive" (keyup)="removeError('CIBC')" (click)="removeError('CIBC')" (keyup.enter)="checkValidateCIBC()"
                          (blur)="checkValidateCIBC()" currencyMask>
                       <div class="alert alert-danger" *ngIf="validateCIBC!=1">
@@ -1110,7 +1110,7 @@
                       <label class="" for="sumAssured">HCBC</label>
 
                       <label class="frm_lbl" for="sumAssured" style="display: none;">Sum Assured</label>
-                      <input formControlName="sumAssured" type="text" style="display: none;" class="form-control input-sm" id="txt-sumassured"
+                      <input formControlName="sumAssured" type="number" style="display: none;" class="form-control input-sm" id="txt-sumassured"
                         [disabled]="isImgGActive" (keyup)="removeError('HCBC')" (click)="removeError('HCBC')" currencyMask>
                       <div>
                         <label class="frm_lbl" for="sumAssured">Premium</label>
@@ -1145,7 +1145,7 @@
 
                       </div>
                       <label class="frm_lbl" for="sumAssured" style="display: none;">Sum Assured</label>
-                      <input formControlName="sumAssured" style="display: none;" type="text" class="form-control input-sm" (keyup.enter)="checkValidateHRBIC()"
+                      <input formControlName="sumAssured" type="number" style="display: none;" type="text" class="form-control input-sm" (keyup.enter)="checkValidateHRBIC()"
                         (blur)="checkValidateHRBIC()" (keyup)="removeError('HRBIC')" (click)="removeError('HRBIC')" id="txt-sumassured"
                         [disabled]="isImgGActive" readonly>
                       <div class="alert alert-danger" *ngIf="validateHRBIC!=1">
@@ -1185,7 +1185,7 @@
                       </div>
 
                       <label class="frm_lbl" for="sumAssured" style="display: none;">Sum Assured</label>
-                      <input formControlName="sumAssured" type="text" style="display: none;" class="form-control input-sm" readonly id="txt-sumassured"
+                      <input formControlName="sumAssured" type="number" style="display: none;" class="form-control input-sm" readonly id="txt-sumassured"
                         [disabled]="isImgGActive" (keyup)="removeError('HRBFC')" (click)="removeError('HRBFC')" currencyMask>
                       <label class="frm_lbl" for="sumAssured">Premium</label>
                       <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._protection.HRBFC" readonly
@@ -1222,7 +1222,7 @@
                       </div>
 
                       <label class="frm_lbl" for="sumAssured">Sum Assured</label>
-                      <input formControlName="sumAssured" type="text" style="display: none;" class="form-control input-sm" (keyup.enter)="checkValidateSUHRBC()"
+                      <input formControlName="sumAssured" type="number" style="display: none;" class="form-control input-sm" (keyup.enter)="checkValidateSUHRBC()"
                         (blur)="checkValidateSUHRBC()" (keyup)="removeError('SUHRBC')" (click)="removeError('SUHRBC')" style="display: none;"
                         id="txt-sumassured" [disabled]="isImgGActive" readonly>
                       <div class="alert alert-danger" *ngIf="validateSUHRBC!=1">
@@ -1256,7 +1256,7 @@
                         (click)="removeError('SHCBFC')">
                       <label class="" for="sumAssured">SHCBFC</label>
                       <label class="frm_lbl" for="sumAssured">Sum Assured</label>
-                      <input formControlName="sumAssured" type="text" class="form-control input-sm" id="txt-sumassured" readonly (keyup)="removeError('SHCBFC')"
+                      <input formControlName="sumAssured" type="number" class="form-control input-sm" id="txt-sumassured" readonly (keyup)="removeError('SHCBFC')"
                         (click)="removeError('SHCBFC')">
                       <div>
                         <label class="frm_lbl" for="sumAssured">Premium</label>
@@ -1293,7 +1293,7 @@
                       </div>
 
                       <label class="frm_lbl" for="sumAssured" style="display: none;">Sum Assured</label>
-                      <input formControlName="sumAssured" style="display: none;" type="text" class="form-control input-sm" id="txt-sumassured"
+                      <input formControlName="sumAssured" type="number" style="display: none;" type="text" class="form-control input-sm" id="txt-sumassured"
                         [disabled]="isImgGActive" (keyup)="removeError('HBC')" (click)="removeError('HBC')" readonly>
                       <div class="alert alert-danger" *ngIf="validateHBC!=1">
                         Error</div>

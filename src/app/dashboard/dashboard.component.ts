@@ -1,13 +1,12 @@
-import { CommitmentService } from './../service/commitment/commitment.service';
-import { UserProfilePictures } from './../model/userprofilepictures';
 import swal from 'sweetalert2';
-import { MainRespDto } from './../model/dashboardData';
-import { DashboardService } from './../service/dashboard/dashboard.service';
-import { forEach } from '@angular/router/src/utils/collection';
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
+import { JwtHelper } from 'angular2-jwt';
+import { MainRespDto } from '../model/dashboardData';
+import { DashboardService } from '../service/dashboard/dashboard.service';
 import { LoginService } from '../service/login.service';
-import { DomSanitizer, platformBrowser } from '@angular/platform-browser';
-import { error } from 'util';
+import { UserProfilePictures } from '../model/userprofilepictures';
 
 @Component({
   selector: 'app-dashboard',
@@ -44,9 +43,6 @@ export class DashboardComponent implements OnInit {
   name4: any = "";
   name5: any = "";
   name6: any = "";
-
-
-  ;
 
   dashbardLevel1 = false;
 
@@ -98,23 +94,15 @@ export class DashboardComponent implements OnInit {
 
 
 
-  constructor(private loginService: LoginService, private dashboardService: DashboardService, private commitmentService:CommitmentService) {
-    if(!sessionStorage.getItem("Token")){
-      this.loginService.navigateLigin();
-    }
-    
-    sessionStorage.removeItem("userType");
-    sessionStorage.removeItem("dashpara");
-    this.loginService.pwResetDate();
-    this.userCode = this.loginService.currentUser.userCode;
-
-    //console.log(this.userCode);
+  constructor( private dashboardService: DashboardService,private route: ActivatedRoute,private loginService: LoginService) {
+  
+    this.userCode=loginService.currentUser.userCode;
 
     if (this.userCode == 'kavinda') {
       this.loadProfilePics();
 
     }
-
+    
     this.dashboardService.getDashboardType(this.userCode).subscribe(response => {
       //console.log(response.json());
       this.dashpara = response.json().dashpara;
@@ -125,17 +113,17 @@ export class DashboardComponent implements OnInit {
 
       //console.log(this.dashpara+" -- "+this.usertype);
 
-      //this.ngLoadDashboard();
+      this.ngLoadDashboard();
       
-      /*
+      
       if (response.json().dashtype == "DB2") {
         this.dashbardLevel1 = true;
         this.dashpara = response.json().dashpara;
         this.usertype = response.json().usertype;
       }
-      */
+      
     }, error => {
-      swal("Error", error.text() , "error");
+      swal("Error", "Error code - 1501 <br> ", "error");
     });
 
     
@@ -146,11 +134,12 @@ export class DashboardComponent implements OnInit {
       this.userpProfileList = response.json();
       //console.log(this.userpProfileList);
     }, error => {
-      swal("Error", error.text() , "error");
+      swal("Error", "Error code - 1502 <br> ", "error");
     });
   }
 
   ngOnInit() { }
+  
   /*
   ngOnInit() {
     this.dashboardService.getDashboard().subscribe(response => {
@@ -184,7 +173,7 @@ export class DashboardComponent implements OnInit {
         //console.log(this.mainRespDto.monthlyTarget);
         //console.log(this.mainRespDto.yearlyTarget);
       }, error => {
-        swal("Error", error.text(), "error");
+        swal("Error", "Error code - 1503 <br> ", "error");
       });
     }
 
@@ -200,7 +189,7 @@ export class DashboardComponent implements OnInit {
         //console.log(this.mainRespDto.cf);
         //console.log(this.mainRespDto.cfC);
       }, error => {
-        swal("Error", error.text(), "error");
+        swal("Error", "Error code - 1504 <br> ", "error");
         document.onkeydown = function (e) { return true; }
       });
     }
@@ -215,7 +204,7 @@ export class DashboardComponent implements OnInit {
         //console.log(this.mainRespDto.gwp);
         //console.log(this.mainRespDto.gwpC);
       }, error => {
-        swal("Error", error.text(), "error");
+        swal("Error", "Error code - 1505 <br> ", "error");
       });
 
       this.dashboardService.getMCFPAndMCFPC(this.dashpara, this.usertype).subscribe(response => {
@@ -226,7 +215,7 @@ export class DashboardComponent implements OnInit {
         //console.log(this.mainRespDto.mcfp);
         //console.log(this.mainRespDto.mcfpC);
       }, error => {
-        swal("Error", error.text(), "error");
+        swal("Error", "Error code - 1506 <br> ", "error");
       });
 
       this.dashboardService.getFYPAndFYPC(this.dashpara, this.usertype).subscribe(response => {
@@ -237,7 +226,7 @@ export class DashboardComponent implements OnInit {
         //console.log(this.mainRespDto.fyp);
         //console.log(this.mainRespDto.fypC);
       }, error => {
-        swal("Error", error.text(), "error");
+        swal("Error", "Error code - 1507 <br> ", "error");
       });
 
       this.dashboardService.getNOPAndNOPC(this.dashpara, this.usertype).subscribe(response => {
@@ -248,13 +237,13 @@ export class DashboardComponent implements OnInit {
         //console.log(this.mainRespDto.nop);
         //console.log(this.mainRespDto.nopC);
       }, error => {
-        swal("Error", error.text() , "error");
+        swal("Error", "Error code - 1508 <br> ", "error");
       });
 
       this.dashboardService.getRINY(this.dashpara, this.usertype).subscribe(response => {
         this.mainRespDto.riny1 = response.json();
       }, error => {
-        swal("Error", error.text() , "error");
+        swal("Error", "Error code - 1509 <br> ", "error");
       });
 
       this.dashboardService.getPolicySummery(this.dashpara, this.usertype).subscribe(response => {
@@ -274,7 +263,7 @@ export class DashboardComponent implements OnInit {
         this.name5 = this.mainRespDto.policySummery[4].name;
         this.name6 = this.mainRespDto.policySummery[5].name;
       }, error => {
-        swal("Error", error.text() , "error");
+        swal("Error", "Error code - 1510 <br> ", "error");
       });
 
     }
@@ -284,14 +273,14 @@ export class DashboardComponent implements OnInit {
         this.mainRespDto.duePolicieList = response.json();
         //console.log(this.mainRespDto.duePolicieList);
       }, error => {
-        swal("Error", error.text() , "error");
+        swal("Error", "Error code - 1511 <br> ", "error");
       });
   
       this.dashboardService.getPendingPolicies(this.dashpara, this.usertype).subscribe(response => {
         this.mainRespDto.pendingPolList = response.json();
         //console.log(this.mainRespDto.duePolicieList);
       }, error => {
-        swal("Error", error.text() , "error");
+        swal("Error", "Error code - 1512 <br> ", "error");
       });
     }
     
@@ -300,21 +289,21 @@ export class DashboardComponent implements OnInit {
       this.mainRespDto.ic = response.json();
       //console.log(this.mainRespDto.ic);
     }, error => {
-      swal("Error", error.text() , "error");
+      swal("Error", "Error code - 1513 <br> ", "error");
     });
 
     this.dashboardService.getTopIS().subscribe(response => {
       this.mainRespDto.is = response.json();
       //console.log(this.mainRespDto.is);
     }, error => {
-      swal("Error", error.text() , "error");
+      swal("Error", "Error code - 1514 <br> ", "error");
     });
 
     this.dashboardService.getTopUL().subscribe(response => {
       this.mainRespDto.ul = response.json();
       //console.log(this.mainRespDto.ul);
     }, error => {
-      swal("Error", error.text() , "error");
+      swal("Error", "Error code - 1515 <br> ", "error");
     });
 
 
@@ -537,7 +526,7 @@ export class DashboardComponent implements OnInit {
       })
 
     }, error => {
-      swal("Error", error.text(), "error");
+      swal("Error", "Error code - 1516 <br> ", "error");
     });
   }
 
@@ -546,7 +535,7 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.approveImage(e).subscribe(response => {
       this.userpProfileList = response.json();
     }, error => {
-      swal("Error", error.text(), "error");
+      swal("Error", "Error code - 1517 <br> ", "error");
     });
   }
 
@@ -555,7 +544,7 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.rejectImage(e).subscribe(response => {
       this.userpProfileList = response.json();
     }, error => {
-      swal("Error", error.text(), "error");
+      swal("Error", "Error code - 1518 <br> ", "error");
     });
   }
 

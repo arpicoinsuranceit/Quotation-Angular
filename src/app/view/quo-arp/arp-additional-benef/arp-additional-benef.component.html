@@ -1370,8 +1370,25 @@
 
   <div class="header_div navbar-static-bottom" style="height: 50px;">
     <input type="button" class="btn btn-info" value="Shedule" style="margin-top: 7px; margin-left: 10px; background: rgb(59,103,158);"
-      (click)="openModal(template)">
+      (click)="shedule()">
   </div>
+
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Modal title</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>One fine body&hellip;</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+  </ng-template>
+  
 
 
 </div>

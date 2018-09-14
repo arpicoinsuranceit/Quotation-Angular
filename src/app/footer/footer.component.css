@@ -27,7 +27,7 @@ footer {
   text-align: center
 }
 
-@media screen and (max-width: 991px) {
+/* @media screen and (max-width: 991px) {
     footer {
       visibility: hidden;
       clear: both;
@@ -36,7 +36,7 @@ footer {
       width: 28%;
       display: none;
     }
-  }
+  } */
 
 
 

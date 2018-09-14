@@ -47,12 +47,12 @@
     font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
 }
 .content-div{
-    height: 510px;
+    min-height: 500px;
     margin-top: 40px;
 }
 
 .content-div4{
-    height: 448px;
+    height: 430px;
     margin-top: 40px;
     overflow-y: auto;
 }
@@ -164,6 +164,10 @@
     background-color:rgb(255, 98, 7);
 }
 
+.nav-tabs .nav-link {
+    border: solid 1px #204D74 !important;
+    color: #111;
+}
 
 .nav-tabs .nav-link:hover {
     background-color: #204D74 !important;

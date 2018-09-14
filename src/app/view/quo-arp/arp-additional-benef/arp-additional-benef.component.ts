@@ -8,6 +8,7 @@ import { Component, OnInit, Output, EventEmitter, Input, TemplateRef } from '@an
 import { BenefitsValidations } from '../../../validation/benefitsValidations';
 import { NestedForm } from '../../../model/nested-form';
 import { Children } from '../../../model/childeren';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-arp-additional-benef',
@@ -148,7 +149,7 @@ export class ArpAdditionalBenefComponent implements OnInit {
   @Input() isImgSHCBFCActive = false;
 
   allForms: NestedForm = new NestedForm();
-  activeRiders:string[] = new Array<string>();
+  activeRiders: string[] = new Array<string>();
 
 
   abcForm = new FormGroup({
@@ -398,7 +399,7 @@ export class ArpAdditionalBenefComponent implements OnInit {
   validateHBC = 1;
 
 
-  constructor(private dashService:DashboardService) {
+  constructor(private dashService: DashboardService, private modalService: NgbModal) {
 
     this.loadActiveRiders();
   }
@@ -496,9 +497,9 @@ export class ArpAdditionalBenefComponent implements OnInit {
   @Input() isGetShcbf = false;
   @Input() isGetShcbi = false;
 
-  loadActiveRiders(){
+  loadActiveRiders() {
     this.dashService.loadActiveRiders().subscribe(response => {
-      this.activeRiders=response.json();
+      this.activeRiders = response.json();
     }, error => {
       //swal("Error", "Error code - 1452 <br> ", "error");
       document.onkeydown = function (e) { return true; }
@@ -788,14 +789,14 @@ export class ArpAdditionalBenefComponent implements OnInit {
           child = this._childrens[c];
           if (this.personalInfo.payingterm == 'S') {
             //if (21 - (child._cAge + 0) >= 5) {
-              child._cHbc = true;
+            child._cHbc = true;
             //}
           } else {
             //if (21 - (child._cAge + parseInt(this.personalInfo.payingterm)) >= 5) {
-              child._cHbc = true;
+            child._cHbc = true;
             //}
           }
-          
+
         }
 
         console.log(this._childrens);
@@ -872,13 +873,13 @@ export class ArpAdditionalBenefComponent implements OnInit {
           child = this._childrens[c];
           if (this.personalInfo.payingterm == 'S') {
             //if (21 - (child._cAge + 0) >= 5) {
-              child._cHcbc = true;
-              child._cHrbic = true;
+            child._cHcbc = true;
+            child._cHrbic = true;
             //}
           } else {
             //if (21 - (child._cAge + parseInt(this.personalInfo.payingterm)) >= 5) {
-              child._cHcbc = true;
-              child._cHrbic = true;
+            child._cHcbc = true;
+            child._cHrbic = true;
             //}
           }
 
@@ -987,13 +988,13 @@ export class ArpAdditionalBenefComponent implements OnInit {
           child = this._childrens[c];
           if (this.personalInfo.payingterm == 'S') {
             //if (21 - (child._cAge + 0) >= 5) {
-              child._cHcbc = true;
-              child._cHrbfc = true;
+            child._cHcbc = true;
+            child._cHrbfc = true;
             //}
           } else {
             //if (21 - (child._cAge + parseInt(this.personalInfo.payingterm)) >= 5) {
-              child._cHcbc = true;
-              child._cHrbfc = true;
+            child._cHcbc = true;
+            child._cHrbfc = true;
             //}
           }
 
@@ -1237,13 +1238,13 @@ export class ArpAdditionalBenefComponent implements OnInit {
           child = this._childrens[c];
           if (this.personalInfo.payingterm == 'S') {
             //if (21 - (child._cAge + 0) >= 5) {
-              child._cHcbc = true;
-              child._cSuhrbc = true;
+            child._cHcbc = true;
+            child._cSuhrbc = true;
             //}
           } else {
             //if (21 - (child._cAge + parseInt(this.personalInfo.payingterm)) >= 5) {
-              child._cHcbc = true;
-              child._cSuhrbc = true;
+            child._cHcbc = true;
+            child._cSuhrbc = true;
             //}
           }
 
@@ -1395,12 +1396,12 @@ export class ArpAdditionalBenefComponent implements OnInit {
 
   isActiveWPBS(e) {
     if (e.target.checked) {
-      if(this.absForm.get("CIBS").get("isActice").value || this.absForm.get("BSAS").get("isActice").value || this.absForm.get("FEBS").get("isActice").value){
+      if (this.absForm.get("CIBS").get("isActice").value || this.absForm.get("BSAS").get("isActice").value || this.absForm.get("FEBS").get("isActice").value) {
         this.isImgWPBSGActive = false;
         this.isImgWPBSActive = true;
-        this.onsetBenifAll(e,'WPBS');
-      }else{
-        swal("","SCB,FEBS or CIBS must be get before get WPBS.","warning");
+        this.onsetBenifAll(e, 'WPBS');
+      } else {
+        swal("", "SCB,FEBS or CIBS must be get before get WPBS.", "warning");
         this.absForm.get("WPBS").get("isActice").setValue(false);
       }
     } else {
@@ -3049,50 +3050,54 @@ export class ArpAdditionalBenefComponent implements OnInit {
     }
   }
 
-  shedule(){
+  shedule() {
     this.load(this.summeryInfo._summery.surrenderValHelpers);
   }
 
- 
 
-  load(schedules : SurrenderValHelper[]){  
-    let htmlTxt="<div> dsddsdsd </div>"+
-              "<div styles=\"max-heigh : 50px !important; overflow-y : auto !important;\">"+
-                "<table class=\"table table-striped\" style=\"font-size:10px;overflow-x:auto;\">"+
-                  "<thead style=\"background-color:#0c3da3;color:white;\">"+
-                    "<th>Policy Year</th>"+
-                    "<th>Paid Term</th>"+
-                    "<th>Premium Per Year</th>"+
-                    "<th>Total Premium Paid</th>"+
-                    "<th>Inc:Sum:Assu</th>"+
-                    "<th>Paid Up</th>"+
-                    "<th>Surrender</th>";
-                  "</thead>"+
-                  "<tbody>";
-              
-    for(let s=0; s<schedules.length; s++){
-      let arpShedule : SurrenderValHelper = schedules[s];
-      htmlTxt+="<tr><td>"+arpShedule.polyer+"</td>"
-            +"<td>"+arpShedule.padtrm+"</td>"
-            +"<td>"+arpShedule.prmpyr+"</td>"
-            +"<td>"+arpShedule.prmpad+"</td>"
-            +"<td>"+arpShedule.isumas+"</td>"
-            +"<td>"+arpShedule.paidup+"</td>"
-            +"<td>"+arpShedule.surrnd+"</td>"
-            +"</tr>";
+
+  load(schedules: SurrenderValHelper[]) {
+    let htmlTxt = "<div style=\"max-height : 200px !important; max-width : 500px !important; overflow : auto !important;\">" +
+      "<table class=\"table table-striped\" style=\"font-size:10px;\">" +
+      "<thead style=\"background-color:#0c3da3;color:white;\">" +
+      "<th>Policy Year</th>" +
+      "<th>Paid Term</th>" +
+      "<th>Premium Per Year</th>" +
+      "<th>Total Premium Paid</th>" +
+      "<th>Inc:Sum:Assu</th>" +
+      "<th>Paid Up</th>" +
+      "<th>Surrender</th>";
+    "</thead>" +
+      "<tbody>";
+
+    for (let s = 0; s < schedules.length; s++) {
+      let arpShedule: SurrenderValHelper = schedules[s];
+      htmlTxt += "<tr><td>" + arpShedule.polyer + "</td>"
+        + "<td>" + arpShedule.padtrm + "</td>"
+        + "<td>" + arpShedule.prmpyr + "</td>"
+        + "<td>" + arpShedule.prmpad + "</td>"
+        + "<td>" + arpShedule.isumas + "</td>"
+        + "<td>" + arpShedule.paidup + "</td>"
+        + "<td>" + arpShedule.surrnd + "</td>"
+        + "</tr>";
     }
 
-    htmlTxt+="</tbody></table></div>";
+    htmlTxt += "</tbody></table></div>";
 
     swal({
       title: 'Shedule',
       html: htmlTxt,
       width: 'auto',
       showCancelButton: true,
-      showConfirmButton:false
+      showConfirmButton: false
     });
 
-}
+  }
+  open(content) {
+    this.modalService.open(content);
+  }
+
+  
 
 
 }

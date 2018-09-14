@@ -12,121 +12,127 @@
 </footer>-->
 
 <div style="margin-top: 15px;"  *ngIf="isLog()">
-  <footer class="footer-bs">
-    <div class="row">
-      <div class="col-md-3 footer-brand animated fadeInLeft" style="height: 200px;">
-        <div class="flex-box">
-          <img [src]="ingLogoWhite" class="logo_footer">
-        </div>
-        <p class="footer-header">Vision</p>
-        <p class="para">To be the most trusted and innovative solutions provider for life insurance needs.</p>
-      </div>
-      <div class="col-md-4 footer-nav animated fadeInUp" style="height: 200px;">
-        <h4>Quick Access —</h4>
-        <div class="col-md-6">
-          <ul class="pages">
-            <li *ngIf="productArray.includes('AIP')">
-              <a routerLink="quoaip">AIP</a>
-            </li>
-            <li *ngIf="productArray.includes('ARP')">
-              <a routerLink="quoarp">ARP</a>
-            </li>
-            <li *ngIf="productArray.includes('ASFP')">
-              <a routerLink="quoasfp">ASFP</a>
-            </li>
-            <li *ngIf="productArray.includes('ASIP')">
-              <a routerLink="quosip">ASIP</a>
-            </li>
-            <li *ngIf="productArray.includes('ARTM')">
-              <a routerLink="quoartm">ARTM</a>
-            </li> 
-          </ul>
-        </div>
-        <div class="col-md-6">
-          <ul class="pages">
-            <li *ngIf="productArray.includes('ATRM')">
-              <a routerLink="quoatrm">ATRM</a>
-            </li>
-            <li *ngIf="productArray.includes('DTA')">
-              <a routerLink="quodta">DTA</a>
-            </li>
-            <li *ngIf="productArray.includes('DTAPL')">
-              <a routerLink="quodtapl">DTAPL</a>
-            </li>
-            <li *ngIf="productArray.includes('END1')">
-              <a routerLink="quoend1">END1</a>
-            </li>
-            <li *ngIf="productArray.includes('INVP')">
-              <a routerLink="quoinvp">INVP</a>
-            </li>
-          </ul>
-        </div>
-        <!--<div class="col-md-6">
-          <ul class="list">
-            <li>
-              <a href="#">About Us</a>
-            </li>
-            <li>
-              <a href="#">Contacts</a>
-            </li>
-            <li>
-              <a href="#">Terms & Condition</a>
-            </li>
-            <li>
-              <a href="#">Privacy Policy</a>
-            </li>
-          </ul>
-        </div>-->
-      </div>
-      <div class="col-md-2 footer-social animated fadeInDown" style="height: 200px;">
-        <h4>Menu —</h4>
-        <ul class="list">
-          <li>
-            <a (click)="loadDashboard()" style="cursor:pointer;">Dashboard</a>
-          </li>
-          <li>
-            <a routerLink="loadQuo">Load Quotations</a>
-          </li>
-          <li>
-            <a routerLink="printQuo">Print Quotation</a>
-          </li>
-          <!--<li>
-            <a routerLink="commitment">Commitment</a>
-          </li>-->
-          <li>
-            <a routerLink="loadinquiries">Inquiries</a>
-          </li>
-        </ul>
-      </div>
-      <div class="col-md-3 footer-ns animated fadeInRight" style="height: 200px;">
-        <h4>Contact Us —</h4>
-
-        <table>
-          <tr class="cntact-tbl-tr">
-            <td colspan="2">No:55/20, Vauxhall Lane, Colombo 02.</td>
-          </tr>
-          <tr class="cntact-tbl-tr">
-            <td><i class="fa fa-phone"> </i></td>
-            <td>00 94 11 5900 900</td>
-          </tr>
-          <tr class="cntact-tbl-tr">
-            <td><i class="fa fa-fax"> </i>  </td>
-            <td>00 94 11 2330 713</td>
-          </tr>
-          <tr class="cntact-tbl-tr">
-            <td><i class="fa fa-envelope">  </i>  </td>
-            <td>info@arpicoinsurance.com</td>
-          </tr>
-
-        </table>
-
-      </div>
-    </div>
-  </footer>
+  
   <section style="text-align:center; margin:10px auto;">
-    <p>Designed by
-      <a href="#">Group IT- Richerd Pieris &amp; Company PLC</a>
+    <p> 
+      <a style="color: white">Group IT- Richerd Pieris &amp; Company PLC</a>
     </p>
+    <footer class="footer-bs">
+        <div class="row">
+          <div class="col-md-3 footer-brand animated fadeInLeft" style="min-height: 200px;">
+            <div class="flex-box">
+              <img [src]="ingLogoWhite" class="logo_footer">
+            </div>
+            <p class="footer-header">Vision</p>
+            <p class="para" style="text-align: center" >To be the most trusted and innovative solutions provider for life insurance needs.</p>
+          </div>
+          <div class="col-md-4 footer-nav animated fadeInUp" style="height: 200px;">
+            <h4>Quick Access —</h4>
+            <div class="col-md-6 col-xs-6">
+              <ul class="pages">
+                <li *ngIf="productArray.includes('AIP')">
+                  <a routerLink="quoaip">AIP</a>
+                </li>
+                <li *ngIf="productArray.includes('ARP')">
+                  <a routerLink="quoarp">ARP</a>
+                </li>
+                <li *ngIf="productArray.includes('ASFP')">
+                  <a routerLink="quoasfp">ASFP</a>
+                </li>
+                <li *ngIf="productArray.includes('ASIP')">
+                  <a routerLink="quosip">ASIP</a>
+                </li>
+                <li *ngIf="productArray.includes('ARTM')">
+                  <a routerLink="quoartm">ARTM</a>
+                </li> 
+              </ul>
+            </div>
+            <div class="col-md-6 col-xs-6">
+              <ul class="pages">
+                <li *ngIf="productArray.includes('ATRM')">
+                  <a routerLink="quoatrm">ATRM</a>
+                </li>
+                <li *ngIf="productArray.includes('DTA')">
+                  <a routerLink="quodta">DTA</a>
+                </li>
+                <li *ngIf="productArray.includes('DTAPL')">
+                  <a routerLink="quodtapl">DTAPL</a>
+                </li>
+                <li *ngIf="productArray.includes('END1')">
+                  <a routerLink="quoend1">END1</a>
+                </li>
+                <li *ngIf="productArray.includes('INVP')">
+                  <a routerLink="quoinvp">INVP</a>
+                </li>
+              </ul>
+            </div>
+            <!--<div class="col-md-6">
+              <ul class="list">
+                <li>
+                  <a href="#">About Us</a>
+                </li>
+                <li>
+                  <a href="#">Contacts</a>
+                </li>
+                <li>
+                  <a href="#">Terms & Condition</a>
+                </li>
+                <li>
+                  <a href="#">Privacy Policy</a>
+                </li>
+              </ul>
+            </div>-->
+          </div>
+          <div class="col-md-2 footer-social" style="height: 200px;">
+            <h4>Menu —</h4>
+            <ul class="list">
+              <li>
+                <a (click)="loadDashboard()" style="cursor:pointer;">Dashboard</a>
+              </li>
+              <li>
+                <a routerLink="loadQuo">Load Quotations</a>
+              </li>
+              <li>
+                <a routerLink="printQuo">Print Quotation</a>
+              </li>
+              <!--<li>
+                <a routerLink="commitment">Commitment</a>
+              </li>-->
+              <li>
+                <a routerLink="loadinquiries">Inquiries</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-3 footer-ns animated fadeInRight" style="height: 200px;">
+            <h4>Contact Us —</h4>
+            <div class="flex-box">
+            <table>
+              <tr class="cntact-tbl-tr">
+                <td colspan="2">No:55/20, Vauxhall Lane, Colombo 02.</td>
+              </tr>
+              <tr class="cntact-tbl-tr">
+                <td><i class="fa fa-phone"> </i></td>
+                <td>00 94 11 5900 900</td>
+              </tr>
+              <tr class="cntact-tbl-tr">
+                <td><i class="fa fa-fax"> </i>  </td>
+                <td>00 94 11 2330 713</td>
+              </tr>
+              <tr class="cntact-tbl-tr">
+                <td><i class="fa fa-envelope">  </i>  </td>
+                <td>info@arpicoinsurance.com</td>
+              </tr>
+    
+            </table>
+            </div>
+    
+          </div>
+        </div>
+      </footer>
+      <p>Designed by
+          <a href="#">Group IT- Richerd Pieris &amp; Company PLC</a>
+        </p>
   </section>
+
 
 </div>

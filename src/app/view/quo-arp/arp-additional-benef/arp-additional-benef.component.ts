@@ -4,7 +4,7 @@ import { CalPersonalInfo, CalPersonalInfoArp } from './../../../model/quoCal';
 import { SummeryInfo } from './../../../model/summeryInfo';
 import { FormGroup, FormControl } from '@angular/forms';
 import swal from 'sweetalert2';
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, TemplateRef } from '@angular/core';
 import { BenefitsValidations } from '../../../validation/benefitsValidations';
 import { NestedForm } from '../../../model/nested-form';
 import { Children } from '../../../model/childeren';
@@ -3053,15 +3053,22 @@ export class ArpAdditionalBenefComponent implements OnInit {
     this.load(this.summeryInfo._summery.surrenderValHelpers);
   }
 
+ 
+
   load(schedules : SurrenderValHelper[]){  
-    let htmlTxt="<table class=\"table table-striped\" style=\"font-size:10px;overflow-x:auto;\"><thead style=\"background-color:#0c3da3;color:white;\">"+
-              "<th>Policy Year</th>"+
-              "<th>Paid Term</th>"+
-              "<th>Premium Per Year</th>"+
-              "<th>Total Premium Paid</th>"+
-              "<th>Inc:Sum:Assu</th>"+
-              "<th>Paid Up</th>"+
-              "<th>Surrender</th>";
+    let htmlTxt="<div> dsddsdsd </div>"+
+              "<div styles=\"max-heigh : 50px !important; overflow-y : auto !important;\">"+
+                "<table class=\"table table-striped\" style=\"font-size:10px;overflow-x:auto;\">"+
+                  "<thead style=\"background-color:#0c3da3;color:white;\">"+
+                    "<th>Policy Year</th>"+
+                    "<th>Paid Term</th>"+
+                    "<th>Premium Per Year</th>"+
+                    "<th>Total Premium Paid</th>"+
+                    "<th>Inc:Sum:Assu</th>"+
+                    "<th>Paid Up</th>"+
+                    "<th>Surrender</th>";
+                  "</thead>"+
+                  "<tbody>";
               
     for(let s=0; s<schedules.length; s++){
       let arpShedule : SurrenderValHelper = schedules[s];
@@ -3075,7 +3082,7 @@ export class ArpAdditionalBenefComponent implements OnInit {
             +"</tr>";
     }
 
-    htmlTxt+="</tbody></table>";
+    htmlTxt+="</tbody></table></div>";
 
     swal({
       title: 'Shedule',

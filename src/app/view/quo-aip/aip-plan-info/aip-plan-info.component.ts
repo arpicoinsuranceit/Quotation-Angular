@@ -77,7 +77,8 @@ export class AipPlanInfoComponent implements OnInit {
 
   load(schedules) {
     let aipSchedules: AipCalSchedule;
-    let htmlTxt = "<table class=\"table table-striped\" style=\"font-size:10px;overflow-x:auto;\"><thead style=\"background-color:#0c3da3;color:white;\"><th>Policy Year</th>" +
+    let htmlTxt ="<div style=\"max-height : 200px !important; max-width : 500px !important; overflow : auto !important;\">" +
+     "<table class=\"table table-striped\" style=\"font-size:10px;overflow-x:auto;\"><thead style=\"background-color:#0c3da3;color:white;\"><th>Policy Year</th>" +
       "<th>Policy Month</th>" +
       "<th>Opening Fee</th>" +
       "<th>ComCon</th>" +
@@ -106,7 +107,7 @@ export class AipPlanInfoComponent implements OnInit {
         + "</tr>";
     }
 
-    htmlTxt += "</tbody></table>";
+    htmlTxt += "</tbody></table></div>";
 
     swal({
       title: 'Shedule',

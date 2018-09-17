@@ -69,4 +69,12 @@
   ::-webkit-scrollbar-thumb:hover {
       background: #555; 
   }
- 
+  .sweet-alert {
+    box-sizing : border-box;
+    max-height : 100% !important;
+    overflow-y : auto !important;
+    padding : 0 17px 17px !important;
+    width : 512px;
+    transform: translate(-50%, -50%);
+    margin: 0;
+}

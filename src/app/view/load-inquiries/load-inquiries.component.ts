@@ -138,7 +138,7 @@ export class LoadInquiriesComponent implements OnInit {
   getDetails(activityInfo) {
 
 
-    if (activityInfo.type == "dblclick") {
+    if (activityInfo.type == "dblclick" || activityInfo.type == "click") {
       this.isDisableDiv = true;
       this.settlementTot = 0;
 
@@ -385,7 +385,10 @@ export class LoadInquiriesComponent implements OnInit {
 
                           let payment: PaymentHistory = new PaymentHistory;
 
-                          payment.date = rsp.date;
+                          let date : string= rsp.date;
+                         
+
+                          payment.date =  date.substr(0, 10);
                           payment.dueAmt = rsp.dueAmt;
                           payment.dueDate = rsp.dueDate;
                           payment.month = rsp.month;

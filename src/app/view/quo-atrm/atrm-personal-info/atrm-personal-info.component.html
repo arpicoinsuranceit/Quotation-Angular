@@ -1,4 +1,4 @@
-<div class="main_div">
+<div class="main_div" style="min-height: 590px;">
     <div class="header_div">
         <h2>Proposal Info</h2>
     </div>
@@ -109,7 +109,7 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="mobile">Mobile:</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" formControlName="mMobile" id="txt-mobile" placeholder="Enter Mobile" name="mobile"
+                                    <input type="text" class="form-control" formControlName="mMobile" id="txt-mobile" placeholder="Enter Mobile" name="mobile"
                                         [(ngModel)]="_personalInfo._mainlife._mMobile" (keyup)="keyup($event)" (blur)="checkValidity()"
                                         (keyup.enter)="checkValidity()">
                                     <div class="alert alert-danger" *ngIf="mainLifeForm.get('mMobile').touched && mainLifeForm.get('mMobile').invalid">

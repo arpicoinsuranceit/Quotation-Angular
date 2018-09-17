@@ -1,8 +1,10 @@
 .mainBody{
-    min-height: 600px;
+    min-height: 620px;
+    
 }
 
 .main_div{
+    height: 590px;
     margin-top: 5px;
     box-shadow: 5px 5px 4px #777777;
 }

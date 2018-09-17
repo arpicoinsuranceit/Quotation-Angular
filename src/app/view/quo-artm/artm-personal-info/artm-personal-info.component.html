@@ -1,4 +1,4 @@
-<div class="main_div">
+<div class="main_div" style="min-height: 590px;">
     <div class="header_div">
         <h2>Proposal Info</h2>
     </div>
@@ -11,7 +11,8 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="email">Title:</label>
                                 <div class="col-sm-10">
-                                    <select class="form-control" formControlName="mTitle" name="mselectTitle" [(ngModel)]="_personalInfo._mainlife._mTitle" (change)="setGender()">
+                                    <select class="form-control" formControlName="mTitle" name="mselectTitle"
+                                        [(ngModel)]="_personalInfo._mainlife._mTitle" (change)="setGender()">
                                         <option value="MR">MR</option>
                                         <option value="MRS">MRS</option>
                                         <option value="MS">MS</option>
@@ -26,7 +27,8 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="insuredName">Insured Name:</label>
                                 <div class="col-sm-10">
-                                    <input type="email" maxlength="200" class="form-control" formControlName="mName" (keyup)="keyup($event)" id="txt-insuredName" placeholder="Enter Insured Name"
+                                    <input type="email" maxlength="200" class="form-control" formControlName="mName"
+                                        (keyup)="keyup($event)" id="txt-insuredName" placeholder="Enter Insured Name"
                                         name="insuredName" [(uppercase)]='_personalInfo._mainlife._mName' [(ngModel)]="_personalInfo._mainlife._mName"
                                         (blur)="checkValidity()" (keyup.enter)="checkValidity()" />
                                     <div class="alert alert-danger" *ngIf="mainLifeForm.get('mName').touched && mainLifeForm.get('mName').invalid">
@@ -36,9 +38,9 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="nic">NIC No:</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" (blur)="nicMain()" (keyup.enter)="nicMain()" formControlName="mNic"
-                                        (keyup)="keyup($event)" id="txt-nic" [(uppercase)]='_personalInfo._mainlife._mNic' placeholder="Enter NIC"
-                                        name="nic" [(ngModel)]="_personalInfo._mainlife._mNic">
+                                    <input type="email" class="form-control" (blur)="nicMain()" (keyup.enter)="nicMain()"
+                                        formControlName="mNic" (keyup)="keyup($event)" id="txt-nic" [(uppercase)]='_personalInfo._mainlife._mNic'
+                                        placeholder="Enter NIC" name="nic" [(ngModel)]="_personalInfo._mainlife._mNic">
                                     <div class="alert alert-danger" *ngIf="mainLifeForm.get('mNic').touched && mainLifeForm.get('mNic').invalid">
                                         Valid Nic Number is Required</div>
                                 </div>
@@ -46,16 +48,17 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="email">Email:</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" formControlName="mEmail" (keyup)="keyup($event)" id="txt-email" placeholder="Enter email"
-                                        name="email" [(ngModel)]="_personalInfo._mainlife._mEmail" (blur)="checkValidity()" (keyup.enter)="checkValidity()">
+                                    <input type="email" class="form-control" formControlName="mEmail" (keyup)="keyup($event)"
+                                        id="txt-email" placeholder="Enter email" name="email" [(ngModel)]="_personalInfo._mainlife._mEmail"
+                                        (blur)="checkValidity()" (keyup.enter)="checkValidity()">
                                     <div class="alert alert-danger" *ngIf="mainLifeForm.get('mEmail').touched && mainLifeForm.get('mEmail').invalid">
                                         Valid Email is Required</div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="gender">Gender:</label>
-                                <div class="col-sm-10 btn-group" ngbRadioGroup formControlName="mGender" name="radioGender" [(ngModel)]="_personalInfo._mainlife._mGender"
-                                    (change)="check()">
+                                <div class="col-sm-10 btn-group" ngbRadioGroup formControlName="mGender" name="radioGender"
+                                    [(ngModel)]="_personalInfo._mainlife._mGender" (change)="check()">
                                     <label ngbButtonLabel class="btn-primary">
                                         <input ngbButton type="radio" value="M" (click)="canChangeGender()"> Male
                                     </label>
@@ -66,8 +69,8 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="gender">Civil Status:</label>
-                                <div class="col-sm-10 btn-group" ngbRadioGroup formControlName="mCivilStatus" name="radioStatus" [(ngModel)]="_personalInfo._mainlife._mCivilStatus"
-                                    (change)="check()">
+                                <div class="col-sm-10 btn-group" ngbRadioGroup formControlName="mCivilStatus" name="radioStatus"
+                                    [(ngModel)]="_personalInfo._mainlife._mCivilStatus" (change)="check()">
                                     <label ngbButtonLabel class="btn-primary">
                                         <input ngbButton type="radio" value="S" (click)="resetActivation()"> Single
                                     </label>
@@ -82,23 +85,25 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="dob">Date of Birth:</label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" formControlName="mDob" id="date-dob" name="date-dob" (keyup)="keyup($event)" [(ngModel)]="_personalInfo._mainlife._mDob"
-                                        (blur)="calculateAgeM(e)" (keyup.enter)="calculateAgeM()" placeholder="DD-MM-YYYY">
+                                    <input type="text" class="form-control" formControlName="mDob" id="date-dob" name="date-dob"
+                                        (keyup)="keyup($event)" [(ngModel)]="_personalInfo._mainlife._mDob" (blur)="calculateAgeM(e)"
+                                        (keyup.enter)="calculateAgeM()" placeholder="DD-MM-YYYY">
                                     <div class="alert alert-danger" *ngIf="mainLifeForm.get('mDob').touched && mainLifeForm.get('mDob').invalid">
                                         Invalid Date Format</div>
                                 </div>
                                 <label class="control-label col-sm-2" for="age">Age:</label>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control" id="txt-age" formControlName="mAge" name="txt-age" placeholder="0" [(ngModel)]="_personalInfo._mainlife._mAge"
-                                        (change)="check()" disabled>
+                                    <input type="text" class="form-control" id="txt-age" formControlName="mAge" name="txt-age"
+                                        placeholder="0" [(ngModel)]="_personalInfo._mainlife._mAge" (change)="check()"
+                                        disabled>
                                     <div class="alert alert-danger" *ngIf="_personalInfo._mainlife._mAge>66 || _personalInfo._mainlife._mAge < 17">
                                         InValid</div>
                                 </div>
                             </div>
                             <div class="form-group" style="display:none;">
                                 <label class="control-label col-sm-2" for="smoke">Smoking:</label>
-                                <div class="col-sm-10 btn-group" ngbRadioGroup formControlName="mSmoking" name="radioSmoke" (blur)="checkValidity()" (keyup.enter)="checkValidity()"
-                                    [(ngModel)]="_personalInfo._mainlife._mSmoking">
+                                <div class="col-sm-10 btn-group" ngbRadioGroup formControlName="mSmoking" name="radioSmoke"
+                                    (blur)="checkValidity()" (keyup.enter)="checkValidity()" [(ngModel)]="_personalInfo._mainlife._mSmoking">
                                     <label ngbButtonLabel class="btn-primary">
                                         <input ngbButton type="radio" value="Yes"> Yes
                                     </label>
@@ -110,9 +115,9 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="mobile">Mobile:</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" formControlName="mMobile" id="txt-mobile" (keyup)="keyup($event)" placeholder="Enter Mobile"
-                                        name="mobile" [(ngModel)]="_personalInfo._mainlife._mMobile" (blur)="checkValidity()"
-                                        (keyup.enter)="checkValidity()">
+                                    <input type="text" class="form-control" formControlName="mMobile" id="txt-mobile"
+                                        (keyup)="keyup($event)" placeholder="Enter Mobile" name="mobile" [(ngModel)]="_personalInfo._mainlife._mMobile"
+                                        (blur)="checkValidity()" (keyup.enter)="checkValidity()">
                                     <div class="alert alert-danger" *ngIf="mainLifeForm.get('mMobile').touched && mainLifeForm.get('mMobile').invalid">
                                         Valid Mobile Number is Required</div>
 
@@ -122,9 +127,11 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="occupation">Occ. Cat:</label>
                                 <div class="col-sm-10">
-                                    <select class="form-control" name="select-occu" formControlName="mOccu" (blur)="checkValidity()" (keyup.enter)="checkValidity()"
-                                        [(ngModel)]="_personalInfo._mainlife._mOccupation" (change)="check()">
-                                        <option *ngFor="let occupation of ocupations" [attr.value]="occupation.ocupationid" [selected]="occupation.ocupationid == _personalInfo._mainlife._mOccupation">
+                                    <select class="form-control" name="select-occu" formControlName="mOccu" (blur)="checkValidity()"
+                                        (keyup.enter)="checkValidity()" [(ngModel)]="_personalInfo._mainlife._mOccupation"
+                                        (change)="check()">
+                                        <option *ngFor="let occupation of ocupations" [attr.value]="occupation.ocupationid"
+                                            [selected]="occupation.ocupationid == _personalInfo._mainlife._mOccupation">
                                             {{occupation.ocupationName}}
                                         </option>
                                     </select>
@@ -141,8 +148,8 @@
                         <form [formGroup]="spouseForm" class="form-horizontal">
                             <div class="form-group">
                                 <label class="control-label col-sm-2">Spouse Active:</label>
-                                <div class="col-sm-10 btn-group" ngbRadioGroup name="radioSpouse" formControlName="sActive" [(ngModel)]="activeSp" (change)="checkSp()"
-                                    (change)="activeS()">
+                                <div class="col-sm-10 btn-group" ngbRadioGroup name="radioSpouse" formControlName="sActive"
+                                    [(ngModel)]="activeSp" (change)="checkSp()" (change)="activeS()">
                                     <label ngbButtonLabel class="btn-primary">
                                         <input ngbButton type="radio" value="1"> Yes
                                     </label>
@@ -155,7 +162,8 @@
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="stitle">Title:</label>
                                     <div class="col-sm-10">
-                                        <select class="form-control" name="selectTitle" formControlName="sTitle" [(ngModel)]="_personalInfo._spouse._sTitle" (change)="checkTitle()">
+                                        <select class="form-control" name="selectTitle" formControlName="sTitle"
+                                            [(ngModel)]="_personalInfo._spouse._sTitle" (change)="checkTitle()">
                                             <option value="MR">MR</option>
                                             <option value="MRS">MRS</option>
                                             <option value="MS">MS</option>
@@ -170,8 +178,9 @@
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="spouseName">Spouse Name:</label>
                                     <div class="col-sm-10">
-                                        <input type="email" maxlength="200" class="form-control" [(uppercase)]='_personalInfo._spouse._sName' formControlName="sName" (keyup)="keyup($event)"
-                                            id="txt-spouseName" [(ngModel)]="_personalInfo._spouse._sName" placeholder="Enter Spouse Name"
+                                        <input type="email" maxlength="200" class="form-control" [(uppercase)]='_personalInfo._spouse._sName'
+                                            formControlName="sName" (keyup)="keyup($event)" id="txt-spouseName"
+                                            [(ngModel)]="_personalInfo._spouse._sName" placeholder="Enter Spouse Name"
                                             name="txt-spouseName" (blur)="checkValidity()" />
                                         <div class="alert alert-danger" *ngIf="spouseForm.get('sName').touched && spouseForm.get('sName').invalid">
                                             Valid Nic Number is Required</div>
@@ -180,18 +189,18 @@
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="nic">NIC No:</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" formControlName="sNic" (keyup)="keyup($event)" id="txt-snic" placeholder="Enter NIC"
-                                            [(ngModel)]="_personalInfo._spouse._sNic" name="txt-spouseNIC" [(uppercase)]='_personalInfo._spouse._sNic'
-                                            (keyup.enter)="nicSpouse()" (blur)="nicSpouse()"
-                                        />
+                                        <input type="text" class="form-control" formControlName="sNic" (keyup)="keyup($event)"
+                                            id="txt-snic" placeholder="Enter NIC" [(ngModel)]="_personalInfo._spouse._sNic"
+                                            name="txt-spouseNIC" [(uppercase)]='_personalInfo._spouse._sNic'
+                                            (keyup.enter)="nicSpouse()" (blur)="nicSpouse()" />
                                         <div class="alert alert-danger" *ngIf="spouseForm.get('sNic').touched && spouseForm.get('sNic').invalid">
                                             Valid Nic Number is Required</div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="gender">Gender:</label>
-                                    <div class="col-sm-10 btn-group" ngbRadioGroup formControlName="sGender" name="radioGenderS" [(ngModel)]="_personalInfo._spouse._sGender"
-                                        (change)="checkSp()">
+                                    <div class="col-sm-10 btn-group" ngbRadioGroup formControlName="sGender" name="radioGenderS"
+                                        [(ngModel)]="_personalInfo._spouse._sGender" (change)="checkSp()">
                                         <label ngbButtonLabel class="btn-primary">
                                             <input ngbButton type="radio" value="M" onclick="return false"> Male
                                         </label>
@@ -204,22 +213,25 @@
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="dob">Date of Birth:</label>
                                     <div class="col-sm-5">
-                                        <input type="text" class="form-control" formControlName="sDob" (keyup)="keyup($event)" id="date-sdob" [(ngModel)]="_personalInfo._spouse._sDob"
-                                            (blur)="calculateAgeS(e)" (keyup.enter)="calculateAgeS(e)" name="txt-spouseDob" placeholder="DD-MM-YYYY">
+                                        <input type="text" class="form-control" formControlName="sDob" (keyup)="keyup($event)"
+                                            id="date-sdob" [(ngModel)]="_personalInfo._spouse._sDob" (blur)="calculateAgeS(e)"
+                                            (keyup.enter)="calculateAgeS(e)" name="txt-spouseDob" placeholder="DD-MM-YYYY">
                                         <div class="alert alert-danger" *ngIf="spouseForm.get('sDob').touched && spouseForm.get('sDob').invalid">
                                             Invalid Date Format</div>
                                     </div>
                                     <label class="control-label col-sm-2" for="age">Age:</label>
                                     <div class="col-sm-3">
-                                        <input type="text" class="form-control" formControlName="sAge" id="txt-sage" placeholder="0" [(ngModel)]="_personalInfo._spouse._sAge"
-                                            name="txt-sAge" (change)="checkSp()" disabled>
+                                        <input type="text" class="form-control" formControlName="sAge" id="txt-sage"
+                                            placeholder="0" [(ngModel)]="_personalInfo._spouse._sAge" name="txt-sAge"
+                                            (change)="checkSp()" disabled>
                                         <div class="alert alert-danger" *ngIf="_personalInfo._spouse._sAge > 66 || _personalInfo._spouse._sAge < 17">
                                             InValid</div>
                                     </div>
                                 </div>
                                 <div class="form-group" style="display:none;">
                                     <label class="control-label col-sm-2" for="smoking">Smoking:</label>
-                                    <div class="col-sm-10 btn-group" ngbRadioGroup formControlName="sSmoking" name="radioSmoking" [(ngModel)]="_personalInfo._spouse._sSmoking">
+                                    <div class="col-sm-10 btn-group" ngbRadioGroup formControlName="sSmoking" name="radioSmoking"
+                                        [(ngModel)]="_personalInfo._spouse._sSmoking">
                                         <label ngbButtonLabel class="btn-primary">
                                             <input ngbButton type="radio" value="Yes"> Yes
                                         </label>
@@ -232,8 +244,10 @@
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="occupation">Occ. Cat:</label>
                                     <div class="col-sm-10">
-                                        <select class="form-control" name="selectOccu" formControlName="sOccu" [(ngModel)]="_personalInfo._spouse._sOccupation" (change)="checkSp(e)">
-                                            <option *ngFor="let occupation of ocupations" [attr.value]="occupation.ocupationid" [selected]="occupation.ocupationid == _personalInfo._spouse._sOccupation">
+                                        <select class="form-control" name="selectOccu" formControlName="sOccu"
+                                            [(ngModel)]="_personalInfo._spouse._sOccupation" (change)="checkSp(e)">
+                                            <option *ngFor="let occupation of ocupations" [attr.value]="occupation.ocupationid"
+                                                [selected]="occupation.ocupationid == _personalInfo._spouse._sOccupation">
                                                 {{occupation.ocupationName}}
                                             </option>
                                         </select>
@@ -252,7 +266,8 @@
                         <form class="form-horizontal">
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="childrenActive">Children Active:</label>
-                                <div class="col-sm-10 btn-group" ngbRadioGroup name="radioChildren" [(ngModel)]="activeCh" (change)="activeC()">
+                                <div class="col-sm-10 btn-group" ngbRadioGroup name="radioChildren" [(ngModel)]="activeCh"
+                                    (change)="activeC()">
                                     <label ngbButtonLabel class="btn-primary">
                                         <input ngbButton type="radio" value="1"> Yes
                                     </label>
@@ -266,7 +281,8 @@
                                     <div class="form-group">
                                         <label class="control-label col-sm-2" for="title">Title:</label>
                                         <div class="col-sm-10">
-                                            <select class="form-control" name="selectCTitle" id="selectOTitle" [(ngModel)]="_children._cTitle">
+                                            <select class="form-control" name="selectCTitle" id="selectOTitle"
+                                                [(ngModel)]="_children._cTitle">
                                                 <option value="M">Son</option>
                                                 <option value="F">Daughter</option>
                                             </select>
@@ -275,19 +291,22 @@
                                     <div class="form-group">
                                         <label class="control-label col-sm-2" for="childName">Name:</label>
                                         <div class="col-sm-10">
-                                            <input type="email" maxlength="200" [(uppercase)]='_children._cName' class="form-control" id="txt-childName" placeholder="Enter Name" name="txt-childName"
+                                            <input type="email" maxlength="200" [(uppercase)]='_children._cName' class="form-control"
+                                                id="txt-childName" placeholder="Enter Name" name="txt-childName"
                                                 [(ngModel)]="_children._cName" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-sm-2" for="dob">Date of Birth:</label>
                                         <div class="col-sm-5">
-                                            <input type="text" class="form-control" placeholder="DD-MM-YYYY" id="date-cdob" name="date-cdob" [(ngModel)]="_children._cDob"
-                                                (blur)="calculateAgeC(e)" (keyup.enter)="calculateAgeC(e)">
+                                            <input type="text" class="form-control" placeholder="DD-MM-YYYY" id="date-cdob"
+                                                name="date-cdob" [(ngModel)]="_children._cDob" (blur)="calculateAgeC(e)"
+                                                (keyup.enter)="calculateAgeC(e)">
                                         </div>
                                         <label class="control-label col-sm-2" for="age">Age:</label>
                                         <div class="col-sm-3">
-                                            <input type="text" class="form-control" id="txt-cage" placeholder="0" name="txt-cAge" [(ngModel)]="_children._cAge" disabled>
+                                            <input type="text" class="form-control" id="txt-cage" placeholder="0" name="txt-cAge"
+                                                [(ngModel)]="_children._cAge" disabled>
 
 
                                             <div class="alert alert-danger" *ngIf="_children._cAge<1 || _children._cAge>18 ">
@@ -296,7 +315,8 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-3">
-                                            <input type="button" class="btn btn-info" id="btn_add" value="Add Child" (click)="addChild(e)">
+                                            <input type="button" class="btn btn-info" id="btn_add" value="Add Child"
+                                                (click)="addChild(e)">
                                         </div>
                                     </div>
 
@@ -343,72 +363,76 @@
 
 
                             <div class="form-group">
-                              <label class="control-label col-sm-2" for="txt-retAge" style="text-align: left;">Retirement Age:</label>
-                              <div class="col-sm-10">
-                                <input type="number" class="form-control" oninput="this.value=this.value.replace(/[^0-9]/g,'');" id="txt-retAge" [(ngModel)]="_personalInfo._plan.retAge"
-                                  (keyup.enter)="change($event)" (blur)="change($event)"
-                                  name="txt-retAge" (keyup)="keyup($event)">
-                                <div class="alert alert-danger" *ngIf="_personalInfo._plan.retAge < 40">
-                                  Retirement Age must be greater than or equal 40</div>
-                                <div class="alert alert-danger" *ngIf="_personalInfo._plan.retAge > 65">
-                                  Retirement Age must be less than or equal 65</div>
-                              </div>
+                                <label class="control-label col-sm-2" for="txt-retAge" style="text-align: left;">Retirement
+                                    Age:</label>
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control" oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+                                        id="txt-retAge" [(ngModel)]="_personalInfo._plan.retAge" (keyup.enter)="change($event)"
+                                        (blur)="change($event)" name="txt-retAge" (keyup)="keyup($event)">
+                                    <div class="alert alert-danger" *ngIf="_personalInfo._plan.retAge < 40">
+                                        Retirement Age must be greater than or equal 40</div>
+                                    <div class="alert alert-danger" *ngIf="_personalInfo._plan.retAge > 65">
+                                        Retirement Age must be less than or equal 65</div>
+                                </div>
                             </div>
-                      
+
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="frequency">Frequency:</label>
                                 <div class="col-sm-10 switch-field">
-                                  <select class="form-control" name="select_type" [(ngModel)]="_personalInfo._plan._frequance" (change)="change($event)">
-                                    <option value="Monthly">Monthly</option>
-                                    <option value="Quartaly">Quartaly</option>
-                                    <option value="Half Yearly">Half Yearly</option>
-                                    <option value="Yearly">Yearly</option>
-                                    <option value="Single Premium">Single Premium</option>
-                                  </select>
+                                    <select class="form-control" name="select_type" [(ngModel)]="_personalInfo._plan._frequance"
+                                        (change)="change($event)">
+                                        <option value="Monthly">Monthly</option>
+                                        <option value="Quartaly">Quartaly</option>
+                                        <option value="Half Yearly">Half Yearly</option>
+                                        <option value="Yearly">Yearly</option>
+                                        <option value="Single Premium">Single Premium</option>
+                                    </select>
                                 </div>
-                              </div>
-                      
-                              <div class="form-group">
-                                  <label class="control-label col-sm-2" for="txt-payterm" style="text-align: left;">Paying Term:</label>
-                                  <div class="col-sm-10">
-                                    <input type="number" class="form-control" oninput="this.value=this.value.replace(/[^0-9]/g,'');" id="txt-payterm" [(ngModel)]="_personalInfo._plan._payingterm"
-                                      (keyup.enter)="change($event)" (blur)="change($event)"
-                                      name="txt-payterm" (keyup)="keyup($event)">
-                                  </div>
-                                </div>
-                      
-                            <div class="form-group">
-                              <label class="control-label col-sm-2" for="term" style="text-align: left;">Policy Term:</label>
-                              <div class="col-sm-10">
-                                <input type="number" class="form-control" oninput="this.value=this.value.replace(/[^0-9]/g,'');" id="txt-term" [(ngModel)]="_personalInfo._plan._term"
-                                  (keyup.enter)="change($event)" (blur)="change($event)"
-                                  name="txt-term" (keyup)="keyup($event)" readonly>
-                              </div>
                             </div>
-                      
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="txt-payterm" style="text-align: left;">Paying
+                                    Term:</label>
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control" oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+                                        id="txt-payterm" [(ngModel)]="_personalInfo._plan._payingterm" (keyup.enter)="change($event)"
+                                        (blur)="change($event)" name="txt-payterm" (keyup)="keyup($event)">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="term" style="text-align: left;">Policy Term:</label>
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control" oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+                                        id="txt-term" [(ngModel)]="_personalInfo._plan._term" (keyup.enter)="change($event)"
+                                        (blur)="change($event)" name="txt-term" (keyup)="keyup($event)" readonly>
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="frequency">Pension Paying Period:</label>
                                 <div class="col-sm-10 switch-field">
-                                  <select class="form-control" name="select_period" [(ngModel)]="_personalInfo._plan.pensionPaingTerm" (change)="change($event)">
-                                    <option value="10">10</option>
-                                    <option value="15">15</option>
-                                    <option value="20">20</option>
-                                  </select>
+                                    <select class="form-control" name="select_period" [(ngModel)]="_personalInfo._plan.pensionPaingTerm"
+                                        (change)="change($event)">
+                                        <option value="10">10</option>
+                                        <option value="15">15</option>
+                                        <option value="20">20</option>
+                                    </select>
                                 </div>
-                              </div>
-                      
-                            <div class="form-group">
-                              <label class="control-label col-sm-2" for="bsa">Contribution:</label>
-                              <div class="col-sm-10">
-                                <input type="number" class="form-control" id="txt-Contribution" oninput="this.value=this.value.replace(/[^0-9]/g,'');" [(ngModel)]="_personalInfo._plan._bsa"
-                                  (blur)="change($event)" (keyup.enter)="change($event)"
-                                  name="txt-Contribution" (keyup)="keyup($event)" currencyMask>
-                                <div class="alert alert-danger" *ngIf="_personalInfo._plan._bsa < 3000">
-                                    Contribution must be greater than or equal Rs.3000</div>
-                              </div>
                             </div>
-                          </form>
-                      
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="bsa">Contribution:</label>
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control" id="txt-Contribution" oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+                                        [(ngModel)]="_personalInfo._plan._bsa" (blur)="change($event)" (keyup.enter)="change($event)"
+                                        name="txt-Contribution" (keyup)="keyup($event)" currencyMask>
+                                    <div class="alert alert-danger" *ngIf="_personalInfo._plan._bsa < 3000">
+                                        Contribution must be greater than or equal Rs.3000</div>
+                                </div>
+                            </div>
+                        </form>
+
                     </div>
                 </ng-template>
             </ngb-tab>

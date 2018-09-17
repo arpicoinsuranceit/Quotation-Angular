@@ -149,7 +149,7 @@ export class DashboardService {
     let respArr: Array<string> = resp.split("/");
     let url = "http://localhost:8085/mcfpReport";
 
-    for (var _i = 5; _i < respArr.length; _i++) {
+    for (var _i = 4; _i < respArr.length; _i++) {
       var text = respArr[_i];
       var encodedString = btoa(text);
       url += "/" + encodedString;

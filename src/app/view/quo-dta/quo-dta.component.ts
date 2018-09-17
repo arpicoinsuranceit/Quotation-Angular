@@ -474,7 +474,10 @@ export class QuoDtaComponent implements OnInit {
   editCal() {
     this.saveDtaQuotationService.getDtaQuotationDetailsForEdit(this.qdId).subscribe(response => {
 
+      let phone : string = response.json()._mainlife._mMobile;
+
       this._mainLife = response.json()._mainlife;
+      this._mainLife._mMobile = phone.substr(1,9); 
       this._plan = response.json()._plan;
       this._spouse = response.json()._spouse;
 

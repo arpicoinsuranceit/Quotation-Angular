@@ -108,8 +108,9 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="mobile">Mobile:</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" formControlName="mMobile" id="txt-mobile" placeholder="Enter Mobile" name="mobile"
+                                <div class="col-sm-10 input-group" style="padding-left: 15px; padding-right: 15px;">
+                                        <span class="input-group-addon" id="basic-addon1">+94</span>
+                                    <input type="number" class="form-control" formControlName="mMobile" id="txt-mobile" placeholder="Enter Mobile" name="mobile"
                                         [(ngModel)]="_personalInfo._mainlife._mMobile" (keyup)="keyup($event)" (blur)="checkValidity()"
                                         (keyup.enter)="checkValidity()">
                                     <div class="alert alert-danger" *ngIf="mainLifeForm.get('mMobile').touched && mainLifeForm.get('mMobile').invalid">

@@ -70,16 +70,9 @@ export class PrintQuoComponent implements OnInit {
 
   printQuoDetails(){
     this.viewQuoService.printQuotation(this.quotationDetails.quotationDetId).subscribe(response => {
-      let resp:Response;
-      
-      resp=response;
-      let arr:ArrayBuffer;
+      var fileURL = URL.createObjectURL(response);
+      window.open(fileURL); // if you want to open it in new tab
 
-      var file = new Blob([response], {type: 'application/pdf'});
-      var fileURL = URL.createObjectURL(file);
-
-      window.open(resp.url);
-      
     }, error => {
       console.log(error.status);
       if(error.status == 405){

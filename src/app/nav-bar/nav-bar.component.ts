@@ -33,14 +33,16 @@ export class NavBarComponent implements OnInit {
 
   constructor(private loginService: LoginService, private agentService: AgentService, private dashboardService: DashboardService,
     ) {
-    this.agentService.getImage()
-      .subscribe((data) => {
-        this.imgUserUrl = this.imageType + data.content;
-      }, error => {
-        this.imgUserUrl = "assets/images/dummy.png";
-        //swal("Error", "Error code - 1451 <br> ", "error");
-        document.onkeydown = function (e) { return true; }
-      });
+      if (this.loginService.isLoggedIn()) {
+        this.agentService.getImage()
+          .subscribe((data) => {
+            this.imgUserUrl = this.imageType + data.content;
+          }, error => {
+            this.imgUserUrl = "assets/images/dummy.png";
+            //swal("Error", "Error code - 1451 <br> ", "error");
+            document.onkeydown = function (e) { return true; }
+          });
+      }
 
     this.init();
     this.loadActiveProducts();
@@ -59,19 +61,21 @@ export class NavBarComponent implements OnInit {
   }
 
   init() {
-    this.userType = sessionStorage.getItem("userType");
-    this.dashboardService.getDashboardType(this.dashboardService.userCode).subscribe(response => {
-      this.userType = response.json().usertype;
-      this.dashPara = response.json().dashpara;
-      this.dashParam = new Array();
-      this.dashParam = this.dashPara.split(",");
-      console.log(" -------------------------- ");
-      console.log(this.dashParam);
-      console.log(this.userType);
-    }, error => {
-      //swal("Error", "Error code - 1452 <br> ", "error");
-      document.onkeydown = function (e) { return true; }
-    });
+    if (this.loginService.isLoggedIn()) {
+      this.userType = sessionStorage.getItem("userType");
+      this.dashboardService.getDashboardType(this.dashboardService.userCode).subscribe(response => {
+        this.userType = response.json().usertype;
+        this.dashPara = response.json().dashpara;
+        this.dashParam = new Array();
+        this.dashParam = this.dashPara.split(",");
+        console.log(" -------------------------- ");
+        console.log(this.dashParam);
+        console.log(this.userType);
+      }, error => {
+        //swal("Error", "Error code - 1452 <br> ", "error");
+        document.onkeydown = function (e) { return true; }
+      });
+    }
 
 
   }
@@ -164,9 +168,12 @@ export class NavBarComponent implements OnInit {
           console.log(map.get('branch'));
         }
 
-        if (this.dashboardService.getMcfpReport(map.get('fromDate'), map.get('toDate'), map.get('branch'), map.get('advisor'), status)) {
-          this.lockReports = false;
-        }
+        this.dashboardService.getMcfpReport(map.get('fromDate'), map.get('toDate'), map.get('branch'), map.get('advisor'), status).subscribe(
+          (res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+        });
       }
     });
   }
@@ -276,10 +283,12 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("fromDate"), 'fromDate', map);
           this.getInputValues(document.getElementById("frequencyCombo"), 'frequency', map);
 
-          if (this.dashboardService.getProposalRegister(map.get('fromDate'), map.get('toDate'), "ALL", "ALL", "ALL", sessionStorage.getItem("Token"), map.get('frequency'), status)) {
-
-            this.lockReports = false;
-          }
+          this.dashboardService.getProposalRegister(map.get('fromDate'), map.get('toDate'), "ALL", "ALL", "ALL", sessionStorage.getItem("Token"), map.get('frequency'), status).subscribe(
+            (res) => {
+              var fileURL = URL.createObjectURL(res);
+              window.open(fileURL); // if you want to open it in new tab
+              this.lockReports=false;
+          });
 
         } else if (this.userType == "BRANCH") {
 
@@ -289,10 +298,13 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("fromDate"), 'fromDate', map);
           this.getInputValues(document.getElementById("frequencyCombo"), 'frequency', map);
           status = "N";
-          if (this.dashboardService.getProposalRegister(map.get('fromDate'), map.get('toDate'), "ALL", "ALL", map.get('branch'), map.get('code'), map.get('frequency'), status)) {
+          this.dashboardService.getProposalRegister(map.get('fromDate'), map.get('toDate'), "ALL", "ALL", map.get('branch'), map.get('code'), map.get('frequency'), status).subscribe(
+            (res) => {
+              var fileURL = URL.createObjectURL(res);
+              window.open(fileURL); // if you want to open it in new tab
+              this.lockReports=false;
+          });
 
-            this.lockReports = false;
-          }
 
         } else if (this.userType == "REGION") {
 
@@ -303,10 +315,13 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("fromDate"), 'fromDate', map);
           this.getInputValues(document.getElementById("frequencyCombo"), 'frequency', map);
           status = "N";
-          if (this.dashboardService.getProposalRegister(map.get('fromDate'), map.get('toDate'), "ALL", map.get('region'), map.get('branch'), map.get('code'), map.get('frequency'), status)) {
+          this.dashboardService.getProposalRegister(map.get('fromDate'), map.get('toDate'), "ALL", map.get('region'), map.get('branch'), map.get('code'), map.get('frequency'), status).subscribe(
+            (res) => {
+              var fileURL = URL.createObjectURL(res);
+              window.open(fileURL); // if you want to open it in new tab
+              this.lockReports=false;
+          });
 
-            this.lockReports = false;
-          }
         } else if (this.userType == "ZONE") {
 
           this.getInputValues(document.getElementById("toDate"), 'toDate', map);
@@ -317,9 +332,14 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("fromDate"), 'fromDate', map);
           this.getInputValues(document.getElementById("frequencyCombo"), 'frequency', map);
           status = "N";
-          if (this.dashboardService.getProposalRegister(map.get('fromDate'), map.get('toDate'), map.get('zone'), map.get('region'), map.get('branch'), map.get('code'), map.get('frequency'), status)) {
-            this.lockReports = false;
-          }
+
+          this.dashboardService.getProposalRegister(map.get('fromDate'), map.get('toDate'), map.get('zone'), map.get('region'), map.get('branch'), map.get('code'), map.get('frequency'), status).subscribe(
+            (res) => {
+              var fileURL = URL.createObjectURL(res);
+              window.open(fileURL); // if you want to open it in new tab
+              this.lockReports=false;
+          });
+
         } else if (this.userType == "HO") {
 
           this.getInputValues(document.getElementById("toDate"), 'toDate', map);
@@ -330,9 +350,14 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("fromDate"), 'fromDate', map);
           this.getInputValues(document.getElementById("frequencyCombo"), 'frequency', map);
           status = "N";
-          if (this.dashboardService.getProposalRegister(map.get('fromDate'), map.get('toDate'), map.get('zone'), map.get('region'), map.get('branch'), map.get('code'), map.get('frequency'), status)) {
-            this.lockReports = false;
-          }
+
+          this.dashboardService.getProposalRegister(map.get('fromDate'), map.get('toDate'), map.get('zone'), map.get('region'), map.get('branch'), map.get('code'), map.get('frequency'), status).subscribe(
+            (res) => {
+              var fileURL = URL.createObjectURL(res);
+              window.open(fileURL); // if you want to open it in new tab
+              this.lockReports=false;
+          });
+            
         }
       }
     });
@@ -346,10 +371,13 @@ export class NavBarComponent implements OnInit {
     let status = "Y";
 
     if (this.userType == "IC" || this.userType == "UNL") {
-      if (this.dashboardService.getPendingRequirements(sessionStorage.getItem("Token"), "ALL", "All", "All", status)) {
-        this.lockReports = false;
-        return;
-      }
+      this.dashboardService.getPendingRequirements(sessionStorage.getItem("Token"), "ALL", "All", "All", status).subscribe(
+        (res) => {
+          var fileURL = URL.createObjectURL(res);
+          window.open(fileURL); // if you want to open it in new tab
+          this.lockReports=false;
+          return;
+      });
     }
 
     if (this.userType == "BRANCH") {
@@ -421,9 +449,13 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("branchCombo"), 'branch', map);
           status = "N";
 
-          if (this.dashboardService.getPendingRequirements(map.get('advisor'), map.get('branch'), "ALL", "ALL", status)) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getPendingRequirements(map.get('advisor'), map.get('branch'), "ALL", "ALL", status).subscribe(
+            (res) => {
+              var fileURL = URL.createObjectURL(res);
+              window.open(fileURL); // if you want to open it in new tab
+              this.lockReports=false;
+          });
+            
 
         } else if (this.userType == "REGION") {
 
@@ -433,9 +465,12 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("branch"), 'branch', map);
           status = "N";
 
-          if (this.dashboardService.getPendingRequirements(map.get('advisor'), map.get('branch'), map.get('region'), "ALL", status)) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getPendingRequirements(map.get('advisor'), map.get('branch'), map.get('region'), "ALL", status).subscribe(
+            (res) => {
+              var fileURL = URL.createObjectURL(res);
+              window.open(fileURL); // if you want to open it in new tab
+              this.lockReports=false;
+          });
 
         } else if (this.userType == "ZONE") {
 
@@ -446,9 +481,13 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("branch"), 'branch', map);
           status = "N";
 
-          if (this.dashboardService.getPendingRequirements(map.get('advisor'), map.get('branch'), map.get('region'), map.get('zone'), status)) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getPendingRequirements(map.get('advisor'), map.get('branch'), map.get('region'), map.get('zone'), status).subscribe(
+            (res) => {
+              var fileURL = URL.createObjectURL(res);
+              window.open(fileURL); // if you want to open it in new tab
+              this.lockReports=false;
+          });
+
         } else if (this.userType == "HO") {
 
           this.getInputValues(document.getElementById("advisor"), 'advisor', map);
@@ -458,9 +497,12 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("branch"), 'branch', map);
           status = "N";
 
-          if (this.dashboardService.getPendingRequirements(map.get('advisor'), map.get('branch'), map.get('region'), map.get('zone'), status)) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getPendingRequirements(map.get('advisor'), map.get('branch'), map.get('region'), map.get('zone'), status).subscribe(
+            (res) => {
+              var fileURL = URL.createObjectURL(res);
+              window.open(fileURL); // if you want to open it in new tab
+              this.lockReports=false;
+          });
         }
       }
     });
@@ -545,9 +587,12 @@ export class NavBarComponent implements OnInit {
           console.log(map.get('unl'));
           this.getInputValues(document.getElementById("branchCombo"), 'branch', map);
 
-          if (this.dashboardService.getRetentionUnit(map.get('toDate'), "ALL", "ALL", map.get('branch'), map.get('unl'))) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getRetentionUnit(map.get('toDate'), "ALL", "ALL", map.get('branch'), map.get('unl')).subscribe(
+            (res) => {
+              var fileURL = URL.createObjectURL(res);
+              window.open(fileURL); // if you want to open it in new tab
+              this.lockReports=false;
+          });
 
         } else if (this.userType == "REGION") {
 
@@ -557,9 +602,13 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("regionCombo"), 'region', map);
           this.getInputValues(document.getElementById("branch"), 'branch', map);
 
-          if (this.dashboardService.getRetentionUnit(map.get('toDate'), "ALL", map.get('region'), map.get('branch'), map.get('unl'))) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getRetentionUnit(map.get('toDate'), "ALL", map.get('region'), map.get('branch'), map.get('unl')).subscribe(
+            (res) => {
+              var fileURL = URL.createObjectURL(res);
+              window.open(fileURL); // if you want to open it in new tab
+              this.lockReports=false;
+          });
+
         } else if (this.userType == "ZONE") {
 
           this.getInputValues(document.getElementById("toDate"), 'toDate', map);
@@ -569,9 +618,13 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("region"), 'region', map);
           this.getInputValues(document.getElementById("branch"), 'branch', map);
 
-          if (this.dashboardService.getRetentionUnit(map.get('toDate'), map.get('zone'), map.get('region'), map.get('branch'), map.get('unl'))) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getRetentionUnit(map.get('toDate'), map.get('zone'), map.get('region'), map.get('branch'), map.get('unl')).subscribe(
+            (res) => {
+              var fileURL = URL.createObjectURL(res);
+              window.open(fileURL); // if you want to open it in new tab
+              this.lockReports=false;
+          });
+
         } else if (this.userType == "HO") {
 
           this.getInputValues(document.getElementById("toDate"), 'toDate', map);
@@ -581,9 +634,12 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("region"), 'region', map);
           this.getInputValues(document.getElementById("branch"), 'branch', map);
 
-          if (this.dashboardService.getRetentionUnit(map.get('toDate'), map.get('zone'), map.get('region'), map.get('branch'), map.get('unl'))) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getRetentionUnit(map.get('toDate'), map.get('zone'), map.get('region'), map.get('branch'), map.get('unl')).subscribe(
+            (res) => {
+              var fileURL = URL.createObjectURL(res);
+              window.open(fileURL); // if you want to open it in new tab
+              this.lockReports=false;
+          });
         }
       }
     });
@@ -668,9 +724,12 @@ export class NavBarComponent implements OnInit {
           console.log(map.get('unl'));
           this.getInputValues(document.getElementById("branchCombo"), 'branch', map);
 
-          if (this.dashboardService.getRetentionCode(map.get('toDate'), "ALL", "ALL", map.get('branch'), map.get('unl'))) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getRetentionCode(map.get('toDate'), "ALL", "ALL", map.get('branch'), map.get('unl')).subscribe(
+            (res) => {
+              var fileURL = URL.createObjectURL(res);
+              window.open(fileURL); // if you want to open it in new tab
+              this.lockReports=false;
+          });
 
         } else if (this.userType == "REGION") {
 
@@ -680,9 +739,13 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("regionCombo"), 'region', map);
           this.getInputValues(document.getElementById("branch"), 'branch', map);
 
-          if (this.dashboardService.getRetentionCode(map.get('toDate'), "ALL", map.get('region'), map.get('branch'), map.get('unl'))) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getRetentionCode(map.get('toDate'), "ALL", map.get('region'), map.get('branch'), map.get('unl')).subscribe(
+            (res) => {
+              var fileURL = URL.createObjectURL(res);
+              window.open(fileURL); // if you want to open it in new tab
+              this.lockReports=false;
+          });
+
         } else if (this.userType == "ZONE") {
 
           this.getInputValues(document.getElementById("toDate"), 'toDate', map);
@@ -692,9 +755,13 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("region"), 'region', map);
           this.getInputValues(document.getElementById("branch"), 'branch', map);
 
-          if (this.dashboardService.getRetentionCode(map.get('toDate'), map.get('zone'), map.get('region'), map.get('branch'), map.get('unl'))) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getRetentionCode(map.get('toDate'), map.get('zone'), map.get('region'), map.get('branch'), map.get('unl')).subscribe(
+            (res) => {
+              var fileURL = URL.createObjectURL(res);
+              window.open(fileURL); // if you want to open it in new tab
+              this.lockReports=false;
+          });
+
         } else if (this.userType == "HO") {
 
           this.getInputValues(document.getElementById("toDate"), 'toDate', map);
@@ -704,9 +771,11 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("region"), 'region', map);
           this.getInputValues(document.getElementById("branch"), 'branch', map);
 
-          if (this.dashboardService.getRetentionCode(map.get('toDate'), map.get('zone'), map.get('region'), map.get('branch'), map.get('unl'))) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getRetentionCode(map.get('toDate'), map.get('zone'), map.get('region'), map.get('branch'), map.get('unl')).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
         }
       }
     });
@@ -783,9 +852,11 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("date"), 'date', map);
           this.getInputValues(document.getElementById("branchCombo"), 'branch', map);
 
-          if (this.dashboardService.getRetentionBranch(map.get('date'), "ALL", "ALL", map.get('branch'))) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getRetentionBranch(map.get('date'), "ALL", "ALL", map.get('branch')).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
 
         } else if (this.userType == "REGION") {
 
@@ -793,9 +864,12 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("branch"), 'branch', map);
           this.getInputValues(document.getElementById("regionCombo"), 'region', map);
 
-          if (this.dashboardService.getRetentionBranch(map.get('date'), "ALL", map.get('region'), map.get('branch'))) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getRetentionBranch(map.get('date'), "ALL", map.get('region'), map.get('branch')).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
+
         } else if (this.userType == "ZONE") {
 
           this.getInputValues(document.getElementById("date"), 'date', map);
@@ -803,9 +877,12 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("region"), 'region', map);
           this.getInputValues(document.getElementById("zoneCombo"), 'zone', map);
 
-          if (this.dashboardService.getRetentionBranch(map.get('date'), map.get('zone'), map.get('region'), map.get('branch'))) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getRetentionBranch(map.get('date'), map.get('zone'), map.get('region'), map.get('branch')).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
+
         } else if (this.userType == "HO") {
 
           this.getInputValues(document.getElementById("date"), 'date', map);
@@ -813,9 +890,11 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("region"), 'region', map);
           this.getInputValues(document.getElementById("zone"), 'zone', map);
 
-          if (this.dashboardService.getRetentionBranch(map.get('date'), map.get('zone'), map.get('region'), map.get('branch'))) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getRetentionBranch(map.get('date'), map.get('zone'), map.get('region'), map.get('branch')).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
         }
       }
     });
@@ -934,9 +1013,11 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("toDate"), 'toDate', map);
           this.getInputValues(document.getElementById("sp"), 'sp', map);
           status = "ic";
-          if (this.dashboardService.getDetailsOfPolicies(map.get('fromDate'), map.get('toDate'), sessionStorage.getItem("Token"), "ALL", "ALL", "ALL", "ALL", map.get('sp'), status)) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getDetailsOfPolicies(map.get('fromDate'), map.get('toDate'), sessionStorage.getItem("Token"), "ALL", "ALL", "ALL", "ALL", map.get('sp'), status).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
 
         } else if (this.userType == "UNL") {
 
@@ -946,9 +1027,12 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("sp"), 'sp', map);
 
           status = "ul";
-          if (this.dashboardService.getDetailsOfPolicies(map.get('fromDate'), map.get('toDate'), map.get('ic'), sessionStorage.getItem("Token"), "ALL", "ALL", "ALL", map.get('sp'), status)) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getDetailsOfPolicies(map.get('fromDate'), map.get('toDate'), map.get('ic'), sessionStorage.getItem("Token"), "ALL", "ALL", "ALL", map.get('sp'), status).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
+
         } else if (this.userType == "BRANCH") {
 
           this.getInputValues(document.getElementById("fromDate"), 'fromDate', map);
@@ -958,9 +1042,12 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("branchCombo"), 'branch', map);
           this.getInputValues(document.getElementById("sp"), 'sp', map);
 
-          if (this.dashboardService.getDetailsOfPolicies(map.get('fromDate'), map.get('toDate'), map.get('ic'), map.get('ul'), map.get('branch'), "ALL", "ALL", map.get('sp'), status)) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getDetailsOfPolicies(map.get('fromDate'), map.get('toDate'), map.get('ic'), map.get('ul'), map.get('branch'), "ALL", "ALL", map.get('sp'), status).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
+
         } else if (this.userType == "REGION") {
 
           this.getInputValues(document.getElementById("fromDate"), 'fromDate', map);
@@ -971,9 +1058,12 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("regionCombo"), 'region', map);
           this.getInputValues(document.getElementById("sp"), 'sp', map);
 
-          if (this.dashboardService.getDetailsOfPolicies(map.get('fromDate'), map.get('toDate'), map.get('ic'), map.get('ul'), map.get('branch'), map.get('region'), "ALL", map.get('sp'), status)) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getDetailsOfPolicies(map.get('fromDate'), map.get('toDate'), map.get('ic'), map.get('ul'), map.get('branch'), map.get('region'), "ALL", map.get('sp'), status).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
+
         } else if (this.userType == "ZONE") {
 
           this.getInputValues(document.getElementById("fromDate"), 'fromDate', map);
@@ -986,9 +1076,12 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("sp"), 'sp', map);
 
 
-          if (this.dashboardService.getDetailsOfPolicies(map.get('fromDate'), map.get('toDate'), map.get('ic'), map.get('ul'), map.get('branch'), map.get('region'), map.get('zone'), map.get('sp'), status)) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getDetailsOfPolicies(map.get('fromDate'), map.get('toDate'), map.get('ic'), map.get('ul'), map.get('branch'), map.get('region'), map.get('zone'), map.get('sp'), status).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
+
         } else if (this.userType == "HO") {
 
           this.getInputValues(document.getElementById("fromDate"), 'fromDate', map);
@@ -1001,9 +1094,12 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("sp"), 'sp', map);
 
 
-          if (this.dashboardService.getDetailsOfPolicies(map.get('fromDate'), map.get('toDate'), map.get('ic'), map.get('ul'), map.get('branch'), map.get('region'), map.get('zone'), map.get('sp'), status)) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getDetailsOfPolicies(map.get('fromDate'), map.get('toDate'), map.get('ic'), map.get('ul'), map.get('branch'), map.get('region'), map.get('zone'), map.get('sp'), status).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
+
         }
       }
 
@@ -1067,9 +1163,12 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("region"), 'region', map);
           this.getInputValues(document.getElementById("branch"), 'branch', map);
 
-          if (this.dashboardService.getPremiumDueReportLive(map.get('toDate'), map.get('code'), map.get('branch'), map.get('region'), map.get('zone'))) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getPremiumDueReportLive(map.get('toDate'), map.get('code'), map.get('branch'), map.get('region'), map.get('zone')).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
+
         }
 
         if (this.userType == "HO") {
@@ -1081,9 +1180,12 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("region"), 'region', map);
           this.getInputValues(document.getElementById("branch"), 'branch', map);
 
-          if (this.dashboardService.getPremiumDueReportLive(map.get('toDate'), map.get('code'), map.get('branch'), map.get('region'), map.get('zone'))) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getPremiumDueReportLive(map.get('toDate'), map.get('code'), map.get('branch'), map.get('region'), map.get('zone')).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
+
         }
       }
     });
@@ -1176,9 +1278,11 @@ export class NavBarComponent implements OnInit {
         if (this.userType == "IC" || this.userType == "UNL") {
           this.getInputValues(document.getElementById("toDate"), 'toDate', map);
 
-          if (this.dashboardService.getPremiumDueReport(map.get('toDate'), sessionStorage.getItem("Token"), "ALL", "ALL", "ALL", status)) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getPremiumDueReport(map.get('toDate'), sessionStorage.getItem("Token"), "ALL", "ALL", "ALL", status).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
 
         } else if (this.userType == "BRANCH") {
 
@@ -1186,9 +1290,11 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("code"), 'code', map);
           this.getInputValues(document.getElementById("branchCombo"), 'branch', map);
           status = "N";
-          if (this.dashboardService.getPremiumDueReport(map.get('toDate'), map.get('code'), map.get('branch'), "ALL", "ALL", status)) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getPremiumDueReport(map.get('toDate'), map.get('code'), map.get('branch'), "ALL", "ALL", status).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
 
         } else if (this.userType == "REGION") {
 
@@ -1197,9 +1303,12 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("regionCombo"), 'region', map);
           this.getInputValues(document.getElementById("branch"), 'branch', map);
           status = "N";
-          if (this.dashboardService.getPremiumDueReport(map.get('toDate'), map.get('code'), map.get('branch'), map.get('region'), "ALL", status)) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getPremiumDueReport(map.get('toDate'), map.get('code'), map.get('branch'), map.get('region'), "ALL", status).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
+
         } else if (this.userType == "ZONE") {
 
           this.getInputValues(document.getElementById("toDate"), 'toDate', map);
@@ -1208,9 +1317,11 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("region"), 'region', map);
           this.getInputValues(document.getElementById("branch"), 'branch', map);
           status = "N";
-          if (this.dashboardService.getPremiumDueReport(map.get('toDate'), map.get('code'), map.get('branch'), map.get('region'), map.get('zone'), status)) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getPremiumDueReport(map.get('toDate'), map.get('code'), map.get('branch'), map.get('region'), map.get('zone'), status).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
 
         } else if (this.userType == "HO") {
 
@@ -1220,9 +1331,11 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("region"), 'region', map);
           this.getInputValues(document.getElementById("branch"), 'branch', map);
           status = "N";
-          if (this.dashboardService.getPremiumDueReport(map.get('toDate'), map.get('code'), map.get('branch'), map.get('region'), map.get('zone'), status)) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getPremiumDueReport(map.get('toDate'), map.get('code'), map.get('branch'), map.get('region'), map.get('zone'), status).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
 
         }
       }
@@ -1387,9 +1500,11 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("monthCombo"), 'month', map);
           this.getInputValues(document.getElementById("statusCombo"), 'status', map);
 
-          if (this.dashboardService.getGrantStmtBranch(map.get('branch'), map.get('year'), map.get('month'), map.get('code'), map.get('status'))) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getGrantStmtBranch(map.get('branch'), map.get('year'), map.get('month'), map.get('code'), map.get('status')).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
 
         } else if (this.userType == "REGION") {
 
@@ -1399,9 +1514,12 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("monthCombo"), 'month', map);
           this.getInputValues(document.getElementById("statusCombo"), 'status', map);
 
-          if (this.dashboardService.getGrantStmtBranch(map.get('branch'), map.get('year'), map.get('month'), map.get('code'), map.get('status'))) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getGrantStmtBranch(map.get('branch'), map.get('year'), map.get('month'), map.get('code'), map.get('status')).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
+
         } else if (this.userType == "ZONE") {
 
           this.getInputValues(document.getElementById("year"), 'year', map);
@@ -1410,9 +1528,12 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("monthCombo"), 'month', map);
           this.getInputValues(document.getElementById("statusCombo"), 'status', map);
 
-          if (this.dashboardService.getGrantStmtBranch(map.get('branch'), map.get('year'), map.get('month'), map.get('code'), map.get('status'))) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getGrantStmtBranch(map.get('branch'), map.get('year'), map.get('month'), map.get('code'), map.get('status')).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
+
         } else if (this.userType == "HO") {
 
           this.getInputValues(document.getElementById("year"), 'year', map);
@@ -1421,9 +1542,12 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("monthCombo"), 'month', map);
           this.getInputValues(document.getElementById("statusCombo"), 'status', map);
 
-          if (this.dashboardService.getGrantStmtBranch(map.get('branch'), map.get('year'), map.get('month'), map.get('code'), map.get('status'))) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getGrantStmtBranch(map.get('branch'), map.get('year'), map.get('month'), map.get('code'), map.get('status')).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
+
         }
       }
     });
@@ -1506,9 +1630,11 @@ export class NavBarComponent implements OnInit {
 
           console.log(map.get('branch'));
 
-          if (this.dashboardService.getFirstPremiumLapSummary(map.get('fromDate'), map.get('toDate'), "ALL", "ALL", map.get('branch'))) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getFirstPremiumLapSummary(map.get('fromDate'), map.get('toDate'), "ALL", "ALL", map.get('branch')).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
 
         } else if (this.userType == "REGION") {
           this.getInputValues(document.getElementById("fromDate"), 'fromDate', map);
@@ -1516,9 +1642,11 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("branch"), 'branch', map);
           this.getInputValues(document.getElementById("regionCombo"), 'region', map);
 
-          if (this.dashboardService.getFirstPremiumLapSummary(map.get('fromDate'), map.get('toDate'), "ALL", map.get('region'), map.get('branch'))) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getFirstPremiumLapSummary(map.get('fromDate'), map.get('toDate'), "ALL", map.get('region'), map.get('branch')).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
 
         } else if (this.userType == "ZONE") {
           this.getInputValues(document.getElementById("fromDate"), 'fromDate', map);
@@ -1527,9 +1655,11 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("region"), 'region', map);
           this.getInputValues(document.getElementById("zoneCombo"), 'zone', map);
 
-          if (this.dashboardService.getFirstPremiumLapSummary(map.get('fromDate'), map.get('toDate'), map.get('zone'), map.get('region'), map.get('branch'))) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getFirstPremiumLapSummary(map.get('fromDate'), map.get('toDate'), map.get('zone'), map.get('region'), map.get('branch')).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
 
         } else if (this.userType == "HO") {
           this.getInputValues(document.getElementById("fromDate"), 'fromDate', map);
@@ -1538,9 +1668,11 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("region"), 'region', map);
           this.getInputValues(document.getElementById("zone"), 'zone', map);
 
-          if (this.dashboardService.getFirstPremiumLapSummary(map.get('fromDate'), map.get('toDate'), map.get('zone'), map.get('region'), map.get('branch'))) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getFirstPremiumLapSummary(map.get('fromDate'), map.get('toDate'), map.get('zone'), map.get('region'), map.get('branch')).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
         }
       }
 
@@ -1623,9 +1755,11 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("branchCombo"), 'branch', map);
 
 
-          if (this.dashboardService.getPolicyAcknowledgement(map.get('branch'), map.get('year'), map.get('month'))) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getPolicyAcknowledgement(map.get('branch'), map.get('year'), map.get('month')).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
 
         } else if (this.userType == "HO") {
 
@@ -1634,9 +1768,12 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("branch"), 'branch', map);
 
 
-          if (this.dashboardService.getPolicyAcknowledgement(map.get('branch'), map.get('year'), map.get('month'))) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getPolicyAcknowledgement(map.get('branch'), map.get('year'), map.get('month')).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
+
         }
       }
     });
@@ -1799,9 +1936,11 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("productCombo"), 'product', map);
           this.getInputValues(document.getElementById("frequencyCombo"), 'frequency', map);
 
-          if (this.dashboardService.getSalesPerfSummaryCode(map.get('fromDate'), map.get('toDate'), "ALL", "ALL", map.get('branch'), map.get('frequency'), map.get('product'))) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getSalesPerfSummaryCode(map.get('fromDate'), map.get('toDate'), "ALL", "ALL", map.get('branch'), map.get('frequency'), map.get('product')).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
 
         } else if (this.userType == "REGION") {
 
@@ -1812,9 +1951,12 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("productCombo"), 'product', map);
           this.getInputValues(document.getElementById("frequencyCombo"), 'frequency', map);
 
-          if (this.dashboardService.getSalesPerfSummaryCode(map.get('fromDate'), map.get('toDate'), "ALL", map.get('region'), map.get('branch'), map.get('frequency'), map.get('product'))) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getSalesPerfSummaryCode(map.get('fromDate'), map.get('toDate'), "ALL", map.get('region'), map.get('branch'), map.get('frequency'), map.get('product')).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
+
         } else if (this.userType == "ZONE") {
 
           this.getInputValues(document.getElementById("toDate"), 'toDate', map);
@@ -1825,9 +1967,12 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("productCombo"), 'product', map);
           this.getInputValues(document.getElementById("frequencyCombo"), 'frequency', map);
 
-          if (this.dashboardService.getSalesPerfSummaryCode(map.get('fromDate'), map.get('toDate'), map.get('zone'), map.get('region'), map.get('branch'), map.get('frequency'), map.get('product'))) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getSalesPerfSummaryCode(map.get('fromDate'), map.get('toDate'), map.get('zone'), map.get('region'), map.get('branch'), map.get('frequency'), map.get('product')).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
+
         } else if (this.userType == "HO") {
 
           this.getInputValues(document.getElementById("toDate"), 'toDate', map);
@@ -1838,9 +1983,11 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("productCombo"), 'product', map);
           this.getInputValues(document.getElementById("frequencyCombo"), 'frequency', map);
 
-          if (this.dashboardService.getSalesPerfSummaryCode(map.get('fromDate'), map.get('toDate'), map.get('zone'), map.get('region'), map.get('branch'), map.get('frequency'), map.get('product'))) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getSalesPerfSummaryCode(map.get('fromDate'), map.get('toDate'), map.get('zone'), map.get('region'), map.get('branch'), map.get('frequency'), map.get('product')).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
         }
       }
     });
@@ -2023,9 +2170,11 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("frequencyCombo"), 'frequency', map);
           this.getInputValues(document.getElementById("singleCombo"), 'single', map);
           status = "N";
-          if (this.dashboardService.getSalesPerfSummary(map.get('fromDate'), map.get('toDate'), "ALL", "ALL", map.get('branch'), map.get('frequency'), map.get('product'), map.get('single'))) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getSalesPerfSummary(map.get('fromDate'), map.get('toDate'), "ALL", "ALL", map.get('branch'), map.get('frequency'), map.get('product'), map.get('single')).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
 
         } else if (this.userType == "REGION") {
 
@@ -2037,9 +2186,12 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("frequencyCombo"), 'frequency', map);
           this.getInputValues(document.getElementById("singleCombo"), 'single', map);
           status = "N";
-          if (this.dashboardService.getSalesPerfSummary(map.get('fromDate'), map.get('toDate'), "ALL", map.get('region'), map.get('branch'), map.get('frequency'), map.get('product'), map.get('single'))) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getSalesPerfSummary(map.get('fromDate'), map.get('toDate'), "ALL", map.get('region'), map.get('branch'), map.get('frequency'), map.get('product'), map.get('single')).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
+
         } else if (this.userType == "ZONE") {
 
           this.getInputValues(document.getElementById("toDate"), 'toDate', map);
@@ -2051,9 +2203,12 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("frequencyCombo"), 'frequency', map);
           this.getInputValues(document.getElementById("singleCombo"), 'single', map);
           status = "N";
-          if (this.dashboardService.getSalesPerfSummary(map.get('fromDate'), map.get('toDate'), map.get('zone'), map.get('region'), map.get('branch'), map.get('frequency'), map.get('product'), map.get('single'))) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getSalesPerfSummary(map.get('fromDate'), map.get('toDate'), map.get('zone'), map.get('region'), map.get('branch'), map.get('frequency'), map.get('product'), map.get('single')).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
+
         } else if (this.userType == "HO") {
 
           this.getInputValues(document.getElementById("toDate"), 'toDate', map);
@@ -2065,9 +2220,11 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("frequencyCombo"), 'frequency', map);
           this.getInputValues(document.getElementById("singleCombo"), 'single', map);
           status = "N";
-          if (this.dashboardService.getSalesPerfSummary(map.get('fromDate'), map.get('toDate'), map.get('zone'), map.get('region'), map.get('branch'), map.get('frequency'), map.get('product'), map.get('single'))) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getSalesPerfSummary(map.get('fromDate'), map.get('toDate'), map.get('zone'), map.get('region'), map.get('branch'), map.get('frequency'), map.get('product'), map.get('single')).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
         }
       }
     });
@@ -2295,9 +2452,11 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("frequencyCombo"), 'frequency', map);
           this.getInputValues(document.getElementById("typeCombo"), 'type', map);
 
-          if (this.dashboardService.getUnitIsPerfSummary(map.get('fromDate'), map.get('toDate'), "ALL", "ALL", "ALL", sessionStorage.getItem("Token"), map.get('type'), map.get('frequency'), map.get('product'), status)) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getUnitIsPerfSummary(map.get('fromDate'), map.get('toDate'), "ALL", "ALL", "ALL", sessionStorage.getItem("Token"), map.get('type'), map.get('frequency'), map.get('product'), status).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
 
         } else if (this.userType == "BRANCH") {
 
@@ -2309,9 +2468,11 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("frequencyCombo"), 'frequency', map);
           this.getInputValues(document.getElementById("typeCombo"), 'type', map);
           status = "N";
-          if (this.dashboardService.getUnitIsPerfSummary(map.get('fromDate'), map.get('toDate'), "ALL", "ALL", map.get('branch'), map.get('code'), map.get('type'), map.get('frequency'), map.get('product'), status)) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getUnitIsPerfSummary(map.get('fromDate'), map.get('toDate'), "ALL", "ALL", map.get('branch'), map.get('code'), map.get('type'), map.get('frequency'), map.get('product'), status).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
 
         } else if (this.userType == "REGION") {
 
@@ -2324,9 +2485,12 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("frequencyCombo"), 'frequency', map);
           this.getInputValues(document.getElementById("typeCombo"), 'type', map);
           status = "N";
-          if (this.dashboardService.getUnitIsPerfSummary(map.get('fromDate'), map.get('toDate'), "ALL", map.get('region'), map.get('branch'), map.get('code'), map.get('type'), map.get('frequency'), map.get('product'), status)) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getUnitIsPerfSummary(map.get('fromDate'), map.get('toDate'), "ALL", map.get('region'), map.get('branch'), map.get('code'), map.get('type'), map.get('frequency'), map.get('product'), status).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
+
         } else if (this.userType == "ZONE") {
 
           this.getInputValues(document.getElementById("toDate"), 'toDate', map);
@@ -2339,9 +2503,12 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("frequencyCombo"), 'frequency', map);
           this.getInputValues(document.getElementById("typeCombo"), 'type', map);
           status = "N";
-          if (this.dashboardService.getUnitIsPerfSummary(map.get('fromDate'), map.get('toDate'), map.get('zone'), map.get('region'), map.get('branch'), map.get('code'), map.get('type'), map.get('frequency'), map.get('product'), status)) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getUnitIsPerfSummary(map.get('fromDate'), map.get('toDate'), map.get('zone'), map.get('region'), map.get('branch'), map.get('code'), map.get('type'), map.get('frequency'), map.get('product'), status).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
+
         } else if (this.userType == "HO") {
 
           this.getInputValues(document.getElementById("toDate"), 'toDate', map);
@@ -2354,9 +2521,11 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("frequencyCombo"), 'frequency', map);
           this.getInputValues(document.getElementById("typeCombo"), 'type', map);
           status = "N";
-          if (this.dashboardService.getUnitIsPerfSummary(map.get('fromDate'), map.get('toDate'), map.get('zone'), map.get('region'), map.get('branch'), map.get('code'), map.get('type'), map.get('frequency'), map.get('product'), status)) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getUnitIsPerfSummary(map.get('fromDate'), map.get('toDate'), map.get('zone'), map.get('region'), map.get('branch'), map.get('code'), map.get('type'), map.get('frequency'), map.get('product'), status).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
         }
       }
     });
@@ -2545,9 +2714,11 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("productCombo"), 'product', map);
           this.getInputValues(document.getElementById("frequencyCombo"), 'frequency', map);
 
-          if (this.dashboardService.getSalesPerfDetail(map.get('fromDate'), map.get('toDate'), sessionStorage.getItem("Token"), "ALL", "ALL", "ALL", map.get('product'), map.get('frequency'), status)) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getSalesPerfDetail(map.get('fromDate'), map.get('toDate'), sessionStorage.getItem("Token"), "ALL", "ALL", "ALL", map.get('product'), map.get('frequency'), status).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
 
         } else if (this.userType == "BRANCH") {
 
@@ -2558,9 +2729,11 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("productCombo"), 'product', map);
           this.getInputValues(document.getElementById("frequencyCombo"), 'frequency', map);
           status = "N";
-          if (this.dashboardService.getSalesPerfDetail(map.get('fromDate'), map.get('toDate'), map.get('code'), map.get('branch'), "ALL", "ALL", map.get('product'), map.get('frequency'), status)) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getSalesPerfDetail(map.get('fromDate'), map.get('toDate'), map.get('code'), map.get('branch'), "ALL", "ALL", map.get('product'), map.get('frequency'), status).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
 
         } else if (this.userType == "REGION") {
 
@@ -2572,9 +2745,11 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("productCombo"), 'product', map);
           this.getInputValues(document.getElementById("frequencyCombo"), 'frequency', map);
           status = "N";
-          if (this.dashboardService.getSalesPerfDetail(map.get('fromDate'), map.get('toDate'), map.get('code'), map.get('branch'), map.get('region'), "ALL", map.get('product'), map.get('frequency'), status)) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getSalesPerfDetail(map.get('fromDate'), map.get('toDate'), map.get('code'), map.get('branch'), map.get('region'), "ALL", map.get('product'), map.get('frequency'), status).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
         } else if (this.userType == "ZONE") {
 
           this.getInputValues(document.getElementById("toDate"), 'toDate', map);
@@ -2586,9 +2761,11 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("productCombo"), 'product', map);
           this.getInputValues(document.getElementById("frequencyCombo"), 'frequency', map);
           status = "N";
-          if (this.dashboardService.getSalesPerfDetail(map.get('fromDate'), map.get('toDate'), map.get('code'), map.get('branch'), map.get('region'), map.get('zone'), map.get('product'), map.get('frequency'), status)) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getSalesPerfDetail(map.get('fromDate'), map.get('toDate'), map.get('code'), map.get('branch'), map.get('region'), map.get('zone'), map.get('product'), map.get('frequency'), status).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
 
         } else if (this.userType == "HO") {
 
@@ -2601,9 +2778,11 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("productCombo"), 'product', map);
           this.getInputValues(document.getElementById("frequencyCombo"), 'frequency', map);
           status = "N";
-          if (this.dashboardService.getSalesPerfDetail(map.get('fromDate'), map.get('toDate'), map.get('code'), map.get('branch'), map.get('region'), map.get('zone'), map.get('product'), map.get('frequency'), status)) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getSalesPerfDetail(map.get('fromDate'), map.get('toDate'), map.get('code'), map.get('branch'), map.get('region'), map.get('zone'), map.get('product'), map.get('frequency'), status).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
 
         } else {
           return;
@@ -2708,9 +2887,11 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("frequencyCombo"), 'frequency', map);
           this.getInputValues(document.getElementById("typeCombo"), 'type', map);
 
-          if (this.dashboardService.getUnitIsPerfDetails(map.get('fromDate'), map.get('toDate'), "ALL", "ALL", "ALL", sessionStorage.getItem("Token"), map.get('type'), map.get('frequency'), map.get('product'), status)) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getUnitIsPerfDetails(map.get('fromDate'), map.get('toDate'), "ALL", "ALL", "ALL", sessionStorage.getItem("Token"), map.get('type'), map.get('frequency'), map.get('product'), status).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
         }else if(this.userType == "HO"){
 
           status="N";
@@ -2724,9 +2905,11 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("region"), 'region', map);
           this.getInputValues(document.getElementById("branch"), 'branch', map);
 
-          if (this.dashboardService.getUnitIsPerfDetails(map.get('fromDate'), map.get('toDate'), map.get('zone'), map.get('region'), map.get('branch'), map.get('unl'), map.get('type'), map.get('frequency'), map.get('product'), status)) {
-            this.lockReports = false;
-          }
+          this.dashboardService.getUnitIsPerfDetails(map.get('fromDate'), map.get('toDate'), map.get('zone'), map.get('region'), map.get('branch'), map.get('unl'), map.get('type'), map.get('frequency'), map.get('product'), status).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
 
         }
       }
@@ -2735,17 +2918,17 @@ export class NavBarComponent implements OnInit {
 
   }
 
-  loadDashboard(){
+  // loadDashboard(){
     
-    var dashPara=sessionStorage.getItem("dashpara");
-    var userType=sessionStorage.getItem("userType");
-    var token=sessionStorage.getItem("Token");
+  //   var dashPara=sessionStorage.getItem("dashpara");
+  //   var userType=sessionStorage.getItem("userType");
+  //   var token=sessionStorage.getItem("Token");
 
-    var encodedDashPara = btoa(dashPara);
-    var encodeduserType = btoa(userType);
+  //   var encodedDashPara = btoa(dashPara);
+  //   var encodeduserType = btoa(userType);
 
-    window.open('http://localhost:4201?dashPara='+encodedDashPara+'&userType='+encodeduserType+'&token='+token+'/');
-  }
+  //   window.open('http://localhost:4201?dashPara='+encodedDashPara+'&userType='+encodeduserType+'&token='+token+'/');
+  // }
 
 
 }

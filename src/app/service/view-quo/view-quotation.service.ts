@@ -29,7 +29,9 @@ export class ViewQuotationService {
   }
 
   printQuotation(qdId){
-    return this.http.get('http://localhost:8084/printQuotation/'+qdId,this.options);
+    return this.http.get('http://localhost:8084/printQuotation/'+qdId,{ responseType: ResponseContentType.Blob }).map((res) => {
+      return new Blob([res.blob()], { type: 'application/pdf' })
+    });
   }
 
 }

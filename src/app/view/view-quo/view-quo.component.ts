@@ -189,16 +189,9 @@ export class ViewQuoComponent implements OnInit {
 
   printQuoDetails(quoDetailId){
     this.viewQuoService.printQuotation(quoDetailId).subscribe(response => {
-      let resp:Response;
-      
-      resp=response;
-      let arr:ArrayBuffer;
-      
-      var file = new Blob([response], {type: 'application/pdf'});
-      var fileURL = URL.createObjectURL(file);
+      var fileURL = URL.createObjectURL(response);
+      window.open(fileURL); // if you want to open it in new tab
 
-      window.open(resp.url);
-      
     }, error => {
       swal("Error", error.text() , "error");
       document.onkeydown = function (e) { return true; }

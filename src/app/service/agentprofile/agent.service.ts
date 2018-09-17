@@ -26,7 +26,7 @@ export class AgentService {
     console.log("called");
     return this.http.get("http://localhost:8084/downloadProfPic/" + this.userCode)
       .map((response: Response) => {
-        console.log(response);
+        //console.log(response);
         return response.json();
       })
   }

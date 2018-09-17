@@ -1,6 +1,6 @@
 import { personalInfo } from './../../model/personalInfo';
 import { LoginService } from './../login.service';
-import { Http } from '@angular/http';
+import { Http, ResponseContentType } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { Response } from '@angular/http/src/static_response';
@@ -155,10 +155,9 @@ export class DashboardService {
       url += "/" + encodedString;
     }
 
-    window.open(url);
-
-    return true;
-    //return this.http.get('http://localhost:8085/mcfpReport/' + fromDate + "/" + toDate + "/" + advisor + "/" + branch + "/" + status);
+    return this.http.get(url, { responseType: ResponseContentType.Blob }).map((res) => {
+        return new Blob([res.blob()], { type: 'application/pdf' })
+    });
 
   }
 
@@ -169,17 +168,16 @@ export class DashboardService {
     let respArr: Array<string> = resp.split("/");
     let url = "http://localhost:8085/proposalRegister";
 
-    for (var _i = 5; _i < respArr.length; _i++) {
+    for (var _i = 4; _i < respArr.length; _i++) {
       var text = respArr[_i];
       var encodedString = btoa(text);
       url += "/" + encodedString;
     }
 
-    window.open(url);
+    return this.http.get(url, { responseType: ResponseContentType.Blob }).map((res) => {
+        return new Blob([res.blob()], { type: 'application/pdf' })
+    });
 
-    return true;
-
-    //return this.http.get('http://localhost:8085/proposalRegister/' + fromDate + "/" + toDate + "/" + zone + "/" + region + "/" + branch + "/" + unl + "/" + frequency + "/" + status);
   }
 
   getPendingRequirements(advisor, branch, region, zone, status) {
@@ -188,16 +186,15 @@ export class DashboardService {
     let respArr: Array<string> = resp.split("/");
     let url = "http://localhost:8085/pendingRequirements";
 
-    for (var _i = 5; _i < respArr.length; _i++) {
+    for (var _i = 4; _i < respArr.length; _i++) {
       var text = respArr[_i];
       var encodedString = btoa(text);
       url += "/" + encodedString;
     }
-    window.open(url);
 
-    return true;
-
-    //return this.http.get('http://localhost:8085/pendingRequirements/' + advisor + "/" + branch + "/" + region + "/" + zone + "/" + status);
+    return this.http.get(url, { responseType: ResponseContentType.Blob }).map((res) => {
+        return new Blob([res.blob()], { type: 'application/pdf' })
+    });
 
   }
 
@@ -207,16 +204,16 @@ export class DashboardService {
     let respArr: Array<string> = resp.split("/");
     let url = "http://localhost:8085/retentionUnit";
 
-    for (var _i = 5; _i < respArr.length; _i++) {
+    for (var _i = 4; _i < respArr.length; _i++) {
       var text = respArr[_i];
       var encodedString = btoa(text);
       url += "/" + encodedString;
     }
-    window.open(url);
 
-    return true;
+    return this.http.get(url, { responseType: ResponseContentType.Blob }).map((res) => {
+        return new Blob([res.blob()], { type: 'application/pdf' })
+    });
 
-    //return this.http.get('http://localhost:8085/retentionUnit/' + toDate + "/" + zone + "/" + region + "/" + branch + "/" + unl);
 
   }
 
@@ -226,14 +223,15 @@ export class DashboardService {
     let respArr: Array<string> = resp.split("/");
     let url = "http://localhost:8085/retentionCode";
 
-    for (var _i = 5; _i < respArr.length; _i++) {
+    for (var _i = 4; _i < respArr.length; _i++) {
       var text = respArr[_i];
       var encodedString = btoa(text);
       url += "/" + encodedString;
     }
-    window.open(url);
 
-    return true;
+    return this.http.get(url, { responseType: ResponseContentType.Blob }).map((res) => {
+        return new Blob([res.blob()], { type: 'application/pdf' })
+    });
 
   }
 
@@ -243,16 +241,15 @@ export class DashboardService {
     let respArr: Array<string> = resp.split("/");
     let url = "http://localhost:8085/retentionBranch";
 
-    for (var _i = 5; _i < respArr.length; _i++) {
+    for (var _i = 4; _i < respArr.length; _i++) {
       var text = respArr[_i];
       var encodedString = btoa(text);
       url += "/" + encodedString;
     }
-    window.open(url);
 
-    return true;
-
-    //return this.http.get('http://localhost:8085/retentionBranch/' + date + "/" + zone + "/" + region + "/" + branch);
+    return this.http.get(url, { responseType: ResponseContentType.Blob }).map((res) => {
+        return new Blob([res.blob()], { type: 'application/pdf' })
+    });
 
   }
 
@@ -262,16 +259,16 @@ export class DashboardService {
     let respArr: Array<string> = resp.split("/");
     let url = "http://localhost:8085/detailsOfPolicies";
 
-    for (var _i = 5; _i < respArr.length; _i++) {
+    for (var _i = 4; _i < respArr.length; _i++) {
       var text = respArr[_i];
       var encodedString = btoa(text);
       url += "/" + encodedString;
     }
-    window.open(url);
 
-    return true;
+    return this.http.get(url, { responseType: ResponseContentType.Blob }).map((res) => {
+        return new Blob([res.blob()], { type: 'application/pdf' })
+    });
 
-    //return this.http.get('http://localhost:8085/detailsOfPolicies/' + fromDate + "/" + toDate + "/" + ic + "/" + ul + "/" + branch + "/" + region + "/" + zone + "/" + sp);
   }
 
 
@@ -281,16 +278,15 @@ export class DashboardService {
     let respArr: Array<string> = resp.split("/");
     let url = "http://localhost:8085/premiumDueReportLive";
 
-    for (var _i = 5; _i < respArr.length; _i++) {
+    for (var _i = 4; _i < respArr.length; _i++) {
       var text = respArr[_i];
       var encodedString = btoa(text);
       url += "/" + encodedString;
     }
-    window.open(url);
-
-    return true;
-
-    //return this.http.get('http://localhost:8085/premiumDueReportLive/' + asAtDate + "/" + code + "/" + branchCode + "/" + regionCode + "/" + zone);
+    
+    return this.http.get(url, { responseType: ResponseContentType.Blob }).map((res) => {
+        return new Blob([res.blob()], { type: 'application/pdf' })
+    });
 
   }
 
@@ -300,15 +296,15 @@ export class DashboardService {
     let respArr: Array<string> = resp.split("/");
     let url = "http://localhost:8085/premiumDueReport";
 
-    for (var _i = 5; _i < respArr.length; _i++) {
+    for (var _i = 4; _i < respArr.length; _i++) {
       var text = respArr[_i];
       var encodedString = btoa(text);
       url += "/" + encodedString;
     }
-    window.open(url);
 
-    return true;
-    //return this.http.get('http://localhost:8085/premiumDueReport/' + asAtDate + "/" + code + "/" + branchCode + "/" + regionCode + "/" + zone + "/" + status);
+    return this.http.get(url, { responseType: ResponseContentType.Blob }).map((res) => {
+        return new Blob([res.blob()], { type: 'application/pdf' })
+    });
 
   }
 
@@ -318,15 +314,15 @@ export class DashboardService {
     let respArr: Array<string> = resp.split("/");
     let url = "http://localhost:8085/grantStmtBranch";
 
-    for (var _i = 5; _i < respArr.length; _i++) {
+    for (var _i = 4; _i < respArr.length; _i++) {
       var text = respArr[_i];
       var encodedString = btoa(text);
       url += "/" + encodedString;
     }
-    window.open(url);
 
-    return true;
-    //return this.http.get('http://localhost:8085/grantStmtBranch/' + branch + "/" + year + "/" + month + "/" + code + "/" + status);
+    return this.http.get(url, { responseType: ResponseContentType.Blob }).map((res) => {
+        return new Blob([res.blob()], { type: 'application/pdf' })
+    });
 
   }
 
@@ -336,16 +332,15 @@ export class DashboardService {
     let respArr: Array<string> = resp.split("/");
     let url = "http://localhost:8085/firstPremiumLapSummary";
 
-    for (var _i = 5; _i < respArr.length; _i++) {
+    for (var _i = 4; _i < respArr.length; _i++) {
       var text = respArr[_i];
       var encodedString = btoa(text);
       url += "/" + encodedString;
     }
-    window.open(url);
 
-    return true;
-
-    //return this.http.get('http://localhost:8085/firstPremiumLapSummary/' + fromDate + "/" + toDate + "/" + zone + "/" + region + "/" + branch);
+    return this.http.get(url, { responseType: ResponseContentType.Blob }).map((res) => {
+        return new Blob([res.blob()], { type: 'application/pdf' })
+    });
 
   }
 
@@ -355,16 +350,15 @@ export class DashboardService {
     let respArr: Array<string> = resp.split("/");
     let url = "http://localhost:8085/policyAcknowledgement";
 
-    for (var _i = 5; _i < respArr.length; _i++) {
+    for (var _i = 4; _i < respArr.length; _i++) {
       var text = respArr[_i];
       var encodedString = btoa(text);
       url += "/" + encodedString;
     }
-    window.open(url);
 
-    return true;
-
-    //return this.http.get('http://localhost:8085/policyAcknowledgement/' + branch + "/" + year + "/" + month);
+    return this.http.get(url, { responseType: ResponseContentType.Blob }).map((res) => {
+        return new Blob([res.blob()], { type: 'application/pdf' })
+    });
 
   }
 
@@ -374,16 +368,15 @@ export class DashboardService {
     let respArr: Array<string> = resp.split("/");
     let url = "http://localhost:8085/salesPerfSummaryCode";
 
-    for (var _i = 5; _i < respArr.length; _i++) {
+    for (var _i = 4; _i < respArr.length; _i++) {
       var text = respArr[_i];
       var encodedString = btoa(text);
       url += "/" + encodedString;
     }
-    window.open(url);
 
-    return true;
-
-    //return this.http.get('http://localhost:8085/salesPerfSummaryCode/' + fromDate + "/" + toDate + "/" + zone + "/" + region + "/" + branch + "/" + frequency + "/" + product);
+    return this.http.get(url, { responseType: ResponseContentType.Blob }).map((res) => {
+        return new Blob([res.blob()], { type: 'application/pdf' })
+    });
 
   }
 
@@ -394,16 +387,15 @@ export class DashboardService {
     let respArr: Array<string> = resp.split("/");
     let url = "http://localhost:8085/salesPerfSummary";
 
-    for (var _i = 5; _i < respArr.length; _i++) {
+    for (var _i = 4; _i < respArr.length; _i++) {
       var text = respArr[_i];
       var encodedString = btoa(text);
       url += "/" + encodedString;
     }
-    window.open(url);
 
-    return true;
-
-    //return this.http.get('http://localhost:8085/salesPerfSummary/' + fromDate + "/" + toDate + "/" + zone + "/" + region + "/" + branch + "/" + frequency + "/" + product + "/" + so);
+   return this.http.get(url, { responseType: ResponseContentType.Blob }).map((res) => {
+        return new Blob([res.blob()], { type: 'application/pdf' })
+    });
 
   }
 
@@ -413,16 +405,15 @@ export class DashboardService {
     let respArr: Array<string> = resp.split("/");
     let url = "http://localhost:8085/unitIsPerfSummary";
 
-    for (var _i = 5; _i < respArr.length; _i++) {
+    for (var _i = 4; _i < respArr.length; _i++) {
       var text = respArr[_i];
       var encodedString = btoa(text);
       url += "/" + encodedString;
     }
-    window.open(url);
 
-    return true;
-
-    //return this.http.get('http://localhost:8085/unitIsPerfSummary/' + fromDate + "/" + toDate + "/" + zone + "/" + region + "/" + branch + "/" + unl + "/" + type + "/" + frequency + "/" + product + "/" + status);
+    return this.http.get(url, { responseType: ResponseContentType.Blob }).map((res) => {
+        return new Blob([res.blob()], { type: 'application/pdf' })
+    });
 
   }
 
@@ -432,16 +423,15 @@ export class DashboardService {
     let respArr: Array<string> = resp.split("/");
     let url = "http://localhost:8085/salesPerfDetail";
 
-    for (var _i = 5; _i < respArr.length; _i++) {
+    for (var _i = 4; _i < respArr.length; _i++) {
       var text = respArr[_i];
       var encodedString = btoa(text);
       url += "/" + encodedString;
     }
-    window.open(url);
 
-    return true;
-
-    //return this.http.get('http://localhost:8085/salesPerfDetail/' + fromDate + "/" + toDate + "/" + code + "/" + zone + "/" + region + "/" + branch + "/" + product + "/" + frequency + "/" + status);
+    return this.http.get(url, { responseType: ResponseContentType.Blob }).map((res) => {
+        return new Blob([res.blob()], { type: 'application/pdf' })
+    });
 
   }
 
@@ -452,16 +442,15 @@ export class DashboardService {
     let respArr: Array<string> = resp.split("/");
     let url = "http://localhost:8085/unitIsPerfDetails";
 
-    for (var _i = 5; _i < respArr.length; _i++) {
+    for (var _i = 4; _i < respArr.length; _i++) {
       var text = respArr[_i];
       var encodedString = btoa(text);
       url += "/" + encodedString;
     }
-    window.open(url);
-
-    return true;
-
-    //return this.http.get('http://localhost:8085/unitIsPerfDetails/' + fromDate + "/" + toDate + "/" + zone + "/" + region + "/" + branch + "/" + unl + "/" + type + "/" + frequency + "/" + product + "/" + status);
+    
+    return this.http.get(url, { responseType: ResponseContentType.Blob }).map((res) => {
+        return new Blob([res.blob()], { type: 'application/pdf' })
+    });
 
   }
 

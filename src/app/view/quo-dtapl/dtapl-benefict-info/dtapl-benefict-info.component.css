@@ -44,7 +44,7 @@
     pointer-events: none;
     opacity: 0.5;
     background: #CCC;
-    background: url(/assets/images/deve.gif);
+    background: url(/assets/images/preloader.gif);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;

@@ -23,9 +23,7 @@
     overflow-x: auto;
 }
 
-.container-fluid{
-    min-width: 560px;
-}
+
 
 .table-hover tbody tr:hover{
     cursor: pointer;

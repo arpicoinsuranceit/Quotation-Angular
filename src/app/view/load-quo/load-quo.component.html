@@ -4,30 +4,36 @@
 		<h2>All Quotations</h2>
 	</div>
 	<div class="body_div">
-		<table class="table table-striped table-hover table-responsive">
-			<thead>
-				<tr>
-					<th>Quotation Num</th>
-					<th>Branch Code</th>
-					<th>Product Code</th>
-					<th>Customer Name</th>
-					<th>Customer Nic</th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody *ngFor="let quo of quoDetails">
-				<tr>
-					<td>{{quo.quotationNum}}</td>
-					<td>{{quo.branchCode}}</td>
-					<td>{{quo.productCode}}</td>
-					<td>{{quo.customerName}}</td>
-					<td>{{quo.customerNic}}</td>
-					<td>
-						<a routerLink="../viewQuo/{{quo.quotationNum}}">View</a>
-					</td>
-				</tr>
+		<div style="overflow-x: auto">
+			<div style="min-width: 560px;">
+				<table class="table table-striped table-hover table-responsive">
+					<thead>
+						<tr>
+							<th>Quotation Num</th>
+							<th>Branch Code</th>
+							<th>Product Code</th>
+							<th>Customer Name</th>
+							<th>Customer Nic</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody *ngFor="let quo of quoDetails">
+						<tr>
+							<td>{{quo.quotationNum}}</td>
+							<td>{{quo.branchCode}}</td>
+							<td>{{quo.productCode}}</td>
+							<td>{{quo.customerName}}</td>
+							<td>{{quo.customerNic}}</td>
+							<td>
+								<a routerLink="../viewQuo/{{quo.quotationNum}}">View</a>
+							</td>
+						</tr>
 
-			</tbody>
-		</table>
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+
 	</div>
 </div>

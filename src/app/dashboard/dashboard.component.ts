@@ -1,13 +1,12 @@
-import { CommitmentService } from './../service/commitment/commitment.service';
-import { UserProfilePictures } from './../model/userprofilepictures';
 import swal from 'sweetalert2';
-import { MainRespDto } from './../model/dashboardData';
-import { DashboardService } from './../service/dashboard/dashboard.service';
-import { forEach } from '@angular/router/src/utils/collection';
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
+import { JwtHelper } from 'angular2-jwt';
+import { MainRespDto } from '../model/dashboardData';
+import { DashboardService } from '../service/dashboard/dashboard.service';
 import { LoginService } from '../service/login.service';
-import { DomSanitizer, platformBrowser } from '@angular/platform-browser';
-import { error } from 'util';
+import { UserProfilePictures } from '../model/userprofilepictures';
 
 @Component({
   selector: 'app-dashboard',
@@ -44,9 +43,6 @@ export class DashboardComponent implements OnInit {
   name4: any = "";
   name5: any = "";
   name6: any = "";
-
-
-  ;
 
   dashbardLevel1 = false;
 
@@ -98,23 +94,15 @@ export class DashboardComponent implements OnInit {
 
 
 
-  constructor(private loginService: LoginService, private dashboardService: DashboardService, private commitmentService:CommitmentService) {
-    if(!sessionStorage.getItem("Token")){
-      this.loginService.navigateLigin();
-    }
-    
-    sessionStorage.removeItem("userType");
-    sessionStorage.removeItem("dashpara");
-    this.loginService.pwResetDate();
-    this.userCode = this.loginService.currentUser.userCode;
-
-    //console.log(this.userCode);
+  constructor( private dashboardService: DashboardService,private route: ActivatedRoute,private loginService: LoginService) {
+  
+    this.userCode=loginService.currentUser.userCode;
 
     if (this.userCode == 'kavinda') {
       this.loadProfilePics();
 
     }
-
+    
     this.dashboardService.getDashboardType(this.userCode).subscribe(response => {
       //console.log(response.json());
       this.dashpara = response.json().dashpara;
@@ -125,15 +113,15 @@ export class DashboardComponent implements OnInit {
 
       //console.log(this.dashpara+" -- "+this.usertype);
 
-      //this.ngLoadDashboard();
+      this.ngLoadDashboard();
       
-      /*
+      
       if (response.json().dashtype == "DB2") {
         this.dashbardLevel1 = true;
         this.dashpara = response.json().dashpara;
         this.usertype = response.json().usertype;
       }
-      */
+      
     }, error => {
       swal("Error", "Error code - 1501 <br> ", "error");
     });
@@ -151,6 +139,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() { }
+  
   /*
   ngOnInit() {
     this.dashboardService.getDashboard().subscribe(response => {

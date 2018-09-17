@@ -192,7 +192,7 @@ export class QuoInvpComponent implements OnInit {
 
     this.route.params.subscribe(params => {
       this.qdId = params.id;
-    },error => {swal("Error", "Error code - 610 <br>","error")});
+    },error => {swal("Error", error.text() ,"error")});
 
     this._plan._bsa = 250000;
     this._plan._frequance = "Monthly";
@@ -568,7 +568,7 @@ export class QuoInvpComponent implements OnInit {
         this.summeryInfo._protection.BSASTerm = response.json().bsasTerm;
 
       },error => {
-        swal("Error", "Error code - 611 <br>","error");
+        swal("Error", error.text() ,"error");
         document.onkeydown = function (e) { return true; }
         this.isDisableDiv = false;
       });
@@ -702,7 +702,7 @@ export class QuoInvpComponent implements OnInit {
 
                   }
                 },error => {
-                  swal("Error", "Error code - 612 <br>","error");
+                  swal("Error", error.text() ,"error");
                   document.onkeydown = function (e) { return true; }
                   this.isDisableDiv = false;
                 });
@@ -728,7 +728,7 @@ export class QuoInvpComponent implements OnInit {
 
                 }
               },error => {
-                swal("Error", "Error code - 612 <br>","error");
+                swal("Error", error.text() ,"error");
                 document.onkeydown = function (e) { return true; }
                 this.isDisableDiv = false;
               });
@@ -898,7 +898,7 @@ export class QuoInvpComponent implements OnInit {
 
                   }
                 },error => {
-                  swal("Error", "Error code - 613 <br>","error");
+                  swal("Error", error.text() ,"error");
                   document.onkeydown = function (e) { return true; }
                   this.isDisableDiv = false;
                 });
@@ -924,7 +924,7 @@ export class QuoInvpComponent implements OnInit {
 
                 }
               },error => {
-                swal("Error", "Error code - 613 <br>","error");
+                swal("Error", error.text() ,"error");
                 document.onkeydown = function (e) { return true; }
                 this.isDisableDiv = false;
               });
@@ -950,7 +950,10 @@ export class QuoInvpComponent implements OnInit {
   editCal() {
     this.saveInvpQuotationService.getInvpQuotationDetailsForEdit(this.qdId).subscribe(response => {
       console.log(response.json());
+      let phone : string = response.json()._mainlife._mMobile;
+
       this._mainLife = response.json()._mainlife;
+      this._mainLife._mMobile = phone.substr(1,9); 
       this._plan = response.json()._plan;
       this._spouse = response.json()._spouse;
 
@@ -1754,7 +1757,7 @@ export class QuoInvpComponent implements OnInit {
       this.sendQuo()
 
     },error =>{
-      swal("Error", "Error code - 614 <br>","error");
+      swal("Error", error.text() ,"error");
       document.onkeydown = function (e) { return true; }
       this.isDisableDiv = false;
     });
@@ -1805,7 +1808,7 @@ export class QuoInvpComponent implements OnInit {
       }
       this.sendQuo();
     },error => {
-      swal("Error", "Error code - 615 <br>","error");
+      swal("Error", error.text() ,"error");
       document.onkeydown = function (e) { return true; }
       this.isDisableDiv = false;
     });
@@ -1832,7 +1835,7 @@ export class QuoInvpComponent implements OnInit {
       }
       this.sendQuo();
     },error => {
-      swal("Error", "Error code - 616 <br>","error");
+      swal("Error", error.text() ,"error");
       document.onkeydown = function (e) { return true; }
       this.isDisableDiv = false;
     });

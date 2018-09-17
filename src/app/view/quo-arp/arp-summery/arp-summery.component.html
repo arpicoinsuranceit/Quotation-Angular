@@ -1,5 +1,4 @@
-
-<div class="main_div">
+<div class="main_div" style="min-height: 590px;">
     <div class="header_div">
         <h2>Quotation Summary (ARP)</h2>
     </div>
@@ -16,7 +15,7 @@
                     <div class="paiTitle" style="font-size: 11px;">Term of the </div>
                     <div class="paiTitle" style="font-size: 11px;">Plan {{summeryInfo._summery._term}}</div>
                 </div>
-    
+
                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
                     <table class="premiumTable" style="width: 100%">
                         <tr class="premiumTable">
@@ -31,12 +30,12 @@
                             <td>Premium for AdminFee / Tax</td>
                             <td style="text-align: right">Rs. {{summeryInfo._summery.oc}}</td>
                         </tr>
-    
+
                         <tr class="premiumTable">
                             <td>Total Premium</td>
                             <td style="text-align: right">Rs. {{summeryInfo._summery.totPremium}}</td>
                         </tr>
-    
+
                     </table>
                 </div>
             </div>
@@ -57,7 +56,7 @@
             </div>
         </div>
     </div>
-    <div class="body_div">
+    <div class="body_div" style="overflow-x: auto">
         <div class="container-fluid content-div2" style="margin-top: 10px;">
             <ngb-tabset>
                 <ngb-tab title="Health">
@@ -102,7 +101,8 @@
                                 <tr style="height: 45px;">
                                     <th style="font-size: 13px;">Total Health Premium</th>
                                     <td style="text-align: right"></td>
-                                    <th style="text-align: right">Rs. {{summeryInfo._health.CIB+summeryInfo._health.HB+summeryInfo._health.HRBI+summeryInfo._health.HRBF+summeryInfo._health.SUHRB}}</th>
+                                    <th style="text-align: right">Rs.
+                                        {{summeryInfo._health.CIB+summeryInfo._health.HB+summeryInfo._health.HRBI+summeryInfo._health.HRBF+summeryInfo._health.SUHRB}}</th>
                                 </tr>
                                 <tr>
                                     <th>Spouse</th>
@@ -143,7 +143,8 @@
                                 <tr style="height: 45px;">
                                     <th style="font-size: 13px;">Total Health Premium</th>
                                     <td style="text-align: right"></td>
-                                    <th style="text-align: right">Rs. {{summeryInfo._health.SCIB+summeryInfo._health.HBS+summeryInfo._health.HRBIS+summeryInfo._health.HRBFS+summeryInfo._health.SUHRBS}}</th>
+                                    <th style="text-align: right">Rs.
+                                        {{summeryInfo._health.SCIB+summeryInfo._health.HBS+summeryInfo._health.HRBIS+summeryInfo._health.HRBFS+summeryInfo._health.SUHRBS}}</th>
                                 </tr>
                                 <tr>
                                     <th>Children</th>
@@ -183,7 +184,8 @@
                                 <tr style="height: 45px;">
                                     <th style="font-size: 13px;">Total Health Premium</th>
                                     <td style="text-align: right"></td>
-                                    <th style="text-align: right">Rs. {{summeryInfo._health.CIBC+summeryInfo._health.HBC+summeryInfo._health.HRBIC+summeryInfo._health.HRBFC+summeryInfo._health.SUHRBC}}</th>
+                                    <th style="text-align: right">Rs.
+                                        {{summeryInfo._health.CIBC+summeryInfo._health.HBC+summeryInfo._health.HRBIC+summeryInfo._health.HRBFC+summeryInfo._health.SUHRBC}}</th>
                                 </tr>
 
                             </table>
@@ -237,7 +239,8 @@
                                 <tr style="height: 45px;">
                                     <th style="font-size: 13px;">Total Protection Premium</th>
                                     <td style="text-align: right"></td>
-                                    <th style="text-align: right">Rs. {{summeryInfo._protection.ADB+summeryInfo._protection.ATPB+summeryInfo._protection.FEB+
+                                    <th style="text-align: right">Rs.
+                                        {{summeryInfo._protection.ADB+summeryInfo._protection.ATPB+summeryInfo._protection.FEB+
                                         summeryInfo._protection.MFIBD+summeryInfo._protection.MFIBDT+summeryInfo._protection.MFIBT+summeryInfo._protection.WPB}}
                                     </th>
                                 </tr>
@@ -264,7 +267,8 @@
                                 <tr style="height: 45px;">
                                     <th style="font-size: 13px;">Total Protection Premium</th>
                                     <td style="text-align: right"></td>
-                                    <th style="text-align: right">Rs. {{summeryInfo._protection.ADBS+summeryInfo._protection.FEBS+summeryInfo._protection.WPBS}}</th>
+                                    <th style="text-align: right">Rs.
+                                        {{summeryInfo._protection.ADBS+summeryInfo._protection.FEBS+summeryInfo._protection.WPBS}}</th>
                                 </tr>
 
                             </table>
@@ -299,7 +303,8 @@
                                 <tr style="height: 45px;">
                                     <th style="font-size: 13px;">Total Disability Premium</th>
                                     <td style="text-align: right"></td>
-                                    <th style="text-align: right">Rs. {{summeryInfo._disablities.PPDB+summeryInfo._disablities.TPDASB+summeryInfo._disablities.TPDB}}</th>
+                                    <th style="text-align: right">Rs.
+                                        {{summeryInfo._disablities.PPDB+summeryInfo._disablities.TPDASB+summeryInfo._disablities.TPDB}}</th>
                                 </tr>
                                 <tr>
                                     <th>Spouse</th>
@@ -324,7 +329,8 @@
                                 <tr style="height: 45px;">
                                     <th style="font-size: 13px;">Total Disability Premium</th>
                                     <th style="font-size: 13px;"></th>
-                                    <th style="text-align: right">Rs. {{summeryInfo._disablities.PPDBS+summeryInfo._disablities.TPDASBS+summeryInfo._disablities.TPDBS}}</th>
+                                    <th style="text-align: right">Rs.
+                                        {{summeryInfo._disablities.PPDBS+summeryInfo._disablities.TPDASBS+summeryInfo._disablities.TPDBS}}</th>
                                 </tr>
 
                             </table>
@@ -434,9 +440,10 @@
                                 <tr style="height: 45px;">
                                     <th style="font-size: 13px;">Total MainLife Premium</th>
                                     <th style="font-size: 13px;"></th>
-                                    <th style="text-align: right">Rs. {{summeryInfo._protection.ADB+summeryInfo._protection.ATPB+summeryInfo._protection.FEB+
-                                            summeryInfo._protection.MFIBD+summeryInfo._protection.MFIBDT+summeryInfo._protection.MFIBT+summeryInfo._protection.WPB+summeryInfo._disablities.PPDB+summeryInfo._disablities.TPDASB+summeryInfo._disablities.TPDB+
-                                            summeryInfo._health.CIB+summeryInfo._health.HB+summeryInfo._health.HRBI+summeryInfo._health.HRBF+summeryInfo._health.SUHRB}}</th>
+                                    <th style="text-align: right">Rs.
+                                        {{summeryInfo._protection.ADB+summeryInfo._protection.ATPB+summeryInfo._protection.FEB+
+                                        summeryInfo._protection.MFIBD+summeryInfo._protection.MFIBDT+summeryInfo._protection.MFIBT+summeryInfo._protection.WPB+summeryInfo._disablities.PPDB+summeryInfo._disablities.TPDASB+summeryInfo._disablities.TPDB+
+                                        summeryInfo._health.CIB+summeryInfo._health.HB+summeryInfo._health.HRBI+summeryInfo._health.HRBF+summeryInfo._health.SUHRB}}</th>
                                 </tr>
 
 
@@ -519,7 +526,9 @@
                                 <tr style="height: 45px;">
                                     <th style="font-size: 13px;">Total Spouse Premium</th>
                                     <td style="text-align: right"></td>
-                                    <th style="text-align: right">Rs. {{summeryInfo._health.SCIB+summeryInfo._health.HBS+summeryInfo._health.HRBIS+summeryInfo._health.HRBFS+summeryInfo._health.SUHRBS+ summeryInfo._disablities.PPDBS+summeryInfo._disablities.TPDASBS+summeryInfo._disablities.TPDBS
+                                    <th style="text-align: right">Rs.
+                                        {{summeryInfo._health.SCIB+summeryInfo._health.HBS+summeryInfo._health.HRBIS+summeryInfo._health.HRBFS+summeryInfo._health.SUHRBS+
+                                        summeryInfo._disablities.PPDBS+summeryInfo._disablities.TPDASBS+summeryInfo._disablities.TPDBS
                                         +summeryInfo._protection.ADBS+summeryInfo._protection.FEBS+summeryInfo._protection.WPBS}}</th>
                                 </tr>
 
@@ -561,7 +570,8 @@
                                 <tr style="height: 45px;">
                                     <th style="font-size: 13px;">Total Children Premium</th>
                                     <td style="text-align: right"></td>
-                                    <th style="text-align: right">Rs. {{summeryInfo._health.CIBC+summeryInfo._health.HBC+summeryInfo._health.HRBIC+summeryInfo._health.HRBFC+summeryInfo._health.SUHRBC}}</th>
+                                    <th style="text-align: right">Rs.
+                                        {{summeryInfo._health.CIBC+summeryInfo._health.HBC+summeryInfo._health.HRBIC+summeryInfo._health.HRBFC+summeryInfo._health.SUHRBC}}</th>
                                 </tr>
                             </table>
                         </div>

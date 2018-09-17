@@ -191,7 +191,7 @@ export class QuoEnd1Component implements OnInit {
     }
     this.route.params.subscribe(params => {
       this.qdId = params.id;
-    }, error => { swal("Error", "Error code - 510 <br>", "error") });
+    }, error => { swal("Error", error.text() , "error") });
 
     this._plan._bsa = 250000;
     this._plan._frequance = "Monthly";
@@ -588,7 +588,9 @@ export class QuoEnd1Component implements OnInit {
         this.summeryInfo._protection.BSASTerm = response.json().bsasTerm;
 
       }, error => {
-        swal("Error", "Error code - 511 <br>", "error");
+        console.log(error);
+        console.log(error.text());
+        swal("Error", error.text() , "error");
         document.onkeydown = function (e) { return true; }
         this.isDisableDiv = false;
       });
@@ -727,7 +729,7 @@ export class QuoEnd1Component implements OnInit {
 
                 }
               }, error => {
-                swal("Error", "Error code - 512 <br>", "error");
+                swal("Error", error.text() , "error");
                 document.onkeydown = function (e) { return true; }
                 this.isDisableDiv = false;
               });
@@ -755,7 +757,7 @@ export class QuoEnd1Component implements OnInit {
 
               }
             }, error => {
-              swal("Error", "Error code - 512 <br>", "error");
+              swal("Error", error.text() , "error");
               document.onkeydown = function (e) { return true; }
               this.isDisableDiv = false;
             });
@@ -930,7 +932,7 @@ export class QuoEnd1Component implements OnInit {
 
               }
             }, error => {
-              swal("Error", "Error code - 513 <br>", "error");
+              swal("Error", error.text() , "error");
               document.onkeydown = function (e) { return true; }
               this.isDisableDiv = false;
             });
@@ -956,7 +958,7 @@ export class QuoEnd1Component implements OnInit {
 
             }
           }, error => {
-            swal("Error", "Error code - 513 <br>", "error");
+            swal("Error", error.text() , "error");
             document.onkeydown = function (e) { return true; }
             this.isDisableDiv = false;
           });
@@ -982,7 +984,12 @@ export class QuoEnd1Component implements OnInit {
       this.isDisableDiv = false;
       
       console.log(response.json());
+
+      let phone : string = response.json()._mainlife._mMobile;
+
       this._mainLife = response.json()._mainlife;
+      this._mainLife._mMobile = phone.substr(1,9); 
+
       this._plan = response.json()._plan;
       this._spouse = response.json()._spouse;
 
@@ -1786,7 +1793,7 @@ export class QuoEnd1Component implements OnInit {
       this.sendQuo()
 
     }, error => {
-      swal("Error", "Error code - 514 <br>", "error");
+      swal("Error", error.text() , "error");
       document.onkeydown = function (e) { return true; }
       this.isDisableDiv = false;
     });
@@ -1838,7 +1845,7 @@ export class QuoEnd1Component implements OnInit {
 
       this.sendQuo();
     }, error => {
-      swal("Error", "Error code - 515 <br>", "error");
+      swal("Error", error.text() , "error");
       document.onkeydown = function (e) { return true; }
       this.isDisableDiv = false;
     });
@@ -1865,7 +1872,7 @@ export class QuoEnd1Component implements OnInit {
       }
       this.sendQuo();
     }, error => {
-      swal("Error", "Error code - 516 <br>", "error");
+      swal("Error", error.text() , "error");
       document.onkeydown = function (e) { return true; }
       this.isDisableDiv = false;
     });

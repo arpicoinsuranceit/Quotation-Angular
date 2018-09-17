@@ -19,20 +19,6 @@ import { Children } from '../../../model/childeren';
 })
 export class AditionalBenifInvpComponent implements OnInit {
 
-  /* 
-    Newly Changes..
-    @Output() onsetBenifMainlifeForm = new EventEmitter<FormGroup>();
-    @Output() onsetBenifSpouseForm = new EventEmitter<FormGroup>();
-    @Output() onsetBenifChildrenForm = new EventEmitter<FormGroup>();
-
-    @Input() activeSp = "2";
-    @Input() activeCh = "2";
-
-    @Input() isImgBSAGActive = true;
-    @Input() isImgBSAActive = false;
-  */
-
-
   @Output() onsetBenifAllForm = new EventEmitter<NestedForm>();
   @Output() onsetBenifMainlife = new EventEmitter<FormGroup>();
   @Output() onsetBenifSpouse = new EventEmitter<FormGroup>();

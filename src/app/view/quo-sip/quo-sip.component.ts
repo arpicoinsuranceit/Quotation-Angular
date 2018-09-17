@@ -198,7 +198,7 @@ export class QuoSipComponent implements OnInit {
 
     this.route.params.subscribe(params => {
       this.qdId = params.id;
-    },error => { swal("Error", "Error code - 710 <br>", "error") });
+    },error => { swal("Error", error.text(), "error") });
 
     this._plan._bsa = 250000;
     this._plan._frequance = "Monthly";
@@ -489,7 +489,7 @@ export class QuoSipComponent implements OnInit {
         this.isDisableDiv = false;
         console.log(response.json());
         if (response.json().errorExist == true) {
-          swal("Error!", "Error exist in" + response.json().error, "error");
+          swal("Error!", "Error exist in " + response.json().error, "error");
         }
         if (response.json().warningExist == true) {
           swal("Warning!", response.json().warning, "warning");
@@ -576,7 +576,7 @@ export class QuoSipComponent implements OnInit {
         this.summeryInfo._protection.BSASTerm = response.json().bsasTerm;
 
       },error => {
-        swal("Error", "Error code - 711 <br>", "error");
+        swal("Error", error.text() , "error");
         document.onkeydown = function (e) { return true; }
         this.isDisableDiv = false;
       });
@@ -709,7 +709,7 @@ export class QuoSipComponent implements OnInit {
 
                   }
                 },error => {
-                  swal("Error", "Error code - 712 <br>", "error");
+                  swal("Error", error.text() , "error");
                   document.onkeydown = function (e) { return true; }
                   this.isDisableDiv = false;
                 });
@@ -735,7 +735,7 @@ export class QuoSipComponent implements OnInit {
 
                 }
               },error => {
-                swal("Error", "Error code - 712 <br>", "error");
+                swal("Error", error.text() , "error");
                 document.onkeydown = function (e) { return true; }
                 this.isDisableDiv = false;
               });
@@ -893,7 +893,7 @@ export class QuoSipComponent implements OnInit {
 
               }
             },error => {
-              swal("Error", "Error code - 713 <br>", "error");
+              swal("Error", error.text() , "error");
               document.onkeydown = function (e) { return true; }
               this.isDisableDiv = false;
             });
@@ -919,7 +919,7 @@ export class QuoSipComponent implements OnInit {
 
             }
           },error => {
-            swal("Error", "Error code - 713 <br>", "error");
+            swal("Error", error.text() , "error");
             document.onkeydown = function (e) { return true; }
             this.isDisableDiv = false;
           });
@@ -939,8 +939,10 @@ export class QuoSipComponent implements OnInit {
 
   editCal() {
     this.saveAsipQuotationService.getAsipQuotationDetailsForEdit(this.qdId).subscribe(response => {
-      console.log(response.json());
+      let phone : string = response.json()._mainlife._mMobile;
+
       this._mainLife = response.json()._mainlife;
+      this._mainLife._mMobile = phone.substr(1,9); 
       this._plan = response.json()._plan;
       this._spouse = response.json()._spouse;
 
@@ -999,7 +1001,7 @@ export class QuoSipComponent implements OnInit {
 
       for (var q in this._mainLifeBenefits) {
 
-        console.log(this._mainLifeBenefits[q].benfName);
+        //console.log(this._mainLifeBenefits[q].benfName);
         switch (this._mainLifeBenefits[q].benfName) {
           case "ATPB": {
             this.isImgATPBGActive = false;
@@ -1312,7 +1314,7 @@ export class QuoSipComponent implements OnInit {
 
       for (var q in this._spouseBenefits) {
 
-        console.log(this._spouseBenefits[q].benfName);
+        //console.log(this._spouseBenefits[q].benfName);
         switch (this._spouseBenefits[q].benfName) {
           case "SCB": {
             this.isImgBSASGActive = false;
@@ -1565,7 +1567,7 @@ export class QuoSipComponent implements OnInit {
 
       for (var q in this._childrenBenefits) {
 
-        console.log(this._childrenBenefits[q].benfName);
+        //console.log(this._childrenBenefits[q].benfName);
         switch (this._childrenBenefits[q].benfName) {
           case "CIBC": {
             this.isImgCIBCGActive = false;
@@ -1744,7 +1746,7 @@ export class QuoSipComponent implements OnInit {
       this.sendQuo()
 
     },error => {
-      swal("Error", "Error code - 714 <br>", "error");
+      swal("Error", error.text() , "error");
       document.onkeydown = function (e) { return true; }
       this.isDisableDiv = false;
     });
@@ -1772,7 +1774,7 @@ export class QuoSipComponent implements OnInit {
   }
 
   setBsa(e) {
-    console.log(e);
+    //console.log(e);
     this._quotationCalculation._personalInfo.bsa = e;
   }
 
@@ -1796,7 +1798,7 @@ export class QuoSipComponent implements OnInit {
       }
       this.sendQuo();
     },error => {
-      swal("Error", "Error code - 715 <br>", "error");
+      swal("Error", error.text() , "error");
       document.onkeydown = function (e) { return true; }
       this.isDisableDiv = false;
     });
@@ -1823,7 +1825,7 @@ export class QuoSipComponent implements OnInit {
       }
       this.sendQuo();
     },error => {
-      swal("Error", "Error code - 716 <br>", "error");
+      swal("Error",  error.text() , "error");
       document.onkeydown = function (e) { return true; }
       this.isDisableDiv = false;
     });

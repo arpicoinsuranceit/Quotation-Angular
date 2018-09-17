@@ -114,7 +114,7 @@ export class LoadInquiriesComponent implements OnInit {
       this.page.totalElements = parseInt(response.text());
       this.setPage({ offset: 0 });
     }, error => {
-      swal("Error", "Error code - 1051 <br> ", "error");
+      swal("Error", error.text() , "error");
       document.onkeydown = function (e) { return true; }
       this.isDisableDiv = false;
     });
@@ -129,7 +129,7 @@ export class LoadInquiriesComponent implements OnInit {
       this.isDisableDiv = false;
      // console.log(this.dataTableResponse);
     }, error => {
-      swal("Error", "Error code - 1052 <br> ", "error");
+      swal("Error", error.text() , "error");
       document.onkeydown = function (e) { return true; }
       this.isDisableDiv = false;
     });
@@ -138,7 +138,7 @@ export class LoadInquiriesComponent implements OnInit {
   getDetails(activityInfo) {
 
 
-    if (activityInfo.type == "dblclick") {
+    if (activityInfo.type == "dblclick" || activityInfo.type == "click") {
       this.isDisableDiv = true;
       this.settlementTot = 0;
 
@@ -343,7 +343,7 @@ export class LoadInquiriesComponent implements OnInit {
                     }
                   }
                 }, error => {
-                  swal("Error", "Error code - 1058 <br> ", "error");
+                  swal("Error", error.text() , "error");
                   document.onkeydown = function (e) { return true; }
                   this.isDisableDiv = false;
                 });
@@ -385,7 +385,10 @@ export class LoadInquiriesComponent implements OnInit {
 
                           let payment: PaymentHistory = new PaymentHistory;
 
-                          payment.date = rsp.date;
+                          let date : string= rsp.date;
+                         
+
+                          payment.date =  date.substr(0, 10);
                           payment.dueAmt = rsp.dueAmt;
                           payment.dueDate = rsp.dueDate;
                           payment.month = rsp.month;
@@ -423,7 +426,7 @@ export class LoadInquiriesComponent implements OnInit {
 
                           }
                         }, error => {
-                          swal("Error", "Error code - 1061 <br> ", "error");
+                          swal("Error", error.text() , "error");
                           document.onkeydown = function (e) { return true; }
                           this.isDisableDiv = false;
                         });
@@ -431,7 +434,7 @@ export class LoadInquiriesComponent implements OnInit {
                         this.isDisableDiv = false;
                       }
                     }, error => {
-                      swal("Error", "Error code - 1060 <br> ", "error");
+                      swal("Error", error.text() , "error");
                       document.onkeydown = function (e) { return true; }
                       this.isDisableDiv = false;
                     });
@@ -440,37 +443,37 @@ export class LoadInquiriesComponent implements OnInit {
                   }
 
                 }, error => {
-                  swal("Error", "Error code - 1059 <br> ", "error");
+                  swal("Error", error.text() , "error");
                   document.onkeydown = function (e) { return true; }
                   this.isDisableDiv = false;
                 });
 
               }, error => {
-                swal("Error", "Error code - 1057 <br> ", "error");
+                swal("Error", error.text() , "error");
                 document.onkeydown = function (e) { return true; }
                 this.isDisableDiv = false;
               });
 
             }, error => {
-              swal("Error", "Error code - 1056 <br> ", "error");
+              swal("Error", error.text() , "error");
               document.onkeydown = function (e) { return true; }
               this.isDisableDiv = false;
             });
 
           }, error => {
-            swal("Error", "Error code - 1055 <br> ", "error");
+            swal("Error", error.text(), "error");
             document.onkeydown = function (e) { return true; }
             this.isDisableDiv = false;
           });
 
         }, error => {
-          swal("Error", "Error code - 1054 <br> ", "error");
+          swal("Error", error.text(), "error");
           document.onkeydown = function (e) { return true; }
           this.isDisableDiv = false;
         });
 
       }, error => {
-        swal("Error", "Error code - 1053 <br> ", "error");
+        swal("Error", error.text(), "error");
         document.onkeydown = function (e) { return true; }
         this.isDisableDiv = false;
       });

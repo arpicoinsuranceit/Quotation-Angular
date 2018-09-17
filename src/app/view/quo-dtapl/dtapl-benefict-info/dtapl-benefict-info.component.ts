@@ -173,12 +173,14 @@ export class DtaplBenefictInfoComponent implements OnInit {
 
 
   load(schedules: DTAShedule[]) {
-    let htmlTxt = "<table class=\"table table-striped\" style=\"font-size:10px;overflow-x:auto;\"><thead style=\"background-color:#0c3da3;color:white;\"><th>Policy Year</th>" +
+    let htmlTxt ="<div style=\"max-height : 200px !important; max-width : 500px !important; overflow : auto !important;\">" +
+      "<table class=\"table table-striped\" style=\"font-size:10px;overflow-x:auto;\"><thead style=\"background-color:#0c3da3;color:white;\"><th>Policy Year</th>" +
       "<th>Out Term</th>" +
       "<th>Sum at Risk</th>" +
       "<th>Reduction</th>" +
       "<th>Rate</th>" +
-      "<th>Premium</th>";
+      "<th>Premium</th>"+
+      "</thead><tbody>";
 
     for (let s = 0; s < schedules.length; s++) {
       let dtaShedule: DTAShedule = schedules[s];
@@ -191,7 +193,7 @@ export class DtaplBenefictInfoComponent implements OnInit {
         + "</tr>";
     }
 
-    htmlTxt += "</tbody></table>";
+    htmlTxt += "</tbody></table></div>";
 
     swal({
       title: 'Shedule',

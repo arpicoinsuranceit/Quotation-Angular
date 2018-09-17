@@ -1,4 +1,4 @@
-<div class="main_div">
+<div class="main_div" style="min-height: 600px;">
   <div class="header_div">
     <h2>Additional Benefits (DTA)</h2>
   </div>
@@ -27,7 +27,7 @@
         </div>
     </div>
 </div>
-  <div class="body_div" style="height: 420px;" id="benefits_div">
+  <div class="body_div" style="height: 461px;" id="benefits_div">
 
     <ngb-tabset >
       <ngb-tab title="Main Life">
@@ -57,7 +57,7 @@
                       <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'TPDDTA')" (change)="isActiveTPDDTA($event)">
                       <label class="" for="sumAssured">TPDDTA</label>
                       <label class="frm_lbl" for="sumAssured">Sum Assured</label>
-                      <input formControlName="sumAssured" type="text" class="form-control input-sm" id="txt-sumassured" (keyup.enter)="onsetBenif($event, 'TPDDTA')"
+                      <input formControlName="sumAssured" type="number" class="form-control input-sm" id="txt-sumassured" (keyup.enter)="onsetBenif($event, 'TPDDTA')"
                       (blur)="onsetBenif($event, 'TPDDTA')" [disabled]="isImgGActive" currencyMask>
                       <label class="frm_lbl" for="sumAssured">Premium</label>
                       <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._disablities.TPDDTA" readonly
@@ -104,7 +104,7 @@
                         <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveS($event, 'JLB')" (change)="isActiveJLB($event)">
                         <label class="" for="sumAssured">JLB</label>
                         <label class="frm_lbl" for="sumAssured">Sum Assured</label>
-                        <input formControlName="sumAssured" type="text" class="form-control input-sm" id="txt-sumassured" (keyup.enter)="onsetBenif($event, 'JBL')"
+                        <input formControlName="sumAssured" type="number" class="form-control input-sm" id="txt-sumassured" (keyup.enter)="onsetBenif($event, 'JBL')"
                         (blur)="onsetBenif($event, 'JBL')" [disabled]="isImgGActive" currencyMask>
                         <label class="frm_lbl" for="sumAssured">Premium</label>
                         <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._protection.JLB" readonly
@@ -132,7 +132,7 @@
                         <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveS($event, 'TPDDTAS')" (change)="isActiveTPDDTAS($event)">
                         <label class="" for="sumAssured">TPDDTAS</label>
                         <label class="frm_lbl" for="sumAssured">Sum Assured</label>
-                        <input formControlName="sumAssured" type="text" class="form-control input-sm" id="txt-sumassured" (keyup.enter)="onsetBenif($event, 'TPDDTAS')"
+                        <input formControlName="sumAssured" type="number" class="form-control input-sm" id="txt-sumassured" (keyup.enter)="onsetBenif($event, 'TPDDTAS')"
                         (blur)="onsetBenif($event, 'TPDDTAS')" [disabled]="isImgGActive" currencyMask>
                         <div>
                           <label class="frm_lbl" for="sumAssured">Premium</label>

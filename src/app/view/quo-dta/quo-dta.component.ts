@@ -82,7 +82,7 @@ export class QuoDtaComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.qdId = params.id;
     },error => {
-      swal("Error", "Error code - 810 <br> ","error")
+      swal("Error", error.text() ,"error")
     });
 
     this._plan._bsa = 250000;
@@ -254,7 +254,7 @@ export class QuoDtaComponent implements OnInit {
               this.summeryInfo._protection.JLBTerm = response.json().jlbTerm;
               this.summeryInfo._summery.dtaShedules = response.json().dtaShedules;
             },error => {
-              swal("Error", "Error code - 811 <br> ","error");
+              swal("Error", error.text() ,"error");
               document.onkeydown = function (e) { return true; }
               this.isDisableDiv = false;
             });
@@ -315,7 +315,7 @@ export class QuoDtaComponent implements OnInit {
 
                       }
                     },error => {
-                      swal("Error", "Error code - 812 <br> ","error");
+                      swal("Error", error.text() ,"error");
                       document.onkeydown = function (e) { return true; }
                       this.isDisableDiv = false;
                     });
@@ -342,7 +342,7 @@ export class QuoDtaComponent implements OnInit {
 
                     }
                   },error => {
-                    swal("Error", "Error code - 812 <br> ","error");
+                    swal("Error", error.text() ,"error");
                     document.onkeydown = function (e) { return true; }
                     this.isDisableDiv = false;
                   });
@@ -418,7 +418,7 @@ export class QuoDtaComponent implements OnInit {
 
                       }
                     },error => {
-                      swal("Error", "Error code - 813 <br> ","error");
+                      swal("Error", error.text() ,"error");
                       document.onkeydown = function (e) { return true; }
                       this.isDisableDiv = false;
                     });
@@ -441,7 +441,7 @@ export class QuoDtaComponent implements OnInit {
 
                     }
                   },error => {
-                    swal("Error", "Error code - 813 <br> ","error");
+                    swal("Error", error.text() ,"error");
                     document.onkeydown = function (e) { return true; }
                     this.isDisableDiv = false;
                   });
@@ -474,7 +474,10 @@ export class QuoDtaComponent implements OnInit {
   editCal() {
     this.saveDtaQuotationService.getDtaQuotationDetailsForEdit(this.qdId).subscribe(response => {
 
+      let phone : string = response.json()._mainlife._mMobile;
+
       this._mainLife = response.json()._mainlife;
+      this._mainLife._mMobile = phone.substr(1,9); 
       this._plan = response.json()._plan;
       this._spouse = response.json()._spouse;
 
@@ -599,7 +602,7 @@ export class QuoDtaComponent implements OnInit {
       this.setValidity(true);
 
     },error => {
-      swal("Error", "Error code - 814 <br>","error");
+      swal("Error", error.text() ,"error");
       document.onkeydown = function (e) { return true; }
       this.isDisableDiv = false;
     });
@@ -650,7 +653,7 @@ export class QuoDtaComponent implements OnInit {
       }
       this.sendQuo();
     },error => {
-      swal("Error", "Error code - 815 <br>","error");
+      swal("Error", error.text() ,"error");
       document.onkeydown = function (e) { return true; }
       this.isDisableDiv = false;
     });
@@ -677,7 +680,7 @@ export class QuoDtaComponent implements OnInit {
       }
       this.sendQuo();
     },error => {
-      swal("Error", "Error code - 816 <br>","error");
+      swal("Error", error.text() ,"error");
       document.onkeydown = function (e) { return true; }
       this.isDisableDiv = false;
     });

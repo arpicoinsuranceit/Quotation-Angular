@@ -38,7 +38,7 @@ export class CommitmentComponent implements OnInit {
           this.dashParam=response.json();
         }
       }, error => {
-        swal("Error", "Error code - 1005 <br> ", "error");
+        swal("Error", error.text(), "error");
         document.onkeydown = function (e) { return true; }
         this.isDisableDiv = false;
       });
@@ -58,7 +58,7 @@ export class CommitmentComponent implements OnInit {
           this.router.navigate(['/denied'], { skipLocationChange: true });
         }
       }, error => {
-        swal("Error", "Error code - 1001 <br> ", "error");
+        swal("Error", error.text(), "error");
         document.onkeydown = function (e) { return true; }
         this.isDisableDiv = false;
       });
@@ -108,7 +108,7 @@ export class CommitmentComponent implements OnInit {
         this.rows=response.json();
         this.isDisableDiv=false;
       }, error => {
-        swal("Error", "Error code - 1002 <br> ", "error");
+        swal("Error", error.text(), "error");
         document.onkeydown = function (e) { return true; }
         this.isDisableDiv = false;
       });
@@ -125,7 +125,7 @@ export class CommitmentComponent implements OnInit {
         this.rows=response.json();
         this.isDisableDiv=false;
       }, error => {
-        swal("Error", "Error code - 1003 <br> ", "error");
+        swal("Error", error.text(), "error");
         document.onkeydown = function (e) { return true; }
         this.isDisableDiv = false;
       });
@@ -250,7 +250,7 @@ export class CommitmentComponent implements OnInit {
             }
           }
         }, error => {
-          swal("Error", "Error code - 1004 <br> ", "error");
+          swal("Error", error.text() , "error");
           document.onkeydown = function (e) { return true; }
           this.isDisableDiv = false;
         });

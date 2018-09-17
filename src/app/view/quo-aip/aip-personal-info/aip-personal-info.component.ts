@@ -35,7 +35,7 @@ export class AipPersonalInfoComponent implements OnInit {
     mDob: new FormControl('', [Validators.required, Validators.pattern('^(0[1-9]|[12][0-9]|3[01])[-](0[1-9]|1[012])[-](19|20)\\d\\d$')]),
     mAge: new FormControl('', [Validators.max(66), Validators.min(17)]),
     mSmoking: new FormControl(),
-    mMobile: new FormControl('', [Validators.required, Validators.pattern("^\\d{10}")]),
+    mMobile: new FormControl('', [Validators.required, Validators.pattern("^\\d{9}")]),
     mOccu: new FormControl()
   });
 
@@ -57,7 +57,7 @@ export class AipPersonalInfoComponent implements OnInit {
     this.occupationService.loadOccupation().subscribe(response => {
       this.ocupations = response.json();
     },error => {
-      swal("Error", "Error code - 101 <br>","error");
+      swal("Error", error.text() ,"error");
     });
 
     this.check();
@@ -70,7 +70,7 @@ export class AipPersonalInfoComponent implements OnInit {
       this.ageCalculationService.loadAge(this._mainLife._mDob).subscribe(response => {
         this._mainLife._mAge = response.json();
         this.check();
-      },error => {swal("Error", "Error code - 102 <br>","error")});
+      },error => {swal("Error", error.text() ,"error")});
     } else {
       swal("Invalid Date Format!", "Example (30-01-1990)", "error");
       this.mainLifeForm.get("mDob").setValue("");

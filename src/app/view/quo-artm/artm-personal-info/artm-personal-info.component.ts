@@ -64,7 +64,7 @@ export class ArtmPersonalInfoComponent implements OnInit {
   ngOnInit() {
     this.occupationService.loadOccupation().subscribe(response => {
       this.ocupations = response.json();
-    },error => {swal("Error", "Error code - 1601 <br>","error")});
+    },error => {swal("Error", error.text() ,"error")});
 
     this._plan._frequance = "Monthly";
     this._plan._bsa = 3000;
@@ -104,7 +104,7 @@ export class ArtmPersonalInfoComponent implements OnInit {
     mDob: new FormControl('', [Validators.required, Validators.pattern('^(0[1-9]|[12][0-9]|3[01])[-](0[1-9]|1[012])[-](19|20)\\d\\d$')]),
     mAge: new FormControl('', [Validators.max(66), Validators.min(17)]),
     mSmoking: new FormControl(),
-    mMobile: new FormControl('', [Validators.required, Validators.pattern("^\\d{10}")]),
+    mMobile: new FormControl('', [Validators.required, Validators.pattern("^\\d{9}")]),
     mOccu: new FormControl()
   });
 
@@ -441,7 +441,7 @@ export class ArtmPersonalInfoComponent implements OnInit {
         this.checkValidity();
         this.check();
 
-      },error => {swal("Error", "Error code - 1605 <br>","error")});
+      },error => {swal("Error", error.text() ,"error")});
 
     } else {
       this.mainLifeForm.get("mDob").enable();
@@ -501,7 +501,7 @@ export class ArtmPersonalInfoComponent implements OnInit {
           }
         }
 
-      },error => {swal("Error", "Error code - 1606 <br>","error")});
+      },error => {swal("Error", error.text() ,"error")});
       this.checkValidity();
     } else {
       this.spouseForm.get("sDob").enable();
@@ -697,7 +697,7 @@ export class ArtmPersonalInfoComponent implements OnInit {
       this.ageCalculationService.loadAge(this._personalInfo._spouse._sDob).subscribe(response => {
         this._personalInfo._spouse._sAge = response.json();
         this.check();
-      },error => {swal("Error", "Error code - 1603 <br>","error")});
+      },error => {swal("Error", error.text() ,"error")});
     } else {
       swal("Invalid Date Format!", "Example (30-01-1990)", "error");
       this.spouseForm.get("sDob").setValue("");
@@ -710,7 +710,7 @@ export class ArtmPersonalInfoComponent implements OnInit {
       this.ageCalculationService.loadAge(this._personalInfo._mainlife._mDob).subscribe(response => {
         this._personalInfo._mainlife._mAge = response.json();
         this.check();
-      },error => {swal("Error", "Error code - 1602 <br>","error")});
+      },error => {swal("Error", error.text() ,"error")});
     } else {
       swal("Invalid Date Format!", "Example (30-01-1990)", "error");
       this.mainLifeForm.get("mDob").setValue("");
@@ -725,7 +725,7 @@ export class ArtmPersonalInfoComponent implements OnInit {
     if(regex.test(this._children._cDob)){
       this.ageCalculationService.loadAge(this._children._cDob).subscribe(response => {
         this._children._cAge = response.json();
-      },error => {swal("Error", "Error code - 1604 <br>","error")});
+      },error => {swal("Error", error.text() ,"error")});
     }else{
       swal("Invalid Date Format!", "Example (30-01-1990)", "error");
       this._children._cDob = "";

@@ -194,7 +194,7 @@ export class QuoAsfpComponent implements OnInit {
 
     this.route.params.subscribe(params => {
       this.qdId = params.id;
-    }, error => { swal("Error", "Error code - 310 <br>", "error") });
+    }, error => { swal("Error", error.text() , "error") });
 
     this.personalInfo._plan._msfb = 10000;
     this.personalInfo._plan._frequance = "Monthly";
@@ -579,7 +579,7 @@ export class QuoAsfpComponent implements OnInit {
             this.summeryInfo._protection.MFIBTTerm = response.json().mifdtTerm;
 
           }, error => {
-            swal("Error", "Error code - 311 <br> ", "error");
+            swal("Error", error.text() , "error");
             document.onkeydown = function (e) { return true; }
             this.isDisableDiv = false;
           });
@@ -713,7 +713,7 @@ export class QuoAsfpComponent implements OnInit {
 
                       }
                     }, error => {
-                      swal("Error", "Error code - 312 <br> ", "error");
+                      swal("Error", error.text() , "error");
                       document.onkeydown = function (e) { return true; }
                       this.isDisableDiv = false;
                     });
@@ -746,7 +746,7 @@ export class QuoAsfpComponent implements OnInit {
 
                   }
                 }, error => {
-                  swal("Error", "Error code - 312 <br>", "error");
+                  swal("Error", error.text() , "error");
                   document.onkeydown = function (e) { return true; }
                   this.isDisableDiv = false;
                 });
@@ -908,7 +908,7 @@ export class QuoAsfpComponent implements OnInit {
 
                       }
                     }, error => {
-                      swal("Error", "Error code - 313 <br>", "error");
+                      swal("Error", error.text() , "error");
                       document.onkeydown = function (e) { return true; }
                       this.isDisableDiv = false;
                     });
@@ -938,7 +938,7 @@ export class QuoAsfpComponent implements OnInit {
 
                   }
                 }, error => {
-                  swal("Error", "Error code - 313 <br>", "error");
+                  swal("Error", error.text() , "error");
                   document.onkeydown = function (e) { return true; }
                   this.isDisableDiv = false;
                 });
@@ -971,7 +971,10 @@ export class QuoAsfpComponent implements OnInit {
   editCal() {
     this.saveAsfpQuotationService.getAsfpQuotationDetailsForEdit(this.qdId).subscribe(response => {
 
+      let phone : string = response.json()._mainlife._mMobile;
+
       this._mainLife = response.json()._mainlife;
+      this._mainLife._mMobile = phone.substr(1,9); 
       this._plan = response.json()._plan;
       this._spouse = response.json()._spouse;
 
@@ -1777,7 +1780,7 @@ export class QuoAsfpComponent implements OnInit {
       this.setValidity(true);
 
     }, error => {
-      swal("Error", "Error code - 314 <br>", "error");
+      swal("Error", error.text() , "error");
       document.onkeydown = function (e) { return true; }
       this.isDisableDiv = false;
     });
@@ -1832,7 +1835,7 @@ export class QuoAsfpComponent implements OnInit {
       }
       this.sendQuo();
     }, error => {
-      swal("Error", "Error code - 315 <br> ", "error");
+      swal("Error", error.text() , "error");
       document.onkeydown = function (e) { return true; }
       this.isDisableDiv = false;
     });
@@ -1859,7 +1862,7 @@ export class QuoAsfpComponent implements OnInit {
       }
       this.sendQuo();
     }, error => {
-      swal("Error", "Error code - 316 <br> ", "error");
+      swal("Error", error.text() , "error");
       document.onkeydown = function (e) { return true; }
       this.isDisableDiv = false;
     });

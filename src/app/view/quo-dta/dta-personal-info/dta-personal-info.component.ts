@@ -58,7 +58,7 @@ export class DtaPersonalInfoComponent implements OnInit {
     this.occupationService.loadOccupation().subscribe(response => {
       this.ocupations = response.json();
     },error => {
-      swal("Error", "Error code - 801 <br> ","error");
+      swal("Error", error.text() ,"error");
     });
 
     this._plan._bsa = 250000;
@@ -91,7 +91,7 @@ export class DtaPersonalInfoComponent implements OnInit {
     mDob: new FormControl('', [Validators.required, Validators.pattern('^(0[1-9]|[12][0-9]|3[01])[-](0[1-9]|1[012])[-](19|20)\\d\\d$')]),
     mAge: new FormControl('', [Validators.max(66), Validators.min(17)]),
     mSmoking: new FormControl(),
-    mMobile: new FormControl('', [Validators.required, Validators.pattern("^\\d{10}")]),
+    mMobile: new FormControl('', [Validators.required, Validators.pattern("^\\d{9}")]),
     mOccu: new FormControl()
   });
 
@@ -201,7 +201,7 @@ export class DtaPersonalInfoComponent implements OnInit {
         this.checkValidity();
         this.check();
 
-      },error => {swal("Error", "Error code - 805 <br>","error")});
+      },error => {swal("Error", error.text() ,"error")});
 
     } else {
       this.mainLifeForm.get("mDob").enable();
@@ -261,7 +261,7 @@ export class DtaPersonalInfoComponent implements OnInit {
           }
         }
 
-      },error => {swal("Error", "Error code - 806 <br>","error")});
+      },error => {swal("Error", error.text() ,"error")});
       this.checkValidity();
     } else {
       this.spouseForm.get("sDob").enable();
@@ -542,7 +542,7 @@ export class DtaPersonalInfoComponent implements OnInit {
         this._personalInfo._spouse._sAge = response.json();
         this.check();
       },error => {
-        swal("Error", "Error code - 803 <br> ","error");
+        swal("Error", error.text() ,"error");
       });
     } else {
       swal("Invalid Date Format!", "Example (30-01-1990)", "error");
@@ -557,7 +557,7 @@ export class DtaPersonalInfoComponent implements OnInit {
         this._personalInfo._mainlife._mAge = response.json();
         this.check();
       },error => {
-        swal("Error", "Error code - 802 <br> ","error");
+        swal("Error", error.text() ,"error");
       });
     } else {
       swal("Invalid Date Format!", "Example (30-01-1990)", "error");

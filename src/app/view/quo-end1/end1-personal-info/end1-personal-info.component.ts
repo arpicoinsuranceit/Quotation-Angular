@@ -66,7 +66,7 @@ export class End1PersonalInfoComponent implements OnInit {
     this.occupationService.loadOccupation().subscribe(response => {
       this.ocupations = response.json();
     },error => {
-      swal("Error", "Error code - 501 <br>","error");
+      swal("Error", error.text() ,"error");
     });
 
     this._plan._bsa = 250000;
@@ -104,7 +104,7 @@ export class End1PersonalInfoComponent implements OnInit {
     mDob: new FormControl('', [Validators.required, Validators.pattern('^(0[1-9]|[12][0-9]|3[01])[-](0[1-9]|1[012])[-](19|20)\\d\\d$')]),
     mAge: new FormControl('', [Validators.max(66), Validators.min(17)]),
     mSmoking: new FormControl(),
-    mMobile: new FormControl('', [Validators.required, Validators.pattern("^\\d{10}")]),
+    mMobile: new FormControl('', [Validators.required, Validators.pattern("^\\d{9}")]),
     mOccu: new FormControl()
   });
 
@@ -393,7 +393,7 @@ export class End1PersonalInfoComponent implements OnInit {
         this.checkValidity();
         this.check();
 
-      },error => {swal("Error", "Error code - 505 <br>","error")});
+      },error => {swal("Error", error.text() ,"error")});
 
     } else {
       this.mainLifeForm.get("mDob").enable();
@@ -453,7 +453,7 @@ export class End1PersonalInfoComponent implements OnInit {
           }
         }
 
-      },error => {swal("Error", "Error code - 506 <br>","error")});
+      },error => {swal("Error", error.text() ,"error")});
       this.checkValidity();
     } else {
       this.spouseForm.get("sDob").enable();
@@ -650,7 +650,7 @@ export class End1PersonalInfoComponent implements OnInit {
         this._personalInfo._spouse._sAge = response.json();
         this.check();
       },error => {
-        swal("Error", "Error code - 503 <br>","error");
+        swal("Error", error.text() ,"error");
       });
     } else {
       swal("Invalid Date Format!", "Example (30-01-1990)", "error");
@@ -665,7 +665,7 @@ export class End1PersonalInfoComponent implements OnInit {
         this._personalInfo._mainlife._mAge = response.json();
         this.check();
       },error => {
-        swal("Error", "Error code - 502 <br>","error");
+        swal("Error", error.text() ,"error");
       });
     } else {
       swal("Invalid Date Format!", "Example (30-01-1990)", "error");
@@ -681,7 +681,7 @@ export class End1PersonalInfoComponent implements OnInit {
     if(regex.test(this._children._cDob)){
       this.ageCalculationService.loadAge(this._children._cDob).subscribe(response => {
         this._children._cAge = response.json();
-      },error => {swal("Error", "Error code - 504 <br>","error")});
+      },error => {swal("Error", error.text() ,"error")});
     }else{
       swal("Invalid Date Format!", "Example (30-01-1990)", "error");
       this._children._cDob = "";

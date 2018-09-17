@@ -57,7 +57,7 @@ export class QuoAipComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.qdId = params.id;
     },error => {
-      swal("Error", "Error code - 110 <br>","error");
+      swal("Error", error.text() ,"error");
       document.onkeydown = function (e) { return true; }
       this.isDisableDiv = false;
     });
@@ -186,7 +186,7 @@ export class QuoAipComponent implements OnInit {
                 this.total = parseFloat(this._aibSummery.extraOe.toString()) + parseFloat(a.toString());
               }
             },error => {
-              swal("Error", "Error code - 111 <br>" ,"error");
+              swal("Error", error.text() ,"error");
               document.onkeydown = function (e) { return true; }
               this.isDisableDiv = false;
             });
@@ -275,7 +275,7 @@ export class QuoAipComponent implements OnInit {
 
                 }
               },error => {
-                swal("Error", "Error code - 112 <br>","error");
+                swal("Error", error.text() ,"error");
                 document.onkeydown = function (e) { return true; }
                 this.isDisableDiv = false;
               });
@@ -309,7 +309,10 @@ export class QuoAipComponent implements OnInit {
     this.quoAipService.getAipQuotationDetailsForEdit(this.qdId).subscribe(response => {
       console.log(response.json());
 
+      let phone : string = response.json()._mainlife._mMobile;
+
       this._mainLife = response.json()._mainlife;
+      this._mainLife._mMobile = phone.substr(1,9); 
       this._quoCalReq.mainLife = this._mainLife;
       this.personalInfomation._mainlife = this._mainLife;
       this.personalInfomation._mainlife._mCivilStatus = this._mainLife._mCivilStatus;
@@ -329,7 +332,7 @@ export class QuoAipComponent implements OnInit {
 
       this.calculateAIP();
     },error => {
-      swal("Error", "Error code - 114 <br>","error");
+      swal("Error", error.text() ,"error");
       document.onkeydown = function (e) { return true; }
       this.isDisableDiv = false;
     });
@@ -405,7 +408,7 @@ export class QuoAipComponent implements OnInit {
 
                 }
               },error => {
-                swal("Error", "Error code - 113 <br>","error");
+                swal("Error", error.text() ,"error");
                 document.onkeydown = function (e) { return true; }
                this.isDisableDiv = false;
               });

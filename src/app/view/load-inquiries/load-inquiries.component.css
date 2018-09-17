@@ -20,12 +20,9 @@
     min-height: 500px;
     margin-top: 5px;
     box-shadow: 5px 5px 4px #777777;
-    overflow-x: auto;
+    overflow-y: auto;
 }
 
-.container-fluid{
-    min-width: 560px;
-}
 
 .table-hover tbody tr:hover{
     cursor: pointer;

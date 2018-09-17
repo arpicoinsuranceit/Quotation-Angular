@@ -55,7 +55,7 @@ export class ChangePasswordComponent implements OnInit {
           }
 
         }, error => {
-          swal("Error", "Error code - 1351 <br> ", "error");
+          swal("Error", error.text() , "error");
           document.onkeydown = function (e) { return true; }
         });
       }else{
@@ -85,7 +85,7 @@ export class ChangePasswordComponent implements OnInit {
         }
         
       }, error => {
-        swal("Error", "Error code - 1352 <br> ", "error");
+        swal("Error", error.text(), "error");
         document.onkeydown = function (e) { return true; }
       });
     }else{

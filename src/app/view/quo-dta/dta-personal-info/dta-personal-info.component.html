@@ -111,7 +111,7 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="mobile">Mobile:</label>
                                 <div class="col-sm-10">
-                                    <input type="number" class="form-control" formControlName="mMobile" id="txt-mobile" (keyup)="keyup($event)" placeholder="Enter Mobile"
+                                    <input type="text" class="form-control" formControlName="mMobile" id="txt-mobile" (keyup)="keyup($event)" placeholder="Enter Mobile"
                                         name="mobile" [(ngModel)]="_personalInfo._mainlife._mMobile" (blur)="checkValidity()"
                                         (keyup.enter)="checkValidity()">
                                     <div class="alert alert-danger" *ngIf="mainLifeForm.get('mMobile').touched && mainLifeForm.get('mMobile').invalid">

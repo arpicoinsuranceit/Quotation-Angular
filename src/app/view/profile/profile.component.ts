@@ -40,7 +40,7 @@ export class ProfileComponent implements OnInit {
       } catch (error) {
         this.error = true;
       }
-      console.log(this.agent);
+      //console.log(this.agent);
     }, error => {
       swal("Error", error.text() , "error");
       document.onkeydown = function (e) { return true; }

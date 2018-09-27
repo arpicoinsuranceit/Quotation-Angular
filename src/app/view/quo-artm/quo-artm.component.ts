@@ -232,7 +232,7 @@ export class QuoArtmComponent implements OnInit {
       for (let i in this._quotationCalculation._personalInfo.childrens) {
         let child: Children = this._quotationCalculation._personalInfo.childrens[i];
         for (let j in this._quotationCalculation._riderDetails._cRiders) {
-          console.log(j);
+          //console.log(j);
           switch (this._quotationCalculation._riderDetails._cRiders[j].type) {
             case "HRBIC":
               child._cHrbic = true;
@@ -264,7 +264,7 @@ export class QuoArtmComponent implements OnInit {
       this._childrens = this._quotationCalculation._personalInfo.childrens;
 
     }
-    //console.log(this._childrens);
+    ////console.log(this._childrens);
     this.sendQuo();
 
   }
@@ -274,8 +274,8 @@ export class QuoArtmComponent implements OnInit {
     this._spouseBenefForm = allForm.absForm;
     this._childrenBenefForm = allForm.abcForm;
 
-    //console.log( this._mainLifeBenefForm.get("WPB").get("isActice").value);
-    //console.log( this._mainLifeBenefForm.get("WPB").get("isActice").value);
+    ////console.log( this._mainLifeBenefForm.get("WPB").get("isActice").value);
+    ////console.log( this._mainLifeBenefForm.get("WPB").get("isActice").value);
 
     this.benif = this._mainLifeBenefForm;
     this.riderDetails._mRiders = new Array();
@@ -330,7 +330,7 @@ export class QuoArtmComponent implements OnInit {
 
       let benifict = this._spouseBenefForm.value[i];
       if (benifict.isActice == true) {
-        //console.log(benifict.sumAssured);
+        ////console.log(benifict.sumAssured);
         if ((i == 'HRBFS') && (benifict.sumAssured == undefined)) {
           let benifict1 = new Benifict();
           benifict1.active = "true";
@@ -448,7 +448,7 @@ export class QuoArtmComponent implements OnInit {
   }
 
   mPreviousSumAtRisk(risk: number) {
-    //console.log(risk);
+    ////console.log(risk);
     if (risk) {
       this.sumAtRiskMain = risk;
     }
@@ -463,14 +463,14 @@ export class QuoArtmComponent implements OnInit {
   sendQuo() {
     this.isDisableDiv = true;
     
-    console.log("///////////////////////////////////");
-    console.log(this._quotationCalculation);
+    //console.log("///////////////////////////////////");
+    //console.log(this._quotationCalculation);
     let payTerm = parseInt(this.personalInfo._plan._payingterm);
     let age = parseInt(this.personalInfo._mainlife._mAge.toString());
     let rtAge = parseInt(this.personalInfo._plan.retAge.toString());
 
     this._plan._term = rtAge - age;
-    //console.log(this.personalInfo._mainlife._mAge);
+    ////console.log(this.personalInfo._mainlife._mAge);
 
     this._plan.age = this.personalInfo._mainlife._mAge;
     this.personalInfo._plan._term = this._plan._term;
@@ -483,7 +483,7 @@ export class QuoArtmComponent implements OnInit {
     if (this.personalInfo._plan._frequance == "Single Premium") {
       //alert("single ok");
       for (let i in this._quotationCalculation._riderDetails._mRiders) {
-        console.log(this._quotationCalculation._riderDetails._mRiders[i].type);
+        //console.log(this._quotationCalculation._riderDetails._mRiders[i].type);
         if (this._quotationCalculation._riderDetails._mRiders[i].type != "L2") {
           this._quotationCalculation._riderDetails._mRiders.splice(parseInt(i), 1);
         }
@@ -495,7 +495,7 @@ export class QuoArtmComponent implements OnInit {
     }else{
       if(this.beforeFrequency == "Single Premium"){
         for (let i in this._quotationCalculation._riderDetails._mRiders) {
-          console.log(this._quotationCalculation._riderDetails._mRiders[i].type);
+          //console.log(this._quotationCalculation._riderDetails._mRiders[i].type);
           if (this._quotationCalculation._riderDetails._mRiders[i].type != "L2") {
             this._quotationCalculation._riderDetails._mRiders.splice(parseInt(i), 1);
           }
@@ -542,15 +542,15 @@ export class QuoArtmComponent implements OnInit {
             if (this.personalInfo._plan._bsa != null && this.personalInfo._plan._bsa != undefined &&
               this.personalInfo._plan._frequance != null && this.personalInfo._plan._frequance != undefined &&
               this.personalInfo._plan._term != null && this.personalInfo._plan._term != undefined) {
-              //console.log(this._plan);
-              //console.log(this.personalInfo._plan);
+              ////console.log(this._plan);
+              ////console.log(this.personalInfo._plan);
               this._quotationCalculation._personalInfo.sPreviousSumAtRisk = this.previousSumSpouse;
               this._quotationCalculation._personalInfo.mPreviousSumAtRisk = this.previousSumMain;
 
               this.quoArtmService.getQouCal(this._quotationCalculation).subscribe(response => {
                 document.onkeydown = function (e) { return true; }
                 this.isDisableDiv = false;
-                console.log(response.json());
+                //console.log(response.json());
                 if (response.json().errorExist == true) {
                   swal("Error!", "Error exist in " + response.json().error, "error");
                 }
@@ -647,7 +647,7 @@ export class QuoArtmComponent implements OnInit {
       let rtAge = parseInt(this.personalInfo._plan.retAge.toString());
 
       this._plan._term = rtAge - age;
-      //console.log(this.personalInfo._mainlife._mAge);
+      ////console.log(this.personalInfo._mainlife._mAge);
 
       this._plan.age = this.personalInfo._mainlife._mAge;
       this.personalInfo._plan._term = this._plan._term;
@@ -683,8 +683,8 @@ export class QuoArtmComponent implements OnInit {
                     this._invpSaveQuotation._personalInfo = this.personalInfo;
                     this._invpSaveQuotation._riderDetails = this.riderDetails;
                     this._invpSaveQuotation._calPersonalInfo = this._quotationCalculation._personalInfo;
-                    // console.log("|||||||||||||||||||||||||||||||||||||||");
-                    //console.log(this._invpSaveQuotation);
+                    // //console.log("|||||||||||||||||||||||||||||||||||||||");
+                    ////console.log(this._invpSaveQuotation);
                     this.isDisableDiv = true;
                     document.onkeydown = function (e) { return false; }
                     this.quoArtmService.saveQuo(this._invpSaveQuotation).subscribe(response => {
@@ -754,7 +754,7 @@ export class QuoArtmComponent implements OnInit {
       }
 
     } else {
-      //console.log(this.validity);
+      ////console.log(this.validity);
       swal("Check Form Again", "Fill all Required fields...", "error")
         .then((value) => {
           document.getElementById(this.validity).classList.add("errors");
@@ -767,7 +767,7 @@ export class QuoArtmComponent implements OnInit {
     this.isDisableDiv = true;
     this.quoArtmService.getArtmShedule(this._quotationCalculation).subscribe(response => {
       document.onkeydown = function (e) { return true; }
-      console.log(response.json());
+      //console.log(response.json());
 
       this.isDisableDiv = false;
       this.artmSummeryComponent.displaySchedule(response.json().pensionShedules);
@@ -779,7 +779,7 @@ export class QuoArtmComponent implements OnInit {
 
     this.isImgL2GActive = false;
     this.isImgL2Active = true;
-    console.log(this._mainLifeBenefForm);
+    //console.log(this._mainLifeBenefForm);
     this._mainLifeBenefForm.get("L2").get("isActice").setValue(true);
     this._mainLifeBenefForm.get("L2").get("sumAssured").setValue('100000');
     this._mainLifeBenefForm.get("L2").get("sumAssured").enable();
@@ -881,7 +881,7 @@ export class QuoArtmComponent implements OnInit {
 
       for (var q in this._mainLifeBenefits) {
 
-        //console.log(this._mainLifeBenefits[q].benfName);
+        ////console.log(this._mainLifeBenefits[q].benfName);
         switch (this._mainLifeBenefits[q].benfName) {
 
           case "L2": {
@@ -1077,7 +1077,7 @@ export class QuoArtmComponent implements OnInit {
 
       for (var q in this._spouseBenefits) {
 
-        //console.log(this._spouseBenefits[q].benfName);
+        ////console.log(this._spouseBenefits[q].benfName);
         switch (this._spouseBenefits[q].benfName) {
 
           case "SUHRBS": {
@@ -1212,7 +1212,7 @@ export class QuoArtmComponent implements OnInit {
 
       for (var q in this._childrenBenefits) {
 
-        //console.log(this._childrenBenefits[q].benfName);
+        ////console.log(this._childrenBenefits[q].benfName);
         switch (this._childrenBenefits[q].benfName) {
 
           case "SUHRBC": {
@@ -1390,7 +1390,7 @@ export class QuoArtmComponent implements OnInit {
       let rtAge = parseInt(this.personalInfo._plan.retAge.toString());
 
       this._plan._term = rtAge - age;
-      //console.log(this.personalInfo._mainlife._mAge);
+      ////console.log(this.personalInfo._mainlife._mAge);
 
       this._plan.age = this.personalInfo._mainlife._mAge;
       this.personalInfo._plan._term = this._plan._term;
@@ -1425,8 +1425,8 @@ export class QuoArtmComponent implements OnInit {
                     this._invpSaveQuotation._personalInfo = this.personalInfo;
                     this._invpSaveQuotation._riderDetails = this.riderDetails;
                     this._invpSaveQuotation._calPersonalInfo = this._quotationCalculation._personalInfo;
-                    //console.log("|||||||||||||||||||||||||||||||||||||||");
-                    //console.log(this._invpSaveQuotation);
+                    ////console.log("|||||||||||||||||||||||||||||||||||||||");
+                    ////console.log(this._invpSaveQuotation);
                     this.isDisableDiv = true;
                     document.onkeydown = function (e) { return false; }
                     this.quoArtmService.editArtm(this._invpSaveQuotation, this.qdId).subscribe(response => {
@@ -1496,7 +1496,7 @@ export class QuoArtmComponent implements OnInit {
       }
 
     } else {
-      //console.log(this.validity);
+      ////console.log(this.validity);
       swal("Check Form Again", "Fill all Required fields...", "error")
         .then((value) => {
           document.getElementById(this.validity).classList.add("errors");

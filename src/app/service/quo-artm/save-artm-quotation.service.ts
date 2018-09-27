@@ -30,7 +30,7 @@ export class SaveArtmQuotationService {
     if (data._personalInfo.frequance === "Single Premium") {
       data._personalInfo.frequance = "S";
     }
-    console.log(data);
+    //console.log(data);
     data._product = "ARTM";
     return this.http.post('http://localhost:8084/artmCal', data);
   }
@@ -52,7 +52,7 @@ export class SaveArtmQuotationService {
       data._personalInfo.frequance = "S";
     }
 
-    console.log(data);
+    //console.log(data);
     data._product = "ARTM";
     return this.http.post('http://localhost:8084/artmSchedule', data);
   }
@@ -74,7 +74,7 @@ export class SaveArtmQuotationService {
       data._personalInfo.frequance = "S";
     }
 
-    console.log(data);
+    //console.log(data);
     data._product = "ARTM";
     return this.http.post('http://localhost:8084/artmSavequo/' + this.userId, data);
   }
@@ -110,7 +110,7 @@ export class SaveArtmQuotationService {
       data._personalInfo._plan._frequance = "Y";
     }
 
-    console.log(data);
+    //console.log(data);
     data._product = "ARTM";
     return this.http.post('http://localhost:8084/quoArtmEdit/' + this.userId + '/' + qdId, data);
   }

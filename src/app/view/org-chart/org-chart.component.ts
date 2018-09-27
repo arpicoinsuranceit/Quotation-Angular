@@ -24,7 +24,7 @@ export class OrgChartComponent implements OnInit {
   ngOnInit() {
     this.isDisableDiv=true;
     this.orgChartService.getOrgDetails(this.loginService.currentUser.userCode,sessionStorage.getItem("userType"),sessionStorage.getItem("dashpara")).subscribe( response => {
-      console.log(response.json());
+      //console.log(response.json());
       this.orgData = response.json();
       this.isDisableDiv=false;
     }, error => {

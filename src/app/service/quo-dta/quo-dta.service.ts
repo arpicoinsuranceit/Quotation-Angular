@@ -33,13 +33,13 @@ export class QuoDtaService {
       data._personalInfo.frequance = "S";
     }
     data._product = "DTA";
-    console.log(data);
+    //console.log(data);
     return this.http.post('http://localhost:8084/quoDtaCal', data);
   }
 
   saveDta(data: any) {
     data._product = "DTA";
-    console.log(data);
+    //console.log(data);
     return this.http.post('http://localhost:8084/quoDtasave/' + this.userId, data);
   }
 
@@ -73,7 +73,7 @@ export class QuoDtaService {
     if (data._personalInfo._plan._frequance === "Yearly") {
       data._personalInfo._plan._frequance = "Y";
     }
-    console.log(data);
+    //console.log(data);
     data._product = "DTA";
     return this.http.post('http://localhost:8084/quoDtaEdit/' + this.userId + '/' + qdId, data);
   }

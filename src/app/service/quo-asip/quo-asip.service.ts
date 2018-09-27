@@ -28,7 +28,7 @@ export class QuoAsipService {
     if (data._personalInfo.frequance === "Yearly") {
       data._personalInfo.frequance = "Y";
     }
-    console.log(data);
+    //console.log(data);
     data._product = "ASIP";
     return this.http.post('http://localhost:8084/asipCal', data);
 
@@ -69,7 +69,7 @@ export class QuoAsipService {
     if (data._personalInfo._plan._frequance === "Yearly") {
       data._personalInfo._plan._frequance = "Y";
     }
-    console.log(data);
+    //console.log(data);
     data._product = "ASIP";
 
     return this.http.post('http://localhost:8084/quoAsipEdit/' + this.userId + '/' + qdId, data);

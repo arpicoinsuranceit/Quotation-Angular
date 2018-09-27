@@ -30,7 +30,7 @@ export class SaveInvpQuotationService {
       data._personalInfo.frequance = "Y";
     }
 
-    console.log(data);
+    //console.log(data);
     data._product = "INVP";
     return this.http.post('http://localhost:8084/quoInvpCal', data);
   }
@@ -84,7 +84,7 @@ export class SaveInvpQuotationService {
       data._personalInfo._plan._frequance = "Y";
     }
 
-    console.log(data);
+    //console.log(data);
     data._product = "INVP";
     return this.http.post('http://localhost:8084/quoInvpEdit/' + this.userId + '/' + qdId, data);
   }

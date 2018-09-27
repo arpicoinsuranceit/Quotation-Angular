@@ -69,7 +69,7 @@ export class AipPlanInfoComponent implements OnInit {
     this.quoAipService.getQouShedule(this._planAip).subscribe(response => {
       let schedules: AipCalSchedule[];
       schedules = response.json();
-      console.log(schedules);
+      //console.log(schedules);
       this.load(schedules);
 
     },error => swal("Error", error.text() ,"error"));

@@ -35,7 +35,7 @@ export class DtaSummeryComponent implements OnInit {
   }
 
   clearQuo(){
-    console.log("aa");
+    //console.log("aa");
     this.setclear.emit(true);
   }
 
@@ -90,8 +90,8 @@ export class DtaSummeryComponent implements OnInit {
     showConfirmButton: false
   });
 
-  console.log(this.summeryInfo._summery.healthBenMain);
-  console.log(this.summeryInfo._summery.healthBenSpouse);
+  //console.log(this.summeryInfo._summery.healthBenMain);
+  //console.log(this.summeryInfo._summery.healthBenSpouse);
   }
 
 }

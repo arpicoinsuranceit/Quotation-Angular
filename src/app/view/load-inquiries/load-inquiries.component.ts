@@ -92,7 +92,7 @@ export class LoadInquiriesComponent implements OnInit {
       this.loginService.navigateLigin();
     }
 
-    //console.log(sessionStorage.getItem("userType"));
+    ////console.log(sessionStorage.getItem("userType"));
     this.page.pageNumber = 0;
     this.page.size = 10;
     this.isDisableDiv = true;
@@ -127,7 +127,7 @@ export class LoadInquiriesComponent implements OnInit {
       this.dataTableResponse = response.json();
       this.rows = this.dataTableResponse.data;
       this.isDisableDiv = false;
-     // console.log(this.dataTableResponse);
+     // //console.log(this.dataTableResponse);
     }, error => {
       swal("Error", error.text() , "error");
       document.onkeydown = function (e) { return true; }
@@ -175,7 +175,7 @@ export class LoadInquiriesComponent implements OnInit {
       this.inruiry.generalData.productName = activityInfo.row.product;
 
       this.loadInquiryService.getGereralInfo(this.generalDate.proposanNo).subscribe(response => {
-        //console.log(response.json());
+        ////console.log(response.json());
         let res = response.json();
         if (res) {
           this.inruiry.generalData.productName = res.productName + " / " + res.productCode;
@@ -217,7 +217,7 @@ export class LoadInquiriesComponent implements OnInit {
           this.inruiry.spouseInquiry.dob = res.spouseDob;
         }
         this.loadInquiryService.getChildInfo(this.generalDate.proposanNo, this.generalDate.branchCode, this.generalDate.seqNo).subscribe(response => {
-          //console.log(response.json());
+          ////console.log(response.json());
 
           let childArray = response.json();
           if (childArray) {
@@ -239,7 +239,7 @@ export class LoadInquiriesComponent implements OnInit {
           }
 
           this.loadInquiryService.getNomineeInfo(this.generalDate.proposanNo, this.generalDate.branchCode, this.generalDate.seqNo).subscribe(response => {
-            //console.log(response.json());
+            ////console.log(response.json());
 
             let nomineeArray = response.json();
 
@@ -263,7 +263,7 @@ export class LoadInquiriesComponent implements OnInit {
             }
 
             this.loadInquiryService.getBenefictInfo(this.generalDate.proposanNo, this.generalDate.branchCode, this.generalDate.seqNo).subscribe(response => {
-              //console.log(response.json());
+              ////console.log(response.json());
 
               let benefictArray = response.json();
 
@@ -375,7 +375,7 @@ export class LoadInquiriesComponent implements OnInit {
                   if (this.inruiry.generalData.policyNo) {
                     this.loadInquiryService.getPaymentInfo(this.inruiry.generalData.policyNo, this.inruiry.generalData.branchCode).subscribe(response => {
 
-                      //console.log(response.json());
+                      ////console.log(response.json());
 
                       let paymentArr = response.json();
 
@@ -404,7 +404,7 @@ export class LoadInquiriesComponent implements OnInit {
 
                       if (this.inruiry.generalData.policyNo) {
                         this.loadInquiryService.getPolicyDispatchAch(this.inruiry.generalData.policyNo).subscribe(response => {
-                          //console.log(response.json());
+                          ////console.log(response.json());
                           this.isDisableDiv = false;
 
                           let rsp = response.json();

@@ -50,7 +50,7 @@ export class CommitmentComponent implements OnInit {
     
 
     if(this.userType=="BRANCH"){
-      //console.log(this.dashParam[0]);
+      ////console.log(this.dashParam[0]);
       this.commitmentdService.getZoneCode(this.dashParam[0]).subscribe(response => {
         this.zonecode=response.text();
         sessionStorage.setItem("ZoneCode",this.zonecode);
@@ -104,7 +104,7 @@ export class CommitmentComponent implements OnInit {
       this.isDisableDiv=true;
       this.commitmentdService.getBranchTargetCommitmentSummaryBranchM(this.brnYear.value,this.brnCode.value)
       .subscribe(response => {
-        //console.log(response.json());
+        ////console.log(response.json());
         this.rows=response.json();
         this.isDisableDiv=false;
       }, error => {
@@ -121,7 +121,7 @@ export class CommitmentComponent implements OnInit {
       this.isDisableDiv=true;
       this.commitmentdService.getBranchTargetCommitmentSummaryZonalM(this.zoneYear.value,this.zoneCode.value)
       .subscribe(response => {
-        //console.log(response.json());
+        ////console.log(response.json());
         this.rows=response.json();
         this.isDisableDiv=false;
       }, error => {
@@ -240,7 +240,7 @@ export class CommitmentComponent implements OnInit {
           map.get("junCom"),map.get("julCom"),map.get("augCom"),map.get("sepCom"),map.get("octCom"),map.get("novCom"),map.get("decCom"));
 
         this.commitmentdService.editCommitment(updatedCommitment).subscribe(response => {
-          //console.log(response.text());
+          ////console.log(response.text());
           if(response.text() == '1'){
             swal("Good Job..","Commitment Target Updated Successfully","success");
             if(this.userType == 'BRANCH'){

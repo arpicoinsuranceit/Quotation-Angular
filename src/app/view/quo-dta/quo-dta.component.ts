@@ -194,7 +194,7 @@ export class QuoDtaComponent implements OnInit {
   }
 
   mPreviousSumAtRisk(risk: number) {
-    console.log(risk);
+    //console.log(risk);
     if (risk) {
       this.sumAtRiskMain = risk;
     }
@@ -223,7 +223,7 @@ export class QuoDtaComponent implements OnInit {
     }
 
     if (this._quotationCalculation._personalInfo != null) {
-      console.log(this._quotationCalculation);
+      //console.log(this._quotationCalculation);
 
       if (this.personalInfo._plan._interestRate != "" && this.personalInfo._plan._interestRate != "0") {
         if (this._plan._bsa >= 250000 && !Number.isNaN(this._plan._bsa)) {
@@ -233,7 +233,7 @@ export class QuoDtaComponent implements OnInit {
             this._quotationCalculation._personalInfo.sPreviousSumAtRisk = this.previousSumSpouse;
             this.isDisableDiv = true;
             this.saveDtaQuotationService.getQouCal(this._quotationCalculation).subscribe(response => {
-              console.log(response.json());
+              //console.log(response.json());
               document.onkeydown = function (e) { return true; }
               this.isDisableDiv = false;
               if (response.json().errorExist == true) {
@@ -300,7 +300,7 @@ export class QuoDtaComponent implements OnInit {
                     this._invpSaveQuotation._personalInfo = this.personalInfo;
                     this._invpSaveQuotation._riderDetails = this.riderDetails;
                     this._invpSaveQuotation._calPersonalInfo = this._quotationCalculation._personalInfo;
-                    console.log(this._invpSaveQuotation);
+                    //console.log(this._invpSaveQuotation);
                     this.isDisableDiv = true;
                     document.onkeydown = function (e) { return false; }
                     this.saveDtaQuotationService.saveDta(this._invpSaveQuotation).subscribe(response => {
@@ -327,7 +327,7 @@ export class QuoDtaComponent implements OnInit {
                   this._invpSaveQuotation._personalInfo = this.personalInfo;
                   this._invpSaveQuotation._riderDetails = this.riderDetails;
                   this._invpSaveQuotation._calPersonalInfo = this._quotationCalculation._personalInfo;
-                  console.log(this._invpSaveQuotation);
+                  //console.log(this._invpSaveQuotation);
                   this.isDisableDiv = true;
                   document.onkeydown = function (e) { return false; }
                   this.saveDtaQuotationService.saveDta(this._invpSaveQuotation).subscribe(response => {
@@ -526,7 +526,7 @@ export class QuoDtaComponent implements OnInit {
 
       for (var q in this._mainLifeBenefits) {
 
-        console.log(this._mainLifeBenefits[q].benfName);
+        //console.log(this._mainLifeBenefits[q].benfName);
         switch (this._mainLifeBenefits[q].benfName) {
           case "TPDDTA": {
             this.isImgTPDDTAGActive = false;
@@ -554,7 +554,7 @@ export class QuoDtaComponent implements OnInit {
 
       for (var q in this._spouseBenefits) {
 
-        console.log(this._spouseBenefits[q].benfName);
+        //console.log(this._spouseBenefits[q].benfName);
         switch (this._spouseBenefits[q].benfName) {
           case "JLB": {
             this.isImgJLBGActive = false;
@@ -628,7 +628,7 @@ export class QuoDtaComponent implements OnInit {
   }
 
   setBsa(e) {
-    console.log(e);
+    //console.log(e);
     this._quotationCalculation._personalInfo.bsa = e;
   }
 

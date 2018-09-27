@@ -154,9 +154,9 @@ export class End1PersonalInfoComponent implements OnInit {
           if (child._cAge < 3) {
             swal("", "CIBC can't get for this child", "warning");
           }
-          console.log(this._children._cCibc);
-          console.log(this._children._cHbc);
-          console.log(this._children._cHcbc);
+          //console.log(this._children._cCibc);
+          //console.log(this._children._cHbc);
+          //console.log(this._children._cHcbc);
 
           this._childrens.push(child);
           this._children = new Children();

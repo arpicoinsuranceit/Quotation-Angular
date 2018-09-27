@@ -77,9 +77,9 @@ export class QuoArpService {
         data._personalInfo._plan._frequance="Y";
     }
 
-    console.log(data);
+    //console.log(data);
     data._product="ARP";
-   // console.log("ARP EDIT ----------------------------------");
+   // //console.log("ARP EDIT ----------------------------------");
     return this.http.post('http://localhost:8084/quoArpEdit/'+this.userId+'/'+qdId, data);
   }
 

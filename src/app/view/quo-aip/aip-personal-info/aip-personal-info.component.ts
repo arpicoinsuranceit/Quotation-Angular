@@ -140,7 +140,7 @@ export class AipPersonalInfoComponent implements OnInit {
       && this._mainLife._mOccupation != undefined && (this._mainLife._mMobile != undefined && this._mainLife._mMobile != "")) {
 
 
-        console.log(this._mainLife);
+        //console.log(this._mainLife);
 
       if (this._mainLife._mEmail != undefined && this._mainLife._mEmail.length > 0) {
         if (this.mainLifeForm.get("mEmail").touched && this.mainLifeForm.get("mEmail").invalid) {
@@ -215,7 +215,7 @@ export class AipPersonalInfoComponent implements OnInit {
   }
 
   loadDefault() {
-    console.log("Called");
+    //console.log("Called");
     this._mainLife._mTitle = "MR";
     this._mainLife._mOccupation = "283";
     this._mainLife._mAge = 18;

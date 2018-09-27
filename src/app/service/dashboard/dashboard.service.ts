@@ -15,8 +15,8 @@ export class DashboardService {
     if (loginService.currentUser) {
       this.userId = loginService.currentUser.userId;
       this.userCode = loginService.currentUser.userCode;
-      console.log(this.userId);
-      console.log(this.userCode);
+      //console.log(this.userId);
+      //console.log(this.userCode);
     }
 
   }
@@ -104,14 +104,14 @@ export class DashboardService {
   }
 
   getDuePolicies(dashpara: string, usertype: string) {
-    console.log(this.userCode);
-    console.log(dashpara);
-    console.log(usertype);
+    //console.log(this.userCode);
+    //console.log(dashpara);
+    //console.log(usertype);
     return this.http.get('http://localhost:8085/getDuePolicies/' + this.userCode + "/" + dashpara + "/" + usertype);
   }
 
   getPendingPolicies(dashpara: string, usertype: string) {
-    console.log(dashpara + " - " + usertype);
+    //console.log(dashpara + " - " + usertype);
     return this.http.get('http://localhost:8085/getPendingPolicies/' + this.userCode + "/" + dashpara + "/" + usertype);
   }
 
@@ -123,17 +123,17 @@ export class DashboardService {
   loadProfilePicture(id) {
     return this.http.get("http://localhost:8084/loadPendingProf/" + id)
       .map((response: Response) => {
-        console.log(response);
+        //console.log(response);
         return response.json();
       })
   }
 
   approveImage(e) {
-    console.log(e + "//////////////////////////////////////////////");
+    //console.log(e + "//////////////////////////////////////////////");
     return this.http.get('http://localhost:8084/approveUserProfile/' + e);
   }
   rejectImage(e) {
-    console.log(e + "//////////////////////////////////////////////");
+    //console.log(e + "//////////////////////////////////////////////");
     return this.http.get('http://localhost:8084/rejectUserProfile/' + e);
   }
 
@@ -146,7 +146,7 @@ export class DashboardService {
   }
 
   getMcfpReport(fromDate: string, toDate: string, branch: string, advisor: string, status: string) {
-    console.log(fromDate + "," + toDate + "," + branch + "," + advisor);
+    //console.log(fromDate + "," + toDate + "," + branch + "," + advisor);
 
     let resp = 'http://localhost:8085/mcfpReport/' + fromDate + "/" + toDate + "/" + advisor + "/" + branch + "/" + status;
     let respArr: Array<string> = resp.split("/");
@@ -165,7 +165,7 @@ export class DashboardService {
   }
 
   getProposalRegister(fromDate, toDate, zone, region, branch, unl, frequency, status) {
-    console.log(fromDate + "," + toDate + "," + zone + "," + region + "," + branch + "," + unl + "," + frequency);
+    //console.log(fromDate + "," + toDate + "," + zone + "," + region + "," + branch + "," + unl + "," + frequency);
 
     let resp = 'http://localhost:8085/proposalRegister/' + fromDate + "/" + toDate + "/" + zone + "/" + region + "/" + branch + "/" + unl + "/" + frequency + "/" + status;
     let respArr: Array<string> = resp.split("/");

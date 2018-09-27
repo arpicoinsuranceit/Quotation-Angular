@@ -69,7 +69,7 @@ export class SaveAtrmQuotationService {
 
     data._product = "ATRM";
 
-    console.log(data);
+    //console.log(data);
 
     return this.http.post('http://localhost:8084/quoAtrmEdit/' + this.userId + '/' + qdId, data);
   }

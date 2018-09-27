@@ -57,7 +57,7 @@ export class PrintQuoComponent implements OnInit {
         this.quotationDetails.productName=response.json().productName;
         this.quotationDetails.date=response.json().date;
 
-        console.log(this.quotationDetails);
+        //console.log(this.quotationDetails);
       }
     }, error => {
       swal("Error", error.text() , "error");
@@ -74,7 +74,7 @@ export class PrintQuoComponent implements OnInit {
       window.open(fileURL); // if you want to open it in new tab
 
     }, error => {
-      console.log(error.status);
+      //console.log(error.status);
       if(error.status == 405){
         swal("Error", "This Quotation must Recalcutate, <br> Goto Edit View", "error");
         document.onkeydown = function (e) { return true; }

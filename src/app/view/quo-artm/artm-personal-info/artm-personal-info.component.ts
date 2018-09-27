@@ -189,9 +189,9 @@ export class ArtmPersonalInfoComponent implements OnInit {
       if (child._cName != undefined && child._cName != "" && child._cTitle != undefined && child._cAge != undefined && child._cDob != undefined) {
         if (child._cAge >= 1 && child._cAge <= 18) {
           
-          //console.log(this._children._cCibc);
-          //console.log(this._children._cHbc);
-          //console.log(this._children._cHcbc);
+          ////console.log(this._children._cCibc);
+          ////console.log(this._children._cHbc);
+          ////console.log(this._children._cHcbc);
 
           this._childrens.push(child);
           this._children = new Children();

@@ -271,7 +271,7 @@ export class QuoAtrmComponent implements OnInit {
 
       let benifict = this._spouseBenefForm.value[i];
       if (benifict.isActice == true) {
-        console.log(benifict.sumAssured);
+        //console.log(benifict.sumAssured);
         if ((i == 'HRBFS') && (benifict.sumAssured == undefined)) {
           let benifict1 = new Benifict();
           benifict1.active = "true";
@@ -397,7 +397,7 @@ export class QuoAtrmComponent implements OnInit {
       for (let i in this._quotationCalculation._personalInfo.childrens) {
         let child: Children = this._quotationCalculation._personalInfo.childrens[i];
         for (let j in this._quotationCalculation._riderDetails._cRiders) {
-          console.log(j);
+          //console.log(j);
           switch (this._quotationCalculation._riderDetails._cRiders[j].type) {
             case "HRBIC":
               child._cHrbic = true;
@@ -429,7 +429,7 @@ export class QuoAtrmComponent implements OnInit {
       this._childrens = this._quotationCalculation._personalInfo.childrens;
 
     }
-    console.log(this._childrens);
+    //console.log(this._childrens);
     this.sendQuo();
 
   }
@@ -474,7 +474,7 @@ export class QuoAtrmComponent implements OnInit {
         swal("Oopz...", "Term must be less than 45 and greater than 5 ", "error");
         return;
       }
-      console.log(this._quotationCalculation);
+      //console.log(this._quotationCalculation);
       document.onkeydown = function (e) { return false; }
       this._quotationCalculation._personalInfo.mPreviousSumAtRisk = this.previousSumMain;
       this._quotationCalculation._personalInfo.sPreviousSumAtRisk = this.previousSumSpouse;
@@ -482,7 +482,7 @@ export class QuoAtrmComponent implements OnInit {
       this.saveAtrmQuotationService.getQouATRMCal(this._quotationCalculation).subscribe(response => {
         document.onkeydown = function (e) { return true; }
         this.isDisableDiv = false;
-        console.log(response.json());
+        //console.log(response.json());
         if (response.json().errorExist == true) {
           swal("Error!", "Error exist in" + response.json().error, "error");
         }
@@ -588,7 +588,7 @@ export class QuoAtrmComponent implements OnInit {
     }
 
     for (var i in this.riderDetails._mRiders) {
-      console.log(this.riderDetails._mRiders[i]);
+      //console.log(this.riderDetails._mRiders[i]);
 
       if (this.riderDetails._mRiders[i].type == "HRBI") {
         if (this.activeSp == "1") {
@@ -768,7 +768,7 @@ export class QuoAtrmComponent implements OnInit {
     }
 
     for (var i in this.riderDetails._mRiders) {
-      console.log(this.riderDetails._mRiders[i]);
+      //console.log(this.riderDetails._mRiders[i]);
 
       if (this.riderDetails._mRiders[i].type == "HRBI") {
         if (this.activeSp == "1") {
@@ -950,7 +950,7 @@ export class QuoAtrmComponent implements OnInit {
 
   editCal() {
     this.saveAtrmQuotationService.getAtrmQuotationDetailsForEdit(this.qdId).subscribe(response => {
-      console.log(response.json());
+      //console.log(response.json());
       let phone : string = response.json()._mainlife._mMobile;
 
       this._mainLife = response.json()._mainlife;
@@ -987,7 +987,7 @@ export class QuoAtrmComponent implements OnInit {
       this._quotationCalculation._personalInfo.frequance = this.personalInfo._plan._frequance;
       this._quotationCalculation._personalInfo.term = this.personalInfo._plan._term;
 
-      console.log(this._quotationCalculation._personalInfo.term + "/////");
+      //console.log(this._quotationCalculation._personalInfo.term + "/////");
 
       this._quotationCalculation._personalInfo.childrens = this.personalInfo._childrenList;
 
@@ -1015,7 +1015,7 @@ export class QuoAtrmComponent implements OnInit {
 
       for (var q in this._mainLifeBenefits) {
 
-        console.log(this._mainLifeBenefits[q].benfName);
+        //console.log(this._mainLifeBenefits[q].benfName);
         switch (this._mainLifeBenefits[q].benfName) {
           case "ADB": {
             this.isImgADBGActive = false;
@@ -1312,7 +1312,7 @@ export class QuoAtrmComponent implements OnInit {
 
       for (var q in this._spouseBenefits) {
 
-        console.log(this._spouseBenefits[q].benfName);
+        //console.log(this._spouseBenefits[q].benfName);
         switch (this._spouseBenefits[q].benfName) {
           case "SCB": {
             this.isImgBSASGActive = false;
@@ -1566,7 +1566,7 @@ export class QuoAtrmComponent implements OnInit {
 
       for (var q in this._childrenBenefits) {
 
-        console.log(this._childrenBenefits[q].benfName);
+        //console.log(this._childrenBenefits[q].benfName);
         switch (this._childrenBenefits[q].benfName) {
           case "CIBC": {
             this.isImgCIBCGActive = false;
@@ -1772,7 +1772,7 @@ export class QuoAtrmComponent implements OnInit {
   }
 
   setBsa(e) {
-    console.log(e);
+    //console.log(e);
     this._quotationCalculation._personalInfo.bsa = e;
   }
 

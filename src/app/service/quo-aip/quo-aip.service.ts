@@ -31,7 +31,7 @@ export class QuoAipService {
     if (data._frequance === "Single Premium") {
       data._frequance = "S";
     }
-    console.log(data);
+    //console.log(data);
     return this.http.post('http://localhost:8084/aipCal/', data);
   }
 
@@ -51,7 +51,7 @@ export class QuoAipService {
     if (data._frequance === "Single Premium") {
       data._frequance = "S";
     }
-    console.log(data);
+    //console.log(data);
     return this.http.post('http://localhost:8084/aipshedule/', data);
   }
 
@@ -71,7 +71,7 @@ export class QuoAipService {
     if (data._frequance === "Single Premium") {
       data._frequance = "S";
     }
-    console.log(data);
+    //console.log(data);
     return this.http.post('http://localhost:8084/aipSavequo/' + this.userId, data);
   }
 
@@ -80,7 +80,7 @@ export class QuoAipService {
   }
 
   edit(data: personalInfo, qdId: number) {
-    console.log(data);
+    //console.log(data);
     return this.http.post('http://localhost:8084/quoAipEdit/' + this.userId + '/' + qdId, data);
   }
 }

@@ -104,14 +104,14 @@ export class DashboardComponent implements OnInit {
     }
     
     this.dashboardService.getDashboardType(this.userCode).subscribe(response => {
-      //console.log(response.json());
+      ////console.log(response.json());
       this.dashpara = response.json().dashpara;
       this.usertype = response.json().usertype;
       sessionStorage.setItem("userType", this.usertype);
       sessionStorage.setItem("dashpara", this.dashpara);
       
 
-      //console.log(this.dashpara+" -- "+this.usertype);
+      ////console.log(this.dashpara+" -- "+this.usertype);
 
       this.ngLoadDashboard();
       
@@ -132,7 +132,7 @@ export class DashboardComponent implements OnInit {
   loadProfilePics() {
     this.dashboardService.loadProfilePictures().subscribe(response => {
       this.userpProfileList = response.json();
-      //console.log(this.userpProfileList);
+      ////console.log(this.userpProfileList);
     }, error => {
       swal("Error", "Error code - 1502 <br> ", "error");
     });
@@ -143,9 +143,9 @@ export class DashboardComponent implements OnInit {
   /*
   ngOnInit() {
     this.dashboardService.getDashboard().subscribe(response => {
-      console.log(response.json());
+      //console.log(response.json());
       this.mainRespDto = response.json();
-      console.log(this.mainRespDto);
+      //console.log(this.mainRespDto);
 
       this.val1 = this.mainRespDto.policySummery[0].value;
       this.val2 = this.mainRespDto.policySummery[1].value;
@@ -170,8 +170,8 @@ export class DashboardComponent implements OnInit {
       this.dashboardService.getCurrentMonthYearlyTarget(this.dashpara, this.usertype).subscribe(response => {
         this.mainRespDto.monthlyTarget = response.json()[0];
         this.mainRespDto.yearlyTarget = response.json()[1];
-        //console.log(this.mainRespDto.monthlyTarget);
-        //console.log(this.mainRespDto.yearlyTarget);
+        ////console.log(this.mainRespDto.monthlyTarget);
+        ////console.log(this.mainRespDto.yearlyTarget);
       }, error => {
         swal("Error", "Error code - 1503 <br> ", "error");
       });
@@ -179,15 +179,15 @@ export class DashboardComponent implements OnInit {
 
     if (this.usertype == "UNL") {
       this.dashboardService.getCurrentMonthYearlyTargetUNL(this.dashpara, this.usertype).subscribe(response => {
-        //console.log(response.json());
+        ////console.log(response.json());
         this.mainRespDto.monthlyTarget = response.json()[0];
         this.mainRespDto.yearlyTarget = response.json()[1];
         this.mainRespDto.cf = response.json()[2];
         this.mainRespDto.cfC = response.json()[3];
-        //console.log(this.mainRespDto.monthlyTarget);
-        //console.log(this.mainRespDto.yearlyTarget);
-        //console.log(this.mainRespDto.cf);
-        //console.log(this.mainRespDto.cfC);
+        ////console.log(this.mainRespDto.monthlyTarget);
+        ////console.log(this.mainRespDto.yearlyTarget);
+        ////console.log(this.mainRespDto.cf);
+        ////console.log(this.mainRespDto.cfC);
       }, error => {
         swal("Error", "Error code - 1504 <br> ", "error");
         document.onkeydown = function (e) { return true; }
@@ -200,9 +200,9 @@ export class DashboardComponent implements OnInit {
         this.mainRespDto.monthlyTargetGWP = response.json()[0];
         this.mainRespDto.gwp = response.json()[1];
         this.mainRespDto.gwpC = response.json()[2];
-        //console.log(this.mainRespDto.monthlyTargetGWP);
-        //console.log(this.mainRespDto.gwp);
-        //console.log(this.mainRespDto.gwpC);
+        ////console.log(this.mainRespDto.monthlyTargetGWP);
+        ////console.log(this.mainRespDto.gwp);
+        ////console.log(this.mainRespDto.gwpC);
       }, error => {
         swal("Error", "Error code - 1505 <br> ", "error");
       });
@@ -211,9 +211,9 @@ export class DashboardComponent implements OnInit {
         this.mainRespDto.monthlyTargetMCFP = response.json()[0];
         this.mainRespDto.mcfp = response.json()[1];
         this.mainRespDto.mcfpC = response.json()[2];
-        //console.log(this.mainRespDto.monthlyTargetMCFP);
-        //console.log(this.mainRespDto.mcfp);
-        //console.log(this.mainRespDto.mcfpC);
+        ////console.log(this.mainRespDto.monthlyTargetMCFP);
+        ////console.log(this.mainRespDto.mcfp);
+        ////console.log(this.mainRespDto.mcfpC);
       }, error => {
         swal("Error", "Error code - 1506 <br> ", "error");
       });
@@ -222,9 +222,9 @@ export class DashboardComponent implements OnInit {
         this.mainRespDto.monthlyTargetFYP = response.json()[0];
         this.mainRespDto.fyp = response.json()[1];
         this.mainRespDto.fypC = response.json()[2];
-        //console.log(this.mainRespDto.monthlyTargetFYP);
-        //console.log(this.mainRespDto.fyp);
-        //console.log(this.mainRespDto.fypC);
+        ////console.log(this.mainRespDto.monthlyTargetFYP);
+        ////console.log(this.mainRespDto.fyp);
+        ////console.log(this.mainRespDto.fypC);
       }, error => {
         swal("Error", "Error code - 1507 <br> ", "error");
       });
@@ -233,9 +233,9 @@ export class DashboardComponent implements OnInit {
         this.mainRespDto.monthlyTargetNOP = response.json()[0];
         this.mainRespDto.nop = response.json()[1];
         this.mainRespDto.nopC = response.json()[2];
-        //console.log(this.mainRespDto.monthlyTargetNOP);
-        //console.log(this.mainRespDto.nop);
-        //console.log(this.mainRespDto.nopC);
+        ////console.log(this.mainRespDto.monthlyTargetNOP);
+        ////console.log(this.mainRespDto.nop);
+        ////console.log(this.mainRespDto.nopC);
       }, error => {
         swal("Error", "Error code - 1508 <br> ", "error");
       });
@@ -248,7 +248,7 @@ export class DashboardComponent implements OnInit {
 
       this.dashboardService.getPolicySummery(this.dashpara, this.usertype).subscribe(response => {
         this.mainRespDto.policySummery = response.json();
-        //console.log(this.mainRespDto.policySummery);
+        ////console.log(this.mainRespDto.policySummery);
         this.val1 = this.mainRespDto.policySummery[0].value;
         this.val2 = this.mainRespDto.policySummery[1].value;
         this.val3 = this.mainRespDto.policySummery[2].value;
@@ -271,14 +271,14 @@ export class DashboardComponent implements OnInit {
     if(this.dashpara != 'HO'){
       this.dashboardService.getDuePolicies(this.dashpara, this.usertype).subscribe(response => {
         this.mainRespDto.duePolicieList = response.json();
-        console.log(this.mainRespDto.duePolicieList);
+        //console.log(this.mainRespDto.duePolicieList);
       }, error => {
         swal("Error", "Error code - 1511 <br> ", "error");
       });
   
       this.dashboardService.getPendingPolicies(this.dashpara, this.usertype).subscribe(response => {
         this.mainRespDto.pendingPolList = response.json();
-        console.log(this.mainRespDto.pendingPolList);
+        //console.log(this.mainRespDto.pendingPolList);
       }, error => {
         swal("Error", "Error code - 1512 <br> ", "error");
       });
@@ -287,21 +287,21 @@ export class DashboardComponent implements OnInit {
     
     this.dashboardService.getTopIC().subscribe(response => {
       this.mainRespDto.ic = response.json();
-      //console.log(this.mainRespDto.ic);
+      ////console.log(this.mainRespDto.ic);
     }, error => {
       swal("Error", "Error code - 1513 <br> ", "error");
     });
 
     this.dashboardService.getTopIS().subscribe(response => {
       this.mainRespDto.is = response.json();
-      //console.log(this.mainRespDto.is);
+      ////console.log(this.mainRespDto.is);
     }, error => {
       swal("Error", "Error code - 1514 <br> ", "error");
     });
 
     this.dashboardService.getTopUL().subscribe(response => {
       this.mainRespDto.ul = response.json();
-      //console.log(this.mainRespDto.ul);
+      ////console.log(this.mainRespDto.ul);
     }, error => {
       swal("Error", "Error code - 1515 <br> ", "error");
     });
@@ -441,7 +441,7 @@ export class DashboardComponent implements OnInit {
   ];
 
   approve(e) {
-    //console.log(e);
+    ////console.log(e);
     this.dashboardService.loadProfilePicture(e).subscribe((data) => {
       this.imgUserUrl = this.imageType + data.content;
 

@@ -68,9 +68,9 @@ export class NavBarComponent implements OnInit {
         this.dashPara = response.json().dashpara;
         this.dashParam = new Array();
         this.dashParam = this.dashPara.split(",");
-        console.log(" -------------------------- ");
-        console.log(this.dashParam);
-        console.log(this.userType);
+        //console.log(" -------------------------- ");
+        //console.log(this.dashParam);
+        //console.log(this.userType);
       }, error => {
         //swal("Error", "Error code - 1452 <br> ", "error");
         document.onkeydown = function (e) { return true; }
@@ -154,18 +154,18 @@ export class NavBarComponent implements OnInit {
         if (this.userType != "IC" && this.userType != "UNL" && this.userType != "HO") {
 
           this.getInputValues(document.getElementById("advisor"), 'advisor', map);
-          console.log(map.get('advisor'));
+          //console.log(map.get('advisor'));
           this.getInputValues(document.getElementById("branchCombo"), 'branch', map);
           status = "N";
-          console.log(map.get('branch'));
+          //console.log(map.get('branch'));
         }
 
         if (this.userType == "HO") {
           this.getInputValues(document.getElementById("advisor"), 'advisor', map);
-          console.log(map.get('advisor'));
+          //console.log(map.get('advisor'));
           this.getInputValues(document.getElementById("branch"), 'branch', map);
           status = "N";
-          console.log(map.get('branch'));
+          //console.log(map.get('branch'));
         }
 
         this.dashboardService.getMcfpReport(map.get('fromDate'), map.get('toDate'), map.get('branch'), map.get('advisor'), status).subscribe(
@@ -245,7 +245,7 @@ export class NavBarComponent implements OnInit {
 
       htmlTxt += "</select></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='region' style='padding-top:10px;text-align: justify;'>Region</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='region' value='ALL' class='form-control'/></div></div>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branch' style='padding-top:10px;text-align: justify;'>Branch</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='branch' value'ALL' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branch' style='padding-top:10px;text-align: justify;'>Branch</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='branch' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='code' style='padding-top:10px;text-align: justify;'>UNL Code</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='code' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='frequencyCombo' style='padding-top:10px;text-align: justify;'>Frequency</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='frequencyCombo' class='form-control'>" +
         "<option value='N'>No</option>" +
@@ -450,7 +450,7 @@ export class NavBarComponent implements OnInit {
         if (this.userType == "BRANCH") {
 
           this.getInputValues(document.getElementById("advisor"), 'advisor', map);
-          console.log(map.get('advisor'));
+          //console.log(map.get('advisor'));
           this.getInputValues(document.getElementById("branchCombo"), 'branch', map);
           status = "N";
 
@@ -465,7 +465,7 @@ export class NavBarComponent implements OnInit {
         } else if (this.userType == "REGION") {
 
           this.getInputValues(document.getElementById("advisor"), 'advisor', map);
-          console.log(map.get('advisor'));
+          //console.log(map.get('advisor'));
           this.getInputValues(document.getElementById("regionCombo"), 'region', map);
           this.getInputValues(document.getElementById("branch"), 'branch', map);
           status = "N";
@@ -480,7 +480,7 @@ export class NavBarComponent implements OnInit {
         } else if (this.userType == "ZONE") {
 
           this.getInputValues(document.getElementById("advisor"), 'advisor', map);
-          console.log(map.get('advisor'));
+          //console.log(map.get('advisor'));
           this.getInputValues(document.getElementById("zoneCombo"), 'zone', map);
           this.getInputValues(document.getElementById("region"), 'region', map);
           this.getInputValues(document.getElementById("branch"), 'branch', map);
@@ -496,7 +496,7 @@ export class NavBarComponent implements OnInit {
         } else if (this.userType == "HO") {
 
           this.getInputValues(document.getElementById("advisor"), 'advisor', map);
-          console.log(map.get('advisor'));
+          //console.log(map.get('advisor'));
           this.getInputValues(document.getElementById("zone"), 'zone', map);
           this.getInputValues(document.getElementById("region"), 'region', map);
           this.getInputValues(document.getElementById("branch"), 'branch', map);
@@ -589,7 +589,7 @@ export class NavBarComponent implements OnInit {
 
           this.getInputValues(document.getElementById("toDate"), 'toDate', map);
           this.getInputValues(document.getElementById("unl"), 'unl', map);
-          console.log(map.get('unl'));
+          //console.log(map.get('unl'));
           this.getInputValues(document.getElementById("branchCombo"), 'branch', map);
 
           this.dashboardService.getRetentionUnit(map.get('toDate'), "ALL", "ALL", map.get('branch'), map.get('unl')).subscribe(
@@ -603,7 +603,7 @@ export class NavBarComponent implements OnInit {
 
           this.getInputValues(document.getElementById("toDate"), 'toDate', map);
           this.getInputValues(document.getElementById("unl"), 'unl', map);
-          console.log(map.get('unl'));
+          //console.log(map.get('unl'));
           this.getInputValues(document.getElementById("regionCombo"), 'region', map);
           this.getInputValues(document.getElementById("branch"), 'branch', map);
 
@@ -618,7 +618,7 @@ export class NavBarComponent implements OnInit {
 
           this.getInputValues(document.getElementById("toDate"), 'toDate', map);
           this.getInputValues(document.getElementById("unl"), 'unl', map);
-          console.log(map.get('unl'));
+          //console.log(map.get('unl'));
           this.getInputValues(document.getElementById("zoneCombo"), 'zone', map);
           this.getInputValues(document.getElementById("region"), 'region', map);
           this.getInputValues(document.getElementById("branch"), 'branch', map);
@@ -634,7 +634,7 @@ export class NavBarComponent implements OnInit {
 
           this.getInputValues(document.getElementById("toDate"), 'toDate', map);
           this.getInputValues(document.getElementById("unl"), 'unl', map);
-          console.log(map.get('unl'));
+          //console.log(map.get('unl'));
           this.getInputValues(document.getElementById("zone"), 'zone', map);
           this.getInputValues(document.getElementById("region"), 'region', map);
           this.getInputValues(document.getElementById("branch"), 'branch', map);
@@ -726,7 +726,7 @@ export class NavBarComponent implements OnInit {
 
           this.getInputValues(document.getElementById("toDate"), 'toDate', map);
           this.getInputValues(document.getElementById("unl"), 'unl', map);
-          console.log(map.get('unl'));
+          //console.log(map.get('unl'));
           this.getInputValues(document.getElementById("branchCombo"), 'branch', map);
 
           this.dashboardService.getRetentionCode(map.get('toDate'), "ALL", "ALL", map.get('branch'), map.get('unl')).subscribe(
@@ -740,7 +740,7 @@ export class NavBarComponent implements OnInit {
 
           this.getInputValues(document.getElementById("toDate"), 'toDate', map);
           this.getInputValues(document.getElementById("unl"), 'unl', map);
-          console.log(map.get('unl'));
+          //console.log(map.get('unl'));
           this.getInputValues(document.getElementById("regionCombo"), 'region', map);
           this.getInputValues(document.getElementById("branch"), 'branch', map);
 
@@ -755,7 +755,7 @@ export class NavBarComponent implements OnInit {
 
           this.getInputValues(document.getElementById("toDate"), 'toDate', map);
           this.getInputValues(document.getElementById("unl"), 'unl', map);
-          console.log(map.get('unl'));
+          //console.log(map.get('unl'));
           this.getInputValues(document.getElementById("zoneCombo"), 'zone', map);
           this.getInputValues(document.getElementById("region"), 'region', map);
           this.getInputValues(document.getElementById("branch"), 'branch', map);
@@ -771,7 +771,7 @@ export class NavBarComponent implements OnInit {
 
           this.getInputValues(document.getElementById("toDate"), 'toDate', map);
           this.getInputValues(document.getElementById("unl"), 'unl', map);
-          console.log(map.get('unl'));
+          //console.log(map.get('unl'));
           this.getInputValues(document.getElementById("zone"), 'zone', map);
           this.getInputValues(document.getElementById("region"), 'region', map);
           this.getInputValues(document.getElementById("branch"), 'branch', map);
@@ -1163,7 +1163,7 @@ export class NavBarComponent implements OnInit {
 
           this.getInputValues(document.getElementById("toDate"), 'toDate', map);
           this.getInputValues(document.getElementById("code"), 'code', map);
-          console.log(map.get('unl'));
+          //console.log(map.get('unl'));
           this.getInputValues(document.getElementById("zoneCombo"), 'zone', map);
           this.getInputValues(document.getElementById("region"), 'region', map);
           this.getInputValues(document.getElementById("branch"), 'branch', map);
@@ -1180,7 +1180,7 @@ export class NavBarComponent implements OnInit {
 
           this.getInputValues(document.getElementById("toDate"), 'toDate', map);
           this.getInputValues(document.getElementById("code"), 'code', map);
-          console.log(map.get('unl'));
+          //console.log(map.get('unl'));
           this.getInputValues(document.getElementById("zone"), 'zone', map);
           this.getInputValues(document.getElementById("region"), 'region', map);
           this.getInputValues(document.getElementById("branch"), 'branch', map);
@@ -1633,7 +1633,7 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("toDate"), 'toDate', map);
           this.getInputValues(document.getElementById("branchCombo"), 'branch', map);
 
-          console.log(map.get('branch'));
+          //console.log(map.get('branch'));
 
           this.dashboardService.getFirstPremiumLapSummary(map.get('fromDate'), map.get('toDate'), "ALL", "ALL", map.get('branch')).subscribe((res) => {
             var fileURL = URL.createObjectURL(res);

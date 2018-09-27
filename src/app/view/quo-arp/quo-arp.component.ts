@@ -265,7 +265,7 @@ export class QuoArpComponent implements OnInit {
 
       let benifict = this._spouseBenefForm.value[i];
       if (benifict.isActice == true) {
-        console.log(benifict.sumAssured);
+        //console.log(benifict.sumAssured);
         if ((i == 'HRBFS') && (benifict.sumAssured == undefined)) {
           let benifict1 = new Benifict();
           benifict1.active = "true";
@@ -391,7 +391,7 @@ export class QuoArpComponent implements OnInit {
       for (let i in this._quotationCalculation._personalInfo.childrens) {
         let child: Children = this._quotationCalculation._personalInfo.childrens[i];
         for (let j in this._quotationCalculation._riderDetails._cRiders) {
-          console.log(j);
+          //console.log(j);
           switch (this._quotationCalculation._riderDetails._cRiders[j].type) {
             case "HRBIC":
               child._cHrbic = true;
@@ -423,7 +423,7 @@ export class QuoArpComponent implements OnInit {
       this._childrens = this._quotationCalculation._personalInfo.childrens;
 
     }
-    console.log(this._childrens);
+    //console.log(this._childrens);
     this.sendQuo();
 
   }
@@ -448,7 +448,7 @@ export class QuoArpComponent implements OnInit {
   }
 
   mPreviousSumAtRisk(risk: number) {
-    console.log(risk);
+    //console.log(risk);
     if (risk) {
       this.sumAtRiskMain = risk;
     }
@@ -493,11 +493,11 @@ export class QuoArpComponent implements OnInit {
       return;
     }
 
-    console.log(this._quotationCalculation._personalInfo);
+    //console.log(this._quotationCalculation._personalInfo);
 
     if (this._quotationCalculation._personalInfo != null) {
 
-      console.log(this._quotationCalculation._personalInfo);
+      //console.log(this._quotationCalculation._personalInfo);
 
       document.onkeydown = function (e) { return false; }
       this._quotationCalculation._personalInfo.sPreviousSumAtRisk = this.previousSumSpouse;
@@ -505,7 +505,7 @@ export class QuoArpComponent implements OnInit {
       
       this.isDisableDiv = true;
       this.saveArpQuotationService.getQouCal(this._quotationCalculation).subscribe(response => {
-        console.log(response.json());
+        //console.log(response.json());
         document.onkeydown = function (e) { return true; }
         
         this.isDisableDiv = false;
@@ -605,7 +605,7 @@ export class QuoArpComponent implements OnInit {
 
   save(e: any) {
 
-    console.log(this._quotationCalculation);
+    //console.log(this._quotationCalculation);
 
     if (this._quotationCalculation._personalInfo.bsa < 250000 || Number.isNaN(this._quotationCalculation._personalInfo.bsa)) {
       swal("Error", "BSA must be grater than or equal to 250000", "error");
@@ -636,7 +636,7 @@ export class QuoArpComponent implements OnInit {
     }
 
     for (var i in this.riderDetails._mRiders) {
-      console.log(this.riderDetails._mRiders[i]);
+      //console.log(this.riderDetails._mRiders[i]);
 
       if (this.riderDetails._mRiders[i].type == "HRBI") {
         if (this.activeSp == "1") {
@@ -713,7 +713,7 @@ export class QuoArpComponent implements OnInit {
                 this._invpSaveQuotation._personalInfo = this.personalInfo;
                 this._invpSaveQuotation._riderDetails = this.riderDetails;
                 this._invpSaveQuotation._calPersonalInfo = this._quotationCalculation._personalInfo;
-                console.log(this._invpSaveQuotation);
+                //console.log(this._invpSaveQuotation);
 
                 this.isDisableDiv = true;
                 document.onkeydown = function (e) { return false; }
@@ -744,7 +744,7 @@ export class QuoArpComponent implements OnInit {
             this._invpSaveQuotation._personalInfo = this.personalInfo;
             this._invpSaveQuotation._riderDetails = this.riderDetails;
             this._invpSaveQuotation._calPersonalInfo = this._quotationCalculation._personalInfo;
-            console.log(this._invpSaveQuotation);
+            //console.log(this._invpSaveQuotation);
 
             this.isDisableDiv = true;
             document.onkeydown = function (e) { return false; }
@@ -812,7 +812,7 @@ export class QuoArpComponent implements OnInit {
     }
 
     for (var i in this.riderDetails._mRiders) {
-      console.log(this.riderDetails._mRiders[i]);
+      //console.log(this.riderDetails._mRiders[i]);
 
       if (this.riderDetails._mRiders[i].type == "HRBI") {
         if (this.activeSp == "1") {
@@ -1032,12 +1032,12 @@ export class QuoArpComponent implements OnInit {
       }
 
 
-      console.log(this._mainLifeBenefForm);
+      //console.log(this._mainLifeBenefForm);
 
 
       for (var q in this._mainLifeBenefits) {
 
-        console.log(this._mainLifeBenefits[q].benfName);
+        //console.log(this._mainLifeBenefits[q].benfName);
         switch (this._mainLifeBenefits[q].benfName) {
           case "ATPB": {
             this.isImgATPBGActive = false;
@@ -1350,7 +1350,7 @@ export class QuoArpComponent implements OnInit {
 
       for (var q in this._spouseBenefits) {
 
-        console.log(this._spouseBenefits[q].benfName);
+        //console.log(this._spouseBenefits[q].benfName);
         switch (this._spouseBenefits[q].benfName) {
           case "SCB": {
             this.isImgBSASGActive = false;
@@ -1603,7 +1603,7 @@ export class QuoArpComponent implements OnInit {
 
       for (var q in this._childrenBenefits) {
 
-        console.log(this._childrenBenefits[q].benfName);
+        //console.log(this._childrenBenefits[q].benfName);
         switch (this._childrenBenefits[q].benfName) {
           case "CIBC": {
             this.isImgCIBCGActive = false;
@@ -1810,7 +1810,7 @@ export class QuoArpComponent implements OnInit {
   }
 
   setBsa(e) {
-    console.log(e);
+    //console.log(e);
     this._quotationCalculation._personalInfo.bsa = e;
   }
 

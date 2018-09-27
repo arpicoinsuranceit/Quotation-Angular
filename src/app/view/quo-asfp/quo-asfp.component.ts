@@ -265,7 +265,7 @@ export class QuoAsfpComponent implements OnInit {
 
       let benifict = this._spouseBenefForm.value[i];
       if (benifict.isActice == true) {
-        console.log(benifict.sumAssured);
+        //console.log(benifict.sumAssured);
         if ((i == 'HRBFS') && (benifict.sumAssured == undefined)) {
           let benifict1 = new Benifict();
           benifict1.active = "true";
@@ -392,7 +392,7 @@ export class QuoAsfpComponent implements OnInit {
       for (let i in this._quotationCalculation._personalInfo.childrens) {
         let child: Children = this._quotationCalculation._personalInfo.childrens[i];
         for (let j in this._quotationCalculation._riderDetails._cRiders) {
-          console.log(j);
+          //console.log(j);
           switch (this._quotationCalculation._riderDetails._cRiders[j].type) {
             case "HRBIC":
               child._cHrbic = true;
@@ -424,8 +424,8 @@ export class QuoAsfpComponent implements OnInit {
       this._childrens = this._quotationCalculation._personalInfo.childrens;
 
     }
-    console.log(this._childrens);
-    console.log(this._quotationCalculation);
+    //console.log(this._childrens);
+    //console.log(this._quotationCalculation);
     this.sendQuo();
 
   }
@@ -450,7 +450,7 @@ export class QuoAsfpComponent implements OnInit {
   }
 
   mPreviousSumAtRisk(risk: number) {
-    console.log(risk);
+    //console.log(risk);
     if (risk) {
       this.sumAtRiskMain = risk;
     }
@@ -464,7 +464,7 @@ export class QuoAsfpComponent implements OnInit {
 
   sendQuo() {
 
-    console.log(parseInt(this._quotationCalculation._personalInfo.mage.toString()) + parseInt(this._plan._term.toString()));
+    //console.log(parseInt(this._quotationCalculation._personalInfo.mage.toString()) + parseInt(this._plan._term.toString()));
 
     if (this._quotationCalculation._personalInfo.msfb < 5000 || Number.isNaN(this._quotationCalculation._personalInfo.msfb)) {
       swal("Error", "MSDB must be grater than or equal to 5000", "error");
@@ -494,7 +494,7 @@ export class QuoAsfpComponent implements OnInit {
 
 
     if (this._quotationCalculation._personalInfo != null) {
-      //console.log(this._quotationCalculation);
+      ////console.log(this._quotationCalculation);
       this._quotationCalculation._personalInfo.bsa = this._quotationCalculation._personalInfo.msfb * this._quotationCalculation._personalInfo.term * 12;
       if (parseInt(this._quotationCalculation._personalInfo.mage.toString()) + parseInt(this._plan._term.toString()) <= 70) {
         if (parseInt(this._plan._nomineeAge.toString()) + parseInt(this._plan._term.toString()) <= 24) {
@@ -502,11 +502,11 @@ export class QuoAsfpComponent implements OnInit {
           this._quotationCalculation._personalInfo.sPreviousSumAtRisk = this.previousSumSpouse;
           document.onkeydown = function (e) { return false; }
           this.isDisableDiv = true;
-          console.log(this._quotationCalculation);
+          //console.log(this._quotationCalculation);
           this.saveAsfpQuotationService.getQouCal(this._quotationCalculation).subscribe(response => {
             document.onkeydown = function (e) { return true; }
             this.isDisableDiv = false;
-            console.log(response.json());
+            //console.log(response.json());
             if (response.json().errorExist == true) {
               swal("Error!", "Error exist in " + response.json().error, "error");
             }
@@ -595,7 +595,7 @@ export class QuoAsfpComponent implements OnInit {
 
   save(e: any) {
 
-    console.log(this._quotationCalculation._personalInfo.mage + this._plan._term + " Termmmmmmmmmmm");
+    //console.log(this._quotationCalculation._personalInfo.mage + this._plan._term + " Termmmmmmmmmmm");
     if (this._quotationCalculation._personalInfo.msfb < 5000) {
       swal("Error", "MSDB must be grater than or equal to 5000", "error");
       return;
@@ -618,7 +618,7 @@ export class QuoAsfpComponent implements OnInit {
     }
 
     for (var i in this.riderDetails._mRiders) {
-      console.log(this.riderDetails._mRiders[i]);
+      //console.log(this.riderDetails._mRiders[i]);
 
       if (this.riderDetails._mRiders[i].type == "HRBI") {
         if (this.activeSp == "1") {
@@ -699,9 +699,9 @@ export class QuoAsfpComponent implements OnInit {
 
                     this.isDisableDiv = true;
                     document.onkeydown = function (e) { return false; }
-                    console.log(this._invpSaveQuotation);
+                    //console.log(this._invpSaveQuotation);
                     this.saveAsfpQuotationService.saveInvp(this._invpSaveQuotation).subscribe(response => {
-                      console.log(response);
+                      //console.log(response);
                       this.isDisableDiv = false;
                       document.onkeydown = function (e) { return true; }
                       if (response.json().status == "Success") {
@@ -732,9 +732,9 @@ export class QuoAsfpComponent implements OnInit {
 
                 this.isDisableDiv = true;
                 document.onkeydown = function (e) { return false; }
-                console.log(this._invpSaveQuotation);
+                //console.log(this._invpSaveQuotation);
                 this.saveAsfpQuotationService.saveInvp(this._invpSaveQuotation).subscribe(response => {
-                  console.log(response);
+                  //console.log(response);
                   this.isDisableDiv = false;
                   document.onkeydown = function (e) { return true; }
                   if (response.json().status == "Success") {
@@ -799,7 +799,7 @@ export class QuoAsfpComponent implements OnInit {
     }
 
     for (var i in this.riderDetails._mRiders) {
-      console.log(this.riderDetails._mRiders[i]);
+      //console.log(this.riderDetails._mRiders[i]);
 
       if (this.riderDetails._mRiders[i].type == "HRBI") {
         if (this.activeSp == "1") {
@@ -1033,7 +1033,7 @@ export class QuoAsfpComponent implements OnInit {
 
       for (var q in this._mainLifeBenefits) {
 
-        console.log(this._mainLifeBenefits[q].benfName);
+        //console.log(this._mainLifeBenefits[q].benfName);
         switch (this._mainLifeBenefits[q].benfName) {
           case "SFPO": {
             this.isImgSFPOGActive = false;
@@ -1362,7 +1362,7 @@ export class QuoAsfpComponent implements OnInit {
 
       for (var q in this._spouseBenefits) {
 
-        console.log(this._spouseBenefits[q].benfName);
+        //console.log(this._spouseBenefits[q].benfName);
         switch (this._spouseBenefits[q].benfName) {
           case "SCB": {
             this.isImgBSASGActive = false;
@@ -1600,7 +1600,7 @@ export class QuoAsfpComponent implements OnInit {
 
       for (var q in this._childrenBenefits) {
 
-        console.log(this._childrenBenefits[q].benfName);
+        //console.log(this._childrenBenefits[q].benfName);
         switch (this._childrenBenefits[q].benfName) {
           case "CIBC": {
             this.isImgCIBCGActive = false;
@@ -1810,9 +1810,9 @@ export class QuoAsfpComponent implements OnInit {
 
   setBsa(e: any) {
     //alert("called");
-    console.log(e);
+    //console.log(e);
     this._quotationCalculation._personalInfo.bsa = this._quotationCalculation._personalInfo.msfb * this._quotationCalculation._personalInfo.term * 12;
-    console.log(this._quotationCalculation._personalInfo.bsa);
+    //console.log(this._quotationCalculation._personalInfo.bsa);
   }
 
   calPreviousRiskM(e) {

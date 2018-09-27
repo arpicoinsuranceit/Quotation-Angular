@@ -117,7 +117,7 @@ export class QuoAipComponent implements OnInit {
     //alert(this._plan._term);
     if(this._plan._frequance == "Single Premium"){
       if(this._mainLife._mAge > 17 && this._mainLife._mAge < 71){
-        //console.log(parseInt(this._plan._term.toString()) + parseInt(this._mainLife._mAge.toString()));
+        ////console.log(parseInt(this._plan._term.toString()) + parseInt(this._mainLife._mAge.toString()));
         if(parseInt(this._plan._term.toString()) + parseInt(this._mainLife._mAge.toString()) < 76){
           if(this._mainLife._mAge > 45){
             
@@ -145,7 +145,7 @@ export class QuoAipComponent implements OnInit {
       }
     }else{
       if(this._mainLife._mAge > 17 && this._mainLife._mAge < 66){
-        //console.log(parseInt(this._plan._term.toString()) + parseInt(this._mainLife._mAge.toString()));
+        ////console.log(parseInt(this._plan._term.toString()) + parseInt(this._mainLife._mAge.toString()));
         if(parseInt(this._plan._term.toString()) + parseInt(this._mainLife._mAge.toString()) < 76){
           if(this._plan._term < 10){
             swal("Opzz", " Term must be Greater than or Equal 10 , Because frequency is "+ this._plan._frequance , "error");
@@ -169,13 +169,13 @@ export class QuoAipComponent implements OnInit {
           if (this._planCommon._bsa != null && this._planCommon._bsa != undefined &&
             this._planCommon._frequance != null && this._planCommon._frequance != undefined &&
             this._planCommon._term != null && this._planCommon._term != undefined) {
-            //console.log(this._planCommon);
+            ////console.log(this._planCommon);
             document.onkeydown = function (e) { return false; }
             this.isDisableDiv = true;
             this.quoAipService.getQouCal(this._planCommon).subscribe(response => {
               document.onkeydown = function (e) { return true; }
               this.isDisableDiv = false;
-             // console.log(response.json());
+             // //console.log(response.json());
 
               if (response.json().errorExist) {
                 swal("Error", response.json().error, "error")
@@ -211,7 +211,7 @@ export class QuoAipComponent implements OnInit {
 
       if(this._plan._frequance == "Single Premium"){
         if(this._mainLife._mAge > 17 && this._mainLife._mAge < 71){
-          //console.log(parseInt(this._plan._term.toString()) + parseInt(this._mainLife._mAge.toString()));
+          ////console.log(parseInt(this._plan._term.toString()) + parseInt(this._mainLife._mAge.toString()));
           if(parseInt(this._plan._term.toString()) + parseInt(this._mainLife._mAge.toString()) < 76){
             if(this._mainLife._mAge > 45){
               
@@ -239,7 +239,7 @@ export class QuoAipComponent implements OnInit {
         }
       }else{
         if(this._mainLife._mAge > 17 && this._mainLife._mAge < 66){
-          //console.log(parseInt(this._plan._term.toString()) + parseInt(this._mainLife._mAge.toString()));
+          ////console.log(parseInt(this._plan._term.toString()) + parseInt(this._mainLife._mAge.toString()));
           if(parseInt(this._plan._term.toString()) + parseInt(this._mainLife._mAge.toString()) < 76){
             if(this._plan._term < 10){
               swal("Opzz", " Term must be Greater than or Equal 10 , Because frequency is "+ this._plan._frequance , "error");
@@ -296,7 +296,7 @@ export class QuoAipComponent implements OnInit {
       }
 
     } else {
-      //console.log(this.validity);
+      ////console.log(this.validity);
       swal("Check Form Again", "Fill all Required fields...", "error")
         .then((value) => {
           document.getElementById(this.validity).classList.add("errors");
@@ -307,7 +307,7 @@ export class QuoAipComponent implements OnInit {
 
   editCal() {
     this.quoAipService.getAipQuotationDetailsForEdit(this.qdId).subscribe(response => {
-      console.log(response.json());
+      //console.log(response.json());
 
       let phone : string = response.json()._mainlife._mMobile;
 
@@ -340,11 +340,11 @@ export class QuoAipComponent implements OnInit {
 
   edit(e: any) {
     if (this.validity == true) {
-      //console.log("called");
+      ////console.log("called");
 
       if(this._plan._frequance == "Single Premium"){
         if(this._mainLife._mAge > 17 && this._mainLife._mAge < 71){
-          //console.log(parseInt(this._plan._term.toString()) + parseInt(this._mainLife._mAge.toString()));
+          ////console.log(parseInt(this._plan._term.toString()) + parseInt(this._mainLife._mAge.toString()));
           if(parseInt(this._plan._term.toString()) + parseInt(this._mainLife._mAge.toString()) < 76){
             if(this._mainLife._mAge > 45){
               
@@ -372,7 +372,7 @@ export class QuoAipComponent implements OnInit {
         }
       }else{
         if(this._mainLife._mAge > 17 && this._mainLife._mAge < 66){
-          //console.log(parseInt(this._plan._term.toString()) + parseInt(this._mainLife._mAge.toString()));
+          ////console.log(parseInt(this._plan._term.toString()) + parseInt(this._mainLife._mAge.toString()));
           if(parseInt(this._plan._term.toString()) + parseInt(this._mainLife._mAge.toString()) < 76){
             if(this._plan._term < 10){
               swal("Opzz", " Term must be Greater than or Equal 10 , Because frequency is "+ this._plan._frequance , "error");
@@ -428,7 +428,7 @@ export class QuoAipComponent implements OnInit {
 
 
     } else {
-      //console.log(this.validity);
+      ////console.log(this.validity);
       swal("Check Form Again", "Fill all Required fields...", "error")
         .then((value) => {
           document.getElementById(this.validity).classList.add("errors");

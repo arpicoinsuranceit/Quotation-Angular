@@ -25,7 +25,7 @@ export class CommitmentService {
   }
 
   editCommitment(commitmentSummary:BranchTargetSummary){
-      console.log(commitmentSummary);
+      //console.log(commitmentSummary);
       return this.http.post('http://localhost:8085/updatecommitment',commitmentSummary);
   }
 

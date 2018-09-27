@@ -509,7 +509,7 @@ export class End1AdditionalBenefComponent implements OnInit {
 
 
   isActive(e, frm) {
-    console.log(this._childrens);
+    //console.log(this._childrens);
     if (e.target.checked) {
       this.abmForm.get(frm).get('sumAssured').enable();
       this.abmForm.get(frm).get('premium').enable();
@@ -696,7 +696,7 @@ export class End1AdditionalBenefComponent implements OnInit {
 
         }
 
-        console.log(this._childrens);
+        //console.log(this._childrens);
 
         this.allForms.abmForm = this.abmForm;
         this.allForms.absForm = this.absForm;
@@ -788,7 +788,7 @@ export class End1AdditionalBenefComponent implements OnInit {
           child._cHbc = true;
         }
 
-        console.log(this._childrens);
+        //console.log(this._childrens);
         this.allForms.abmForm = this.abmForm;
         this.allForms.absForm = this.absForm;
         this.allForms.abcForm = this.abcForm;
@@ -864,7 +864,7 @@ export class End1AdditionalBenefComponent implements OnInit {
           child._cHrbic = true;
         }
 
-        console.log(this._childrens);
+        //console.log(this._childrens);
         this.allForms.abmForm = this.abmForm;
         this.allForms.absForm = this.absForm;
         this.allForms.abcForm = this.abcForm;
@@ -969,7 +969,7 @@ export class End1AdditionalBenefComponent implements OnInit {
           child._cHrbfc = true;
         }
 
-        console.log(this._childrens);
+        //console.log(this._childrens);
         this.allForms.abmForm = this.abmForm;
         this.allForms.absForm = this.absForm;
         this.allForms.abcForm = this.abcForm;
@@ -1140,7 +1140,7 @@ export class End1AdditionalBenefComponent implements OnInit {
           child._cShcbfc = true;
         }
 
-        console.log(this._childrens);
+        //console.log(this._childrens);
         this.allForms.abmForm = this.abmForm;
         this.allForms.absForm = this.absForm;
         this.allForms.abcForm = this.abcForm;
@@ -1209,7 +1209,7 @@ export class End1AdditionalBenefComponent implements OnInit {
           child._cSuhrbc = true;
         }
 
-        console.log(this._childrens);
+        //console.log(this._childrens);
         this.allForms.abmForm = this.abmForm;
         this.allForms.absForm = this.absForm;
         this.allForms.abcForm = this.abcForm;
@@ -1554,7 +1554,7 @@ export class End1AdditionalBenefComponent implements OnInit {
       child._cHrbic = false;
     }
 
-    console.log(this._childrens);
+    //console.log(this._childrens);
 
 
     this.allForms.abmForm = this.abmForm;
@@ -1589,7 +1589,7 @@ export class End1AdditionalBenefComponent implements OnInit {
       child._cHrbfc = false;
     }
 
-    console.log(this._childrens);
+    //console.log(this._childrens);
 
     this.allForms.abmForm = this.abmForm;
     this.allForms.absForm = this.absForm;
@@ -1622,7 +1622,7 @@ export class End1AdditionalBenefComponent implements OnInit {
       child._cSuhrbc = false;
     }
 
-    console.log(this._childrens);
+    //console.log(this._childrens);
 
     this.allForms.abmForm = this.abmForm;
     this.allForms.absForm = this.absForm;
@@ -1655,7 +1655,7 @@ export class End1AdditionalBenefComponent implements OnInit {
       child._cShcbfc = false;
     }
 
-    console.log(this._childrens);
+    //console.log(this._childrens);
 
     this.allForms.abmForm = this.abmForm;
     this.allForms.absForm = this.absForm;
@@ -1685,7 +1685,7 @@ export class End1AdditionalBenefComponent implements OnInit {
       child._cHbc = false;
     }
 
-    console.log(this._childrens);
+    //console.log(this._childrens);
 
     this.allForms.abmForm = this.abmForm;
     this.allForms.absForm = this.absForm;
@@ -1846,7 +1846,7 @@ export class End1AdditionalBenefComponent implements OnInit {
       child._cShcbfc = false;
     }
 
-    console.log(this._childrens);
+    //console.log(this._childrens);
 
     this.allForms.abmForm = this.abmForm;
     this.allForms.absForm = this.absForm;
@@ -1874,7 +1874,7 @@ export class End1AdditionalBenefComponent implements OnInit {
       child._cCibc = false;
     }
 
-    console.log(this._childrens);
+    //console.log(this._childrens);
 
     this.allForms.abmForm = this.abmForm;
     this.allForms.absForm = this.absForm;
@@ -1893,7 +1893,7 @@ export class End1AdditionalBenefComponent implements OnInit {
       child._cHrbic = false;
     }
 
-    console.log(this._childrens);
+    //console.log(this._childrens);
 
     this.allForms.abmForm = this.abmForm;
     this.allForms.absForm = this.absForm;
@@ -1912,7 +1912,7 @@ export class End1AdditionalBenefComponent implements OnInit {
       child._cHrbfc = false;
     }
 
-    console.log(this._childrens);
+    //console.log(this._childrens);
 
     this.allForms.abmForm = this.abmForm;
     this.allForms.absForm = this.absForm;
@@ -1931,7 +1931,7 @@ export class End1AdditionalBenefComponent implements OnInit {
       child._cSuhrbc = false;
     }
 
-    console.log(this._childrens);
+    //console.log(this._childrens);
 
     this.allForms.abmForm = this.abmForm;
     this.allForms.absForm = this.absForm;
@@ -1949,7 +1949,7 @@ export class End1AdditionalBenefComponent implements OnInit {
       child._cHbc = false;
     }
 
-    console.log(this._childrens);
+    //console.log(this._childrens);
 
     this.allForms.abmForm = this.abmForm;
     this.allForms.absForm = this.absForm;

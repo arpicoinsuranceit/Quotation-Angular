@@ -33,13 +33,13 @@ export class QuoDtaplService {
       data._personalInfo.frequance = "S";
     }
     data._product = "DTAPL";
-    console.log(data);
+    //console.log(data);
     return this.http.post('http://localhost:8084/quoDtaplCal', data);
   }
 
   saveDta(data: any) {
     data._product = "DTAPL";
-    console.log(data);
+    //console.log(data);
     return this.http.post('http://localhost:8084/quoDtaplsave/' + this.userId, data);
   }
 
@@ -73,7 +73,7 @@ export class QuoDtaplService {
     if (data._personalInfo._plan._frequance === "Yearly") {
       data._personalInfo._plan._frequance = "Y";
     }
-    console.log(data);
+    //console.log(data);
     data._product = "DTAPL";
 
     return this.http.post('http://localhost:8084/quoDtaplEdit/' + this.userId + '/' + qdId, data);

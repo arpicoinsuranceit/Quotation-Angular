@@ -695,7 +695,7 @@ export class SipAdditionalBenefComponent implements OnInit {
 
         }
 
-        console.log(this._childrens);
+        //console.log(this._childrens);
 
         this.allForms.abmForm = this.abmForm;
         this.allForms.absForm = this.absForm;
@@ -787,7 +787,7 @@ export class SipAdditionalBenefComponent implements OnInit {
           child._cHbc = true;
         }
 
-        console.log(this._childrens);
+        //console.log(this._childrens);
         this.allForms.abmForm = this.abmForm;
         this.allForms.absForm = this.absForm;
         this.allForms.abcForm = this.abcForm;
@@ -863,7 +863,7 @@ export class SipAdditionalBenefComponent implements OnInit {
           child._cHrbic = true;
         }
 
-        console.log(this._childrens);
+        //console.log(this._childrens);
         this.allForms.abmForm = this.abmForm;
         this.allForms.absForm = this.absForm;
         this.allForms.abcForm = this.abcForm;
@@ -968,7 +968,7 @@ export class SipAdditionalBenefComponent implements OnInit {
           child._cHrbfc = true;
         }
 
-        console.log(this._childrens);
+        //console.log(this._childrens);
         this.allForms.abmForm = this.abmForm;
         this.allForms.absForm = this.absForm;
         this.allForms.abcForm = this.abcForm;
@@ -1139,7 +1139,7 @@ export class SipAdditionalBenefComponent implements OnInit {
           child._cShcbfc = true;
         }
 
-        console.log(this._childrens);
+        //console.log(this._childrens);
         this.allForms.abmForm = this.abmForm;
         this.allForms.absForm = this.absForm;
         this.allForms.abcForm = this.abcForm;
@@ -1208,7 +1208,7 @@ export class SipAdditionalBenefComponent implements OnInit {
           child._cSuhrbc = true;
         }
 
-        console.log(this._childrens);
+        //console.log(this._childrens);
         this.allForms.abmForm = this.abmForm;
         this.allForms.absForm = this.absForm;
         this.allForms.abcForm = this.abcForm;
@@ -1553,7 +1553,7 @@ export class SipAdditionalBenefComponent implements OnInit {
       child._cHrbic = false;
     }
 
-    console.log(this._childrens);
+    //console.log(this._childrens);
 
 
     this.allForms.abmForm = this.abmForm;
@@ -1588,7 +1588,7 @@ export class SipAdditionalBenefComponent implements OnInit {
       child._cHrbfc = false;
     }
 
-    console.log(this._childrens);
+    //console.log(this._childrens);
 
     this.allForms.abmForm = this.abmForm;
     this.allForms.absForm = this.absForm;
@@ -1621,7 +1621,7 @@ export class SipAdditionalBenefComponent implements OnInit {
       child._cSuhrbc = false;
     }
 
-    console.log(this._childrens);
+    //console.log(this._childrens);
 
     this.allForms.abmForm = this.abmForm;
     this.allForms.absForm = this.absForm;
@@ -1654,7 +1654,7 @@ export class SipAdditionalBenefComponent implements OnInit {
       child._cShcbfc = false;
     }
 
-    console.log(this._childrens);
+    //console.log(this._childrens);
 
     this.allForms.abmForm = this.abmForm;
     this.allForms.absForm = this.absForm;
@@ -1684,7 +1684,7 @@ export class SipAdditionalBenefComponent implements OnInit {
       child._cHbc = false;
     }
 
-    console.log(this._childrens);
+    //console.log(this._childrens);
 
     this.allForms.abmForm = this.abmForm;
     this.allForms.absForm = this.absForm;
@@ -1845,7 +1845,7 @@ export class SipAdditionalBenefComponent implements OnInit {
       child._cShcbfc = false;
     }
 
-    console.log(this._childrens);
+    //console.log(this._childrens);
 
     this.allForms.abmForm = this.abmForm;
     this.allForms.absForm = this.absForm;
@@ -1873,7 +1873,7 @@ export class SipAdditionalBenefComponent implements OnInit {
       child._cCibc = false;
     }
 
-    console.log(this._childrens);
+    //console.log(this._childrens);
 
     this.allForms.abmForm = this.abmForm;
     this.allForms.absForm = this.absForm;
@@ -1892,7 +1892,7 @@ export class SipAdditionalBenefComponent implements OnInit {
       child._cHrbic = false;
     }
 
-    console.log(this._childrens);
+    //console.log(this._childrens);
 
     this.allForms.abmForm = this.abmForm;
     this.allForms.absForm = this.absForm;
@@ -1911,7 +1911,7 @@ export class SipAdditionalBenefComponent implements OnInit {
       child._cHrbfc = false;
     }
 
-    console.log(this._childrens);
+    //console.log(this._childrens);
 
     this.allForms.abmForm = this.abmForm;
     this.allForms.absForm = this.absForm;
@@ -1930,7 +1930,7 @@ export class SipAdditionalBenefComponent implements OnInit {
       child._cSuhrbc = false;
     }
 
-    console.log(this._childrens);
+    //console.log(this._childrens);
 
     this.allForms.abmForm = this.abmForm;
     this.allForms.absForm = this.absForm;
@@ -1948,7 +1948,7 @@ export class SipAdditionalBenefComponent implements OnInit {
       child._cHbc = false;
     }
 
-    console.log(this._childrens);
+    //console.log(this._childrens);
 
     this.allForms.abmForm = this.abmForm;
     this.allForms.absForm = this.absForm;
@@ -1979,7 +1979,7 @@ export class SipAdditionalBenefComponent implements OnInit {
   checkValidateATPB() {
     this.validateATPB = this.benefitsValidations.validatteAtpb(this.personalInfo.bsa, this.abmForm.get('ATPB').get('sumAssured').value);
     if (this.validateATPB == 1) {
-      console.log(this.validateATPB);
+      //console.log(this.validateATPB);
       if (this.abmForm.get('CIB').get('isActice').value) {
         this.checkValidateCIB();
       }
@@ -1987,7 +1987,7 @@ export class SipAdditionalBenefComponent implements OnInit {
         this.checkValidateSCB();
       }
       if (this.abcForm.get('CIBC').get('isActice').value) {
-        console.log(this.abmForm.get('CIBC').get('isActice').value);
+        //console.log(this.abmForm.get('CIBC').get('isActice').value);
         this.checkValidateCIBC();
       }
     } else {

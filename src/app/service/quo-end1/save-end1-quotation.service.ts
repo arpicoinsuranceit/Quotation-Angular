@@ -69,7 +69,7 @@ export class SaveEnd1QuotationService {
       data._personalInfo._plan._frequance = "Y";
     }
 
-    console.log(data);
+    //console.log(data);
 
     data._product = "END1";
 

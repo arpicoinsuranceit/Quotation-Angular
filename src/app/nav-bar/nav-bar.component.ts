@@ -15,7 +15,7 @@ import { JwtHelper } from 'angular2-jwt';
 export class NavBarComponent implements OnInit {
 
   curUser = null;
-  imgUserUrl = null;
+  imgUserUrl = "assets/images/dummy.png";
   imgUserAlt = "assets/images/alt_user.png";
   userType = null;
   dashPara: string;
@@ -33,16 +33,16 @@ export class NavBarComponent implements OnInit {
 
   constructor(private loginService: LoginService, private agentService: AgentService, private dashboardService: DashboardService,
     ) {
-      if (this.loginService.isLoggedIn()) {
-        this.agentService.getImage()
-          .subscribe((data) => {
-            this.imgUserUrl = this.imageType + data.content;
-          }, error => {
-            this.imgUserUrl = "assets/images/dummy.png";
-            //swal("Error", "Error code - 1451 <br> ", "error");
-            document.onkeydown = function (e) { return true; }
-          });
-      }
+      // if (this.loginService.isLoggedIn()) {
+      //   this.agentService.getImage()
+      //     .subscribe((data) => {
+      //       this.imgUserUrl = this.imageType + data.content;
+      //     }, error => {
+      //       this.imgUserUrl = "assets/images/dummy.png";
+      //       //swal("Error", "Error code - 1451 <br> ", "error");
+      //       document.onkeydown = function (e) { return true; }
+      //     });
+      // }
 
     this.init();
     this.loadActiveProducts();
@@ -192,8 +192,9 @@ export class NavBarComponent implements OnInit {
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='frequencyCombo' style='padding-top:10px;text-align: justify;'>Frequency</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='frequencyCombo' class='form-control'>" +
+        "<option value='N'>No</option>" +
         "<option value='Y'>Yes</option>" +
-        "<option value='N'>No</option></select></div></div>";
+        "</select></div></div>";
 
     } else if (this.userType == "BRANCH") {
       htmlTxt = "<hr class='seperator'>" +
@@ -208,8 +209,9 @@ export class NavBarComponent implements OnInit {
       htmlTxt += "</select></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='code' style='padding-top:10px;text-align: justify;'>UNL Code</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='code' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='frequencyCombo' style='padding-top:10px;text-align: justify;'>Frequency</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='frequencyCombo' class='form-control'>" +
+        "<option value='N'>No</option>" +
         "<option value='Y'>Yes</option>" +
-        "<option value='N'>No</option></select></div></div>";
+        "</select></div></div>";
 
 
 
@@ -227,8 +229,9 @@ export class NavBarComponent implements OnInit {
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branch' style='padding-top:10px;text-align: justify;'>Branch</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='branch' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='code' style='padding-top:10px;text-align: justify;'>UNL Code</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='code' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='frequencyCombo' style='padding-top:10px;text-align: justify;'>Frequency</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='frequencyCombo' class='form-control'>" +
+        "<option value='N'>No</option>" +
         "<option value='Y'>Yes</option>" +
-        "<option value='N'>No</option></select></div></div>";
+        "</select></div></div>";
 
     } else if (this.userType == "ZONE") {
       htmlTxt = "<hr class='seperator'>" +
@@ -245,8 +248,9 @@ export class NavBarComponent implements OnInit {
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branch' style='padding-top:10px;text-align: justify;'>Branch</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='branch' value'ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='code' style='padding-top:10px;text-align: justify;'>UNL Code</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='code' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='frequencyCombo' style='padding-top:10px;text-align: justify;'>Frequency</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='frequencyCombo' class='form-control'>" +
+        "<option value='N'>No</option>" +
         "<option value='Y'>Yes</option>" +
-        "<option value='N'>No</option></select></div></div>";
+        "</select></div></div>";
 
     } else if (this.userType == "HO") {
       htmlTxt = "<hr class='seperator'>" +
@@ -257,8 +261,9 @@ export class NavBarComponent implements OnInit {
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branch' style='padding-top:10px;text-align: justify;'>Branch</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='branch' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='code' style='padding-top:10px;text-align: justify;'>UNL Code</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='code' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='frequencyCombo' style='padding-top:10px;text-align: justify;'>Frequency</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='frequencyCombo' class='form-control'>" +
+        "<option value='N'>No</option>" +
         "<option value='Y'>Yes</option>" +
-        "<option value='N'>No</option></select></div></div>";
+        "</select></div></div>";
 
     } else {
       return;

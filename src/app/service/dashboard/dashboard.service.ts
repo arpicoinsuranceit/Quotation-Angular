@@ -104,6 +104,9 @@ export class DashboardService {
   }
 
   getDuePolicies(dashpara: string, usertype: string) {
+    console.log(this.userCode);
+    console.log(dashpara);
+    console.log(usertype);
     return this.http.get('http://localhost:8085/getDuePolicies/' + this.userCode + "/" + dashpara + "/" + usertype);
   }
 

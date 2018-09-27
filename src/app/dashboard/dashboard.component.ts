@@ -271,14 +271,14 @@ export class DashboardComponent implements OnInit {
     if(this.dashpara != 'HO'){
       this.dashboardService.getDuePolicies(this.dashpara, this.usertype).subscribe(response => {
         this.mainRespDto.duePolicieList = response.json();
-        //console.log(this.mainRespDto.duePolicieList);
+        console.log(this.mainRespDto.duePolicieList);
       }, error => {
         swal("Error", "Error code - 1511 <br> ", "error");
       });
   
       this.dashboardService.getPendingPolicies(this.dashpara, this.usertype).subscribe(response => {
         this.mainRespDto.pendingPolList = response.json();
-        //console.log(this.mainRespDto.duePolicieList);
+        console.log(this.mainRespDto.pendingPolList);
       }, error => {
         swal("Error", "Error code - 1512 <br> ", "error");
       });

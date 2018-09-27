@@ -13,7 +13,8 @@ import 'rxjs/add/operator/catch';
 })
 
 export class ProfileComponent implements OnInit {
-  imgUserUrl: any;
+  imgUserUrl: any="assets/images/dummy.png";
+  imgUserAlt = "assets/images/alt_user.png";
 
   agent: Agent = new Agent();
 
@@ -46,13 +47,14 @@ export class ProfileComponent implements OnInit {
       this.error = true;
     });
 
-    this.agentService.getImage()
-    .subscribe((data) => {
-        this.imgUserUrl = this.imageType + data.content;
-    }, error => {
-      swal("Error", error.text() , "error");
-      document.onkeydown = function (e) { return true; }
-    });
+    // this.agentService.getImage()
+    // .subscribe((data) => {
+    //     this.imgUserUrl = this.imageType + data.content;
+    // }, error => {
+    //   this.imgUserUrl = "assets/images/dummy.png";
+    //   swal("Error", error.text() , "error");
+    //   document.onkeydown = function (e) { return true; }
+    // });
   }
 
   /*changeImage() {
@@ -60,7 +62,7 @@ export class ProfileComponent implements OnInit {
   }*/
 
 
-  /*customStyle = {
+  customStyle = {
     selectButton: {
       "background-color": "#0c3da3",
       "border-radius": "1px",
@@ -87,7 +89,7 @@ export class ProfileComponent implements OnInit {
       "background-color": "#FAFCFD",
       "border-radius": "0 0 25px 25px",
     }
-  }*/
+  }
 }
 
 /*function getImage() {

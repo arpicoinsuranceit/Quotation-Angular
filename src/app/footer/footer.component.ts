@@ -32,17 +32,17 @@ export class FooterComponent implements OnInit {
     });
   }
 
-  // loadDashboard(){
+  loadDashboard(){
     
-  //   var dashPara=sessionStorage.getItem("dashpara");
-  //   var userType=sessionStorage.getItem("userType");
-  //   var token=sessionStorage.getItem("Token");
+    var dashPara=sessionStorage.getItem("dashpara");
+    var userType=sessionStorage.getItem("userType");
+    var token=sessionStorage.getItem("Token");
 
-  //   var encodedDashPara = btoa(dashPara);
-  //   var encodeduserType = btoa(userType);
+    var encodedDashPara = btoa(dashPara);
+    var encodeduserType = btoa(userType);
 
-  //   window.open('http://10.10.10.12:8080/Dashboard?dashPara='+encodedDashPara+'&userType='+encodeduserType+'&token='+token+'/');
-  // }
+    window.open('http://10.10.10.12:8080/Dashboard?dashPara='+encodedDashPara+'&userType='+encodeduserType+'&token='+token+'/');
+  }
 
 
 }

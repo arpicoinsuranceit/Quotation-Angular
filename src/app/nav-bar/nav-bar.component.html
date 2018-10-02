@@ -12,7 +12,7 @@
         <div [ngbCollapse]="isCollapsed" class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li routerLinkActive="active current">
-                    <a routerLink="home" style="cursor:pointer;">Dashboard</a>
+                    <a (click)="loadDashboard();" style="cursor:pointer;">Dashboard</a>
                 </li>
                 <li ngbDropdown routerLinkActive="active current" class="dropdown">
                     <a ngbDropdownToggle class="dropdown-toggle" data-toggle="dropdown">Quotation

@@ -2734,7 +2734,7 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("productCombo"), 'product', map);
           this.getInputValues(document.getElementById("frequencyCombo"), 'frequency', map);
           status = "N";
-          this.dashboardService.getSalesPerfDetail(map.get('fromDate'), map.get('toDate'), map.get('code'), map.get('branch'), "ALL", "ALL", map.get('product'), map.get('frequency'), status).subscribe((res) => {
+          this.dashboardService.getSalesPerfDetail(map.get('fromDate'), map.get('toDate'), map.get('code'), "ALL", "ALL", map.get('branch'), map.get('product'), map.get('frequency'), status).subscribe((res) => {
             var fileURL = URL.createObjectURL(res);
             window.open(fileURL); // if you want to open it in new tab
             this.lockReports=false;
@@ -2750,7 +2750,7 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("productCombo"), 'product', map);
           this.getInputValues(document.getElementById("frequencyCombo"), 'frequency', map);
           status = "N";
-          this.dashboardService.getSalesPerfDetail(map.get('fromDate'), map.get('toDate'), map.get('code'), map.get('branch'), map.get('region'), "ALL", map.get('product'), map.get('frequency'), status).subscribe((res) => {
+          this.dashboardService.getSalesPerfDetail(map.get('fromDate'), map.get('toDate'), map.get('code'), "ALL", map.get('region'), map.get('branch'), map.get('product'), map.get('frequency'), status).subscribe((res) => {
             var fileURL = URL.createObjectURL(res);
             window.open(fileURL); // if you want to open it in new tab
             this.lockReports=false;
@@ -2766,7 +2766,7 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("productCombo"), 'product', map);
           this.getInputValues(document.getElementById("frequencyCombo"), 'frequency', map);
           status = "N";
-          this.dashboardService.getSalesPerfDetail(map.get('fromDate'), map.get('toDate'), map.get('code'), map.get('branch'), map.get('region'), map.get('zone'), map.get('product'), map.get('frequency'), status).subscribe((res) => {
+          this.dashboardService.getSalesPerfDetail(map.get('fromDate'), map.get('toDate'), map.get('code'), map.get('zone'), map.get('region'), map.get('branch'), map.get('product'), map.get('frequency'), status).subscribe((res) => {
             var fileURL = URL.createObjectURL(res);
             window.open(fileURL); // if you want to open it in new tab
             this.lockReports=false;
@@ -2783,7 +2783,7 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("productCombo"), 'product', map);
           this.getInputValues(document.getElementById("frequencyCombo"), 'frequency', map);
           status = "N";
-          this.dashboardService.getSalesPerfDetail(map.get('fromDate'), map.get('toDate'), map.get('code'), map.get('branch'), map.get('region'), map.get('zone'), map.get('product'), map.get('frequency'), status).subscribe((res) => {
+          this.dashboardService.getSalesPerfDetail(map.get('fromDate'), map.get('toDate'), map.get('code'), map.get('zone'), map.get('region'), map.get('branch'), map.get('product'), map.get('frequency'), status).subscribe((res) => {
             var fileURL = URL.createObjectURL(res);
             window.open(fileURL); // if you want to open it in new tab
             this.lockReports=false;

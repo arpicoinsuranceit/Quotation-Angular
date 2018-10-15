@@ -432,9 +432,13 @@ export class DashboardService {
       url += "/" + encodedString;
     }
 
+    console.log(url);
+
     return this.http.get(url, { responseType: ResponseContentType.Blob }).map((res) => {
         return new Blob([res.blob()], { type: 'application/pdf' })
     });
+
+    
 
   }
 

@@ -217,7 +217,7 @@ export class LoadInquiriesComponent implements OnInit {
           this.inruiry.spouseInquiry.dob = res.spouseDob;
         }
         this.loadInquiryService.getChildInfo(this.generalDate.proposanNo, this.generalDate.branchCode, this.generalDate.seqNo).subscribe(response => {
-          ////console.log(response.json());
+          console.log(response.json());
 
           let childArray = response.json();
           if (childArray) {

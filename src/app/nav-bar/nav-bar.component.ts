@@ -2736,6 +2736,7 @@ export class NavBarComponent implements OnInit {
           status = "N";
           this.dashboardService.getSalesPerfDetail(map.get('fromDate'), map.get('toDate'), map.get('code'), "ALL", "ALL", map.get('branch'), map.get('product'), map.get('frequency'), status).subscribe((res) => {
             var fileURL = URL.createObjectURL(res);
+            console.log(fileURL);
             window.open(fileURL); // if you want to open it in new tab
             this.lockReports=false;
           });

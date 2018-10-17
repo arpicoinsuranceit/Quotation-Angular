@@ -1,3 +1,8 @@
+
+.form-control{
+    text-align: end;
+}
+
 .benf_div{
     border-top: solid 1px #0c3da3;
     border-left: solid 1px #f37022;
@@ -6,9 +11,19 @@
     min-height: 240px;
 }
 
+.benf_div1{
+    border-top: solid 1px #0c3da3;
+    border-left: solid 1px #f37022;
+    box-shadow: 2px 2px 2px #777777;
+    margin-bottom: 10px; 
+    min-height: 60px;
+}
+
 .img_active{
     position: absolute;
-    width: 80px; 
+    width: 40px; 
+    top: 15px;
+    bottom: 0;
     left: 0; 
     right: 0; 
     margin-left: auto; 

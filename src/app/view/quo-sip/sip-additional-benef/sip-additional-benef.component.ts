@@ -1328,8 +1328,8 @@ export class SipAdditionalBenefComponent implements OnInit {
 
       if (this.absForm.get('ADBS').get('isActice').value) {
         let tpdbs = this.absForm.get('TPDBS').get('sumAssured').value;
-        this.isImgTPDASBGActive = false;
-        this.isImgTPDASBActive = true;
+        this.isImgTPDASBSGActive = false;
+        this.isImgTPDASBSActive = true;
         this.absForm.get('TPDASBS').get('isActice').setValue(true);
         this.absForm.get('TPDASBS').get('sumAssured').enable();
         this.absForm.get('TPDASBS').get('sumAssured').setValue(tpdbs);

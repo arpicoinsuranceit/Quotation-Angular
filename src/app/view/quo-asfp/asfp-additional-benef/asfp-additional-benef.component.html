@@ -381,10 +381,10 @@
                 <div class="benf_div container-fluid" formGroupName="MFIBT">
                   <div class="row">
                     <div class="col-xs-4">
-                      <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'MFIBD')"
-                        (change)="isActiveMFIBD($event)" (keyup)="removeError('MFIBD')" (click)="removeError('MFIBD')"
-                        *ngIf="!isImgMFIBDTActive && !isImgMFIBTActive">
-                      <label class="" for="sumAssured">MFIBD</label>
+                      <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'MFIBT')"
+                        (change)="isActiveMFIBT($event)" (keyup)="removeError('MFIBT')" (click)="removeError('MFIBT')"
+                        *ngIf="!isImgMFIBDTActive && !isImgMFIBDActive">
+                      <label class="" for="sumAssured">MFIBT</label>
                       <div>
                         <img [src]="imgMifbtGUrl" class=" img_active" [style.display]="isImgMFIBTGActive ?'block'  : 'none'">
                       </div>

@@ -43,7 +43,7 @@
                     <div class="col-xs-4">
                       <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'SFPO')"
                         (change)="isActiveSFPO($event)" (keyup)="removeError('SFPO')" (click)="removeError('SFPO')">
-                      <label class="" for="sumAssured">SFPO</label>
+                      <label class="tooltip1" for="sumAssured">SFPO <span class="tooltiptext">{{beneficts._sfpo}}</span></label>
                       <div>
                         <img [src]="imgSfpoGUrl" class=" img_active" [style.display]="isImgSFPOGActive ?'block'  : 'none'">
                       </div>
@@ -80,7 +80,7 @@
                     <div class="col-xs-4">
                       <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'ATPB')"
                         (change)="isActiveATPB($event)" (keyup)="removeError('ATPB')" (click)="removeError('ATPB')">
-                      <label class="" for="sumAssured">ATPB</label>
+                      <label class="tooltip1" for="sumAssured">ATPB <span class="tooltiptext">{{beneficts._atpb}}</span></label>
                       <div>
                         <img [src]="imgAtpbGUrl" class=" img_active" [style.display]="isImgATPBGActive ?'block'  : 'none'">
                       </div>
@@ -117,7 +117,7 @@
                     <div class="col-xs-4">
                       <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'ADB')"
                         (change)="isActiveADB($event)" (keyup)="removeError('ADB')" (click)="removeError('ADB')">
-                      <label class="" for="sumAssured">ADB</label>
+                      <label class="tooltip1" for="sumAssured">ADB <span class="tooltiptext">{{beneficts._adb}}</span></label>
                       <div>
                         <img [src]="imgAdbGUrl" class=" img_active" [style.display]="isImgADBGActive ?'block'  : 'none'">
                       </div>
@@ -155,7 +155,7 @@
                       <input #checkTPDASB formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'TPDASB')"
                         (change)="isActiveTPDASB($event)" (keyup)="removeError('TPDASB')" (click)="removeError('TPDASB')"
                         *ngIf="!isImgTPDBActive">
-                      <label class="" for="sumAssured">TPDASB</label>
+                      <label class="tooltip1" for="sumAssured">TPDASB <span class="tooltiptext">{{beneficts._tpdasb}}</span></label>
                       <div>
                         <img [src]="imgTpdbasGUrl" class=" img_active" [style.display]="isImgTPDASBGActive ?'block'  : 'none'">
                       </div>
@@ -194,7 +194,7 @@
                       <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'TPDB')"
                         (change)="isActiveTPDB($event)" (keyup)="removeError('TPDB')" (click)="removeError('TPDB')"
                         *ngIf="!isImgTPDASBActive">
-                      <label class="" for="sumAssured">TPDB</label>
+                      <label class="tooltip1" for="sumAssured">TPDB <span class="tooltiptext">{{beneficts._tpdb}}</span></label>
                       <div>
                         <img [src]="imgTpdbasGUrl" class=" img_active" [style.display]="isImgTPDBGActive ?'block'  : 'none'">
                       </div>
@@ -232,7 +232,7 @@
                       <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'PPDB')"
                         (change)="isActivePPDB($event)" (keyup)="removeError('PPDB')" (click)="removeError('PPDB')"
                         onclick="return false">
-                      <label class="" for="sumAssured">PPDB</label>
+                      <label class="tooltip1" for="sumAssured">PPDB <span class="tooltiptext">{{beneficts._ppdb}}</span></label>
                       <div>
                         <img [src]="imgTpdbGUrl" class=" img_active" [style.display]="isImgPPDBGActive ?'block'  : 'none'">
                       </div>
@@ -269,7 +269,7 @@
                     <div class="col-xs-4">
                       <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'CIB')"
                         (change)="isActiveCIB($event)" (keyup)="removeError('CIB')" (click)="removeError('CIB')">
-                      <label class="" for="sumAssured">CIB</label>
+                      <label class="tooltip1" for="sumAssured">CIB <span class="tooltiptext">{{beneficts._cib}}</span></label>
                       <div>
                         <img [src]="imgCibGUrl" class=" img_active" [style.display]="isImgCIBGActive ?'block'  : 'none'">
                       </div>
@@ -306,7 +306,7 @@
                     <div class="col-xs-4">
                       <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'FEB')"
                         (change)="isActiveFEB($event)" (keyup)="removeError('FEB')" (click)="removeError('FEB')">
-                      <label class="" for="sumAssured">FEB</label>
+                      <label class="tooltip1" for="sumAssured">FEB <span class="tooltiptext">{{beneficts._feb}}</span></label>
                       <div>
                         <img [src]="imgFebGUrl" class=" img_active" [style.display]="isImgFEBGActive ?'block'  : 'none'">
                       </div>
@@ -345,7 +345,7 @@
                       <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'MFIBD')"
                         (change)="isActiveMFIBD($event)" (keyup)="removeError('MFIBD')" (click)="removeError('MFIBD')"
                         *ngIf="!isImgMFIBDTActive && !isImgMFIBTActive">
-                      <label class="" for="sumAssured">MFIBD</label>
+                      <label class="tooltip1" for="sumAssured">MFIBD <span class="tooltiptext">{{beneficts._mfibd}}</span></label>
                       <div>
                         <img [src]="imgMifbdGUrl" class=" img_active" [style.display]="isImgMFIBDGActive ?'block'  : 'none'">
                       </div>
@@ -384,7 +384,7 @@
                       <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'MFIBT')"
                         (change)="isActiveMFIBT($event)" (keyup)="removeError('MFIBT')" (click)="removeError('MFIBT')"
                         *ngIf="!isImgMFIBDTActive && !isImgMFIBDActive">
-                      <label class="" for="sumAssured">MFIBT</label>
+                      <label class="tooltip1" for="sumAssured">MFIBT <span class="tooltiptext">{{beneficts._mfibt}}</span></label>
                       <div>
                         <img [src]="imgMifbtGUrl" class=" img_active" [style.display]="isImgMFIBTGActive ?'block'  : 'none'">
                       </div>
@@ -422,7 +422,7 @@
                       <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'MFIBDT')"
                         (change)="isActiveMFIBDT($event)" (keyup)="removeError('MFIBDT')" (click)="removeError('MFIBDT')"
                         *ngIf="!isImgMFIBTActive && !isImgMFIBDActive">
-                      <label class="" for="sumAssured">MFIBDT</label>
+                      <label class="tooltip1" for="sumAssured">MFIBDT <span class="tooltiptext">{{beneficts._mfibdt}}</span></label>
                       <div>
                         <img [src]="imgMifbdtGUrl" class=" img_active" [style.display]="isImgMFIBDTGActive ?'block'  : 'none'">
                       </div>
@@ -459,7 +459,7 @@
                     <div class="col-xs-4">
                       <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'HRBI')"
                         (change)="isActiveHRBI($event)" (click)="removeError('HRBI')" *ngIf="!isImgSUHRBActive && !isImgHRBFActive && !isImgSHCBFActive">
-                      <label class="" for="sumAssured">HCBI</label>
+                      <label class="tooltip1" for="sumAssured">HCBI <span class="tooltiptext">{{beneficts._hcbi}}</span></label>
                       <div>
                         <img [src]="imgHrbiGUrl" class=" img_active" [style.display]="isImgHRBIGActive ?'block'  : 'none'">
                       </div>
@@ -496,7 +496,7 @@
                     <div class="col-xs-4">
                       <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'HRBF')"
                         (change)="isActiveHRBF($event)" (click)="removeError('HRBF')" *ngIf="!isImgSUHRBActive && !isImgHRBIActive && !isImgSHCBFActive">
-                      <label class="" for="sumAssured">HCBF</label>
+                      <label class="tooltip1" for="sumAssured">HCBF <span class="tooltiptext">{{beneficts._hcbf}}</span></label>
                       <div>
                         <img [src]="imgHrbfGUrl" class=" img_active" [style.display]="isImgHRBFGActive ?'block'  : 'none'">
                       </div>
@@ -533,7 +533,7 @@
                     <div class="col-xs-4">
                       <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'SUHRB')"
                         (change)="isActiveSUHRB($event)" (click)="removeError('SUHRB')" *ngIf="!isImgHRBIActive && !isImgHRBFActive && !isImgSHCBFActive">
-                      <label class="" for="sumAssured">SHCBI</label>
+                      <label class="tooltip1" for="sumAssured">SHCBI <span class="tooltiptext">{{beneficts._shcbi}}</span></label>
                       <div>
                         <img [src]="imgSuhrbGUrl" class=" img_active" [style.display]="isImgSUHRBGActive ?'block'  : 'none'">
                       </div>
@@ -570,7 +570,7 @@
                     <div class="col-xs-4">
                       <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'HB')"
                         (change)="isActiveHB($event)" (click)="removeError('HB')">
-                      <label class="" for="sumAssured">HB</label>
+                      <label class="tooltip1" for="sumAssured">HB <span class="tooltiptext">{{beneficts._hb}}</span></label>
                       <div>
                         <img [src]="imgHbGUrl" class=" img_active" [style.display]="isImgHBGActive ?'block'  : 'none'">
                       </div>
@@ -628,7 +628,7 @@
                       <div class="col-xs-4">
                         <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveHCBS($event)"
                           (click)="removeError('HCBS')">
-                        <label class="" for="sumAssured">HCBS</label>
+                        <label class="tooltip1" for="sumAssured">HCBS <span class="tooltiptext">{{beneficts._hcbs}}</span></label>
                         <div>
                           <img [src]="imgHrbisGUrl" class=" img_active" [style.display]="none">
                         </div>
@@ -660,7 +660,7 @@
                       <div class="col-xs-4">
                         <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveS($event, 'HRBIS')"
                           (change)="isActiveHRBIS($event)" (click)="removeError('HRBIS')">
-                        <label class="" for="sumAssured">HCBIS</label>
+                        <label class="tooltip1" for="sumAssured">HCBIS <span class="tooltiptext">{{beneficts._hcbis}}</span></label>
                         <div>
                           <img [src]="imgHrbisGUrl" class=" img_active" [style.display]="isImgHRBISGActive ?'block'  : 'none'">
                         </div>
@@ -700,7 +700,7 @@
                       <div class="col-xs-4">
                         <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveS($event, 'HRBFS')"
                           (change)="isActiveHRBFS($event)" (click)="removeError('HRBFS')">
-                        <label class="" for="sumAssured">HCBFS</label>
+                        <label class="tooltip1" for="sumAssured">HCBFS <span class="tooltiptext">{{beneficts._hcbfs}}</span></label>
                         <div>
                           <img [src]="imgHrbfsGUrl" class=" img_active" [style.display]="isImgHRBFSGActive ?'block'  : 'none'">
                         </div>
@@ -737,7 +737,7 @@
                       <div class="col-xs-4">
                         <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveS($event, 'SUHRBS')"
                           (change)="isActiveSUHRBS($event)" (click)="removeError('SUHRBS')">
-                        <label class="" for="sumAssured">SHCBIS</label>
+                        <label class="tooltip1" for="sumAssured">SHCBIS <span class="tooltiptext">{{beneficts._shcbis}}</span></label>
                         <div>
                           <img [src]="imgSuhrbsGUrl" class=" img_active" [style.display]="isImgSUHRBSGActive ?'block'  : 'none'">
                         </div>
@@ -777,7 +777,7 @@
                       <div class="col-xs-4">
                         <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveSHCBFS($event)"
                           (change)="onsetBenifAll($event,'SHCBFS')" (click)="removeError('SUHRBS')">
-                        <label class="" for="sumAssured">SHCBFS</label>
+                        <label class="tooltip1" for="sumAssured">SHCBFS <span class="tooltiptext">{{beneficts._shcbfs}}</span></label>
                         <div>
                           <img [src]="imgShcbfsGUrl" class=" img_active" [style.display]="isImgSHCBFSGActive ?'block'  : 'none'">
                         </div>
@@ -815,7 +815,7 @@
                       <div class="col-xs-4">
                         <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveS($event, 'HBS')"
                           (change)="isActiveHBS($event)" (click)="removeError('HBS')">
-                        <label class="" for="sumAssured">HBS</label>
+                        <label class="tooltip1" for="sumAssured">HBS <span class="tooltiptext">{{beneficts._hbs}}</span></label>
                         <div>
                           <img [src]="imgHbsGUrl" class=" img_active" [style.display]="isImgHBSGActive ?'block'  : 'none'">
                         </div>
@@ -860,41 +860,6 @@
           <form class="form-horizontal" [formGroup]="abcForm">
             <div class="content-div4" style="margin-top: 10px;">
               <div *ngIf="activeCh==1">
-                <!--<div class="col-sm-4 " [ngClass]="{'disabled': activeRiders.includes('CIBC') == false}">
-                <div class="benf_div container-fluid">
-
-                  <div>
-                    <img [src]="imgCibcGUrl" class=" img_active" [style.display]="isImgCIBCGActive ?'block'  : 'none'">
-                  </div>
-                  <div>
-                    <img [src]="imgCibcUrl" class="img_active" [style.display]="isImgCIBCActive ? 'block' : 'none'">
-                  </div>
-                  <div class="container col-sm-12" style="margin-top: 80px">
-
-                    <div formGroupName="CIBC" class="form-group form-group-sm" style="margin-bottom: 25px;">
-
-                      <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveC($event, 'CIBC')" (change)="isActiveCIBC($event)"
-                        (click)="removeError('CIBC')">
-                      <label class="" for="sumAssured">CIBC</label>
-
-
-                      <label class="frm_lbl" for="sumAssured">Sum Assured</label>
-                      <input formControlName="sumAssured" type="number" class="form-control input-sm" id="txt-sumassured" [disabled]="isImgGActive"
-                        (keyup)="removeError('CIBC')" (click)="removeError('CIBC')" (keyup.enter)="checkValidateCIBC()"
-                        (blur)="checkValidateCIBC()" currencyMask>
-                      <div class="alert alert-danger" *ngIf="validateCIBC!=1">
-                        Error</div>
-                      <div *ngIf="validateCIBC==1">
-                        <label class="frm_lbl" for="sumAssured">Premium</label>
-                        <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._health.CIBC" readonly
-                          id="txt-premium" [disabled]="isImgGActive">
-                      </div>
-                    </div>
-
-
-                  </div>
-                </div>
-              </div>-->
 
                 <div class="col-sm-12" *ngIf="isGetHealthBenef == false">
                   <div class="benf_div container-fluid" formGroupName="HCBC">
@@ -902,7 +867,7 @@
                       <div class="col-xs-4">
                         <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveHCBC($event)"
                           (click)="removeError('HCBC')">
-                        <label class="" for="sumAssured">HCBC</label>
+                        <label class="tooltip1" for="sumAssured">HCBC <span class="tooltiptext">{{beneficts._hcbc}}</span></label>
                         <div>
                           <img [src]="imgHrbicGUrl" class=" img_active" [style.display]="none">
                         </div>
@@ -934,7 +899,7 @@
                       <div class="col-xs-4">
                         <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveC($event, 'HRBIC')"
                           (change)="isActiveHRBIC($event)" (click)="removeError('HRBIC')">
-                        <label class="" for="sumAssured">HCBIC</label>
+                        <label class="tooltip1" for="sumAssured">HCBIC <span class="tooltiptext">{{beneficts._hcbic}}</span></label>
                         <div>
                           <img [src]="imgHrbicGUrl" class=" img_active" [style.display]="isImgHRBICGActive ?'block'  : 'none'">
                         </div>
@@ -975,7 +940,7 @@
                       <div class="col-xs-4">
                         <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveC($event, 'HRBFC')"
                           (change)="isActiveHRBFC($event)" (click)="removeError('HRBFC')">
-                        <label class="" for="sumAssured">HCBFC</label>
+                        <label class="tooltip1" for="sumAssured">HCBFC <span class="tooltiptext">{{beneficts._hcbfc}}</span></label>
                         <div>
                           <img [src]="imgHrbfcGUrl" class=" img_active" [style.display]="isImgHRBFCGActive ?'block'  : 'none'">
                         </div>
@@ -1013,7 +978,7 @@
                       <div class="col-xs-4">
                         <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveC($event, 'SUHRBC')"
                           (change)="isActiveSUHRBC($event)" (click)="removeError('SUHRBC')">
-                        <label class="" for="sumAssured">SHCBIC</label>
+                        <label class="tooltip1" for="sumAssured">SHCBIC <span class="tooltiptext">{{beneficts._shcbic}}</span></label>
                         <div>
                           <img [src]="imgSuhrbcGUrl" class=" img_active" [style.display]="isImgSUHRBCGActive ?'block'  : 'none'">
                         </div>
@@ -1056,7 +1021,7 @@
                       <div class="col-xs-4">
                         <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveSHCBFC($event)"
                           (change)="onsetBenifC($event,'SHCBFC')" (click)="removeError('SHCBFC')">
-                        <label class="" for="sumAssured">SHCBFC</label>
+                        <label class="tooltip1" for="sumAssured">SHCBFC <span class="tooltiptext">{{beneficts._shcbfc}}</span></label>
                         <div>
                           <img [src]="imgShcbfcGUrl" class=" img_active" [style.display]="isImgSHCBFCGActive ?'block'  : 'none'">
                         </div>
@@ -1088,7 +1053,7 @@
                       <div class="col-xs-4">
                         <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveC($event, 'HBC')"
                           (change)="isActiveHBC($event)" (click)="removeError('HBC')">
-                        <label class="" for="sumAssured">HBC</label>
+                        <label class="tooltip1" for="sumAssured">HBC <span class="tooltiptext">{{beneficts._hbc}}</span></label>
                         <div>
                           <img [src]="imgHbcGUrl" class=" img_active" [style.display]="isImgHBCGActive ?'block'  : 'none'">
                         </div>

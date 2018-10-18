@@ -1,3 +1,4 @@
+import { BenifictNames } from './../../../model/bebefictname';
 import { DashboardService } from './../../../service/dashboard/dashboard.service';
 import { Children } from './../../../model/childeren';
 import { Benifict } from './../../../model/benificts';
@@ -33,6 +34,7 @@ export class ArtmAdditionalBenefComponent implements OnInit {
 
   benefitsValidations = new BenefitsValidations();
   _benif = new Benifict;
+  beneficts : BenifictNames = new BenifictNames;
 
 
   @Input() activeSp = "2";

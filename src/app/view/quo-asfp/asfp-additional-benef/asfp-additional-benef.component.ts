@@ -1,3 +1,4 @@
+import { BenifictNames } from './../../../model/bebefictname';
 import { DashboardService } from './../../../service/dashboard/dashboard.service';
 import { Children } from './../../../model/childeren';
 import { NestedForm } from './../../../model/nested-form';
@@ -30,7 +31,7 @@ export class AsfpAdditionalBenefComponent implements OnInit {
 
   benefitsValidations = new BenefitsValidations();
   _benif = new Benifict;
-
+  beneficts : BenifictNames = new BenifictNames;
 
   @Input() activeSp = "2";
   @Input() activeCh = "2";

@@ -1,3 +1,4 @@
+import { BenifictNames } from './../../../model/bebefictname';
 import { DashboardService } from './../../../service/dashboard/dashboard.service';
 import { Children } from './../../../model/childeren';
 import { Benifict } from './../../../model/benificts';
@@ -34,6 +35,8 @@ export class End1AdditionalBenefComponent implements OnInit {
   benefitsValidations = new BenefitsValidations();
   _benif = new Benifict;
   activeRiders:string[] = new Array<string>();
+  beneficts : BenifictNames = new BenifictNames;
+
 
 
   @Input() activeSp = "2";

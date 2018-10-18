@@ -1,3 +1,4 @@
+import { BenifictNames } from './../../../model/bebefictname';
 import { DashboardService } from './../../../service/dashboard/dashboard.service';
 import { Children } from './../../../model/childeren';
 import { NestedForm } from './../../../model/nested-form';
@@ -33,7 +34,7 @@ export class AtrmAdditionalBenefComponent implements OnInit {
   _benif = new Benifict;
 
   activeRiders:string[] = new Array<string>();
-  
+  beneficts : BenifictNames = new BenifictNames;
 
   @Input() activeSp = "2";
   @Input() activeCh = "2";

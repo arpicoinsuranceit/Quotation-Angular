@@ -1,3 +1,4 @@
+import { BenifictNames } from './../../../model/bebefictname';
 import { DashboardService } from './../../../service/dashboard/dashboard.service';
 import { Benifict } from './../../../model/benificts';
 import { CalPersonalInfo, CalPersonalInfoArp } from './../../../model/quoCal';
@@ -32,7 +33,7 @@ export class ArpAdditionalBenefComponent implements OnInit {
 
   benefitsValidations = new BenefitsValidations();
   _benif = new Benifict;
-
+  beneficts : BenifictNames = new BenifictNames;
 
   @Input() activeSp = "2";
   @Input() activeCh = "2";

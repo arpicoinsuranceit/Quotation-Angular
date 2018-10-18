@@ -44,7 +44,7 @@
                     <div class="col-xs-4">
                       <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'TPDDTA')"
                         (change)="isActiveTPDDTA($event)">
-                      <label class="" for="sumAssured">TPDDTA</label>
+                      <label class="tooltip1" for="sumAssured">TPDDTA <span class="tooltiptext">{{beneficts._tbddta}}</span></label>
                       <div>
                         <img [src]="imgwpbGUrl" class=" img_active" [style.display]="isImgTPDDTAGActive ?'block'  : 'none'">
                       </div>
@@ -96,7 +96,7 @@
                       <div class="col-xs-4">
                         <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveS($event, 'JLB')"
                           (change)="isActiveJLB($event)">
-                        <label class="" for="sumAssured">JLB</label>
+                        <label class="tooltip1" for="sumAssured">JLB <span class="tooltiptext">{{beneficts._jlb}}</span></label>
                         <div>
                           <img [src]="imgHbGUrl" class=" img_active" [style.display]="isImgJLBGActive ?'block'  : 'none'">
                         </div>
@@ -129,7 +129,7 @@
                       <div class="col-xs-4">
                         <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveS($event, 'TPDDTAS')"
                           (change)="isActiveTPDDTAS($event)">
-                        <label class="" for="sumAssured">TPDDTAS</label>
+                        <label class="tooltip1" for="sumAssured">TPDDTAS <span class="tooltiptext">{{beneficts._tbddtas}}</span></label>
                         <div>
                           <img [src]="imgAdbsGUrl" class=" img_active" [style.display]="isImgTPDDTASGActive ?'block'  : 'none'">
                         </div>

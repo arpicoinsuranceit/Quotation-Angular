@@ -9,6 +9,9 @@
     box-shadow: 2px 2px 2px #777777;
     margin-bottom: 10px; 
     min-height: 60px;
+    font-family: 'Biryani', "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: bolder;
 }
 
 .img_active{
@@ -57,11 +60,13 @@
     background-position: center;
   }
 
-@media screen and (max-width: 1309px) {
+  @media screen and (max-width: 400px) {
     
+    .benf_div{
+        font-size: 10px;
+    }
 
-  }
-
+}
   /* width */
   ::-webkit-scrollbar {
       width: 5px;

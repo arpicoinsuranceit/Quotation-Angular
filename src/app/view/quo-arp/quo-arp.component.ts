@@ -193,7 +193,7 @@ export class QuoArpComponent implements OnInit {
 
     this.route.params.subscribe(params => {
       this.qdId = params.id;
-    },error => {swal("Error", error.text() ,"error")});
+    }, error => { swal("Error", error.text(), "error") });
 
     this._plan._bsa = 250000;
     this._plan._frequance = "Monthly";
@@ -502,19 +502,19 @@ export class QuoArpComponent implements OnInit {
       document.onkeydown = function (e) { return false; }
       this._quotationCalculation._personalInfo.sPreviousSumAtRisk = this.previousSumSpouse;
       this._quotationCalculation._personalInfo.mPreviousSumAtRisk = this.previousSumMain;
-      
+
       this.isDisableDiv = true;
       this.saveArpQuotationService.getQouCal(this._quotationCalculation).subscribe(response => {
         //console.log(response.json());
         document.onkeydown = function (e) { return true; }
-        
+
         this.isDisableDiv = false;
         if (response.json().errorExist == true) {
           swal("Error!", "Error exist in " + response.json().error, "error");
         }
         this.summeryInfo._summery.healthBenMain = response.json().mainLifeHealthReq;
         this.summeryInfo._summery.healthBenSpouse = response.json().spouseHealthReq;
-        this.summeryInfo._summery.surrenderValHelpers=response.json().surrenderValHelpers;
+        this.summeryInfo._summery.surrenderValHelpers = response.json().surrenderValHelpers;
         this.summeryInfo._summery.sumAssured = response.json().basicSumAssured;
         this.summeryInfo._summery.oc = response.json().extraOE.toLocaleString();
         this.summeryInfo._summery.withoutLoadingTot = response.json().withoutLoadingTot.toLocaleString();
@@ -594,8 +594,8 @@ export class QuoArpComponent implements OnInit {
         this.summeryInfo._protection.BSAS = response.json().bsas;
         this.summeryInfo._protection.BSASTerm = response.json().bsasTerm;
 
-      },error => {
-        swal("Error", error.text() ,"error");
+      }, error => {
+        swal("Error", error.text(), "error");
         document.onkeydown = function (e) { return true; }
         this.isDisableDiv = false;
       });
@@ -728,8 +728,8 @@ export class QuoArpComponent implements OnInit {
                     swal("Oopz...", response.json().status, "error");
 
                   }
-                },error => {
-                  swal("Error", error.text() ,"error");
+                }, error => {
+                  swal("Error", error.text(), "error");
                   document.onkeydown = function (e) { return true; }
                   this.isDisableDiv = false;
                 });
@@ -759,8 +759,8 @@ export class QuoArpComponent implements OnInit {
                 swal("Oopz...", response.json().status, "error");
 
               }
-            },error => {
-              swal("Error", error.text() ,"error");
+            }, error => {
+              swal("Error", error.text(), "error");
               document.onkeydown = function (e) { return true; }
               this.isDisableDiv = false;
             });
@@ -908,6 +908,7 @@ export class QuoArpComponent implements OnInit {
                 this.isDisableDiv = true;
                 document.onkeydown = function (e) { return false; }
                 this.saveArpQuotationService.editArp(this._invpSaveQuotation, this.qdId).subscribe(response => {
+                  this.personalInfo._plan._frequance = this.getFreq(this._invpSaveQuotation._personalInfo._plan._frequance);
                   this.isDisableDiv = false;
                   document.onkeydown = function (e) { return true; }
                   if (response.json().status == "Success") {
@@ -918,8 +919,8 @@ export class QuoArpComponent implements OnInit {
                     swal("Oopz...", response.json().status, "error");
 
                   }
-                },error => {
-                  swal("Error", error.text() ,"error");
+                }, error => {
+                  swal("Error", error.text(), "error");
                   document.onkeydown = function (e) { return true; }
                   this.isDisableDiv = false;
                 });
@@ -937,6 +938,7 @@ export class QuoArpComponent implements OnInit {
             this.isDisableDiv = true;
             document.onkeydown = function (e) { return false; }
             this.saveArpQuotationService.editArp(this._invpSaveQuotation, this.qdId).subscribe(response => {
+              this.personalInfo._plan._frequance = this.getFreq(this._invpSaveQuotation._personalInfo._plan._frequance);
               this.isDisableDiv = false;
               document.onkeydown = function (e) { return true; }
               if (response.json().status == "Success") {
@@ -947,8 +949,8 @@ export class QuoArpComponent implements OnInit {
                 swal("Oopz...", response.json().status, "error");
 
               }
-            },error => {
-              swal("Error", error.text() ,"error");
+            }, error => {
+              swal("Error", error.text(), "error");
               document.onkeydown = function (e) { return true; }
               this.isDisableDiv = false;
             });
@@ -972,10 +974,10 @@ export class QuoArpComponent implements OnInit {
   editCal() {
     this.saveArpQuotationService.getArpQuotationDetailsForEdit(this.qdId).subscribe(response => {
 
-      let phone : string = response.json()._mainlife._mMobile;
+      let phone: string = response.json()._mainlife._mMobile;
 
       this._mainLife = response.json()._mainlife;
-      this._mainLife._mMobile = phone.substr(1,9); 
+      this._mainLife._mMobile = phone.substr(1, 9);
       this._plan = response.json()._plan;
       this._spouse = response.json()._spouse;
 
@@ -1006,8 +1008,8 @@ export class QuoArpComponent implements OnInit {
       this._quotationCalculation._personalInfo.bsa = this.personalInfo._plan._bsa;
       this._quotationCalculation._personalInfo.frequance = this.personalInfo._plan._frequance;
       this._quotationCalculation._personalInfo.term = this.personalInfo._plan._term;
-      this._quotationCalculation._personalInfo.payingterm=this.personalInfo._plan._payingterm;
-     
+      this._quotationCalculation._personalInfo.payingterm = this.personalInfo._plan._payingterm;
+
       this.personalInfo._mainlife._mCivilStatus = this._mainLife._mCivilStatus;
 
       this._quotationCalculation._personalInfo.childrens = this.personalInfo._childrenList;
@@ -1026,7 +1028,7 @@ export class QuoArpComponent implements OnInit {
 
       if (this._spouse._sActive) {
         if (this._spouse._sNic != null && (this._spouse._sNic.length > 0 || this._spouse._sNic != "")) {
-         // this.end1PersonalInfoComponent.readOnlyDobS();
+          // this.end1PersonalInfoComponent.readOnlyDobS();
           this.calPreviousRiskS(this._spouse._sNic);
         }
       }
@@ -1782,8 +1784,8 @@ export class QuoArpComponent implements OnInit {
 
       this.sendQuo()
 
-    },error => {
-      swal("Error", error.text() ,"error");
+    }, error => {
+      swal("Error", error.text(), "error");
       document.onkeydown = function (e) { return true; }
       this.isDisableDiv = false;
     });
@@ -1815,12 +1817,12 @@ export class QuoArpComponent implements OnInit {
   }
 
   calPreviousRiskM(e) {
-    
-    if(e.length >0){
+
+    if (e.length > 0) {
       this.isDisableDiv = true;
       document.onkeydown = function (e) { return false; }
       this.dashboardService.getSumAtRiskMainLife(e).subscribe(resp => {
-  
+
         this.isDisableDiv = false;
 
         this.arpPersonolInfoComponent.loadDOBFromNic();
@@ -1832,43 +1834,60 @@ export class QuoArpComponent implements OnInit {
           this.sumAtRiskMain = resp.json().sumAtRisk;
           this._quotationCalculation._personalInfo.mPreviousSumAtRisk = resp.json().sumAtRisk;
           this.previousSumMain = resp.json().sumAtRisk;
-        }else{
+        } else {
           this.previousSumMain = 0;
         }
         this.sendQuo();
-      },error => {
-        swal("Error", error.text() ,"error");
+      }, error => {
+        swal("Error", error.text(), "error");
         document.onkeydown = function (e) { return true; }
         this.isDisableDiv = false;
       });
     }
-    
+
   }
 
   calPreviousRiskS(e) {
-    if(e.length >0){
-    this.isDisableDiv = true;
-    document.onkeydown = function (e) { return false; }
-    this.dashboardService.getSumAtRiskMainLife(e).subscribe(resp => {
-      this.isDisableDiv = false;
-      this.arpPersonolInfoComponent.loadSpouseDOBFromNic();
-      document.onkeydown = function (e) { return true; }
-      if (resp.json()) {
-        this.personalInfo._spouse._sCustomerCode = resp.json().custCode;
-      }
-      if (resp.json()) {
-        this.sumAtRiskSpouse = resp.json().sumAtRisk;
-        this._quotationCalculation._personalInfo.sPreviousSumAtRisk = resp.json().sumAtRisk;
-        this.previousSumSpouse = resp.json().sumAtRisk;
-      }else{
-        this.previousSumSpouse = 0;
-      }
-      this.sendQuo();
-    },error => {
-      swal("Error", error.text() ,"error");
-      document.onkeydown = function (e) { return true; }
-      this.isDisableDiv = false;
-    });
+    if (e.length > 0) {
+      this.isDisableDiv = true;
+      document.onkeydown = function (e) { return false; }
+      this.dashboardService.getSumAtRiskMainLife(e).subscribe(resp => {
+        this.isDisableDiv = false;
+        this.arpPersonolInfoComponent.loadSpouseDOBFromNic();
+        document.onkeydown = function (e) { return true; }
+        if (resp.json()) {
+          this.personalInfo._spouse._sCustomerCode = resp.json().custCode;
+        }
+        if (resp.json()) {
+          this.sumAtRiskSpouse = resp.json().sumAtRisk;
+          this._quotationCalculation._personalInfo.sPreviousSumAtRisk = resp.json().sumAtRisk;
+          this.previousSumSpouse = resp.json().sumAtRisk;
+        } else {
+          this.previousSumSpouse = 0;
+        }
+        this.sendQuo();
+      }, error => {
+        swal("Error", error.text(), "error");
+        document.onkeydown = function (e) { return true; }
+        this.isDisableDiv = false;
+      });
+    }
   }
+
+  getFreq(_frequance: string): string {
+    switch (_frequance) {
+      case "M":
+        return "Monthly";
+      case "Q":
+        return "Quartaly";
+      case "H":
+        return "Half Yearly";
+      case "Y":
+        return "Yearly";
+      case "S":
+        return "Single Premium";
+      default:
+        break;
+    }
   }
 }

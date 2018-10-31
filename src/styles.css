@@ -203,6 +203,8 @@ input[type=number]::-webkit-outer-spin-button {
 .tooltip1 {
     position: relative;
     display: inline-block;
+    color: #204D74;
+    top: -1px;
 }
 
 .tooltip1 .tooltiptext {
@@ -227,4 +229,24 @@ input[type=number]::-webkit-outer-spin-button {
 
 .tooltip1:hover .tooltiptext {
     visibility: visible;
+    -moz-animation: cssAnimation 0s ease-in 5s forwards;
+    /* Firefox */
+    -webkit-animation: cssAnimation 0s ease-in 5s forwards;
+    /* Safari and Chrome */
+    -o-animation: cssAnimation 0s ease-in 5s forwards;
+    /* Opera */
+    animation: cssAnimation 0s ease-in 5s forwards;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+@keyframes cssAnimation {
+    to {
+        visibility: hidden;
+    }
+}
+@-webkit-keyframes cssAnimation {
+    to {
+        visibility: hidden;
+    }
 }

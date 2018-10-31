@@ -1,13 +1,16 @@
 .form-control{
     text-align: end;
 }
-
 .benf_div{
     border-top: solid 1px #0c3da3;
     border-left: solid 1px #f37022;
     box-shadow: 2px 2px 2px #777777;
     margin-bottom: 10px; 
     min-height: 240px;
+    font-family: 'Biryani', "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: bolder;
+
 }
 
 .benf_div1{
@@ -16,6 +19,18 @@
     box-shadow: 2px 2px 2px #777777;
     margin-bottom: 10px; 
     min-height: 60px;
+    font-family: 'Biryani', "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: bolder;
+}
+
+.form-control{
+    margin: 0px;
+    padding: 0px;
+}
+
+.lbl{
+    font-size: 12px;
 }
 
 .img_active{
@@ -60,10 +75,13 @@
     background-position: center;
   }
 
-@media screen and (max-width: 1309px) {
+  @media screen and (max-width: 400px) {
     
+    .lbl{
+        font-size: 10px;
+    }
 
-  }
+}
 
   /* width */
   ::-webkit-scrollbar {

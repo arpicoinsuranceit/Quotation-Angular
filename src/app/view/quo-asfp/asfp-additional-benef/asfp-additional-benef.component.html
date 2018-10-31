@@ -40,10 +40,10 @@
               <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('SFPO') == false}">
                 <div class="benf_div container-fluid" formGroupName="SFPO">
                   <div class="row">
-                    <div class="col-xs-4">
+                    <div class="col-xs-5">
                       <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'SFPO')"
                         (change)="isActiveSFPO($event)" (keyup)="removeError('SFPO')" (click)="removeError('SFPO')">
-                      <label class="tooltip1" for="sumAssured">SFPO <span class="tooltiptext">{{beneficts._sfpo}}</span></label>
+                      <label class="" for="sumAssured">SFPO <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._sfpo}}</span></span></label>
                       <div>
                         <img [src]="imgSfpoGUrl" class=" img_active" [style.display]="isImgSFPOGActive ?'block'  : 'none'">
                       </div>
@@ -51,7 +51,7 @@
                         <img [src]="imgSfpoUrl" class="img_active" [style.display]="isImgSFPOActive ? 'block' : 'none'">
                       </div>
                     </div>
-                    <div class="col-xs-8">
+                    <div class="col-xs-7">
                       <div class="row">
                         <div class="col-xs-7">
                           <label class="frm_lbl" for="sumAssured">Sum Assured</label>
@@ -77,10 +77,10 @@
               <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('ATPB') == false}">
                 <div class="benf_div container-fluid" formGroupName="ATPB">
                   <div class="row">
-                    <div class="col-xs-4">
+                    <div class="col-xs-5">
                       <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'ATPB')"
                         (change)="isActiveATPB($event)" (keyup)="removeError('ATPB')" (click)="removeError('ATPB')">
-                      <label class="tooltip1" for="sumAssured">ATPB <span class="tooltiptext">{{beneficts._atpb}}</span></label>
+                      <label class="" for="sumAssured">ATPB <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._atpb}}</span></span></label>
                       <div>
                         <img [src]="imgAtpbGUrl" class=" img_active" [style.display]="isImgATPBGActive ?'block'  : 'none'">
                       </div>
@@ -88,7 +88,7 @@
                         <img [src]="imgAtpbUrl" class="img_active" [style.display]="isImgATPBActive ? 'block' : 'none'">
                       </div>
                     </div>
-                    <div class="col-xs-8">
+                    <div class="col-xs-7">
                       <div class="row">
                         <div class="col-xs-7">
                           <label class="frm_lbl" for="sumAssured">Sum Assured</label>
@@ -114,10 +114,10 @@
               <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('ADB') == false}">
                 <div class="benf_div container-fluid" formGroupName="ADB">
                   <div class="row">
-                    <div class="col-xs-4">
+                    <div class="col-xs-5">
                       <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'ADB')"
                         (change)="isActiveADB($event)" (keyup)="removeError('ADB')" (click)="removeError('ADB')">
-                      <label class="tooltip1" for="sumAssured">ADB <span class="tooltiptext">{{beneficts._adb}}</span></label>
+                      <label class="" for="sumAssured">ADB <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._adb}}</span></span></label>
                       <div>
                         <img [src]="imgAdbGUrl" class=" img_active" [style.display]="isImgADBGActive ?'block'  : 'none'">
                       </div>
@@ -125,7 +125,7 @@
                         <img [src]="imgAdbUrl" class="img_active" [style.display]="isImgADBActive ? 'block' : 'none'">
                       </div>
                     </div>
-                    <div class="col-xs-8">
+                    <div class="col-xs-7">
                       <div class="row">
                         <div class="col-xs-7">
                           <label class="frm_lbl" for="sumAssured">Sum Assured</label>
@@ -151,11 +151,11 @@
               <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('TPDASB') == false}">
                 <div class="benf_div container-fluid" formGroupName="TPDASB">
                   <div class="row">
-                    <div class="col-xs-4">
+                    <div class="col-xs-5">
                       <input #checkTPDASB formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'TPDASB')"
                         (change)="isActiveTPDASB($event)" (keyup)="removeError('TPDASB')" (click)="removeError('TPDASB')"
                         *ngIf="!isImgTPDBActive">
-                      <label class="tooltip1" for="sumAssured">TPDASB <span class="tooltiptext">{{beneficts._tpdasb}}</span></label>
+                      <label class="" for="sumAssured">TPDASB <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._tpdasb}}</span></span></label>
                       <div>
                         <img [src]="imgTpdbasGUrl" class=" img_active" [style.display]="isImgTPDASBGActive ?'block'  : 'none'">
                       </div>
@@ -163,7 +163,7 @@
                         <img [src]="imgTpdbasUrl" class="img_active" [style.display]="isImgTPDASBActive ? 'block' : 'none'">
                       </div>
                     </div>
-                    <div class="col-xs-8">
+                    <div class="col-xs-7">
                       <div class="row">
                         <div class="col-xs-7">
                           <label class="frm_lbl" for="sumAssured">Sum Assured</label>
@@ -190,11 +190,11 @@
               <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('TPDB') == false}">
                 <div class="benf_div container-fluid" formGroupName="TPDB">
                   <div class="row">
-                    <div class="col-xs-4">
+                    <div class="col-xs-5">
                       <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'TPDB')"
                         (change)="isActiveTPDB($event)" (keyup)="removeError('TPDB')" (click)="removeError('TPDB')"
                         *ngIf="!isImgTPDASBActive">
-                      <label class="tooltip1" for="sumAssured">TPDB <span class="tooltiptext">{{beneficts._tpdb}}</span></label>
+                      <label class="" for="sumAssured">TPDB <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._tpdb}}</span></span></label>
                       <div>
                         <img [src]="imgTpdbasGUrl" class=" img_active" [style.display]="isImgTPDBGActive ?'block'  : 'none'">
                       </div>
@@ -202,7 +202,7 @@
                         <img [src]="imgTpdbasUrl" class="img_active" [style.display]="isImgTPDBActive ? 'block' : 'none'">
                       </div>
                     </div>
-                    <div class="col-xs-8">
+                    <div class="col-xs-7">
                       <div class="row">
                         <div class="col-xs-7">
                           <label class="frm_lbl" for="sumAssured">Sum Assured</label>
@@ -228,11 +228,11 @@
               <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('PPDB') == false}">
                 <div class="benf_div container-fluid" formGroupName="PPDB">
                   <div class="row">
-                    <div class="col-xs-4">
+                    <div class="col-xs-5">
                       <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'PPDB')"
                         (change)="isActivePPDB($event)" (keyup)="removeError('PPDB')" (click)="removeError('PPDB')"
                         onclick="return false">
-                      <label class="tooltip1" for="sumAssured">PPDB <span class="tooltiptext">{{beneficts._ppdb}}</span></label>
+                      <label class="" for="sumAssured">PPDB <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._ppdb}}</span></span></label>
                       <div>
                         <img [src]="imgTpdbGUrl" class=" img_active" [style.display]="isImgPPDBGActive ?'block'  : 'none'">
                       </div>
@@ -240,7 +240,7 @@
                         <img [src]="imgTpdbUrl" class="img_active" [style.display]="isImgPPDBActive ? 'block' : 'none'">
                       </div>
                     </div>
-                    <div class="col-xs-8">
+                    <div class="col-xs-7">
                       <div class="row">
                         <div class="col-xs-7">
                           <label class="frm_lbl" for="sumAssured">Sum Assured</label>
@@ -266,10 +266,10 @@
               <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('CIB') == false}">
                 <div class="benf_div container-fluid" formGroupName="CIB">
                   <div class="row">
-                    <div class="col-xs-4">
+                    <div class="col-xs-5">
                       <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'CIB')"
                         (change)="isActiveCIB($event)" (keyup)="removeError('CIB')" (click)="removeError('CIB')">
-                      <label class="tooltip1" for="sumAssured">CIB <span class="tooltiptext">{{beneficts._cib}}</span></label>
+                      <label class="" for="sumAssured">CIB <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._cib}}</span></span></label>
                       <div>
                         <img [src]="imgCibGUrl" class=" img_active" [style.display]="isImgCIBGActive ?'block'  : 'none'">
                       </div>
@@ -277,7 +277,7 @@
                         <img [src]="imgCibUrl" class="img_active" [style.display]="isImgCIBActive ? 'block' : 'none'">
                       </div>
                     </div>
-                    <div class="col-xs-8">
+                    <div class="col-xs-7">
                       <div class="row">
                         <div class="col-xs-7">
                           <label class="frm_lbl" for="sumAssured">Sum Assured</label>
@@ -303,10 +303,10 @@
               <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('FEB') == false}">
                 <div class="benf_div container-fluid" formGroupName="FEB">
                   <div class="row">
-                    <div class="col-xs-4">
+                    <div class="col-xs-5">
                       <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'FEB')"
                         (change)="isActiveFEB($event)" (keyup)="removeError('FEB')" (click)="removeError('FEB')">
-                      <label class="tooltip1" for="sumAssured">FEB <span class="tooltiptext">{{beneficts._feb}}</span></label>
+                      <label class="" for="sumAssured">FEB <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._feb}}</span></span></label>
                       <div>
                         <img [src]="imgFebGUrl" class=" img_active" [style.display]="isImgFEBGActive ?'block'  : 'none'">
                       </div>
@@ -314,7 +314,7 @@
                         <img [src]="imgFebUrl" class="img_active" [style.display]="isImgFEBActive ? 'block' : 'none'">
                       </div>
                     </div>
-                    <div class="col-xs-8">
+                    <div class="col-xs-7">
                       <div class="row">
                         <div class="col-xs-7">
                           <label class="frm_lbl" for="sumAssured">Sum Assured</label>
@@ -341,11 +341,11 @@
               <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('MFIBD') == false}">
                 <div class="benf_div container-fluid" formGroupName="MFIBD">
                   <div class="row">
-                    <div class="col-xs-4">
+                    <div class="col-xs-5">
                       <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'MFIBD')"
                         (change)="isActiveMFIBD($event)" (keyup)="removeError('MFIBD')" (click)="removeError('MFIBD')"
                         *ngIf="!isImgMFIBDTActive && !isImgMFIBTActive">
-                      <label class="tooltip1" for="sumAssured">MFIBD <span class="tooltiptext">{{beneficts._mfibd}}</span></label>
+                      <label class="" for="sumAssured">MFIBD <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._mfibd}}</span></span></label>
                       <div>
                         <img [src]="imgMifbdGUrl" class=" img_active" [style.display]="isImgMFIBDGActive ?'block'  : 'none'">
                       </div>
@@ -353,7 +353,7 @@
                         <img [src]="imgMifbdUrl" class="img_active" [style.display]="isImgMFIBDActive ? 'block' : 'none'">
                       </div>
                     </div>
-                    <div class="col-xs-8">
+                    <div class="col-xs-7">
                       <div class="row">
                         <div class="col-xs-7">
                           <label class="frm_lbl" for="sumAssured">Sum Assured</label>
@@ -380,11 +380,11 @@
               <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('MFIBT') == false}">
                 <div class="benf_div container-fluid" formGroupName="MFIBT">
                   <div class="row">
-                    <div class="col-xs-4">
+                    <div class="col-xs-5">
                       <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'MFIBT')"
                         (change)="isActiveMFIBT($event)" (keyup)="removeError('MFIBT')" (click)="removeError('MFIBT')"
                         *ngIf="!isImgMFIBDTActive && !isImgMFIBDActive">
-                      <label class="tooltip1" for="sumAssured">MFIBT <span class="tooltiptext">{{beneficts._mfibt}}</span></label>
+                      <label class="" for="sumAssured">MFIBT <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._mfibt}}</span></span></label>
                       <div>
                         <img [src]="imgMifbtGUrl" class=" img_active" [style.display]="isImgMFIBTGActive ?'block'  : 'none'">
                       </div>
@@ -392,7 +392,7 @@
                         <img [src]="imgMifbtUrl" class="img_active" [style.display]="isImgMFIBTActive ? 'block' : 'none'">
                       </div>
                     </div>
-                    <div class="col-xs-8">
+                    <div class="col-xs-7">
                       <div class="row">
                         <div class="col-xs-7">
                           <label class="frm_lbl" for="sumAssured">Sum Assured</label>
@@ -418,11 +418,11 @@
               <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('MFIBDT') == false}">
                 <div class="benf_div container-fluid" formGroupName="MFIBDT">
                   <div class="row">
-                    <div class="col-xs-4">
+                    <div class="col-xs-5">
                       <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'MFIBDT')"
                         (change)="isActiveMFIBDT($event)" (keyup)="removeError('MFIBDT')" (click)="removeError('MFIBDT')"
                         *ngIf="!isImgMFIBTActive && !isImgMFIBDActive">
-                      <label class="tooltip1" for="sumAssured">MFIBDT <span class="tooltiptext">{{beneficts._mfibdt}}</span></label>
+                      <label class="" for="sumAssured">MFIBDT <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._mfibdt}}</span></span></label>
                       <div>
                         <img [src]="imgMifbdtGUrl" class=" img_active" [style.display]="isImgMFIBDTGActive ?'block'  : 'none'">
                       </div>
@@ -430,7 +430,7 @@
                         <img [src]="imgMifbdtUrl" class="img_active" [style.display]="isImgMFIBDTActive ? 'block' : 'none'">
                       </div>
                     </div>
-                    <div class="col-xs-8">
+                    <div class="col-xs-7">
                       <div class="row">
                         <div class="col-xs-7">
                           <label class="frm_lbl" for="sumAssured">Sum Assured</label>
@@ -456,10 +456,10 @@
               <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('HCBI') == false}">
                 <div class="benf_div container-fluid" formGroupName="HRBI">
                   <div class="row">
-                    <div class="col-xs-4">
+                    <div class="col-xs-5">
                       <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'HRBI')"
                         (change)="isActiveHRBI($event)" (click)="removeError('HRBI')" *ngIf="!isImgSUHRBActive && !isImgHRBFActive && !isImgSHCBFActive">
-                      <label class="tooltip1" for="sumAssured">HCBI <span class="tooltiptext">{{beneficts._hcbi}}</span></label>
+                      <label class="" for="sumAssured">HCBI <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._hcbi}}</span></span></label>
                       <div>
                         <img [src]="imgHrbiGUrl" class=" img_active" [style.display]="isImgHRBIGActive ?'block'  : 'none'">
                       </div>
@@ -467,7 +467,7 @@
                         <img [src]="imgHrbiUrl" class="img_active" [style.display]="isImgHRBIActive ? 'block' : 'none'">
                       </div>
                     </div>
-                    <div class="col-xs-8">
+                    <div class="col-xs-7">
                       <div class="row">
                         <div class="col-xs-7">
                           <label class="frm_lbl" for="sumAssured">Sum Assured</label>
@@ -493,10 +493,10 @@
               <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('HCBF') == false}">
                 <div class="benf_div container-fluid" formGroupName="HRBF">
                   <div class="row">
-                    <div class="col-xs-4">
+                    <div class="col-xs-5">
                       <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'HRBF')"
                         (change)="isActiveHRBF($event)" (click)="removeError('HRBF')" *ngIf="!isImgSUHRBActive && !isImgHRBIActive && !isImgSHCBFActive">
-                      <label class="tooltip1" for="sumAssured">HCBF <span class="tooltiptext">{{beneficts._hcbf}}</span></label>
+                      <label class="" for="sumAssured">HCBF <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._hcbf}}</span></span></label>
                       <div>
                         <img [src]="imgHrbfGUrl" class=" img_active" [style.display]="isImgHRBFGActive ?'block'  : 'none'">
                       </div>
@@ -504,7 +504,7 @@
                         <img [src]="imgHrbfUrl" class="img_active" [style.display]="isImgHRBFActive ? 'block' : 'none'">
                       </div>
                     </div>
-                    <div class="col-xs-8">
+                    <div class="col-xs-7">
                       <div class="row">
                         <div class="col-xs-7">
                           <label class="frm_lbl" for="sumAssured">Sum Assured</label>
@@ -530,10 +530,10 @@
               <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('SHCBI') == false}">
                 <div class="benf_div container-fluid" formGroupName="SUHRB">
                   <div class="row">
-                    <div class="col-xs-4">
+                    <div class="col-xs-5">
                       <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'SUHRB')"
                         (change)="isActiveSUHRB($event)" (click)="removeError('SUHRB')" *ngIf="!isImgHRBIActive && !isImgHRBFActive && !isImgSHCBFActive">
-                      <label class="tooltip1" for="sumAssured">SHCBI <span class="tooltiptext">{{beneficts._shcbi}}</span></label>
+                      <label class="" for="sumAssured">SHCBI <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._shcbi}}</span></span></label>
                       <div>
                         <img [src]="imgSuhrbGUrl" class=" img_active" [style.display]="isImgSUHRBGActive ?'block'  : 'none'">
                       </div>
@@ -541,7 +541,7 @@
                         <img [src]="imgSuhrbUrl" class="img_active" [style.display]="isImgSUHRBActive ? 'block' : 'none'">
                       </div>
                     </div>
-                    <div class="col-xs-8">
+                    <div class="col-xs-7">
                       <div class="row">
                         <div class="col-xs-7">
                           <label class="frm_lbl" for="sumAssured">Sum Assured</label>
@@ -567,10 +567,10 @@
               <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('HB') == false}">
                 <div class="benf_div container-fluid" formGroupName="HB">
                   <div class="row">
-                    <div class="col-xs-4">
+                    <div class="col-xs-5">
                       <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'HB')"
                         (change)="isActiveHB($event)" (click)="removeError('HB')">
-                      <label class="tooltip1" for="sumAssured">HB <span class="tooltiptext">{{beneficts._hb}}</span></label>
+                      <label class="" for="sumAssured">HB <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._hb}}</span></span></label>
                       <div>
                         <img [src]="imgHbGUrl" class=" img_active" [style.display]="isImgHBGActive ?'block'  : 'none'">
                       </div>
@@ -578,7 +578,7 @@
                         <img [src]="imgHbUrl" class="img_active" [style.display]="isImgHBActive ? 'block' : 'none'">
                       </div>
                     </div>
-                    <div class="col-xs-8">
+                    <div class="col-xs-7">
                       <div class="row">
                         <div class="col-xs-7">
                           <label class="frm_lbl" for="sumAssured">Sum Assured</label>
@@ -625,15 +625,15 @@
                 <div class="col-sm-12" *ngIf="isGetHealthBenef == false">
                   <div class="benf_div container-fluid" formGroupName="HCBS">
                     <div class="row">
-                      <div class="col-xs-4">
+                      <div class="col-xs-5">
                         <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveHCBS($event)"
                           (click)="removeError('HCBS')">
-                        <label class="tooltip1" for="sumAssured">HCBS <span class="tooltiptext">{{beneficts._hcbs}}</span></label>
+                        <label class="" for="sumAssured">HCBS <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._hcbs}}</span></span></label>
                         <div>
                           <img [src]="imgHrbisGUrl" class=" img_active" [style.display]="none">
                         </div>
                       </div>
-                      <div class="col-xs-8">
+                      <div class="col-xs-7">
                         <div class="row">
                           <div class="col-xs-7">
                             <label class="frm_lbl" for="sumAssured" style="display: none;">Sum Assured</label>
@@ -657,10 +657,10 @@
                 <div class="col-sm-12" *ngIf="isGetHcbi == true" [ngClass]="{'disabled': activeRiders.includes('HCBIS') == false}">
                   <div class="benf_div container-fluid" formGroupName="HRBIS">
                     <div class="row">
-                      <div class="col-xs-4">
+                      <div class="col-xs-5">
                         <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveS($event, 'HRBIS')"
                           (change)="isActiveHRBIS($event)" (click)="removeError('HRBIS')">
-                        <label class="tooltip1" for="sumAssured">HCBIS <span class="tooltiptext">{{beneficts._hcbis}}</span></label>
+                        <label class="" for="sumAssured">HCBIS <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._hcbis}}</span></span></label>
                         <div>
                           <img [src]="imgHrbisGUrl" class=" img_active" [style.display]="isImgHRBISGActive ?'block'  : 'none'">
                         </div>
@@ -668,7 +668,7 @@
                           <img [src]="imgHrbisUrl" class="img_active" [style.display]="isImgHRBISActive ? 'block' : 'none'">
                         </div>
                       </div>
-                      <div class="col-xs-8">
+                      <div class="col-xs-7">
                         <div class="row">
                           <div class="col-xs-7">
                             <div [style.display]="!isImgHRBISGActive ? 'block' : 'none'">
@@ -697,10 +697,10 @@
                 <div class="col-sm-12" *ngIf="isGetHcbf == true" [ngClass]="{'disabled': activeRiders.includes('HCBFS') == false}">
                   <div class="benf_div container-fluid" formGroupName="HRBFS">
                     <div class="row">
-                      <div class="col-xs-4">
+                      <div class="col-xs-5">
                         <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveS($event, 'HRBFS')"
                           (change)="isActiveHRBFS($event)" (click)="removeError('HRBFS')">
-                        <label class="tooltip1" for="sumAssured">HCBFS <span class="tooltiptext">{{beneficts._hcbfs}}</span></label>
+                        <label class="" for="sumAssured">HCBFS <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._hcbfs}}</span></span></label>
                         <div>
                           <img [src]="imgHrbfsGUrl" class=" img_active" [style.display]="isImgHRBFSGActive ?'block'  : 'none'">
                         </div>
@@ -708,7 +708,7 @@
                           <img [src]="imgHrbfsUrl" class="img_active" [style.display]="isImgHRBFSActive ? 'block' : 'none'">
                         </div>
                       </div>
-                      <div class="col-xs-8">
+                      <div class="col-xs-7">
                         <div class="row">
                           <div class="col-xs-7">
                             <div [style.display]="!isImgHRBFSGActive ? 'block' : 'none'">
@@ -734,10 +734,10 @@
                 <div class="col-sm-12" *ngIf="isGetShcbi == true" [ngClass]="{'disabled': activeRiders.includes('SHCBIS') == false}">
                   <div class="benf_div container-fluid" formGroupName="SUHRBS">
                     <div class="row">
-                      <div class="col-xs-4">
+                      <div class="col-xs-5">
                         <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveS($event, 'SUHRBS')"
                           (change)="isActiveSUHRBS($event)" (click)="removeError('SUHRBS')">
-                        <label class="tooltip1" for="sumAssured">SHCBIS <span class="tooltiptext">{{beneficts._shcbis}}</span></label>
+                        <label class="" for="sumAssured">SHCBIS <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._shcbis}}</span></span></label>
                         <div>
                           <img [src]="imgSuhrbsGUrl" class=" img_active" [style.display]="isImgSUHRBSGActive ?'block'  : 'none'">
                         </div>
@@ -745,7 +745,7 @@
                           <img [src]="imgSuhrbsUrl" class="img_active" [style.display]="isImgSUHRBSActive ? 'block' : 'none'">
                         </div>
                       </div>
-                      <div class="col-xs-8">
+                      <div class="col-xs-7">
                         <div class="row">
                           <div class="col-xs-7">
                             <div [style.display]="!isImgSUHRBSGActive ? 'block' : 'none'">
@@ -774,10 +774,10 @@
                 <div class="col-sm-12" *ngIf="isGetShcbf == true" [ngClass]="{'disabled': activeRiders.includes('SHCBFS') == false}">
                   <div class="benf_div container-fluid" formGroupName="SHCBFS">
                     <div class="row">
-                      <div class="col-xs-4">
+                      <div class="col-xs-5">
                         <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveSHCBFS($event)"
                           (change)="onsetBenifAll($event,'SHCBFS')" (click)="removeError('SUHRBS')">
-                        <label class="tooltip1" for="sumAssured">SHCBFS <span class="tooltiptext">{{beneficts._shcbfs}}</span></label>
+                        <label class="" for="sumAssured">SHCBFS <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._shcbfs}}</span></span></label>
                         <div>
                           <img [src]="imgShcbfsGUrl" class=" img_active" [style.display]="isImgSHCBFSGActive ?'block'  : 'none'">
                         </div>
@@ -785,7 +785,7 @@
                           <img [src]="imgShcbfsUrl" class="img_active" [style.display]="isImgSHCBFSActive ? 'block' : 'none'">
                         </div>
                       </div>
-                      <div class="col-xs-8">
+                      <div class="col-xs-7">
                         <div class="row">
                           <div class="col-xs-7">
                             <div [style.display]="!isImgSHCBFSGActive ? 'block' : 'none'">
@@ -812,10 +812,10 @@
                 <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('HBS') == false}">
                   <div class="benf_div container-fluid" formGroupName="HBS">
                     <div class="row">
-                      <div class="col-xs-4">
+                      <div class="col-xs-5">
                         <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveS($event, 'HBS')"
                           (change)="isActiveHBS($event)" (click)="removeError('HBS')">
-                        <label class="tooltip1" for="sumAssured">HBS <span class="tooltiptext">{{beneficts._hbs}}</span></label>
+                        <label class="" for="sumAssured">HBS <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._hbs}}</span></span></label>
                         <div>
                           <img [src]="imgHbsGUrl" class=" img_active" [style.display]="isImgHBSGActive ?'block'  : 'none'">
                         </div>
@@ -823,7 +823,7 @@
                           <img [src]="imgHbsUrl" class="img_active" [style.display]="isImgHBSActive ? 'block' : 'none'">
                         </div>
                       </div>
-                      <div class="col-xs-8">
+                      <div class="col-xs-7">
                         <div class="row">
                           <div class="col-xs-7">
                             <div [style.display]="!isImgHBSGActive ? 'block' : 'none'">
@@ -864,15 +864,15 @@
                 <div class="col-sm-12" *ngIf="isGetHealthBenef == false">
                   <div class="benf_div container-fluid" formGroupName="HCBC">
                     <div class="row">
-                      <div class="col-xs-4">
+                      <div class="col-xs-5">
                         <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveHCBC($event)"
                           (click)="removeError('HCBC')">
-                        <label class="tooltip1" for="sumAssured">HCBC <span class="tooltiptext">{{beneficts._hcbc}}</span></label>
+                        <label class="" for="sumAssured">HCBC <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._hcbc}}</span></span></label>
                         <div>
                           <img [src]="imgHrbicGUrl" class=" img_active" [style.display]="none">
                         </div>
                       </div>
-                      <div class="col-xs-8">
+                      <div class="col-xs-7">
                         <div class="row">
                           <div class="col-xs-7">
                             <label class="frm_lbl" for="sumAssured" style="display: none;">Sum Assured</label>
@@ -896,10 +896,10 @@
                 <div class="col-sm-12" *ngIf="isGetHcbi == true" [ngClass]="{'disabled': activeRiders.includes('HCBIC') == false}">
                   <div class="benf_div container-fluid" formGroupName="HRBIC">
                     <div class="row">
-                      <div class="col-xs-4">
+                      <div class="col-xs-5">
                         <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveC($event, 'HRBIC')"
                           (change)="isActiveHRBIC($event)" (click)="removeError('HRBIC')">
-                        <label class="tooltip1" for="sumAssured">HCBIC <span class="tooltiptext">{{beneficts._hcbic}}</span></label>
+                        <label class="" for="sumAssured">HCBIC <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._hcbic}}</span></span></label>
                         <div>
                           <img [src]="imgHrbicGUrl" class=" img_active" [style.display]="isImgHRBICGActive ?'block'  : 'none'">
                         </div>
@@ -907,7 +907,7 @@
                           <img [src]="imgHrbicUrl" class="img_active" [style.display]="isImgHRBICActive ? 'block' : 'none'">
                         </div>
                       </div>
-                      <div class="col-xs-8">
+                      <div class="col-xs-7">
                         <div class="row">
                           <div class="col-xs-7">
                             <div [style.display]="!isImgHRBICGActive ? 'block' : 'none'">
@@ -937,10 +937,10 @@
                 <div class="col-sm-12" *ngIf="isGetHcbf == true" [ngClass]="{'disabled': activeRiders.includes('HCBFC') == false}">
                   <div class="benf_div container-fluid" formGroupName="HRBFC">
                     <div class="row">
-                      <div class="col-xs-4">
+                      <div class="col-xs-5">
                         <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveC($event, 'HRBFC')"
                           (change)="isActiveHRBFC($event)" (click)="removeError('HRBFC')">
-                        <label class="tooltip1" for="sumAssured">HCBFC <span class="tooltiptext">{{beneficts._hcbfc}}</span></label>
+                        <label class="" for="sumAssured">HCBFC <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._hcbfc}}</span></span></label>
                         <div>
                           <img [src]="imgHrbfcGUrl" class=" img_active" [style.display]="isImgHRBFCGActive ?'block'  : 'none'">
                         </div>
@@ -948,7 +948,7 @@
                           <img [src]="imgHrbfcUrl" class="img_active" [style.display]="isImgHRBFCActive ? 'block' : 'none'">
                         </div>
                       </div>
-                      <div class="col-xs-8">
+                      <div class="col-xs-7">
                         <div class="row">
                           <div class="col-xs-7">
                             <div [style.display]="!isImgHRBFCGActive ? 'block' : 'none'">
@@ -975,10 +975,10 @@
                 <div class="col-sm-12" *ngIf="isGetShcbi == true" [ngClass]="{'disabled': activeRiders.includes('SHCBIC') == false}">
                   <div class="benf_div container-fluid" formGroupName="SUHRBC">
                     <div class="row">
-                      <div class="col-xs-4">
+                      <div class="col-xs-5">
                         <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveC($event, 'SUHRBC')"
                           (change)="isActiveSUHRBC($event)" (click)="removeError('SUHRBC')">
-                        <label class="tooltip1" for="sumAssured">SHCBIC <span class="tooltiptext">{{beneficts._shcbic}}</span></label>
+                        <label class="" for="sumAssured">SHCBIC <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._shcbic}}</span></span></label>
                         <div>
                           <img [src]="imgSuhrbcGUrl" class=" img_active" [style.display]="isImgSUHRBCGActive ?'block'  : 'none'">
                         </div>
@@ -986,7 +986,7 @@
                           <img [src]="imgSuhrbcUrl" class="img_active" [style.display]="isImgSUHRBCActive ? 'block' : 'none'">
                         </div>
                       </div>
-                      <div class="col-xs-8">
+                      <div class="col-xs-7">
                         <div class="row">
                           <div class="col-xs-7">
                             <div [style.display]="!isImgSUHRBCGActive ? 'block' : 'none'">
@@ -1018,10 +1018,10 @@
                 <div class="col-sm-12" *ngIf="isGetShcbf == true" [ngClass]="{'disabled': activeRiders.includes('SHCBFC') == false}">
                   <div class="benf_div container-fluid" formGroupName="SHCBFC">
                     <div class="row">
-                      <div class="col-xs-4">
+                      <div class="col-xs-5">
                         <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveSHCBFC($event)"
                           (change)="onsetBenifC($event,'SHCBFC')" (click)="removeError('SHCBFC')">
-                        <label class="tooltip1" for="sumAssured">SHCBFC <span class="tooltiptext">{{beneficts._shcbfc}}</span></label>
+                        <label class="" for="sumAssured">SHCBFC <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._shcbfc}}</span></span></label>
                         <div>
                           <img [src]="imgShcbfcGUrl" class=" img_active" [style.display]="isImgSHCBFCGActive ?'block'  : 'none'">
                         </div>
@@ -1029,7 +1029,7 @@
                           <img [src]="imgShcbfcUrl" class="img_active" [style.display]="isImgSHCBFCActive ? 'block' : 'none'">
                         </div>
                       </div>
-                      <div class="col-xs-8">
+                      <div class="col-xs-7">
                         <div class="row">
                           <div class="col-xs-7">
                             <label class="frm_lbl" for="sumAssured">Sum Assured</label>
@@ -1050,10 +1050,10 @@
                 <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('HBC') == false}">
                   <div class="benf_div container-fluid" formGroupName="HBC">
                     <div class="row">
-                      <div class="col-xs-4">
+                      <div class="col-xs-5">
                         <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveC($event, 'HBC')"
                           (change)="isActiveHBC($event)" (click)="removeError('HBC')">
-                        <label class="tooltip1" for="sumAssured">HBC <span class="tooltiptext">{{beneficts._hbc}}</span></label>
+                        <label class="" for="sumAssured">HBC <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._hbc}}</span></span></label>
                         <div>
                           <img [src]="imgHbcGUrl" class=" img_active" [style.display]="isImgHBCGActive ?'block'  : 'none'">
                         </div>
@@ -1061,7 +1061,7 @@
                           <img [src]="imgHbcUrl" class="img_active" [style.display]="isImgHBCActive ? 'block' : 'none'">
                         </div>
                       </div>
-                      <div class="col-xs-8">
+                      <div class="col-xs-7">
                         <div class="row">
                           <div class="col-xs-7">
                             <div [style.display]="!isImgHBCGActive ? 'block' : 'none'">

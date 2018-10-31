@@ -43,10 +43,10 @@
               <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('TPDDTAPL') == false}">
                 <div class="benf_div container-fluid" formGroupName="TPDDTAPL">
                   <div class="row">
-                    <div class="col-xs-4">
+                    <div class="col-xs-5">
                       <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'TPDDTAPL')"
                         (change)="isActiveTPDDTAPL($event)">
-                      <label class="tooltip1" for="sumAssured">TPDDTAPL <span class="tooltiptext">{{beneficts._tbddtapl}}</span></label>
+                      <label class="" for="sumAssured">TPDDTAPL <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._tbddtapl}}</span></span> </label>
 
                       <div>
                         <img [src]="imgwpbGUrl" class=" img_active" [style.display]="isImgTPDDTAPLGActive ?'block'  : 'none'">
@@ -55,7 +55,7 @@
                         <img [src]="imgwpbUrl" class="img_active" [style.display]="isImgTPDDTAPLActive ? 'block' : 'none'">
                       </div>
                     </div>
-                    <div class="col-xs-8">
+                    <div class="col-xs-7">
                       <div class="row">
                         <div class="col-xs-7">
                           <label class="frm_lbl" for="sumAssured">Sum Assured</label>
@@ -99,11 +99,10 @@
                 <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('JLBPL') == false}">
                   <div class="benf_div container-fluid" formGroupName="JLBPL">
                     <div class="row">
-                      <div class="col-xs-4">
+                      <div class="col-xs-5">
                         <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveS($event, 'JLBPL')"
                           (change)="isActiveJLBPL($event)">
-                        <label class="tooltip1" for="sumAssured">JLBPL <span class="tooltiptext">{{beneficts._jlbpl}}</span></label>
-
+                        <label class="" for="sumAssured">JLBPL <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._jlbpl}}</span></span> </label>
                         <div>
                           <img [src]="imgHbGUrl" class=" img_active" [style.display]="isImgJLBPLGActive ?'block'  : 'none'">
                         </div>
@@ -111,7 +110,7 @@
                           <img [src]="imgHbUrl" class="img_active" [style.display]="isImgJLBPLActive ? 'block' : 'none'">
                         </div>
                       </div>
-                      <div class="col-xs-8">
+                      <div class="col-xs-7">
                         <div class="row">
                           <div class="col-xs-7">
                             <label class="frm_lbl" for="sumAssured">Sum Assured</label>
@@ -134,10 +133,10 @@
                 <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('TPDDTASPL') == false}">
                   <div class="benf_div container-fluid" formGroupName="TPDDTASPL">
                     <div class="row">
-                      <div class="col-xs-4">
+                      <div class="col-xs-5">
                         <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveS($event, 'TPDDTASPL')"
                           (change)="isActiveTPDDTASPL($event)">
-                        <label class="tooltip1" for="sumAssured">TPDDTASPL <span class="tooltiptext">{{beneficts._tbddtaspl}}</span></label>
+                        <label class="" for="sumAssured">TPDDTASPL <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._tbddtaspl}}</span></span> </label>
                         <div>
                           <img [src]="imgAdbsGUrl" class=" img_active" [style.display]="isImgTPDDTASPLGActive ?'block'  : 'none'">
                         </div>
@@ -145,7 +144,7 @@
                           <img [src]="imgAdbsUrl" class="img_active" [style.display]="isImgTPDDTASPLActive ? 'block' : 'none'">
                         </div>
                       </div>
-                      <div class="col-xs-8">
+                      <div class="col-xs-7">
                         <div class="row">
                           <div class="col-xs-7">
                             <label class="frm_lbl" for="sumAssured">Sum Assured</label>

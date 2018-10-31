@@ -897,6 +897,7 @@ export class QuoAsfpComponent implements OnInit {
                     this.isDisableDiv = true;
                     document.onkeydown = function (e) { return false; }
                     this.saveAsfpQuotationService.editAsfp(this._invpSaveQuotation, this.qdId).subscribe(response => {
+                      this.personalInfo._plan._frequance = this.getFreq(this._invpSaveQuotation._personalInfo._plan._frequance);
                       this.isDisableDiv = false;
                       document.onkeydown = function (e) { return true; }
                       if (response.json().status == "Success") {
@@ -927,6 +928,7 @@ export class QuoAsfpComponent implements OnInit {
                 this.isDisableDiv = true;
                 document.onkeydown = function (e) { return false; }
                 this.saveAsfpQuotationService.editAsfp(this._invpSaveQuotation, this.qdId).subscribe(response => {
+                  this.personalInfo._plan._frequance = this.getFreq(this._invpSaveQuotation._personalInfo._plan._frequance);
                   this.isDisableDiv = false;
                   document.onkeydown = function (e) { return true; }
                   if (response.json().status == "Success") {
@@ -1867,5 +1869,22 @@ export class QuoAsfpComponent implements OnInit {
       this.isDisableDiv = false;
     });
   }
+  }
+
+  getFreq(_frequance: string): string {
+    switch (_frequance) {
+      case "M":
+        return "Monthly";
+      case "Q":
+        return "Quartaly";
+      case "H":
+        return "Half Yearly";
+      case "Y":
+        return "Yearly";
+      case "S":
+        return "Single Premium";
+      default:
+        break;
+    }
   }
 }

@@ -397,6 +397,7 @@ export class QuoAipComponent implements OnInit {
               this.isDisableDiv = true;
               document.onkeydown = function (e) { return false; }
               this.quoAipService.edit(this.personalInfomation, this.qdId).subscribe(response => {
+                
                 this.isDisableDiv = false;
                 document.onkeydown = function (e) { return true; }
                 if (response.json().status == "Success") {

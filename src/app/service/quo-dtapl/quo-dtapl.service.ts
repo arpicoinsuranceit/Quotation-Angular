@@ -76,6 +76,12 @@ export class QuoDtaplService {
     //console.log(data);
     data._product = "DTAPL";
 
+    let token;
+    if(sessionStorage.getItem("isUnderwriting") == "true"){
+      token=sessionStorage.getItem("Token");
+      return this.http.post('http://localhost:8084/quoDtaplEditUnderwrite/'+token+'/'+qdId, data);
+    }
+
     return this.http.post('http://localhost:8084/quoDtaplEdit/' + this.userId + '/' + qdId, data);
   }
 

@@ -23,6 +23,8 @@ import { Children } from '../../model/childeren';
 import { Benifict } from '../../model/benificts';
 import { AtrmAdditionalBenefComponent } from '../quo-atrm/atrm-additional-benef/atrm-additional-benef.component';
 import { ArtmAdditionalBenefComponent } from './artm-additional-benef/artm-additional-benef.component';
+import { OccupationService } from '../../service/occupationService';
+import { Occupation } from '../../model/occupation';
 
 @Component({
   selector: 'app-quo-artm',
@@ -189,7 +191,7 @@ export class QuoArtmComponent implements OnInit {
   beforeFrequency:string="Monthly";
 
   constructor(private loginService: LoginService, private quoArtmService: SaveArtmQuotationService, private router: Router, private route: ActivatedRoute,
-    private dashboardService: DashboardService) {
+    private dashboardService: DashboardService,private occupationService: OccupationService) {
     if (!sessionStorage.getItem("Token")) {
       this.loginService.navigateLigin();
     }
@@ -809,15 +811,34 @@ export class QuoArtmComponent implements OnInit {
   editCal() {
     this.quoArtmService.getArtmQuotationDetailsForEdit(this.qdId).subscribe(response => {
       
+      if(sessionStorage.getItem("isUnderwriting") == "true"){
+        this._mainLife=JSON.parse(sessionStorage.getItem("mainlife"));
+        this._spouse = JSON.parse(sessionStorage.getItem("spouse"));
+        this._childrens = JSON.parse(sessionStorage.getItem("children"));
+        
+        this.occupationService.loadOccupationByCode(this._mainLife._mOccupation).subscribe(response =>{
+          let ocup:Occupation=response.json();
 
-      let phone : string = response.json()._mainlife._mMobile;
-      this._mainLife = response.json()._mainlife;
+          this._mainLife._mOccupation=ocup.ocupationid+"";
+
+        });
+        //console.log(this._mainLife);
+      }else{
+        this._mainLife = response.json()._mainlife;
+        this._spouse = response.json()._spouse;
+        this._childrens = response.json()._children;
+      }
+
+      let phone : string = this._mainLife._mMobile;
+      
       this._mainLife._mMobile = phone.substr(1,9); 
       this._plan = response.json()._plan;
       this._plan._bsa = this._plan.contribution;
-      this._spouse = response.json()._spouse;
 
-      this._childrens = response.json()._children;
+      //this._mainLife = response.json()._mainlife;
+      //this._spouse = response.json()._spouse;
+
+      //this._childrens = response.json()._children;
 
       if (this._spouse._sActive) {
         this.activeSp = "1";
@@ -1435,7 +1456,13 @@ export class QuoArtmComponent implements OnInit {
                       document.onkeydown = function (e) { return true; }
                       if (response.json().status == "Success") {
                         swal("Success", "Quotation has been saved Successfully <br> Quotation No : " + response.json().code, "success");
-                        this.router.navigate(['/loadQuo']);
+                        if(sessionStorage.getItem("isUnderwriting") == "true"){
+                          setTimeout(function (){
+                            window.close();
+                          }, 5000);
+                        }else{
+                          this.router.navigate(['/loadQuo']);
+                        }
                       }
                       else {
                         swal("Oopz...", response.json().status, "error");
@@ -1463,7 +1490,13 @@ export class QuoArtmComponent implements OnInit {
                     document.onkeydown = function (e) { return true; }
                     if (response.json().status == "Success") {
                       swal("Success", "Quotation has been saved Successfully <br> Quotation No : " + response.json().code, "success");
-                      this.router.navigate(['/loadQuo']);
+                      if(sessionStorage.getItem("isUnderwriting") == "true"){
+                        setTimeout(function (){
+                          window.close();
+                        }, 5000);
+                      }else{
+                        this.router.navigate(['/loadQuo']);
+                      }
                     }
                     else {
                       swal("Oopz...", response.json().status, "error");

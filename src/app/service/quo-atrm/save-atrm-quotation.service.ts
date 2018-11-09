@@ -69,7 +69,11 @@ export class SaveAtrmQuotationService {
 
     data._product = "ATRM";
 
-    //console.log(data);
+    let token;
+    if(sessionStorage.getItem("isUnderwriting") == "true"){
+      token=sessionStorage.getItem("Token");
+      return this.http.post('http://localhost:8084/quoAtrmEditUnderwrite/'+token+'/'+qdId, data);
+    }
 
     return this.http.post('http://localhost:8084/quoAtrmEdit/' + this.userId + '/' + qdId, data);
   }

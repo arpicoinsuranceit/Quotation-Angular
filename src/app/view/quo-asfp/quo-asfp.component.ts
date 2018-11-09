@@ -1,3 +1,4 @@
+import { Occupation } from './../../model/occupation';
 import { DashboardService } from './../../service/dashboard/dashboard.service';
 import { AsfpAdditionalBenefComponent } from './asfp-additional-benef/asfp-additional-benef.component';
 import { AsfpPersonalInfoComponent } from './asfp-personal-info/asfp-personal-info.component';
@@ -17,6 +18,7 @@ import { Spouse } from '../../model/spouse';
 import { Children } from '../../model/childeren';
 import { QuoBenf } from '../../model/quotationView';
 import { LoginService } from '../../service/login.service';
+import { OccupationService } from '../../service/occupationService';
 
 @Component({
   selector: 'app-quo-asfp',
@@ -186,7 +188,7 @@ export class QuoAsfpComponent implements OnInit {
   @ViewChild(AsfpAdditionalBenefComponent) asfpAdditionalBenefComponent: AsfpAdditionalBenefComponent;
 
   constructor(private saveAsfpQuotationService: SaveAsfpQuotationService, private router: Router, private route: ActivatedRoute, private loginService: LoginService,
-    private dashboardService: DashboardService) {
+    private dashboardService: DashboardService,private occupationService: OccupationService) {
 
     if (!sessionStorage.getItem("Token")) {
       this.loginService.navigateLigin();
@@ -787,85 +789,6 @@ export class QuoAsfpComponent implements OnInit {
       return;
     }
 
-    /*let spArr = new Map<string, string>();
-    let chArr = new Map<string, string>();
-
-    for (var j in this.riderDetails._sRiders) {
-      spArr.set(this.riderDetails._sRiders[j].type, j);
-    }
-
-    for (var k in this.riderDetails._cRiders) {
-      chArr.set(this.riderDetails._cRiders[k].type, k);
-    }
-
-    for (var i in this.riderDetails._mRiders) {
-      //console.log(this.riderDetails._mRiders[i]);
-
-      if (this.riderDetails._mRiders[i].type == "HRBI") {
-        if (this.activeSp == "1") {
-          if (!spArr.has("HRBIS")) {
-            swal("Check Spouse Benefits Form Again", "HCBIS Required..", "error");
-            return;
-          }
-        }
-        if (this.activeCh == "1") {
-          if (!chArr.has("HRBIC")) {
-            swal("Check Childern Benefits Form Again", "HCBIC Required..", "error");
-            return;
-          }
-        }
-
-      }
-
-      if (this.riderDetails._mRiders[i].type == "HRBF") {
-        if (this.activeSp == "1") {
-          if (!spArr.has("HRBFS")) {
-            swal("Check Spouse Benefits Form Again", "HCBFS Required..", "error");
-            return;
-          }
-        }
-        if (this.activeCh == "1") {
-          if (!chArr.has("HRBFC")) {
-            swal("Check Childern Benefits Form Again", "HCBFC Required..", "error");
-            return;
-          }
-        }
-      }
-
-      if (this.riderDetails._mRiders[i].type == "SUHRB") {
-
-        if (this.activeSp == "1") {
-          if (!spArr.has("SUHRBS")) {
-            swal("Check Spouse Benefits Form Again", "SHCBIS Required..", "error");
-            return;
-          }
-        }
-        if (this.activeCh == "1") {
-          if (!chArr.has("SUHRBC")) {
-            swal("Check Childern Benefits Form Again", "SHCBIC Required..", "error");
-            return;
-          }
-        }
-      }
-
-      if (this.riderDetails._mRiders[i].type == "HB") {
-
-        if (this.activeSp == "1") {
-          if (!spArr.has("HBS")) {
-            swal("Check Spouse Benefits Form Again", "HBS Required..", "error");
-            return;
-          }
-        }
-        if (this.activeCh == "1") {
-          if (!chArr.has("HBC")) {
-            swal("Check Childern Benefits Form Again", "HBC Required..", "error");
-            return;
-          }
-        }
-
-      }
-    }*/
-
     if (parseInt(this._quotationCalculation._personalInfo.mage.toString()) + parseInt(this._plan._term.toString()) <= 70) {
       if (parseInt(this._plan._nomineeAge.toString()) + parseInt(this._plan._term.toString()) <= 24) {
         if (this.validity == true) {
@@ -902,7 +825,13 @@ export class QuoAsfpComponent implements OnInit {
                       document.onkeydown = function (e) { return true; }
                       if (response.json().status == "Success") {
                         swal("Success", "Quotation has been updated Successfully <br> Quotation No : " + response.json().code, "success");
-                        this.router.navigate(['/loadQuo']);
+                        if(sessionStorage.getItem("isUnderwriting") == "true"){
+                          setTimeout(function (){
+                            window.close();
+                          }, 5000);
+                        }else{
+                          this.router.navigate(['/loadQuo']);
+                        }
                       }
                       else {
                         swal("Oopz...", response.json().status, "error");
@@ -933,7 +862,13 @@ export class QuoAsfpComponent implements OnInit {
                   document.onkeydown = function (e) { return true; }
                   if (response.json().status == "Success") {
                     swal("Success", "Quotation has been updated Successfully <br> Quotation No : " + response.json().code, "success");
-                    this.router.navigate(['/loadQuo']);
+                    if(sessionStorage.getItem("isUnderwriting") == "true"){
+                      setTimeout(function (){
+                        window.close();
+                      }, 5000);
+                    }else{
+                      this.router.navigate(['/loadQuo']);
+                    }
                   }
                   else {
                     swal("Oopz...", response.json().status, "error");
@@ -973,14 +908,32 @@ export class QuoAsfpComponent implements OnInit {
   editCal() {
     this.saveAsfpQuotationService.getAsfpQuotationDetailsForEdit(this.qdId).subscribe(response => {
 
-      let phone : string = response.json()._mainlife._mMobile;
+      if(sessionStorage.getItem("isUnderwriting") == "true"){
+        this._mainLife=JSON.parse(sessionStorage.getItem("mainlife"));
+        this._spouse = JSON.parse(sessionStorage.getItem("spouse"));
+        this._childrens = JSON.parse(sessionStorage.getItem("children"));
 
-      this._mainLife = response.json()._mainlife;
+        this.occupationService.loadOccupationByCode(this._mainLife._mOccupation).subscribe(response =>{
+          let ocup:Occupation=response.json();
+
+          this._mainLife._mOccupation=ocup.ocupationid+"";
+
+        });
+
+        //console.log(this._mainLife);
+      }else{
+        this._mainLife = response.json()._mainlife;
+        this._spouse = response.json()._spouse;
+        this._childrens = response.json()._children;
+      }
+
+      let phone : string = this._mainLife._mMobile;
       this._mainLife._mMobile = phone.substr(1,9); 
       this._plan = response.json()._plan;
-      this._spouse = response.json()._spouse;
 
-      this._childrens = response.json()._children;
+      //this._mainLife = response.json()._mainlife;
+      //this._spouse = response.json()._spouse;
+      //this._childrens = response.json()._children;
 
       if (this._spouse._sActive) {
         this.activeSp = "1";

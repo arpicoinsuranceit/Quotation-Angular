@@ -86,6 +86,13 @@ export class SaveInvpQuotationService {
 
     //console.log(data);
     data._product = "INVP";
+
+    let token;
+    if(sessionStorage.getItem("isUnderwriting") == "true"){
+      token=sessionStorage.getItem("Token");
+      return this.http.post('http://localhost:8084/quoInvpEditUnderwrite/'+token+'/'+qdId, data);
+    }
+
     return this.http.post('http://localhost:8084/quoInvpEdit/' + this.userId + '/' + qdId, data);
   }
 

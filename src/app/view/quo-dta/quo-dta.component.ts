@@ -18,6 +18,8 @@ import { Spouse } from '../../model/spouse';
 import { Plan } from '../../model/plan';
 import { QuoBenf } from '../../model/quotationView';
 import { DtaPersonalInfoComponent } from './dta-personal-info/dta-personal-info.component';
+import { Occupation } from '../../model/occupation';
+import { OccupationService } from '../../service/occupationService';
 
 @Component({
   selector: 'app-quo-dta',
@@ -74,7 +76,7 @@ export class QuoDtaComponent implements OnInit {
   @ViewChild(DtaBenefictInfoComponent) dtaBenefictInfoComponent: DtaBenefictInfoComponent;
 
   constructor(private loginService: LoginService, private saveDtaQuotationService: QuoDtaService, private router: Router, private route: ActivatedRoute,
-    private dashboardService: DashboardService) {
+    private dashboardService: DashboardService,private occupationService: OccupationService) {
     if (!sessionStorage.getItem("Token")) {
       this.loginService.navigateLigin();
     }
@@ -411,7 +413,13 @@ export class QuoDtaComponent implements OnInit {
                       document.onkeydown = function (e) { return true; }
                       if (response.json().status == "Success") {
                         swal("Success", "Quotation has been saved Successfully <br> Quotation No : " + response.json().code, "success");
-                        this.router.navigate(['/loadQuo']);
+                        if(sessionStorage.getItem("isUnderwriting") == "true"){
+                          setTimeout(function (){
+                            window.close();
+                          }, 5000);
+                        }else{
+                          this.router.navigate(['/loadQuo']);
+                        }
                       }
                       else {
                         swal("Oopz...", response.json().status, "error");
@@ -434,7 +442,13 @@ export class QuoDtaComponent implements OnInit {
                     document.onkeydown = function (e) { return true; }
                     if (response.json().status == "Success") {
                       swal("Success", "Quotation has been saved Successfully <br> Quotation No : " + response.json().code, "success");
-                      this.router.navigate(['/loadQuo']);
+                      if(sessionStorage.getItem("isUnderwriting") == "true"){
+                        setTimeout(function (){
+                          window.close();
+                        }, 5000);
+                      }else{
+                        this.router.navigate(['/loadQuo']);
+                      }
                     }
                     else {
                       swal("Oopz...", response.json().status, "error");
@@ -474,12 +488,29 @@ export class QuoDtaComponent implements OnInit {
   editCal() {
     this.saveDtaQuotationService.getDtaQuotationDetailsForEdit(this.qdId).subscribe(response => {
 
-      let phone : string = response.json()._mainlife._mMobile;
+      if(sessionStorage.getItem("isUnderwriting") == "true"){
+        this._mainLife=JSON.parse(sessionStorage.getItem("mainlife"));
+        this._spouse = JSON.parse(sessionStorage.getItem("spouse"));
 
-      this._mainLife = response.json()._mainlife;
+        this.occupationService.loadOccupationByCode(this._mainLife._mOccupation).subscribe(response =>{
+          let ocup:Occupation=response.json();
+
+          this._mainLife._mOccupation=ocup.ocupationid+"";
+
+        });
+
+        //console.log(this._mainLife);
+      }else{
+        this._mainLife = response.json()._mainlife;
+        this._spouse = response.json()._spouse;
+      }
+
+      let phone : string = this._mainLife._mMobile;
       this._mainLife._mMobile = phone.substr(1,9); 
       this._plan = response.json()._plan;
-      this._spouse = response.json()._spouse;
+
+      //this._mainLife = response.json()._mainlife;
+      //this._spouse = response.json()._spouse;
 
       if (this._spouse._sActive) {
         this.activeSp = "1";

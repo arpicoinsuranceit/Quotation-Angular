@@ -112,6 +112,13 @@ export class SaveArtmQuotationService {
 
     //console.log(data);
     data._product = "ARTM";
+
+    let token;
+    if(sessionStorage.getItem("isUnderwriting") == "true"){
+      token=sessionStorage.getItem("Token");
+      return this.http.post('http://localhost:8084/quoArtmEditUnderwrite/'+token+'/'+qdId, data);
+    }
+
     return this.http.post('http://localhost:8084/quoArtmEdit/' + this.userId + '/' + qdId, data);
   }
 

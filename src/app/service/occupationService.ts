@@ -14,6 +14,12 @@ export class OccupationService {
         
     }
 
+    loadOccupationByCode(ocuCode:string){
+        return this.http.get('http://localhost:8084/occupation/'+ocuCode);
+        
+    }
+
+
     
     
 }

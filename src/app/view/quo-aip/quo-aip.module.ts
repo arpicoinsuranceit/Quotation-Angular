@@ -15,6 +15,7 @@ import { CommonModule } from '@angular/common';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { QuoAipRoutingModule } from './quo-aip-routing.module';
+import { OccupationService } from '../../service/occupationService';
 
 @NgModule({
   imports: [
@@ -30,7 +31,7 @@ import { QuoAipRoutingModule } from './quo-aip-routing.module';
     SummeryAipComponent,
     AipPlanInfoComponent,
     AipPersonalInfoComponent],
-  providers: [QuoAipService, DashboardService, LoginService],
+  providers: [QuoAipService, DashboardService, LoginService,OccupationService],
   
 })
 export class QuoAipModule { }

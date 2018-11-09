@@ -72,6 +72,12 @@ export class QuoAsipService {
     //console.log(data);
     data._product = "ASIP";
 
+    let token;
+    if(sessionStorage.getItem("isUnderwriting") == "true"){
+      token=sessionStorage.getItem("Token");
+      return this.http.post('http://localhost:8084/quoAsipEditUnderwrite/'+token+'/'+qdId, data);
+    }
+
     return this.http.post('http://localhost:8084/quoAsipEdit/' + this.userId + '/' + qdId, data);
   }
 }

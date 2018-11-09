@@ -81,6 +81,12 @@ export class QuoAipService {
 
   edit(data: personalInfo, qdId: number) {
     //console.log(data);
+    let token;
+    if(sessionStorage.getItem("isUnderwriting") == "true"){
+      token=sessionStorage.getItem("Token");
+      return this.http.post('http://localhost:8084/quoAipEditUnderwrite/'+token+'/'+qdId, data);
+    }
+
     return this.http.post('http://localhost:8084/quoAipEdit/' + this.userId + '/' + qdId, data);
   }
 }

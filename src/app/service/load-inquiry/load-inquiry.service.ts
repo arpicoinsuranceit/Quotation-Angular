@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class LoadInquiryService {
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private router: Router) { }
 
   getInquiries(userType, dashPara, advcod, offset, limit, equality, column, data) {
     return this.http.get('http://localhost:8085/getallinquiries/' + userType + "/" + dashPara + "/" + advcod + "/" + offset + "/" + limit + "/" + equality + "/" + column + "/" + data.trim());
@@ -54,6 +55,10 @@ export class LoadInquiryService {
       return this.http.post("http://localhost:8085/getPolicyDisAch", policyNo);
     }
     return null;
+  }
+
+  loadInquiryPage(){
+    this.router.navigate(['/loadinquiries']);
   }
 
 }

@@ -12,6 +12,7 @@ import { QuoArtmRoutingModule } from './quo-artm-routing.module';
 import { ArtmSummeryComponent } from './artm-summery/artm-summery.component';
 import { SaveArtmQuotationService } from '../../service/quo-artm/save-artm-quotation.service';
 import { ArtmAdditionalBenefComponent } from './artm-additional-benef/artm-additional-benef.component';
+import { OccupationService } from '../../service/occupationService';
 
 @NgModule({
   imports: [
@@ -27,7 +28,7 @@ import { ArtmAdditionalBenefComponent } from './artm-additional-benef/artm-addit
     ArtmSummeryComponent,
     ArtmAdditionalBenefComponent,
     ArtmPersonalInfoComponent],
-  providers: [SaveArtmQuotationService, DashboardService, LoginService],
+  providers: [SaveArtmQuotationService, DashboardService, LoginService,OccupationService],
   
 })
 export class QuoArtmModule { }

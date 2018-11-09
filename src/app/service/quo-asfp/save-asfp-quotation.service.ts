@@ -72,6 +72,12 @@ export class SaveAsfpQuotationService {
     //console.log(data);
     data._product = "ASFP";
 
+    let token;
+    if(sessionStorage.getItem("isUnderwriting") == "true"){
+      token=sessionStorage.getItem("Token");
+      return this.http.post('http://localhost:8084/quoAsfpEditUnderwrite/'+token+'/'+qdId, data);
+    }
+
     return this.http.post('http://localhost:8084/quoAsfpEdit/' + this.userId + '/' + qdId, data);
   }
 

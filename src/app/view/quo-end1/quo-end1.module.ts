@@ -13,6 +13,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { OccupationService } from '../../service/occupationService';
 
 @NgModule({
   imports: [
@@ -28,7 +29,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     End1AdditionalBenefComponent,
     End1PersonalInfoComponent,
     End1SummeryComponent],
-  providers: [SaveEnd1QuotationService, DashboardService, LoginService],
+  providers: [SaveEnd1QuotationService, DashboardService, LoginService,OccupationService],
 
 })
 export class QuoEnd1Module { }

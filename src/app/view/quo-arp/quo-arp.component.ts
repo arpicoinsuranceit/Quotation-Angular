@@ -18,6 +18,8 @@ import { Plan } from '../../model/plan';
 import { QuoBenf } from '../../model/quotationView';
 import { LoginService } from '../../service/login.service';
 import { DashboardService } from '../../service/dashboard/dashboard.service';
+import { Occupation } from '../../model/occupation';
+import { OccupationService } from '../../service/occupationService';
 
 @Component({
   selector: 'app-quo-arp',
@@ -186,7 +188,7 @@ export class QuoArpComponent implements OnInit {
 
 
   constructor(private saveArpQuotationService: QuoArpService, private router: Router, private route: ActivatedRoute, private loginService: LoginService,
-    private dashboardService: DashboardService) {
+    private dashboardService: DashboardService,private occupationService: OccupationService) {
     if (!sessionStorage.getItem("Token")) {
       this.loginService.navigateLigin();
     }
@@ -913,7 +915,13 @@ export class QuoArpComponent implements OnInit {
                   document.onkeydown = function (e) { return true; }
                   if (response.json().status == "Success") {
                     swal("Success", "Quotation has been saved Successfully <br> Quotation No : " + response.json().code, "success");
-                    this.router.navigate(['/loadQuo']);
+                    if(sessionStorage.getItem("isUnderwriting") == "true"){
+                      setTimeout(function (){
+                        window.close();
+                      }, 5000);
+                    }else{
+                      this.router.navigate(['/loadQuo']);
+                    }
                   }
                   else {
                     swal("Oopz...", response.json().status, "error");
@@ -943,7 +951,13 @@ export class QuoArpComponent implements OnInit {
               document.onkeydown = function (e) { return true; }
               if (response.json().status == "Success") {
                 swal("Success", "Quotation has been saved Successfully <br> Quotation No : " + response.json().code, "success");
-                this.router.navigate(['/loadQuo']);
+                if(sessionStorage.getItem("isUnderwriting") == "true"){
+                  setTimeout(function (){
+                    window.close();
+                  }, 5000);
+                }else{
+                  this.router.navigate(['/loadQuo']);
+                }
               }
               else {
                 swal("Oopz...", response.json().status, "error");
@@ -973,15 +987,36 @@ export class QuoArpComponent implements OnInit {
 
   editCal() {
     this.saveArpQuotationService.getArpQuotationDetailsForEdit(this.qdId).subscribe(response => {
+      
+      if(sessionStorage.getItem("isUnderwriting") == "true"){
+        this._mainLife=JSON.parse(sessionStorage.getItem("mainlife"));
+        this._spouse = JSON.parse(sessionStorage.getItem("spouse"));
+        this._childrens = JSON.parse(sessionStorage.getItem("children"));
 
-      let phone: string = response.json()._mainlife._mMobile;
+        this.occupationService.loadOccupationByCode(this._mainLife._mOccupation).subscribe(response =>{
+          let ocup:Occupation=response.json();
 
-      this._mainLife = response.json()._mainlife;
+          this._mainLife._mOccupation=ocup.ocupationid+"";
+
+        });
+
+        console.log(this._mainLife);
+      }else{
+        this._mainLife = response.json()._mainlife;
+        this._spouse = response.json()._spouse;
+        this._childrens = response.json()._children;
+      }
+
+      let phone: string = this._mainLife._mMobile;
+
       this._mainLife._mMobile = phone.substr(1, 9);
       this._plan = response.json()._plan;
-      this._spouse = response.json()._spouse;
+      
+      //this._mainLife = response.json()._mainlife;
+      
+      //this._spouse = response.json()._spouse;
 
-      this._childrens = response.json()._children;
+      //this._childrens = response.json()._children;
 
       if (this._spouse._sActive) {
         this.activeSp = "1";

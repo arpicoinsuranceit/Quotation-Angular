@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { QuoDtaComponent } from './quo-dta.component';
 import { DtaPersonalInfoComponent } from './dta-personal-info/dta-personal-info.component';
 import { DtaSummeryComponent } from './dta-summery/dta-summery.component';
+import { OccupationService } from '../../service/occupationService';
 
 @NgModule({
   imports: [
@@ -29,7 +30,7 @@ import { DtaSummeryComponent } from './dta-summery/dta-summery.component';
     DtaBenefictInfoComponent,
     DtaPersonalInfoComponent,
     DtaSummeryComponent],
-  providers: [QuoDtaService, DashboardService, LoginService],
+  providers: [QuoDtaService, DashboardService, LoginService,OccupationService],
   
 })
 export class QuoDtaModule { }

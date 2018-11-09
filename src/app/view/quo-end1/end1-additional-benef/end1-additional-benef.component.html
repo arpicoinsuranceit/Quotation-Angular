@@ -168,7 +168,7 @@
                     <div class="col-xs-5">
                       <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'TPDB')"
                         (click)="removeError('TPDB')" (change)="isActiveTPDB($event)" *ngIf="!isImgTPDASBActive">
-                      <label class="lbl" for="sumAssured">TPDB <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._adb}}</span></span></label>
+                      <label class="lbl" for="sumAssured">TPDB <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._tpdb}}</span></span></label>
                       <div>
                         <img [src]="imgTpdbasGUrl" class=" img_active" [style.display]="isImgTPDBGActive ?'block'  : 'none'">
                       </div>

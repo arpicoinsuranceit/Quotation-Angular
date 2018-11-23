@@ -141,6 +141,10 @@ const routes: Routes = [
     loadChildren: 'app/view/load-inquiries/load-inquiry.module#LoadInquiriesModule'
   },
   {
+    path: 'codetransfer',
+    loadChildren: 'app/view/code-transfer/code-transfer.module#CodeTransferModule'
+  },
+  {
     path: 'denied',
     loadChildren: 'app/access-denied/access-denied.module#AccessDeniedModule'
   },

@@ -1,0 +1,66 @@
+<div class="mainBody" [ngClass]="{'disabled': isDisableDiv == true}">
+  <div class="main_div" [ngClass]="{'disabled': isDisableDiv == true}">
+    <div class="header_div">
+      <h2>Code Transfer</h2>
+    </div>
+    <div class="container-fluid content-div" style="margin-top: 10px; min-height: 600px;">
+
+      <!-- <div style="min-height: 40px;">
+        <form class="form-inline" style="margin: 10px;" [formGroup]="form_search">
+
+          <div class="form-group" style="padding-bottom: 10px;">
+            <select class="form-control" id="inlineFormCustomSelect" formControlName="column">
+              <option value="pprnum">Proposal No</option>
+              <option value="polnum">Policy No </option>
+              <option value="oldagn">Old Agent Code </option>
+              <option value="newagn">New Agent Code </option>
+            </select>
+          </div>
+          <div class="form-group" style="padding-bottom: 10px;">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search for..." formControlName="data">
+              <span class="input-group-btn">
+                <button class="btn btn-info" type="button" (click)="search()">Search</button>
+              </span>
+            </div>
+          </div>
+        </form>
+      </div> -->
+
+      <div style="max-height: 500px; overflow-y: auto;">
+
+        <table class="table table-striped table-responsive">
+          <tr>
+            <th>Branch</th>
+            <th>Policy No</th>
+            <th>Proposal No</th>
+            <th>Old Agent Code</th>
+            <th>New Agent Code</th>
+            <th>Reason</th>
+            <th>Req. By</th>
+            <th>Req. Date</th>
+            <th></th>
+            <th></th>
+          </tr>
+
+          <tr *ngFor="let item of transferlist">
+            <td>{{ item.locCode }}</td>
+            <td>{{ item.polNum }}</td>
+            <td>{{ item.pprNum }}</td>
+            <td>{{ item.oldAgentCode }}</td>
+            <td>{{ item.newAgentCode }}</td>
+            <td>{{ item.reason }}</td>
+            <td>{{ item.requestBy }}</td>
+            <td>{{ item.requestDate }}</td>
+            <td><input class="btn btn-info btn-xs" type="button" value="Approve" (click)="approve(item)"></td>
+            <td><input class="btn btn-danger btn-xs" type="button" value="Reject" (click)="reject(item)"></td>
+
+          </tr>
+        </table>
+      </div>
+
+
+    </div>
+  </div>
+
+</div>

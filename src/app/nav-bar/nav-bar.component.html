@@ -193,6 +193,10 @@
                         <li routerLinkActive="active current">
                             <a routerLink="orgchart">Org Chart</a>
                         </li>
+                        <li *ngIf="userType == 'BRN' || userType == 'BRANCH' || userType == 'ZONE' || userType == 'REGION'">
+                            <a routerLink="codetransfer">Code Transfer</a>
+                        </li>
+
                     </ul>
                 </li>
             </ul>

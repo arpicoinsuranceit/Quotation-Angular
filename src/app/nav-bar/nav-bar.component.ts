@@ -189,8 +189,8 @@ export class NavBarComponent implements OnInit {
     if (this.userType == "UNL") {
 
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='frequencyCombo' style='padding-top:10px;text-align: justify;'>Frequency</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='frequencyCombo' class='form-control'>" +
         "<option value='N'>No</option>" +
         "<option value='Y'>Yes</option>" +
@@ -198,8 +198,8 @@ export class NavBarComponent implements OnInit {
 
     } else if (this.userType == "BRANCH") {
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branchCombo' style='padding-top:10px;text-align: justify;'>Branch</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='branchCombo' class='form-control'>";
 
       for (let i = 0; i < this.dashParam.length; i++) {
@@ -217,8 +217,8 @@ export class NavBarComponent implements OnInit {
 
     } else if (this.userType == "REGION") {
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='regionCombo' style='padding-top:10px;text-align: justify;'>Region</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='regionCombo' class='form-control'>";
 
       for (let i = 0; i < this.dashParam.length; i++) {
@@ -235,8 +235,8 @@ export class NavBarComponent implements OnInit {
 
     } else if (this.userType == "ZONE") {
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='zoneCombo' style='padding-top:10px;text-align: justify;'>Zone</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='zoneCombo' class='form-control'>";
 
       for (let i = 0; i < this.dashParam.length; i++) {
@@ -254,8 +254,8 @@ export class NavBarComponent implements OnInit {
 
     } else if (this.userType == "HO") {
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='zone' style='padding-top:10px;text-align: justify;'>Zone</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='zone' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='region' style='padding-top:10px;text-align: justify;'>Region</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='region' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branch' style='padding-top:10px;text-align: justify;'>Branch</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='branch' value='ALL' class='form-control'/></div></div>" +
@@ -521,7 +521,7 @@ export class NavBarComponent implements OnInit {
 
     if (this.userType == "BRANCH") {
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branchCombo' style='padding-top:10px;text-align: justify;'>Branch</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='branchCombo' class='form-control'>";
 
       for (let i = 0; i < this.dashParam.length; i++) {
@@ -534,7 +534,7 @@ export class NavBarComponent implements OnInit {
 
     } else if (this.userType == "REGION") {
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='regionCombo' style='padding-top:10px;text-align: justify;'>Region</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='regionCombo' class='form-control'>";
 
       for (let i = 0; i < this.dashParam.length; i++) {
@@ -548,7 +548,7 @@ export class NavBarComponent implements OnInit {
 
     } else if (this.userType == "ZONE") {
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='zoneCombo' style='padding-top:10px;text-align: justify;'>Zone</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='zoneCombo' class='form-control'>";
 
       for (let i = 0; i < this.dashParam.length; i++) {
@@ -563,7 +563,7 @@ export class NavBarComponent implements OnInit {
     } else if (this.userType == "HO") {
 
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='zone' style='padding-top:10px;text-align: justify;'>Zone</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='zone' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='region' style='padding-top:10px;text-align: justify;'>Region</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='region' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branch' style='padding-top:10px;text-align: justify;'>Branch</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='branch' value='ALL' class='form-control'/></div></div>" +
@@ -659,7 +659,7 @@ export class NavBarComponent implements OnInit {
 
     if (this.userType == "BRANCH") {
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>As At Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>As At Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branchCombo' style='padding-top:10px;text-align: justify;'>Branch</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='branchCombo' class='form-control'>";
 
       for (let i = 0; i < this.dashParam.length; i++) {
@@ -672,7 +672,7 @@ export class NavBarComponent implements OnInit {
 
     } else if (this.userType == "REGION") {
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>As At Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>As At Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='regionCombo' style='padding-top:10px;text-align: justify;'>Region</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='regionCombo' class='form-control'>";
 
       for (let i = 0; i < this.dashParam.length; i++) {
@@ -686,7 +686,7 @@ export class NavBarComponent implements OnInit {
 
     } else if (this.userType == "ZONE") {
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>As At Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>As At Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='zoneCombo' style='padding-top:10px;text-align: justify;'>Zone</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='zoneCombo' class='form-control'>";
 
       for (let i = 0; i < this.dashParam.length; i++) {
@@ -700,7 +700,7 @@ export class NavBarComponent implements OnInit {
 
     } else if (this.userType == "HO") {
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>As At Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>As At Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='zone' style='padding-top:10px;text-align: justify;'>Zone</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='zone' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='region' style='padding-top:10px;text-align: justify;'>Region</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='region' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branch' style='padding-top:10px;text-align: justify;'>Branch</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='branch' value='ALL' class='form-control'/></div></div>" +
@@ -795,7 +795,7 @@ export class NavBarComponent implements OnInit {
     if (this.userType == "BRANCH") {
 
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='date' style='padding-top:10px;text-align: justify;'>Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='date' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='date' style='padding-top:10px;text-align: justify;'>Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='date' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branch' style='padding-top:10px;text-align: justify;'>Branch</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='branchCombo' class='form-control'>";
 
       for (let i = 0; i < this.dashParam.length; i++) {
@@ -807,7 +807,7 @@ export class NavBarComponent implements OnInit {
     } else if (this.userType == "REGION") {
 
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='date' style='padding-top:10px;text-align: justify;'>Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='date' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='date' style='padding-top:10px;text-align: justify;'>Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='date' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branch' style='padding-top:10px;text-align: justify;'>Branch</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='branch' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='region' style='padding-top:10px;text-align: justify;'>Region</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='regionCombo' class='form-control'>";
 
@@ -819,7 +819,7 @@ export class NavBarComponent implements OnInit {
     } else if (this.userType == "ZONE") {
 
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='date' style='padding-top:10px;text-align: justify;'>Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='date' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='date' style='padding-top:10px;text-align: justify;'>Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='date' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branch' style='padding-top:10px;text-align: justify;'>Branch</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='branch' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='region' style='padding-top:10px;text-align: justify;'>Region</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input id='region' value='ALL' class='form-control'></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='zone' style='padding-top:10px;text-align: justify;'>Zone</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='zoneCombo' class='form-control'>";
@@ -834,7 +834,7 @@ export class NavBarComponent implements OnInit {
     } else if (this.userType == "HO") {
 
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='date' style='padding-top:10px;text-align: justify;'>Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='date' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='date' style='padding-top:10px;text-align: justify;'>Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='date' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branch' style='padding-top:10px;text-align: justify;'>Branch</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='branch' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='region' style='padding-top:10px;text-align: justify;'>Region</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input id='region' value='ALL' class='form-control'></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='zone' style='padding-top:10px;text-align: justify;'>Zone</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input id='zone' value='ALL' class='form-control'></div></div>";
@@ -912,16 +912,16 @@ export class NavBarComponent implements OnInit {
     let htmlTxt = "";
     let status = "N";
     if (this.userType == "IC") {
-      htmlTxt = "<hr class='seperator'><div class='form-group'><label for='fromDate'>From Date</label><input type='date' id='fromDate' class='form-control'/></div>" +
-        "<div class='form-group'><label for='toDate'>To Date</label><input type='date' id='toDate' class='form-control'/></div>" +
+      htmlTxt = "<hr class='seperator'><div class='form-group'><label for='fromDate'>From Date (YYYY-MM-DD)</label><input type='date' id='fromDate' class='form-control'/></div>" +
+        "<div class='form-group'><label for='toDate'>To Date (YYYY-MM-DD)</label><input type='date' id='toDate' class='form-control'/></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='sp' style='padding-top:10px;text-align: justify;'>SP</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='sp' class='form-control'>" +
         "<option value='1'>Yes</option>" +
         "<option value='0'>No</option></select></div></div>";
 
 
     } else if (this.userType == "UNL") {
-      htmlTxt = "<hr class='seperator'><div class='form-group'><label for='fromDate'>From Date</label><input type='date' id='fromDate' class='form-control'/></div>" +
-        "<div class='form-group'><label for='toDate'>To Date</label><input type='date' id='toDate' class='form-control'/></div>" +
+      htmlTxt = "<hr class='seperator'><div class='form-group'><label for='fromDate'>From Date (YYYY-MM-DD)</label><input type='date' id='fromDate' class='form-control'/></div>" +
+        "<div class='form-group'><label for='toDate'>To Date (YYYY-MM-DD)</label><input type='date' id='toDate' class='form-control'/></div>" +
         "<div class='form-group'><label for='ic'>IC</label><input type='text' id='ic' value='ALL' class='form-control'/></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='sp' style='padding-top:10px;text-align: justify;'>SP</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='sp' class='form-control'>" +
         "<option value='1'>Yes</option>" +
@@ -931,8 +931,8 @@ export class NavBarComponent implements OnInit {
 
     } else if (this.userType == "BRANCH") {
 
-      htmlTxt = "<hr class='seperator'><div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+      htmlTxt = "<hr class='seperator'><div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='ic' style='padding-top:10px;text-align: justify;'>IC</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='ic' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='ul' style='padding-top:10px;text-align: justify;'>UL</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='ul' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branch' style='padding-top:10px;text-align: justify;'>Branch</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='branchCombo' class='form-control'>";
@@ -949,8 +949,8 @@ export class NavBarComponent implements OnInit {
     } else if (this.userType == "REGION") {
 
 
-      htmlTxt = "<hr class='seperator'><div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+      htmlTxt = "<hr class='seperator'><div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='ic' style='padding-top:10px;text-align: justify;'>IC</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='ic' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='ul' style='padding-top:10px;text-align: justify;'>UL</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='ul' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branch' style='padding-top:10px;text-align: justify;'>Branch</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='branch' value='ALL' class='form-control'/></div></div>" +
@@ -967,8 +967,8 @@ export class NavBarComponent implements OnInit {
 
     } else if (this.userType == "ZONE") {
 
-      htmlTxt = "<hr class='seperator'><div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+      htmlTxt = "<hr class='seperator'><div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='ic' style='padding-top:10px;text-align: justify;'>IC</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='ic' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='ul' style='padding-top:10px;text-align: justify;'>UL/label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='ul' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branch' style='padding-top:10px;text-align: justify;'>Branch</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' value='ALL' id='branch' class='form-control'/></div></div>" +
@@ -985,8 +985,8 @@ export class NavBarComponent implements OnInit {
 
     } else if (this.userType == "HO") {
 
-      htmlTxt = "<hr class='seperator'><div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+      htmlTxt = "<hr class='seperator'><div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='ic' style='padding-top:10px;text-align: justify;'>IC</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='ic' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='ul' style='padding-top:10px;text-align: justify;'>UL</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='ul' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branch' style='padding-top:10px;text-align: justify;'>Branch</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' value='ALL' id='branch' class='form-control'/></div></div>" +
@@ -1119,7 +1119,7 @@ export class NavBarComponent implements OnInit {
 
     if (this.userType == "ZONE") {
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>As at Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>As at Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='zoneCombo' style='padding-top:10px;text-align: justify;'>Zone</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='zoneCombo' class='form-control'>";
 
       for (let i = 0; i < this.dashParam.length; i++) {
@@ -1136,7 +1136,7 @@ export class NavBarComponent implements OnInit {
 
     if (this.userType == "HO") {
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>As at Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>As at Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='zone' style='padding-top:10px;text-align: justify;'>Zone</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='zone' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='region' style='padding-top:10px;text-align: justify;'>Region</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='region' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branch' style='padding-top:10px;text-align: justify;'>Branch</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='branch' value='ALL' class='form-control'/></div></div>" +
@@ -1208,11 +1208,11 @@ export class NavBarComponent implements OnInit {
     if (this.userType == "IC" || this.userType == "UNL") {
 
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>As at Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>";
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>As at Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>";
 
     } else if (this.userType == "BRANCH") {
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>As at Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>As at Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branchCombo' style='padding-top:10px;text-align: justify;'>Branch</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='branchCombo' class='form-control'>";
 
       for (let i = 0; i < this.dashParam.length; i++) {
@@ -1226,7 +1226,7 @@ export class NavBarComponent implements OnInit {
 
     } else if (this.userType == "REGION") {
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>As at Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>As at Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='regionCombo' style='padding-top:10px;text-align: justify;'>Region</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='regionCombo' class='form-control'>";
 
       for (let i = 0; i < this.dashParam.length; i++) {
@@ -1240,7 +1240,7 @@ export class NavBarComponent implements OnInit {
 
     } else if (this.userType == "ZONE") {
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>As at Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>As at Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='zoneCombo' style='padding-top:10px;text-align: justify;'>Zone</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='zoneCombo' class='form-control'>";
 
       for (let i = 0; i < this.dashParam.length; i++) {
@@ -1255,7 +1255,7 @@ export class NavBarComponent implements OnInit {
     } else if (this.userType == "HO") {
 
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>As at Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>As at Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='zone' style='padding-top:10px;text-align: justify;'>Zone</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='zone' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='region' style='padding-top:10px;text-align: justify;'>Region</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='region' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branch' style='padding-top:10px;text-align: justify;'>Branch</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='branch' value='ALL' class='form-control'/></div></div>" +
@@ -1566,8 +1566,8 @@ export class NavBarComponent implements OnInit {
     let htmlTxt = "";
     if (this.userType == "BRANCH") {
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branch' style='padding-top:10px;text-align: justify;'>Branch</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='branchCombo' class='form-control'>";
 
       for (let i = 0; i < this.dashParam.length; i++) {
@@ -1579,8 +1579,8 @@ export class NavBarComponent implements OnInit {
     } else if (this.userType == "REGION") {
 
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branch' style='padding-top:10px;text-align: justify;'>Branch</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='branch' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='region' style='padding-top:10px;text-align: justify;'>Region</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='regionCombo' class='form-control'>";
 
@@ -1593,8 +1593,8 @@ export class NavBarComponent implements OnInit {
     } else if (this.userType == "ZONE") {
 
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branch' style='padding-top:10px;text-align: justify;'>Branch</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='branch' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='region' style='padding-top:10px;text-align: justify;'>Region</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='region' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='zone' style='padding-top:10px;text-align: justify;'>Zone</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='zoneCombo' class='form-control'>";
@@ -1608,8 +1608,8 @@ export class NavBarComponent implements OnInit {
     } else if (this.userType == "HO") {
 
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branch' style='padding-top:10px;text-align: justify;'>Branch</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='branch' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='region' style='padding-top:10px;text-align: justify;'>Region</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='region' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='zone' style='padding-top:10px;text-align: justify;'>Zone</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='zone' value='ALL' class='form-control'/></div></div>";
@@ -1795,8 +1795,8 @@ export class NavBarComponent implements OnInit {
 
     if (this.userType == "BRANCH") {
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branchCombo' style='padding-top:10px;text-align: justify;'>Branch</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='branchCombo' class='form-control'>";
 
       for (let i = 0; i < this.dashParam.length; i++) {
@@ -1827,8 +1827,8 @@ export class NavBarComponent implements OnInit {
 
     } else if (this.userType == "REGION") {
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='regionCombo' style='padding-top:10px;text-align: justify;'>Region</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='regionCombo' class='form-control'>";
 
       for (let i = 0; i < this.dashParam.length; i++) {
@@ -1859,8 +1859,8 @@ export class NavBarComponent implements OnInit {
 
     } else if (this.userType == "ZONE") {
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='zoneCombo' style='padding-top:10px;text-align: justify;'>Zone</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='zoneCombo' class='form-control'>";
 
       for (let i = 0; i < this.dashParam.length; i++) {
@@ -1892,8 +1892,8 @@ export class NavBarComponent implements OnInit {
 
     } else if (this.userType == "HO") {
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='zone' style='padding-top:10px;text-align: justify;'>Zone</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='zone' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='region' style='padding-top:10px;text-align: justify;'>Region</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='region' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branch' style='padding-top:10px;text-align: justify;'>Branch</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='branch' value='ALL' class='form-control'/></div></div>" +
@@ -2008,8 +2008,8 @@ export class NavBarComponent implements OnInit {
 
     if (this.userType == "BRANCH") {
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branchCombo' style='padding-top:10px;text-align: justify;'>Branch</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='branchCombo' class='form-control'>";
 
       for (let i = 0; i < this.dashParam.length; i++) {
@@ -2045,8 +2045,8 @@ export class NavBarComponent implements OnInit {
 
     } else if (this.userType == "REGION") {
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='regionCombo' style='padding-top:10px;text-align: justify;'>Region</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='regionCombo' class='form-control'>";
 
       for (let i = 0; i < this.dashParam.length; i++) {
@@ -2082,8 +2082,8 @@ export class NavBarComponent implements OnInit {
 
     } else if (this.userType == "ZONE") {
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='zoneCombo' style='padding-top:10px;text-align: justify;'>Zone</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='zoneCombo' class='form-control'>";
 
       for (let i = 0; i < this.dashParam.length; i++) {
@@ -2120,8 +2120,8 @@ export class NavBarComponent implements OnInit {
 
     } else if (this.userType == "HO") {
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='zone' style='padding-top:10px;text-align: justify;'>Zone</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='zone' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='region' style='padding-top:10px;text-align: justify;'>Region</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='region' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branch' style='padding-top:10px;text-align: justify;'>Branch</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='branch' value='ALL' class='form-control'/></div></div>" +
@@ -2247,8 +2247,8 @@ export class NavBarComponent implements OnInit {
     if (this.userType == "UNL") {
 
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='productCombo' style='padding-top:10px;text-align: justify;'>Product</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='productCombo' class='form-control'>" +
         "<option value='ALL'>ALL</option>" +
         "<option value='END1'>END1</option>" +
@@ -2278,8 +2278,8 @@ export class NavBarComponent implements OnInit {
 
     } else if (this.userType == "BRANCH") {
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branchCombo' style='padding-top:10px;text-align: justify;'>Branch</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='branchCombo' class='form-control'>";
 
       for (let i = 0; i < this.dashParam.length; i++) {
@@ -2319,8 +2319,8 @@ export class NavBarComponent implements OnInit {
 
     } else if (this.userType == "REGION") {
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='regionCombo' style='padding-top:10px;text-align: justify;'>Region</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='regionCombo' class='form-control'>";
 
       for (let i = 0; i < this.dashParam.length; i++) {
@@ -2360,8 +2360,8 @@ export class NavBarComponent implements OnInit {
 
     } else if (this.userType == "ZONE") {
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='zoneCombo' style='padding-top:10px;text-align: justify;'>Zone</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='zoneCombo' class='form-control'>";
 
       for (let i = 0; i < this.dashParam.length; i++) {
@@ -2402,8 +2402,8 @@ export class NavBarComponent implements OnInit {
 
     } else if (this.userType == "HO") {
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='zone' style='padding-top:10px;text-align: justify;'>Zone</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='zone' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='region' style='padding-top:10px;text-align: justify;'>Region</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='region' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branch' style='padding-top:10px;text-align: justify;'>Branch</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='branch' value='ALL' class='form-control'/></div></div>" +
@@ -2547,8 +2547,8 @@ export class NavBarComponent implements OnInit {
     if (this.userType == "IC" || this.userType == "UNL") {
 
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='productCombo' style='padding-top:10px;text-align: justify;'>Product</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='productCombo' class='form-control'>" +
         "<option value='ALL'>ALL</option>" +
         "<option value='END1'>END1</option>" +
@@ -2570,8 +2570,8 @@ export class NavBarComponent implements OnInit {
 
     } else if (this.userType == "BRANCH") {
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branchCombo' style='padding-top:10px;text-align: justify;'>Branch</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='branchCombo' class='form-control'>";
 
       for (let i = 0; i < this.dashParam.length; i++) {
@@ -2603,8 +2603,8 @@ export class NavBarComponent implements OnInit {
 
     } else if (this.userType == "REGION") {
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='regionCombo' style='padding-top:10px;text-align: justify;'>Region</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='regionCombo' class='form-control'>";
 
       for (let i = 0; i < this.dashParam.length; i++) {
@@ -2636,8 +2636,8 @@ export class NavBarComponent implements OnInit {
 
     } else if (this.userType == "ZONE") {
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='zoneCombo' style='padding-top:10px;text-align: justify;'>Zone</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='zoneCombo' class='form-control'>";
 
       for (let i = 0; i < this.dashParam.length; i++) {
@@ -2670,8 +2670,8 @@ export class NavBarComponent implements OnInit {
     } else if (this.userType == "HO") {
 
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='zone' style='padding-top:10px;text-align: justify;'>Zone</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='zone' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='region' style='padding-top:10px;text-align: justify;'>Region</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='region' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branch' style='padding-top:10px;text-align: justify;'>Branch</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='branch' value='ALL' class='form-control'/></div></div>" +
@@ -2807,8 +2807,8 @@ export class NavBarComponent implements OnInit {
     if (this.userType == "UNL") {
 
       htmlTxt = "<hr class='seperator'>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
-        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='productCombo' style='padding-top:10px;text-align: justify;'>Product</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='productCombo' class='form-control'>" +
         "<option value='ALL'>ALL</option>" +
         "<option value='END1'>END1</option>" +
@@ -2837,8 +2837,8 @@ export class NavBarComponent implements OnInit {
         "<option value='NP'>NP</option></select></div></div>";
     }else if(this.userType == "HO"){
       htmlTxt = "<hr class='seperator'>" +
-      "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
-      "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
+      "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>From Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
+      "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='toDate' style='padding-top:10px;text-align: justify;'>To Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='toDate' class='form-control'/></div></div>" +
       "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='zone' style='padding-top:10px;text-align: justify;'>Zone</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='zone' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='region' style='padding-top:10px;text-align: justify;'>Region</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='region' value='ALL' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branch' style='padding-top:10px;text-align: justify;'>Branch</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='branch' value='ALL' class='form-control'/></div></div>" +

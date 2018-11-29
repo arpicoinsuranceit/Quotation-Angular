@@ -457,6 +457,25 @@ export class DashboardService {
 
   }
 
+  getProductionIncentive(date: string, branch: string, agent: string, status: string) {
+    //console.log(fromDate + "," + toDate + "," + branch + "," + advisor);
+
+    let resp = 'http://localhost:8085/productIncentive/' + agent + "/" + date + "/" + branch + "/" + status;
+    let respArr: Array<string> = resp.split("/");
+    let url = "http://localhost:8085/productIncentive";
+
+    for (var _i = 4; _i < respArr.length; _i++) {
+      var text = respArr[_i];
+      var encodedString = btoa(text);
+      url += "/" + encodedString;
+    }
+
+    return this.http.get(url, { responseType: ResponseContentType.Blob }).map((res) => {
+        return new Blob([res.blob()], { type: 'application/pdf' })
+    });
+
+  }
+
   getSumAtRiskMainLife(nic) {
     return this.http.post('http://localhost:8085/previousSumAtRisk', nic);
   }

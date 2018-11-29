@@ -2923,6 +2923,79 @@ export class NavBarComponent implements OnInit {
 
   }
 
+  ///////////////////////////////PRODUCT INCENTIVE//////////////////////////////////
+  productIncentive() {
+    this.init();
+    let htmlTxt = "";
+    let status = "N";
+    let locName = "Zone"
+    if (this.userType == "IC" || this.userType == "UNL") {
+      htmlTxt = "<hr class='seperator'><div class='form-group'><label for='fromDate'>Date (YYYY-MM-DD)</label><input type='date' id='fromDate' class='form-control'/></div>";
+
+    } else if (this.userType == "HO") {
+      htmlTxt = "<hr class='seperator'><div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='advisor' style='padding-top:10px;text-align: justify;'>Agent Code</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='advisor' class='form-control' value='ALL'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branch' style='padding-top:10px;text-align: justify;'>Branch Code</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='branch' class='form-control' value='ALL'/>";
+    } else {
+
+      if (this.userType == "BRANCH") {
+        locName = "Branch";
+      } else if (this.userType == "REGION") {
+        locName = "Region";
+      } else if (this.userType == "ZONE") {
+        locName = "Zone";
+      } else {
+        return;
+      }
+
+      htmlTxt = "<hr class='seperator'><div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='fromDate' style='padding-top:10px;text-align: justify;'>Date (YYYY-MM-DD)</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='date' id='fromDate' class='form-control'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='advisor' style='padding-top:10px;text-align: justify;'>Agent Code</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='advisor' class='form-control' value='ALL'/></div></div>" +
+        "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='branchCombo' style='padding-top:10px;text-align: justify;'>" + locName + "</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='branchCombo' class='form-control'>";
+
+      for (let i = 0; i < this.dashParam.length; i++) {
+        htmlTxt += "<option value=" + this.dashParam[i] + ">" + this.dashParam[i] + "</option>";
+      }
+
+      htmlTxt += "</select></div></div>";
+    }
+
+    swal({
+      title: 'Product Incentive',
+      html: htmlTxt,
+      width: '450px',
+      showCancelButton: true,
+      showConfirmButton: true
+    }).then((resp) => {
+
+      let map = new Map<string, string>();
+      if (resp.value == true) {
+        this.lockReports = true;
+        this.getInputValues(document.getElementById("fromDate"), 'fromDate', map);
+        map.set("advisor", sessionStorage.getItem("Token"));
+        status = "Y";
+        if (this.userType != "IC" && this.userType != "UNL" && this.userType != "HO") {
+
+          this.getInputValues(document.getElementById("advisor"), 'advisor', map);
+          this.getInputValues(document.getElementById("branchCombo"), 'branch', map);
+          status = "N";
+        }
+
+        if (this.userType == "HO") {
+          this.getInputValues(document.getElementById("advisor"), 'advisor', map);
+          this.getInputValues(document.getElementById("branch"), 'branch', map);
+          status = "N";
+        }
+
+        this.dashboardService.getProductionIncentive(map.get('fromDate'), map.get('branch'), map.get('advisor'), status).subscribe(
+          (res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+        });
+      }
+    });
+  }
+
   // loadDashboard(){
     
   //   var dashPara=sessionStorage.getItem("dashpara");

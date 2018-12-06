@@ -1481,7 +1481,22 @@ export class NavBarComponent implements OnInit {
 
 
     } else {
-      return;
+      htmlTxt = "<hr class='seperator'>" +
+      "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='year' style='padding-top:10px;text-align: justify;'>Year</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' id='year' class='form-control'/></div></div>" +
+      "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='monthCombo' style='padding-top:10px;text-align: justify;'>Month</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='monthCombo' class='form-control'>" +
+      "<option value='ALL'>ALL</option>" +
+      "<option value='1'>January</option>" +
+      "<option value='2'>February</option>" +
+      "<option value='3'>March</option>" +
+      "<option value='4'>April</option>" +
+      "<option value='5'>May</option>" +
+      "<option value='6'>June</option>" +
+      "<option value='7'>July</option>" +
+      "<option value='8'>August</option>" +
+      "<option value='9'>September</option>" +
+      "<option value='10'>October</option>" +
+      "<option value='11'>November</option>" +
+      "<option value='12'>December</option></select></div></div>" ;
     }
 
     swal({
@@ -1548,6 +1563,16 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("statusCombo"), 'status', map);
 
           this.dashboardService.getGrantStmtBranch(map.get('branch'), map.get('year'), map.get('month'), map.get('code'), map.get('status')).subscribe((res) => {
+            var fileURL = URL.createObjectURL(res);
+            window.open(fileURL); // if you want to open it in new tab
+            this.lockReports=false;
+          });
+
+        }else{
+          this.getInputValues(document.getElementById("year"), 'year', map);
+          this.getInputValues(document.getElementById("monthCombo"), 'month', map);
+
+          this.dashboardService.getGrantStmtBranch('ALL', map.get('year'), map.get('month'), this.loginService.currentUser.userCode, 'ALL').subscribe((res) => {
             var fileURL = URL.createObjectURL(res);
             window.open(fileURL); // if you want to open it in new tab
             this.lockReports=false;

@@ -67,6 +67,15 @@ const routes: Routes = [
     loadChildren: 'app/view/quo-dtapl/quo-dtapl.module#QuoDtaplModule'
   },
 
+  {
+    path: 'quodtap',
+    loadChildren: 'app/view/quo-dtap/quo-dtap.module#QuoDtapModule'
+  },
+  {
+    path: 'quodtap/:id',
+    loadChildren: 'app/view/quo-dtap/quo-dtap.module#QuoDtapModule'
+  },
+
 
   {
     path: 'quoend1',

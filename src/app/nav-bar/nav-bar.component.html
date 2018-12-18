@@ -1,4 +1,5 @@
 <nav class="navbar navbar-inverse" *ngIf="isLog()">
+    <span class="fallingSnow"></span>
     <div class="container-fluid">
         <div class="navbar-header">
             <button (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample" type="button"
@@ -51,6 +52,9 @@
                         <li routerLinkActive="active current" *ngIf="productArray.includes('DTAPL')">
                             <a routerLink="quodtapl">ARPICO PERSONEL LOAN - DTAPL</a>
                         </li>
+                        <li routerLinkActive="active current" *ngIf="productArray.includes('DTAP')">
+                            <a routerLink="quodtap">DECREASING TERM ASSURANCE PLAN - DTAP</a>
+                        </li>
                         
                         <li routerLinkActive="active current" >
                             <a routerLink="loadQuo">LOAD QUOTATIONS</a>
@@ -62,9 +66,6 @@
 
                     </ul>
 
-                </li>
-                <li routerLinkActive="active current" *ngIf="userType != 'IC' && userType != 'UNL' && userType != 'REGION'">
-                    <a routerLink="commitment">Commitment</a>
                 </li>
                 
                 <li routerLinkActive="active current">
@@ -188,16 +189,20 @@
 
                 </li>
 
-                <li ngbDropdown routerLinkActive="active current" class="dropdown">
-                    <a ngbDropdownToggle class="dropdown-toggle" data-toggle="dropdown">Other
+                <li ngbDropdown routerLinkActive="active current" class="dropdown" *ngIf="userType != 'IC'">
+                    <a ngbDropdownToggle class="dropdown-toggle" data-toggle="dropdown">Work Flow
                         <span class="caret"></span>
                     </a>
                     <ul ngbDropdownMenu class="dropdown-menu">
-                        <li routerLinkActive="active current">
+                        <!-- <li routerLinkActive="active current">
                             <a routerLink="orgchart">Org Chart</a>
-                        </li>
+                        </li> -->
                         <li *ngIf="userType == 'BRN' || userType == 'BRANCH' || userType == 'ZONE' || userType == 'REGION'">
-                            <a routerLink="codetransfer">Code Transfer</a>
+                            <a routerLink="codetransfer">Pending Code Approvals</a>
+                        </li>
+
+                        <li *ngIf="userType != 'IC' && userType != 'UNL' && userType != 'REGION'">
+                            <a routerLink="commitment">Commitment</a>
                         </li>
 
                     </ul>
@@ -227,4 +232,7 @@
             </ul>
         </div>
     </div>
+    <!-- <div class="santa">
+        <img src="assets/images/animated-santa.gif" alt="" style="width: 100px;height: 50px;">
+    </div> -->
 </nav>

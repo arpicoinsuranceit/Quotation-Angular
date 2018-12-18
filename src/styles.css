@@ -250,3 +250,52 @@ input[type=number]::-webkit-outer-spin-button {
         visibility: hidden;
     }
 }
+
+
+
+
+@keyframes move
+    {
+        0%   {
+            right: 0%;
+          transform: rotate(0deg) ;
+        }
+        20%  {
+            right: 20%;
+          transform: rotate(0deg) ;
+        }
+        40%  {
+            right: 40%;
+          transform: rotate(0deg) ;
+        }
+        50%  {
+            right: 50%;
+          transform: rotate(0deg) ;
+        }
+        70% {
+            right: 70%;
+          transform: rotate(0deg);
+        }
+        90% {
+            right: 90%;
+          transform: rotate(0deg);
+        }
+        100% {
+            right: 100%;
+          transform: rotate(0deg);
+        }
+    }
+
+    .santa {
+        right: -500px;
+        opacity: 0.3;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin-top: auto;
+        margin-bottom: auto;
+        -webkit-animation: move 20s linear 1s infinite; /* Safari 4.0 - 8.0 */
+        /*-webkit-animation-direction: alternate-reverse;  Safari 4.0 - 8.0 */
+        animation: move 20s linear 1s infinite;
+        /*animation-direction: alternate-reverse;*/
+    }

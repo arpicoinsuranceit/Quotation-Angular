@@ -166,6 +166,11 @@ export class ViewQuoComponent implements OnInit {
           url = "/quoartm/" + qdId + "";
           break;
         }
+        case "DTAP": {
+          //console.log("ARTM");
+          url = "/quodtap/" + qdId + "";
+          break;
+        }
         default: {
           //console.log("Invalid choice");
           break;

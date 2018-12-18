@@ -235,7 +235,7 @@ export class QuoDtaComponent implements OnInit {
             this._quotationCalculation._personalInfo.sPreviousSumAtRisk = this.previousSumSpouse;
             this.isDisableDiv = true;
             this.saveDtaQuotationService.getQouCal(this._quotationCalculation).subscribe(response => {
-              //console.log(response.json());
+              console.log(response.json());
               document.onkeydown = function (e) { return true; }
               this.isDisableDiv = false;
               if (response.json().errorExist == true) {

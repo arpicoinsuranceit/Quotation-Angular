@@ -841,7 +841,7 @@ export class QuoEnd1Component implements OnInit {
             this._invpSaveQuotation._calPersonalInfo = this._quotationCalculation._personalInfo;
             this.isDisableDiv = true;
             document.onkeydown = function (e) { return false; }
-            alert("e");
+            //alert("e");
             this.saveEndQuotationService.editEnd(this._invpSaveQuotation, this.qdId).subscribe(response => {
               this.personalInfo._plan._frequance = this.getFreq(this._invpSaveQuotation._personalInfo._plan._frequance);
               this.isDisableDiv = false;

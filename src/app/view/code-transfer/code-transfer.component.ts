@@ -42,9 +42,17 @@ export class CodeTransferComponent implements OnInit {
       // console.log(resp.json());
       this.transferlist = new Array();
       for (let i in resp.json()) {
-        this.transferlist.push(resp.json()[i]);
+
+        let transfer: CodeTransfer = resp.json()[i];
+
+        transfer.requestDate = new Date(resp.json()[i].requestDate).toDateString();
+
+        this.transferlist.push(transfer);
       }
 
+    }, error => {
+      this.isDisableDiv = false;
+      swal("Error", "Error at loading", "error");
     });
   }
 
@@ -53,19 +61,30 @@ export class CodeTransferComponent implements OnInit {
   }
 
   approve(code) {
+
+    console.log(code);
+
     let user = this.loginService.currentUser;
 
+    let isOk = false;
+
     let htmlTxt = "<hr class='seperator'>";
-    htmlTxt += "<div class='form-group'>" +
+
+    htmlTxt += "<div>" +
+      "<lable>Please Enter New Agent Code for Confirmation</lable>" +
+      "<br>" +
+      "<lable> Agent Code : " + code.newAgentCode + "</lable></div>" +
+      "<br>" +
+      "<div class='form-group'>" +
       "<div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'>" +
-      "<label for='remark' style='padding-top:10px;text-align: justify;'>Remark</label> " +
+      "<label for='confirm' style='padding-top:10px;text-align: justify;'>Confirm</label> " +
       "</div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'>" +
-      "<input type='text' id='remark' class='form-control' placeholder='Remark'/>" +
+      "<input type='text' id='agentCode' class='form-control' placeholder='New Agent Code'/>" +
       "</div></div>" +
       "</div>";
 
     swal({
-      title: 'Approve',
+      title: 'Confirmation',
       html: htmlTxt,
       width: '450px',
       showCancelButton: true,
@@ -73,24 +92,39 @@ export class CodeTransferComponent implements OnInit {
     }).then((resp) => {
       let map = new Map<string, string>();
       if (resp.value == true) {
-        this.getInputValues(document.getElementById("remark"), 'remark', map);
+        this.getInputValues(document.getElementById("agentCode"), 'agentCode', map);
 
-        this.isDisableDiv = true;
-        this.codeTransferService.approveTransfers(user.userCode, code.codeTransferId, map.get("remark")).subscribe(resp => {
-          this.isDisableDiv = false;
-          if (resp.json().code == '200') {
-            swal("Success", resp.json().message, "success");
-          } else {
-            swal("Error", resp.json().message, "error");
-          }
-          this.getTransfers();
-        }, error => {
-          this.isDisableDiv = false;
-          swal("Error", "Internal Error", "error")
-        });
+        if (map.get("agentCode") == code.newAgentCode) {
 
 
 
+          swal({
+            title: 'Approve',
+            html: "<lable>Are you sure ? </lable>",
+            showCancelButton: true,
+            showConfirmButton: true
+          }).then(resp => {
+
+            this.isDisableDiv = true;
+            this.codeTransferService.approveTransfers(user.userCode, code.codeTransferId, map.get("remark")).subscribe(resp => {
+              this.isDisableDiv = false;
+              if (resp.json().code == '200') {
+                swal("Success", resp.json().message, "success");
+              } else {
+                swal("Error", resp.json().message, "error");
+              }
+              this.getTransfers();
+            }, error => {
+              this.isDisableDiv = false;
+              swal("Error", "Internal Error", "error")
+            });
+
+          });
+
+          console.log(true);
+        } else {
+          swal("Error", "Code is Incorrect", "error");
+        }
       }
 
     });

@@ -52,7 +52,7 @@
                   <tbody>
 
                     <tr *ngIf="product == 'AIB' || product == 'AIP' || product == 'ASFP' || product == 'ASIP' ||
-                         product == 'ATRM' || product == 'DTA' || product == 'DTAPL' || product == 'END1' || product == 'INVP'">
+                         product == 'ATRM' || product == 'DTA' || product == 'DTAP' || product == 'DTAPL' || product == 'END1' || product == 'INVP'">
                       <td style="width: 150px;">Paying Term </td>
                       <td>:</td>
                       <td>{{quo._plan._term}}</td>
@@ -83,7 +83,7 @@
                     </tr>
 
                     <tr *ngIf="product == 'AIB' || product == 'AIP' || product == 'ARP' || product == 'ASFP' ||
-                         product == 'ASIP' || product == 'ATRM' || product == 'DTA' || !product == 'DTAPL' || product == 'END1' || 
+                         product == 'ASIP' || product == 'ATRM' || product == 'DTA' || product == 'DTAP' || !product == 'DTAPL' || product == 'END1' || 
                          product == 'INVP' || product == 'ARTM'">
                       <td style="width: 150px;">Pay Frequency </td>
                       <td>:</td>
@@ -99,13 +99,13 @@
 
                 <table>
                   <tbody>
-                    <tr *ngIf="product == 'DTA' || product == 'DTAPL'">
+                    <tr *ngIf="product == 'DTA' || product == 'DTAP' || product == 'DTAPL'">
                       <td style="width: 150px;">Interest Rate </td>
                       <td>:</td>
                       <td>{{quo._plan._interestRate}}</td>
                     </tr>
 
-                    <tr *ngIf="product == 'DTA' || product == 'DTAPL'">
+                    <tr *ngIf="product == 'DTA' || product == 'DTAP' || product == 'DTAPL'">
                       <td style="width: 150px;">Loan Amount </td>
                       <td>:</td>
                       <td>{{quo._plan._bsa.toLocaleString()}}</td>
@@ -119,7 +119,7 @@
                     </tr>
 
                     <tr *ngIf="product == 'ARP' || product == 'ASFP' || product == 'ASIP' || product == 'ATRM' ||
-                         product == 'DTA' || product == 'DTAPL' || product == 'END1' || product == 'INVP'">
+                         product == 'DTA' || product == 'DTAP' || product == 'DTAPL' || product == 'END1' || product == 'INVP'">
                       <td style="width: 150px;">Premium (BSA) </td>
                       <td>:</td>
                       <td>{{quo._plan.contribution.toLocaleString()}}</td>
@@ -184,7 +184,7 @@
             </div>
             <div style="float:right;margin-right:10px;">
               <button class="btn btn-primary" style="background-color:0c3da3;" (click)="scheduleDetails(quo.quoDetailId)"
-                *ngIf="product == 'DTA' || product == 'DTAPL'">Schedule</button>
+                *ngIf="product == 'DTA' || product == 'DTAP' || product == 'DTAPL'">Schedule</button>
             </div>
           </div>
         </div>
@@ -528,7 +528,7 @@
                   <tbody>
 
                     <tr *ngIf="product == 'AIB' || product == 'AIP' || product == 'ASFP' || product == 'ASIP' ||
-                         product == 'ATRM' || product == 'DTA' || product == 'DTAPL' || product == 'END1' || product == 'INVP'">
+                         product == 'ATRM' || product == 'DTA' || product == 'DTAP' || product == 'DTAPL' || product == 'END1' || product == 'INVP'">
                       <td>Paying Term </td>
                       <td>:</td>
                       <td>{{quo._plan._term}}</td>
@@ -559,7 +559,7 @@
                     </tr>
 
                     <tr *ngIf="product == 'AIB' || product == 'AIP' || product == 'ARP' || product == 'ASFP' ||
-                         product == 'ASIP' || product == 'ATRM' || product == 'DTA' || !product == 'DTAPL' || product == 'END1' || 
+                         product == 'ASIP' || product == 'ATRM' || product == 'DTA' || product == 'DTAP' || !product == 'DTAPL' || product == 'END1' || 
                          product == 'INVP' || product == 'ARTM'">
                       <td>Pay Frequency </td>
                       <td>:</td>
@@ -575,13 +575,13 @@
 
                 <table>
                   <tbody>
-                    <tr *ngIf="product == 'DTA' || product == 'DTAPL'">
+                    <tr *ngIf="product == 'DTA' || product == 'DTAP' || product == 'DTAPL'">
                       <td>Interest Rate </td>
                       <td>:</td>
                       <td>{{quo._plan._interestRate}}</td>
                     </tr>
 
-                    <tr *ngIf="product == 'DTA' || product == 'DTAPL'">
+                    <tr *ngIf="product == 'DTA' || product == 'DTAP' || product == 'DTAPL'">
                       <td>Loan Amount </td>
                       <td>:</td>
                       <td>{{quo._plan._bsa.toLocaleString()}}</td>
@@ -595,7 +595,7 @@
                     </tr>
 
                     <tr *ngIf="product == 'ARP' || product == 'ASFP' || product == 'ASIP' || product == 'ATRM' ||
-                         product == 'DTA' || product == 'DTAPL' || product == 'END1' || product == 'INVP'">
+                         product == 'DTA' || product == 'DTAP' || product == 'DTAPL' || product == 'END1' || product == 'INVP'">
                       <td>Premium (BSA) </td>
                       <td>:</td>
                       <td>{{quo._plan.contribution.toLocaleString()}}</td>
@@ -841,7 +841,7 @@
         </ngb-tabset>
         <div style="float:right;margin-right:10px;">
           <button class="btn btn-primary" style="background-color:0c3da3;" (click)="scheduleDetails(quo.quoDetailId)"
-            *ngIf="product == 'DTA' || product == 'DTAPL'">Schedule</button>
+            *ngIf="product == 'DTA' || product == 'DTAP' || product == 'DTAPL'">Schedule</button>
         </div>
 
       </div>

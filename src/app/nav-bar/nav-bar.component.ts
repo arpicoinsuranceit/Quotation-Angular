@@ -915,8 +915,8 @@ export class NavBarComponent implements OnInit {
       htmlTxt = "<hr class='seperator'><div class='form-group'><label for='fromDate'>From Date (YYYY-MM-DD)</label><input type='date' id='fromDate' class='form-control'/></div>" +
         "<div class='form-group'><label for='toDate'>To Date (YYYY-MM-DD)</label><input type='date' id='toDate' class='form-control'/></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='sp' style='padding-top:10px;text-align: justify;'>SP</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='sp' class='form-control'>" +
-        "<option value='1'>Yes</option>" +
-        "<option value='0'>No</option></select></div></div>";
+        "<option value='0'>No</option>" +
+        "<option value='1'>Yes</option></select></div></div>";
 
 
     } else if (this.userType == "UNL") {
@@ -924,8 +924,8 @@ export class NavBarComponent implements OnInit {
         "<div class='form-group'><label for='toDate'>To Date (YYYY-MM-DD)</label><input type='date' id='toDate' class='form-control'/></div>" +
         "<div class='form-group'><label for='ic'>IC</label><input type='text' id='ic' value='ALL' class='form-control'/></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='sp' style='padding-top:10px;text-align: justify;'>SP</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='sp' class='form-control'>" +
-        "<option value='1'>Yes</option>" +
-        "<option value='0'>No</option></select></div></div>";
+        "<option value='0'>No</option>" +
+        "<option value='1'>Yes</option></select></div></div>";
 
 
 
@@ -943,8 +943,8 @@ export class NavBarComponent implements OnInit {
 
       htmlTxt += "</select></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='sp' style='padding-top:10px;text-align: justify;'>SP</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='sp' class='form-control'>" +
-        "<option value='1'>Yes</option>" +
-        "<option value='0'>No</option></select></div></div>";
+        "<option value='0'>No</option>" +
+        "<option value='1'>Yes</option></select></div></div>";
 
     } else if (this.userType == "REGION") {
 
@@ -962,8 +962,8 @@ export class NavBarComponent implements OnInit {
 
       htmlTxt += "</select></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='sp' style='padding-top:10px;text-align: justify;'>SP</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='sp' class='form-control'>" +
-        "<option value='1'>Yes</option>" +
-        "<option value='0'>No</option></select></div></div>";
+        "<option value='0'>No</option>" +
+        "<option value='1'>Yes</option></select></div></div>";
 
     } else if (this.userType == "ZONE") {
 
@@ -980,8 +980,8 @@ export class NavBarComponent implements OnInit {
         htmlTxt += "<option value=" + this.dashParam[i] + ">" + this.dashParam[i] + "</option>";
       }
       htmlTxt += "</select></div></div>" + "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='sp' style='padding-top:10px;text-align: justify;'>SP</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='sp' class='form-control'>" +
-        "<option value='1'>Yes</option>" +
-        "<option value='0'>No</option></select></div></div>";
+        "<option value='0'>No</option>" +
+        "<option value='1'>Yes</option></select></div></div>";
 
     } else if (this.userType == "HO") {
 
@@ -993,8 +993,8 @@ export class NavBarComponent implements OnInit {
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='region' style='padding-top:10px;text-align: justify;'>Region</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' value='ALL' id='region' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='zone' style='padding-top:10px;text-align: justify;'>Zone</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><input type='text' value='ALL' id='zone' class='form-control'/></div></div>" +
         "<div class='form-group'><div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'><label for='sp' style='padding-top:10px;text-align: justify;'>SP</label></div><div class='col-md-8 col-lg-8 col-sm-8 col-xs-12' style='padding-bottom:10px;'><select id='sp' class='form-control'>" +
-        "<option value='1'>Yes</option>" +
-        "<option value='0'>No</option></select></div></div>";
+        "<option value='0'>No</option>" +
+        "<option value='1'>Yes</option></select></div></div>";
 
 
     } else {
@@ -2759,7 +2759,7 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("productCombo"), 'product', map);
           this.getInputValues(document.getElementById("frequencyCombo"), 'frequency', map);
           status = "N";
-          this.dashboardService.getSalesPerfDetail(map.get('fromDate'), map.get('toDate'), map.get('code'), map.get('branch'), "ALL", "ALL", map.get('product'), map.get('frequency'), status).subscribe((res) => {
+          this.dashboardService.getSalesPerfDetail(map.get('fromDate'), map.get('toDate'), map.get('code'), "ALL", "ALL",map.get('branch'), map.get('product'), map.get('frequency'), status).subscribe((res) => {
             var fileURL = URL.createObjectURL(res);
             window.open(fileURL); // if you want to open it in new tab
             this.lockReports=false;
@@ -2775,7 +2775,7 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("productCombo"), 'product', map);
           this.getInputValues(document.getElementById("frequencyCombo"), 'frequency', map);
           status = "N";
-          this.dashboardService.getSalesPerfDetail(map.get('fromDate'), map.get('toDate'), map.get('code'), map.get('branch'), map.get('region'), "ALL", map.get('product'), map.get('frequency'), status).subscribe((res) => {
+          this.dashboardService.getSalesPerfDetail(map.get('fromDate'), map.get('toDate'), map.get('code'), "ALL", map.get('region'), map.get('branch'), map.get('product'), map.get('frequency'), status).subscribe((res) => {
             var fileURL = URL.createObjectURL(res);
             window.open(fileURL); // if you want to open it in new tab
             this.lockReports=false;
@@ -2791,7 +2791,7 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("productCombo"), 'product', map);
           this.getInputValues(document.getElementById("frequencyCombo"), 'frequency', map);
           status = "N";
-          this.dashboardService.getSalesPerfDetail(map.get('fromDate'), map.get('toDate'), map.get('code'), map.get('branch'), map.get('region'), map.get('zone'), map.get('product'), map.get('frequency'), status).subscribe((res) => {
+          this.dashboardService.getSalesPerfDetail(map.get('fromDate'), map.get('toDate'), map.get('code'), map.get('zone'), map.get('region'), map.get('branch'), map.get('product'), map.get('frequency'), status).subscribe((res) => {
             var fileURL = URL.createObjectURL(res);
             window.open(fileURL); // if you want to open it in new tab
             this.lockReports=false;
@@ -2808,7 +2808,7 @@ export class NavBarComponent implements OnInit {
           this.getInputValues(document.getElementById("productCombo"), 'product', map);
           this.getInputValues(document.getElementById("frequencyCombo"), 'frequency', map);
           status = "N";
-          this.dashboardService.getSalesPerfDetail(map.get('fromDate'), map.get('toDate'), map.get('code'), map.get('branch'), map.get('region'), map.get('zone'), map.get('product'), map.get('frequency'), status).subscribe((res) => {
+          this.dashboardService.getSalesPerfDetail(map.get('fromDate'), map.get('toDate'), map.get('code'), map.get('zone'), map.get('region'), map.get('branch'), map.get('product'), map.get('frequency'), status).subscribe((res) => {
             var fileURL = URL.createObjectURL(res);
             window.open(fileURL); // if you want to open it in new tab
             this.lockReports=false;

@@ -218,13 +218,14 @@ export class QuoDtapComponent implements OnInit {
   }
 
   sendQuo() {
-
+//console.log(this.personalInfo._spouse._sAge);
+//console.log(this.personalInfo._mainlife._mAge);
     if (this.personalInfo._mainlife._mAge < 66 && this.personalInfo._mainlife._mAge > 17) {
       if (this.activeSp == "1") {
         if (this.personalInfo._spouse._sAge < 66 && this.personalInfo._spouse._sAge > 17) {
 
         } else {
-          swal("Oopz..", "Spouse age must be greater than or equal 18 and less than or equal 65..", "error");
+          swal("Oopz..", "Join Life age must be greater than or equal 18 and less than or equal 65..", "error");
           return;
         }
       }
@@ -234,6 +235,7 @@ export class QuoDtapComponent implements OnInit {
     }
 
     if (this._quotationCalculation._personalInfo != null) {
+      console.log("this._quotationCalculation");
       console.log(this._quotationCalculation);
 
       if (this.personalInfo._plan._interestRate != "" && this.personalInfo._plan._interestRate != "0") {
@@ -704,6 +706,7 @@ export class QuoDtapComponent implements OnInit {
 
   calPreviousRiskS(e) {
     if(e.length >0){
+      console.log("called calPreviousRiskS")
     this.isDisableDiv = true;
     document.onkeydown = function (e) { return false; }
     this.dashboardService.getSumAtRiskMainLife(e).subscribe(resp => {

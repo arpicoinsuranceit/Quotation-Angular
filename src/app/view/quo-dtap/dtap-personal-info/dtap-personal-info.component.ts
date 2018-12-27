@@ -218,56 +218,34 @@ export class DtapPersonalInfoComponent implements OnInit {
   loadSpouseDOBFromNic() {
     if (this._personalInfo._spouse._sNic != null && this._personalInfo._spouse._sNic.length > 0) {
       this.ageCalculationService.loadAgeAndDOBFromNic(this._personalInfo._spouse._sNic).subscribe(response => {
-        if (this._personalInfo._mainlife._mNic != undefined) {
+        this._personalInfo._spouse._sGender = response.json().Gender;
+        this._personalInfo._spouse._sAge = response.json().Age;
+        this._personalInfo._spouse._sDob = response.json().DOB;
+        this.spouseForm.get("sDob").disable();
 
-          if (this._personalInfo._mainlife._mGender == response.json().Gender) {
-            if (this._personalInfo._mainlife._mGender == "M") {
-              swal("Spouse Can not be Male.", "", "error").then((value) => {
-                this._personalInfo._spouse._sNic = "";
-                document.getElementById("txt-snic").classList.add("errors");
-                document.getElementById("txt-snic").focus();
-                this._personalInfo._spouse._sTitle = "MRS";
-              });
-            }
-            if (this._personalInfo._mainlife._mGender == "F") {
-              swal("Spouse Can not be Female.", "", "error").then((value) => {
-                this._personalInfo._spouse._sNic = "";
-                document.getElementById("txt-snic").classList.add("errors");
-                document.getElementById("txt-snic").focus();
-                this._personalInfo._spouse._sTitle = "MR";
-              });
-            }
-            return;
+        if (!this.regexp.test(this._personalInfo._spouse._sDob)) {
+          swal("Invalid Date Format!", "Example (30-01-1990)", "error");
+          this.spouseForm.get("sDob").setValue("");
+          this._personalInfo._spouse._sAge=18;
+          this._personalInfo._spouse._sNic="";
+          this._personalInfo._spouse._sDob="";
+          this.spouseForm.get("sDob").enable();
+
+        } else {
+          if (this._personalInfo._spouse._sGender == "F") {
+            this._personalInfo._spouse._sTitle = "MRS"
           } else {
-            this._personalInfo._spouse._sGender = response.json().Gender;
-            this._personalInfo._spouse._sAge = response.json().Age;
-            this._personalInfo._spouse._sDob = response.json().DOB;
-            this.spouseForm.get("sDob").disable();
-
-            if (!this.regexp.test(this._personalInfo._spouse._sDob)) {
-              swal("Invalid Date Format!", "Example (30-01-1990)", "error");
-              this.spouseForm.get("sDob").setValue("");
-              this._personalInfo._spouse._sAge=18;
-              this._personalInfo._spouse._sNic="";
-              this._personalInfo._spouse._sDob="";
-              this.spouseForm.get("sDob").enable();
-
-            } else {
-              if (this._personalInfo._spouse._sGender == "F") {
-                this._personalInfo._spouse._sTitle = "MRS"
-              } else {
-                this._personalInfo._spouse._sTitle = "MR"
-              }
-  
-              //this.calPreviousRiskS.emit(this._personalInfo._spouse._sNic);
-            }
-            
-
+            this._personalInfo._spouse._sTitle = "MR"
           }
-        }
 
-      },error => {swal("Error", error.text() ,"error")});
-      this.checkValidity();
+          //this.calPreviousRiskS.emit(this._personalInfo._spouse._sNic);
+        }
+        this.checkValidity();
+        this.check();
+      },error => {
+        swal("Error", error.text() ,"error")
+      });
+      
     } else {
       this.spouseForm.get("sDob").enable();
     }
@@ -572,23 +550,39 @@ export class DtapPersonalInfoComponent implements OnInit {
 
   }
 
-  setGender(){
+  setGenderM(){
     let title=this.mainLifeForm.get("mTitle").value;
     if( title == "MR" || title == "DR"){
       this.mainLifeForm.get("mGender").setValue("M");
-      this.activeS();
+      //this.activeS();
     }
 
     if( title == "MS" || title == "MRS" || title == "MIS" || title == "DRMS"){
       this.mainLifeForm.get("mGender").setValue("F");
-      this.activeS();
+      //this.activeS();
     }
 
     this.check();
-    this.activeS();
+    //this.activeS();
   }
 
-  checkTitle(){
+  setGenderS(){
+    let title=this.spouseForm.get("sTitle").value;
+    if( title == "MR" || title == "DR"){
+      this.spouseForm.get("sGender").setValue("M");
+      //this.activeS();
+    }
+
+    if( title == "MS" || title == "MRS" || title == "MIS" || title == "DRMS"){
+      this.spouseForm.get("sGender").setValue("F");
+      //this.activeS();
+    }
+
+    this.check();
+    //this.activeS();
+  }
+
+  checkTitleS(){
     let gender=this.spouseForm.get("sGender").value;
 
     let title=this.spouseForm.get("sTitle").value;
@@ -598,8 +592,30 @@ export class DtapPersonalInfoComponent implements OnInit {
     else if( gender == "F" && (title == "MS" || title == "MRS" || title == "MIS" || title == "DRMS")){
       
     }else{
-      this.spouseForm.get("sTitle").reset();
-      swal("Error!", "Title not match with gender!", "error");
+      if(gender == "M"){
+        this.spouseForm.get("sTitle").setValue("MR");
+      }else{
+        this.spouseForm.get("sTitle").setValue("MRS");
+      }
+    }
+    this.check();
+  }
+
+  checkTitleM(){
+    let gender=this.mainLifeForm.get("mGender").value;
+
+    let title=this.mainLifeForm.get("mTitle").value;
+    if( gender == "M" && (title == "MR" || title == "DR") ){
+      
+    }
+    else if( gender == "F" && (title == "MS" || title == "MRS" || title == "MIS" || title == "DRMS")){
+      
+    }else{
+      if(gender == "M"){
+        this.mainLifeForm.get("mTitle").setValue("MR");
+      }else{
+        this.mainLifeForm.get("mTitle").setValue("MRS");
+      }
     }
     this.check();
   }

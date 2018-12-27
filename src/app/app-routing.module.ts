@@ -25,7 +25,14 @@ const routes: Routes = [
     loadChildren: 'app/view/quo-aip/quo-aip.module#QuoAipModule'
   },
 
-
+  {
+    path: 'quoatp',
+    loadChildren: 'app/view/quo-atp/quo-atp.module#QuoAtpModule'
+  },
+  {
+    path: 'quoatp/:id',
+    loadChildren: 'app/view/quo-atp/quo-atp.module#QuoAtpModule'
+  },
 
   {
     path: 'quoarp',

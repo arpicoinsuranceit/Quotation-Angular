@@ -1,0 +1,1448 @@
+<div class="main_div" style="height: 590px;">
+  <div class="header_div">
+    <h2>Additional Benefits (ATP)</h2>
+  </div>
+
+  <div class="row container-fluid">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div style=" background: rgb(240, 240, 240); margin-bottom: 15px;">
+        <table style="width: 100%; margin-top: 5px;">
+
+          <tbody class="tBody">
+            <tr>
+              <th class="center thead">Term</th>
+              <td class="center thead">: {{personalInfo.term}}</td>
+              <th class="center thead">Frequency</th>
+              <td class="center thead">: {{summeryInfo._summery._payType}}</td>
+            </tr>
+            <tr>
+              <th class="center thead">Investment Amount</th>
+              <td class="center thead">: {{personalInfo.bsa.toLocaleString()}}</td>
+              <!-- <th class="center thead">Premium (BSA) </th>
+              <td class="center thead">: {{summeryInfo._summery.sumAssured}}</td> -->
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="body_div">
+    <ngb-tabset>
+      <ngb-tab title="Main Life">
+        <!-- mainlife................................................................
+            .........................................................................
+            ...........................-->
+        <ng-template ngbTabContent>
+          <form class="form-horizontal" [formGroup]="abmForm">
+            <div class="content-div4" style="margin-top: 10px;">
+
+              <div class="col-sm-12 " [ngClass]="{'disabled': activeRiders.includes('ATPB') == false}">
+                <div class="benf_div1 container-fluid" formGroupName="ATPB">
+                  <div class="row">
+                    <div class="col-xs-5">
+
+                      <img [src]="imgAtpbGUrl" class=" img_active" [style.display]="isImgATPBGActive ?'block'  : 'none'">
+
+                      <img [src]="imgAtpbUrl" class="img_active" [style.display]="isImgATPBActive ? 'block' : 'none'">
+
+                      <div style="position: absolute">
+                        <input formControlName="isActice" type="checkbox" class="" id="test-Active" (click)="removeError('ATPB')"
+                          (change)="isActive($event, 'ATPB')" (change)="isActiveATPB($event)">
+                          <label class="lbl" for="sumAssured">ATPB <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._atpb}}</span></span></label>
+                      </div>
+
+
+                    </div>
+                    <div class="col-xs-7">
+                      <div class="row">
+                        <div class="col-xs-7">
+                          <label class="frm_lbl" for="sumAssured">Sum Assured</label>
+                          <input formControlName="sumAssured" type="number" class="form-control input-sm a" (keyup)="removeError('ATPB')"
+                            (click)="removeError('ATPB')" (keyup.enter)="checkValidateATPB()" (blur)="checkValidateATPB()"
+                            id="txt-sumassured" [disabled]="isImgGActive" currencyMask>
+                          <div class="alert alert-danger" *ngIf="validateATPB!=1">
+                            Error</div>
+                        </div>
+                        <div class="col-xs-5">
+                          <div *ngIf="validateATPB==1">
+                            <label class="frm_lbl" for="sumAssured">Premium</label>
+                            <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._protection.ATPB"
+                              readonly id="txt-premium" [disabled]="isImgGActive">
+                          </div>
+                        </div>
+                      </div>
+
+
+
+
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="col-sm-12 " [ngClass]="{'disabled': activeRiders.includes('ADB') == false}">
+                <div class="benf_div1 container-fluid" formGroupName="ADB">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'ADB')"
+                        (click)="removeError('ADB')" (change)="isActiveADB($event)">
+                        <label class="lbl" for="sumAssured">ADB <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._adb}}</span></span></label>
+                      <div>
+                        <img [src]="imgAdbGUrl" class=" img_active" [style.display]="isImgADBGActive ?'block'  : 'none'">
+                      </div>
+                      <div>
+                        <img [src]="imgAdbUrl" class="img_active" [style.display]="isImgADBActive ? 'block' : 'none'">
+                      </div>
+                    </div>
+                    <div class="col-xs-7">
+                      <div class="row">
+                        <div class="col-xs-7">
+                          <label class="frm_lbl" for="sumAssured">Sum Assured</label>
+                          <input formControlName="sumAssured" type="number" class="form-control input-sm" (keyup)="removeError('ADB')"
+                            (click)="removeError('ADB')" (keyup.enter)="checkValidateADB()" (blur)="checkValidateADB()"
+                            id="txt-sumassured" [disabled]="isImgGActive" currencyMask>
+                          <div class="alert alert-danger" *ngIf="validateADB!=1">
+                            Error</div>
+                        </div>
+                        <div class="col-xs-5">
+                          <div *ngIf="validateADB==1">
+                            <label class="frm_lbl" for="sumAssured">Premium</label>
+                            <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._protection.ADB"
+                              readonly id="txt-premium" [disabled]="isImgGActive">
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('TPDASB') == false}">
+                <div class="benf_div1 container-fluid" formGroupName="TPDASB">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <input #checkTPDASB formControlName="isActice" type="checkbox" class="" (click)="removeError('TPDASB')"
+                        id="test-Active" (change)="isActive($event, 'TPDASB')" (change)="isActiveTPDASB($event)" *ngIf="!isImgTPDBActive">
+                      <label class="lbl" for="sumAssured">TPDASB <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._tpdasb}}</span></span></label>
+                      <div>
+                        <img [src]="imgTpdbasGUrl" class=" img_active" [style.display]="isImgTPDASBGActive ?'block'  : 'none'">
+                      </div>
+                      <div>
+                        <img [src]="imgTpdbasUrl" class="img_active" [style.display]="isImgTPDASBActive ? 'block' : 'none'">
+                      </div>
+                    </div>
+                    <div class="col-xs-7">
+                      <div class="row">
+                        <div class="col-xs-7">
+                          <label class="frm_lbl" for="sumAssured">Sum Assured</label>
+                          <input formControlName="sumAssured" type="number" class="form-control input-sm" (keyup)="removeError('TPDASB')"
+                            (click)="removeError('TPDASB')" (keyup.enter)="checkValidateTPDASB()" (blur)="checkValidateTPDASB()"
+                            id="txt-sumassured" [disabled]="isImgGActive" readonly>
+
+                          <div class="alert alert-danger" *ngIf="validateTPDASB!=1">
+                            Error</div>
+                        </div>
+                        <div class="col-xs-5">
+                          <div *ngIf="validateTPDASB==1">
+                            <label class="frm_lbl" for="sumAssured">Premium</label>
+                            <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._disablities.TPDASB"
+                              readonly id="txt-premium" [disabled]="isImgGActive">
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('TPDB') == false}">
+                <div class="benf_div1 container-fluid" formGroupName="TPDB">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'TPDB')"
+                        (click)="removeError('TPDB')" (change)="isActiveTPDB($event)" *ngIf="!isImgTPDASBActive">
+                      <label class="lbl" for="sumAssured">TPDB <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._tpdb}}</span></span></label>
+                      <div>
+                        <img [src]="imgTpdbasGUrl" class=" img_active" [style.display]="isImgTPDBGActive ?'block'  : 'none'">
+                      </div>
+                      <div>
+                        <img [src]="imgTpdbasUrl" class="img_active" [style.display]="isImgTPDBActive ? 'block' : 'none'">
+                      </div>
+                    </div>
+                    <div class="col-xs-7">
+                      <div class="row">
+                        <div class="col-xs-7">
+                          <label class="frm_lbl" for="sumAssured">Sum Assured</label>
+                          <input formControlName="sumAssured" type="number" class="form-control input-sm" (keyup)="removeError('TPDB')"
+                            (click)="removeError('TPDB')" (keyup.enter)="checkValidateTPDB()" (blur)="checkValidateTPDB()"
+                            id="txt-sumassured" [disabled]="isImgGActive" readonly>
+                          <div class="alert alert-danger" *ngIf="validateTPDB!=1">
+                            Error</div>
+                        </div>
+                        <div class="col-xs-5">
+                          <div *ngIf="validateTPDB==1">
+                            <label class="frm_lbl" for="sumAssured">Premium</label>
+                            <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._disablities.TPDB"
+                              readonly id="txt-premium" [disabled]="isImgGActive">
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('PPDB') == false}">
+                <div class="benf_div1 container-fluid" formGroupName="PPDB">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'PPDB')"
+                        (click)="removeError('PPDB')" (change)="isActivePPDB($event)" onclick="return false">
+                      <label class="lbl" for="sumAssured">PPDB <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._ppdb}}</span></span></label>
+                      <div>
+                        <img [src]="imgTpdbGUrl" class=" img_active" [style.display]="isImgPPDBGActive ?'block'  : 'none'">
+                      </div>
+                      <div>
+                        <img [src]="imgTpdbUrl" class="img_active" [style.display]="isImgPPDBActive ? 'block' : 'none'">
+                      </div>
+                    </div>
+                    <div class="col-xs-7">
+                      <div class="row">
+                        <div class="col-xs-7">
+                          <label class="frm_lbl" for="sumAssured">Sum Assured</label>
+                          <input formControlName="sumAssured" type="number" class="form-control input-sm" (keyup)="removeError('PPDB')"
+                            (click)="removeError('PPDB')" (keyup.enter)="checkValidatePPDB()" (blur)="checkValidatePPDB()"
+                            id="txt-sumassured" [disabled]="isImgGActive" readonly>
+                          <div class="alert alert-danger" *ngIf="validatePPDB!=1">
+                            Error</div>
+                        </div>
+                        <div class="col-xs-5">
+                          <div *ngIf="validatePPDB==1">
+                            <label class="frm_lbl" for="sumAssured">Premium</label>
+                            <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._disablities.PPDB"
+                              readonly id="txt-premium" [disabled]="isImgGActive">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('CIB') == false}">
+                <div class="benf_div1 container-fluid" formGroupName="CIB">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'CIB')"
+                        (click)="removeError('CIB')" (change)="isActiveCIB($event)">
+                      <label class="lbl" for="sumAssured">CIB <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._cib}}</span></span></label>
+                      <div>
+                        <img [src]="imgCibGUrl" class=" img_active" [style.display]="isImgCIBGActive ?'block'  : 'none'">
+                      </div>
+                      <div>
+                        <img [src]="imgCibUrl" class="img_active" [style.display]="isImgCIBActive ? 'block' : 'none'">
+                      </div>
+                    </div>
+                    <div class="col-xs-7">
+                      <div class="row">
+                        <div class="col-xs-7">
+                          <label class="frm_lbl" for="sumAssured">Sum Assured</label>
+                          <input formControlName="sumAssured" type="number" class="form-control input-sm" (keyup)="removeError('CIB')"
+                            (click)="removeError('CIB')" (keyup.enter)="checkValidateCIB()" (blur)="checkValidateCIB()"
+                            id="txt-sumassured" [disabled]="isImgGActive" currencyMask>
+                          <div class="alert alert-danger" *ngIf="validateCIB!=1">
+                            Error</div>
+                        </div>
+                        <div class="col-xs-5">
+                          <div *ngIf="validateCIB==1">
+                            <label class="frm_lbl" for="sumAssured">Premium</label>
+                            <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._health.CIB"
+                              readonly id="txt-premium" [disabled]="isImgGActive">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('FEB') == false}">
+                <div class="benf_div1 container-fluid" formGroupName="FEB">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'FEB')"
+                        (click)="removeError('FEB')" (change)="isActiveFEB($event)">
+                      <label class="lbl" for="sumAssured">FEB <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._feb}}</span></span></label>
+                      <div>
+                        <img [src]="imgFebGUrl" class=" img_active" [style.display]="isImgFEBGActive ?'block'  : 'none'">
+                      </div>
+                      <div>
+                        <img [src]="imgFebUrl" class="img_active" [style.display]="isImgFEBActive ? 'block' : 'none'">
+                      </div>
+                    </div>
+                    <div class="col-xs-7">
+                      <div class="row">
+                        <div class="col-xs-7">
+                          <label class="frm_lbl" for="sumAssured">Sum Assured</label>
+                          <input formControlName="sumAssured" type="number" class="form-control input-sm" (keyup)="removeError('FEB')"
+                            (click)="removeError('FEB')" (keyup.enter)="checkValidateFEB()" (blur)="checkValidateFEB()"
+                            id="txt-sumassured" [disabled]="isImgGActive" currencyMask>
+
+                          <div class="alert alert-danger" *ngIf="validateFEB!=1">
+                            Error</div>
+                        </div>
+                        <div class="col-xs-5">
+                          <div *ngIf="validateFEB==1">
+                            <label class="frm_lbl" for="sumAssured">Premium</label>
+                            <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._protection.FEB"
+                              readonly id="txt-premium" [disabled]="isImgGActive">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('MFIBD') == false}">
+                <div class="benf_div1 container-fluid" formGroupName="MFIBD">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'MFIBD')"
+                        (click)="removeError('MFIBD')" (change)="isActiveMFIBD($event)" *ngIf="!isImgMFIBDTActive && !isImgMFIBTActive">
+                      <label class="lbl" for="sumAssured">MFIBD <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._mfibd}}</span></span></label>
+                      <div>
+                        <img [src]="imgMifbdGUrl" class=" img_active" [style.display]="isImgMFIBDGActive ?'block'  : 'none'">
+                      </div>
+                      <div>
+                        <img [src]="imgMifbdUrl" class="img_active" [style.display]="isImgMFIBDActive ? 'block' : 'none'">
+                      </div>
+                    </div>
+                    <div class="col-xs-7">
+                      <div class="row">
+                        <div class="col-xs-7">
+                          <label class="frm_lbl" for="sumAssured">Sum Assured</label>
+                          <input formControlName="sumAssured" type="number" class="form-control input-sm" (keyup)="removeError('MFIBD')"
+                            (click)="removeError('MFIBD')" (keyup.enter)="checkValidateMFIBD()" (blur)="checkValidateMFIBD()"
+                            id="txt-sumassured" [disabled]="isImgGActive" currencyMask>
+
+                          <div class="alert alert-danger" *ngIf="validateMFIBD!=1">
+                            Error</div>
+                        </div>
+                        <div class="col-xs-5">
+                          <div *ngIf="validateMFIBD==1">
+                            <label class="frm_lbl" for="sumAssured">Premium</label>
+                            <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._protection.MFIBD"
+                              readonly id="txt-premium" [disabled]="isImgGActive">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('MFIBT') == false}">
+                <div class="benf_div1 container-fluid" formGroupName="MFIBT">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'MFIBT')"
+                        (click)="removeError('MFIBT')" (change)="isActiveMFIBT($event)" *ngIf="!isImgMFIBDTActive && !isImgMFIBDActive">
+                      <label class="lbl" for="sumAssured">MFIBT <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._mfibt}}</span></span></label>
+                      <div>
+                        <img [src]="imgMifbtGUrl" class=" img_active" [style.display]="isImgMFIBTGActive ?'block'  : 'none'">
+                      </div>
+                      <div>
+                        <img [src]="imgMifbtUrl" class="img_active" [style.display]="isImgMFIBTActive ? 'block' : 'none'">
+                      </div>
+                    </div>
+                    <div class="col-xs-7">
+                      <div class="row">
+                        <div class="col-xs-7">
+                          <label class="frm_lbl" for="sumAssured">Sum Assured</label>
+                          <input formControlName="sumAssured" type="number" class="form-control input-sm" (keyup.enter)="checkValidateMFIBT()"
+                            (keyup)="removeError('MFIBT')" (click)="removeError('MFIBT')" (blur)="checkValidateMFIBT()"
+                            id="txt-sumassured" [disabled]="isImgGActive" currencyMask>
+                          <div class="alert alert-danger" *ngIf="validateMFIBT!=1">
+                            Error</div>
+                        </div>
+                        <div class="col-xs-5">
+                          <div *ngIf="validateMFIBT==1">
+                            <label class="frm_lbl" for="sumAssured">Premium</label>
+                            <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._protection.MFIBT"
+                              readonly id="txt-premium" [disabled]="isImgGActive">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('MFIBDT') == false}">
+                <div class="benf_div1 container-fluid" formGroupName="MFIBDT">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'MFIBDT')"
+                        (click)="removeError('MFIBDT')" (change)="isActiveMFIBDT($event)" *ngIf="!isImgMFIBTActive && !isImgMFIBDActive">
+                      <label class="lbl" for="sumAssured">MFIBDT <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._mfibdt}}</span></span></label>
+                      <div>
+                        <img [src]="imgMifbdtGUrl" class=" img_active" [style.display]="isImgMFIBDTGActive ?'block'  : 'none'">
+                      </div>
+                      <div>
+                        <img [src]="imgMifbdtUrl" class="img_active" [style.display]="isImgMFIBDTActive ? 'block' : 'none'">
+                      </div>
+                    </div>
+                    <div class="col-xs-7">
+                      <div class="row">
+                        <div class="col-xs-7">
+                          <label class="frm_lbl" for="sumAssured">Sum Assured</label>
+                          <input formControlName="sumAssured" type="number" class="form-control input-sm" (keyup.enter)="checkValidateMFIBDT()"
+                            (blur)="checkValidateMFIBDT()" (keyup)="removeError('MFIBDT')" (click)="removeError('MFIBDT')"
+                            id="txt-sumassured" [disabled]="isImgGActive" currencyMask>
+                          <div class="alert alert-danger" *ngIf="validateMFIBDT!=1">
+                            Error</div>
+                        </div>
+                        <div class="col-xs-5">
+                          <div *ngIf="validateMFIBDT==1">
+                            <label class="frm_lbl" for="sumAssured">Premium</label>
+                            <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._protection.MFIBDT"
+                              readonly id="txt-premium" [disabled]="isImgGActive">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('HCBI') == false}">
+                <div class="benf_div1 container-fluid" formGroupName="HRBI">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'HRBI')"
+                        (change)="isActiveHRBI($event)" (click)="removeError('HRBI')" *ngIf="!isImgSUHRBActive && !isImgHRBFActive && !isImgSHCBFActive">
+                      <label class="lbl" for="sumAssured">HCBI <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._hcbi}}</span></span></label>
+                      <div>
+                        <img [src]="imgHrbiGUrl" class=" img_active" [style.display]="isImgHRBIGActive ?'block'  : 'none'">
+                      </div>
+                      <div>
+                        <img [src]="imgHrbiUrl" class="img_active" [style.display]="isImgHRBIActive ? 'block' : 'none'">
+                      </div>
+                    </div>
+                    <div class="col-xs-7">
+                      <div class="row">
+                        <div class="col-xs-7">
+                          <label class="frm_lbl" for="sumAssured">Sum Assured</label>
+                          <input formControlName="sumAssured" type="number" class="form-control input-sm" (keyup.enter)="checkValidateHRBI()"
+                            (blur)="checkValidateHRBI()" (keyup)="removeError('HRBI')" (click)="removeError('HRBI')" id="txt-sumassured"
+                            [disabled]="isImgGActive" currencyMask>
+                          <div class="alert alert-danger" *ngIf="validateHRBI!=1">
+                            Error</div>
+                        </div>
+                        <div class="col-xs-5">
+                          <div *ngIf="validateHRBI==1">
+                            <label class="frm_lbl" for="sumAssured">Premium</label>
+                            <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._health.HRBI"
+                              readonly id="txt-premium" [disabled]="isImgGActive">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('HCBF') == false}">
+                <div class="benf_div1 container-fluid" formGroupName="HRBF">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'HRBF')"
+                        (change)="isActiveHRBF($event)" (click)="removeError('HRBF')" *ngIf="!isImgSUHRBActive && !isImgHRBIActive && !isImgSHCBFActive">
+                      <label class="lbl" for="sumAssured">HCBF <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._hcbf}}</span></span></label>
+                      <div>
+                        <img [src]="imgHrbfGUrl" class=" img_active" [style.display]="isImgHRBFGActive ?'block'  : 'none'">
+                      </div>
+                      <div>
+                        <img [src]="imgHrbfUrl" class="img_active" [style.display]="isImgHRBFActive ? 'block' : 'none'">
+                      </div>
+                    </div>
+                    <div class="col-xs-7">
+                      <div class="row">
+                        <div class="col-xs-7">
+                          <label class="frm_lbl" for="sumAssured">Sum Assured</label>
+                          <input formControlName="sumAssured" type="number" class="form-control input-sm" (keyup.enter)="checkValidateHRBF()"
+                            (blur)="checkValidateHRBF()" (keyup)="removeError('HRBF')" (click)="removeError('HRBF')" id="txt-sumassured"
+                            [disabled]="isImgGActive" currencyMask>
+                          <div class="alert alert-danger" *ngIf="validateHRBF!=1">
+                            Error</div>
+                        </div>
+                        <div class="col-xs-5">
+                          <div *ngIf="validateHRBF==1">
+                            <label class="frm_lbl" for="sumAssured">Premium</label>
+                            <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._health.HRBF"
+                              readonly id="txt-premium" [disabled]="isImgGActive">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('SHCBI') == false}">
+                <div class="benf_div1 container-fluid" formGroupName="SUHRB">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'SUHRB')"
+                        (change)="isActiveSUHRB($event)" (click)="removeError('SUHRB')" *ngIf="!isImgHRBIActive && !isImgHRBFActive && !isImgSHCBFActive">
+                      <label class="lbl" for="sumAssured">SHCBI <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._shcbi}}</span></span></label>
+                      <div>
+                        <img [src]="imgSuhrbGUrl" class=" img_active" [style.display]="isImgSUHRBGActive ?'block'  : 'none'">
+                      </div>
+                      <div>
+                        <img [src]="imgSuhrbUrl" class="img_active" [style.display]="isImgSUHRBActive ? 'block' : 'none'">
+                      </div>
+                    </div>
+                    <div class="col-xs-7">
+                      <div class="row">
+                        <div class="col-xs-7">
+                          <label class="frm_lbl" for="sumAssured">Sum Assured</label>
+                          <input formControlName="sumAssured" type="number" class="form-control input-sm" (keyup.enter)="checkValidateSUHRB()"
+                            (blur)="checkValidateSUHRB()" (keyup)="removeError('SUHRB')" (click)="removeError('SUHRB')"
+                            id="txt-sumassured" [disabled]="isImgGActive" currencyMask>
+                          <div class="alert alert-danger" *ngIf="validateSUHRB!=1">
+                            Error</div>
+                        </div>
+                        <div class="col-xs-5">
+                          <div *ngIf="validateSUHRB==1">
+                            <label class="frm_lbl" for="sumAssured">Premium</label>
+                            <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._health.SUHRB"
+                              readonly id="txt-premium" [disabled]="isImgGActive">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('HB') == false}">
+                <div class="benf_div1 container-fluid" formGroupName="HB">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'HB')"
+                        (change)="isActiveHB($event)" (click)="removeError('HB')">
+                      <label class="lbl" for="sumAssured">HB <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._hb}}</span></span></label>
+                      <div>
+                        <img [src]="imgHbGUrl" class=" img_active" [style.display]="isImgHBGActive ?'block'  : 'none'">
+                      </div>
+                      <div>
+                        <img [src]="imgHbUrl" class="img_active" [style.display]="isImgHBActive ? 'block' : 'none'">
+                      </div>
+                    </div>
+                    <div class="col-xs-7">
+                      <div class="row">
+                        <div class="col-xs-7">
+                          <label class="frm_lbl" for="sumAssured">Sum Assured</label>
+                          <input formControlName="sumAssured" type="number" class="form-control input-sm" (keyup.enter)="checkValidateHB()"
+                            (blur)="checkValidateHB()" (keyup)="removeError('HB')" (click)="removeError('HB')" id="txt-sumassured"
+                            [disabled]="isImgGActive" currencyMask>
+
+                          <div class="alert alert-danger" *ngIf="validateHB!=1">
+                            Error</div>
+                        </div>
+                        <div class="col-xs-5">
+                          <div *ngIf="validateHB==1">
+                            <label class="frm_lbl" for="sumAssured">Premium</label>
+                            <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._health.HB"
+                              readonly id="txt-premium" [disabled]="isImgGActive">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('WPB') == false}">
+                <div class="benf_div1 container-fluid" formGroupName="WPB">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActive($event, 'WPB')"
+                        (change)="isActiveWPB($event)" (change)="onsetBenifAll($event,'WPB')" (click)="removeError('WPB')">
+                      <label class="lbl" for="sumAssured">WPB <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._wpb}}</span></span></label>
+                      <div>
+                        <img [src]="imgwpbGUrl" class=" img_active" [style.display]="isImgWPBGActive ?'block'  : 'none'">
+                      </div>
+                      <div>
+                        <img [src]="imgwpbUrl" class="img_active" [style.display]="isImgWPBActive ? 'block' : 'none'">
+                      </div>
+                    </div>
+                    <div class="col-xs-7">
+                      <div class="row">
+                        <div class="col-xs-7">
+                          <div [style.display]="!isImgWPBGActive ? 'block' : 'none'">
+                            <label class="frm_lbl_applied" for="sumAssured">Applied</label>
+
+                          </div>
+                          <label class="frm_lbl" for="sumAssured" style="display: none;">Sum Assured</label>
+                          <input formControlName="sumAssured" type="number" style="display: none;" class="form-control input-sm"
+                            readonly id="txt-sumassured" [disabled]="isImgGActive" (keyup)="removeError('WPB')" (click)="removeError('WPB')"
+                            currencyMask>
+                        </div>
+                        <div class="col-xs-5">
+                          <label class="frm_lbl" for="sumAssured">Premium</label>
+                          <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._protection.WPB"
+                            readonly id="txt-premium" [disabled]="isImgGActive">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+            </div>
+          </form>
+        </ng-template>
+      </ngb-tab>
+
+      <!--END///////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////
+      ////////////////////////////////////////////////////////////////////////////////-->
+
+      <!--Spouse///////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////
+      ////////////////////////////////////////////////////////////////////////////////-->
+
+      <!-- <ngb-tab title="Spouse" *ngIf="activeSp == '1'">
+        <ng-template ngbTabContent>
+          <form class="form-horizontal" [formGroup]="absForm">
+            <div class="content-div4" style="margin-top: 10px;">
+              <div *ngIf="activeSp==1">
+
+                <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('SCB') == false}">
+                  <div class="benf_div1 container-fluid" formGroupName="BSAS">
+                    <div class="row">
+                      <div class="col-xs-5">
+                        <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveS($event, 'BSAS')"
+                          (change)="isActiveBSAS($event)" (click)="removeError('BSAS')">
+                        <label class="lbl" for="sumAssured">SCB <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._scb}}</span></span></label>
+                        <div>
+                          <img [src]="imgScbGUrl" class=" img_active" [style.display]="isImgBSASGActive ? 'block' : 'none'">
+                        </div>
+                        <div>
+                          <img [src]="imgScbUrl" class="img_active" [style.display]="isImgBSASActive ? 'block' : 'none'">
+                        </div>
+                      </div>
+                      <div class="col-xs-7">
+                        <div class="row">
+                          <div class="col-xs-7">
+                            <label class="frm_lbl" for="sumAssured">Sum Assured</label>
+                            <input formControlName="sumAssured" type="number" class="form-control input-sm"
+                              (keyup.enter)="checkValidateSCB()" (blur)="checkValidateSCB()" (keyup)="removeError('BSAS')"
+                              (click)="removeError('BSAS')" id="txt-sumassured" currencyMask>
+                            <div class="alert alert-danger" *ngIf="validateSCB!=1">
+                              Error</div>
+                          </div>
+                          <div class="col-xs-5">
+                            <div *ngIf="validateSCB==1">
+                              <label class="frm_lbl" for="sumAssured">Premium</label>
+                              <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._protection.BSAS"
+                                readonly id="txt-premium" [disabled]="isImgGActive">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('ADBS') == false}">
+                  <div class="benf_div1 container-fluid" formGroupName="ADBS">
+                    <div class="row">
+                      <div class="col-xs-5">
+                        <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveS($event, 'ADBS')"
+                          (change)="isActiveADBS($event)" (click)="removeError('ADBS')">
+                        <label class="lbl" for="sumAssured">ADBS <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._adbs}}</span></span></label>
+                        <div>
+                          <img [src]="imgAdbsGUrl" class=" img_active" [style.display]="isImgADBSGActive ?'block'  : 'none'">
+                        </div>
+                        <div>
+                          <img [src]="imgAdbsUrl" class="img_active" [style.display]="isImgADBSActive ? 'block' : 'none'">
+                        </div>
+                      </div>
+                      <div class="col-xs-7">
+                        <div class="row">
+                          <div class="col-xs-7">
+                            <label class="frm_lbl" for="sumAssured">Sum Assured</label>
+                            <input formControlName="sumAssured" type="number" class="form-control input-sm"
+                              (keyup.enter)="checkValidateADBS()" (blur)="checkValidateADBS()" (keyup)="removeError('ADBS')"
+                              (click)="removeError('ADBS')" id="txt-sumassured" [disabled]="isImgGActive" currencyMask>
+                            <div class="alert alert-danger" *ngIf="validateADBS!=1">
+                              Error</div>
+                          </div>
+                          <div class="col-xs-5">
+                            <div *ngIf="validateADBS==1">
+                              <label class="frm_lbl" for="sumAssured">Premium</label>
+                              <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._protection.ADBS"
+                                readonly id="txt-premium" [disabled]="isImgGActive">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('TPDASBS') == false}">
+                  <div class="benf_div1 container-fluid" formGroupName="TPDASBS">
+                    <div class="row">
+                      <div class="col-xs-5">
+                        <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveS($event, 'TPDASBS')"
+                          (change)="isActiveTPDASBS($event)" (click)="removeError('TPDASBS')" *ngIf="!isImgTPDBSActive">
+                        <label class="lbl" for="sumAssured">TPDASBS <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._tpdasbs}}</span></span></label>
+                        <div>
+                          <img [src]="imgTpdasbsGUrl" class=" img_active" [style.display]="isImgTPDASBSGActive ?'block'  : 'none'">
+                        </div>
+                        <div>
+                          <img [src]="imgTpdasbsUrl" class="img_active" [style.display]="isImgTPDASBSActive ? 'block' : 'none'">
+                        </div>
+                      </div>
+                      <div class="col-xs-7">
+                        <div class="row">
+                          <div class="col-xs-7">
+                            <label class="frm_lbl" for="sumAssured">Sum Assured</label>
+                            <input formControlName="sumAssured" type="number" class="form-control input-sm"
+                              (keyup.enter)="checkValidateTPDASBS()" (blur)="checkValidateTPDASBS()" (keyup)="removeError('TPDASBS')"
+                              (click)="removeError('TPDASBS')" id="txt-sumassured" [disabled]="isImgGActive" readonly>
+                            <div class="alert alert-danger" *ngIf="validateTPDASBS!=1">
+                              Error</div>
+                          </div>
+                          <div class="col-xs-5">
+                            <div *ngIf="validateTPDASBS==1">
+                              <label class="frm_lbl" for="sumAssured">Premium</label>
+                              <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._disablities.TPDASBS"
+                                readonly id="txt-premium" [disabled]="isImgGActive">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('TPDBS') == false}">
+                  <div class="benf_div1 container-fluid" formGroupName="TPDBS">
+                    <div class="row">
+                      <div class="col-xs-5">
+                        <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveS($event, 'TPDBS')"
+                          (change)="isActiveTPDBS($event)" (click)="removeError('TPDBS')" *ngIf="!isImgTPDASBSActive">
+                        <label class="lbl" for="sumAssured">TPDBS <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._tpdbs}}</span></span></label>
+                        <div>
+                          <img [src]="imgTpdbsGUrl" class=" img_active" [style.display]="isImgTPDBSGActive ?'block'  : 'none'">
+                        </div>
+                        <div>
+                          <img [src]="imgTpdbsUrl" class="img_active" [style.display]="isImgTPDBSActive ? 'block' : 'none'">
+                        </div>
+                      </div>
+                      <div class="col-xs-7">
+                        <div class="row">
+                          <div class="col-xs-7">
+                            <label class="frm_lbl" for="sumAssured">Sum Assured</label>
+                            <input formControlName="sumAssured" type="number" class="form-control input-sm"
+                              (keyup.enter)="checkValidateTPDBS()" (blur)="checkValidateTPDBS()" (keyup)="removeError('TPDBS')"
+                              (click)="removeError('TPDBS')" id="txt-sumassured" [disabled]="isImgGActive" readonly>
+                            <div class="alert alert-danger" *ngIf="validateTPDBS!=1">
+                              Error</div>
+                          </div>
+                          <div class="col-xs-5">
+                            <div *ngIf="validateTPDBS==1">
+                              <label class="frm_lbl" for="sumAssured">Premium</label>
+                              <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._disablities.TPDBS"
+                                readonly id="txt-premium" [disabled]="isImgGActive">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('PPDBS') == false}">
+                  <div class="benf_div1 container-fluid" formGroupName="PPDBS">
+                    <div class="row">
+                      <div class="col-xs-5">
+                        <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveS($event, 'PPDBS')"
+                          (change)="isActivePPDBS($event)" (click)="removeError('PPDBS')" onclick="return false">
+                        <label class="lbl" for="sumAssured">PPDBS <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._ppdbs}}</span></span></label>
+                        <div>
+                          <img [src]="imgPpdbsGUrl" class=" img_active" [style.display]="isImgPPDBSGActive ?'block'  : 'none'">
+                        </div>
+                        <div>
+                          <img [src]="imgPpdbsUrl" class="img_active" [style.display]="isImgPPDBSActive ? 'block' : 'none'">
+                        </div>
+                      </div>
+                      <div class="col-xs-7">
+                        <div class="row">
+                          <div class="col-xs-7">
+                            <label class="frm_lbl" for="sumAssured">Sum Assured</label>
+                            <input formControlName="sumAssured" type="number" class="form-control input-sm"
+                              (keyup.enter)="checkValidatePPDBS()" (blur)="checkValidatePPDBS()" (keyup)="removeError('PPDBS')"
+                              (click)="removeError('PPDBS')" id="txt-sumassured" [disabled]="isImgGActive" readonly>
+                            <div class="alert alert-danger" *ngIf="validatePPDBS!=1">
+                              Error</div>
+                          </div>
+                          <div class="col-xs-5">
+                            <div *ngIf="validatePPDBS==1">
+                              <label class="frm_lbl" for="sumAssured">Premium</label>
+                              <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._disablities.PPDBS"
+                                readonly id="txt-premium" [disabled]="isImgGActive">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('SCIB') == false}">
+                  <div class="benf_div1 container-fluid" formGroupName="CIBS">
+                    <div class="row">
+                      <div class="col-xs-5">
+                        <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveS($event, 'CIBS')"
+                          (change)="isActiveCIBS($event)" (click)="removeError('CIBS')">
+                        <label class="lbl" for="sumAssured">SCIB <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._scib}}</span></span></label>
+                        <div>
+                          <img [src]="imgScibGUrl" class=" img_active" [style.display]="isImgCIBSGActive ?'block'  : 'none'">
+                        </div>
+                        <div>
+                          <img [src]="imgScibUrl" class="img_active" [style.display]="isImgCIBSActive ? 'block' : 'none'">
+                        </div>
+                      </div>
+                      <div class="col-xs-7">
+                        <div class="row">
+                          <div class="col-xs-7">
+                            <label class="frm_lbl" for="sumAssured">Sum Assured</label>
+                            <input formControlName="sumAssured" type="number" class="form-control input-sm" id="txt-sumassured"
+                              [disabled]="isImgGActive" (keyup)="removeError('CIBS')" (click)="removeError('CIBS')"
+                              (keyup.enter)="checkValidateSCIB()" (blur)="checkValidateSCIB()" currencyMask>
+                            <div class="alert alert-danger" *ngIf="validateSCIB!=1">
+                              Error</div>
+                          </div>
+                          <div class="col-xs-5">
+                            <div *ngIf="validateSCIB==1">
+                              <label class="frm_lbl" for="sumAssured">Premium</label>
+                              <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._health.SCIB"
+                                readonly id="txt-premium" [disabled]="isImgGActive">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('FEBS') == false}">
+                  <div class="benf_div1 container-fluid" formGroupName="FEBS">
+                    <div class="row">
+                      <div class="col-xs-5">
+                        <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveS($event, 'FEBS')"
+                          (change)="isActiveFEBS($event)" (click)="removeError('FEBS')">
+                        <label class="lbl" for="sumAssured">FEBS <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._febs}}</span></span></label>
+                        <div>
+                          <img [src]="imgFebsGUrl" class=" img_active" [style.display]="isImgFEBSGActive ?'block'  : 'none'">
+                        </div>
+                        <div>
+                          <img [src]="imgFebsUrl" class="img_active" [style.display]="isImgFEBSActive ? 'block' : 'none'">
+                        </div>
+                      </div>
+                      <div class="col-xs-7">
+                        <div class="row">
+                          <div class="col-xs-7">
+                            <label class="frm_lbl" for="sumAssured">Sum Assured</label>
+                            <input formControlName="sumAssured" type="number" class="form-control input-sm"
+                              (keyup.enter)="checkValidateFEBS()" (blur)="checkValidateFEBS()" (keyup)="removeError('FEBS')"
+                              (click)="removeError('FEBS')" id="txt-sumassured" [disabled]="isImgGActive" currencyMask>
+                            <div class="alert alert-danger" *ngIf="validateFEBS!=1">
+                              Error</div>
+                          </div>
+                          <div class="col-xs-5">
+                            <div *ngIf="validateFEBS==1">
+                              <label class="frm_lbl" for="sumAssured">Premium</label>
+                              <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._protection.FEBS"
+                                readonly id="txt-premium" [disabled]="isImgGActive">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-12" *ngIf="isGetHealthBenef == false">
+                  <div class="benf_div1 container-fluid" formGroupName="HCBS">
+                    <div class="row">
+                      <div class="col-xs-5">
+                        <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveHCBS($event)"
+                          (click)="removeError('HCBS')">
+                        <label class="lbl" for="sumAssured">HCBS <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._hcbs}}</span></span></label>
+                    <div>
+                          <img [src]="imgHrbisGUrl" class=" img_active" [style.display]="none">
+                        </div>
+                      </div>
+                      <div class="col-xs-7">
+                        <div class="row">
+                          <div class="col-xs-7">
+                            <label class="frm_lbl" for="sumAssured" style="display: none;">Sum Assured</label>
+                            <input formControlName="sumAssured" type="number" style="display: none;" class="form-control input-sm"
+                              id="txt-sumassured" [disabled]="isImgGActive" (keyup)="removeError('HCBS')" (click)="removeError('HCBS')"
+                              currencyMask>
+                          </div>
+                          <div class="col-xs-5">
+                            <div *ngIf="validateFEBS==1">
+                              <div>
+                                <label class="frm_lbl" for="sumAssured">Premium</label>
+                                <input formControlName="premium" type="text" class="form-control input-sm" readonly id="txt-premium"
+                                  [disabled]="isImgGActive">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-12" *ngIf="isGetHcbi == true" [ngClass]="{'disabled': activeRiders.includes('HCBIS') == false}">
+                  <div class="benf_div1 container-fluid" formGroupName="HRBIS">
+                    <div class="row">
+                      <div class="col-xs-5">
+                        <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveS($event, 'HRBIS')"
+                          (change)="isActiveHRBIS($event)" (click)="removeError('HRBIS')">
+                        <label class="lbl" for="sumAssured">HCBIS <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._hcbis}}</span></span></label>
+                        <div>
+                          <img [src]="imgHrbisGUrl" class=" img_active" [style.display]="isImgHRBISGActive ?'block'  : 'none'">
+                        </div>
+                        <div>
+                          <img [src]="imgHrbisUrl" class="img_active" [style.display]="isImgHRBISActive ? 'block' : 'none'">
+                        </div>
+                      </div>
+                      <div class="col-xs-7">
+                        <div class="row">
+                          <div class="col-xs-7">
+                            <div [style.display]="!isImgHRBISGActive ? 'block' : 'none'">
+                              <label class="frm_lbl_applied" for="sumAssured">Applied</label>
+
+                            </div>
+                            <label class="frm_lbl" for="sumAssured" style="display: none;">Sum Assured</label>
+                            <input formControlName="sumAssured" type="number" style="display: none;" class="form-control input-sm"
+                              id="txt-sumassured" readonly (keyup)="removeError('HRBIS')" (click)="removeError('HRBIS')">
+                            <div class="alert alert-danger" *ngIf="validateHRBIS!=1">
+                              Error</div>
+                          </div>
+                          <div class="col-xs-5">
+                            <div *ngIf="validateHRBIS==1">
+                              <label class="frm_lbl" for="sumAssured">Premium</label>
+                              <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._health.HRBIS"
+                                readonly id="txt-premium" [disabled]="isImgGActive">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-12" *ngIf="isGetHcbf == true" [ngClass]="{'disabled': activeRiders.includes('HCBFS') == false}">
+                  <div class="benf_div1 container-fluid" formGroupName="HRBFS">
+                    <div class="row">
+                      <div class="col-xs-5">
+                        <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveS($event, 'HRBFS')"
+                          (change)="isActiveHRBFS($event)" (click)="removeError('HRBFS')">
+                        <label class="lbl" for="sumAssured">HCBFS <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._hcbfs}}</span></span></label>
+                        <div>
+                          <img [src]="imgHrbfsGUrl" class=" img_active" [style.display]="isImgHRBFSGActive ?'block'  : 'none'">
+                        </div>
+                        <div>
+                          <img [src]="imgHrbfsUrl" class="img_active" [style.display]="isImgHRBFSActive ? 'block' : 'none'">
+                        </div>
+                      </div>
+                      <div class="col-xs-7">
+                        <div class="row">
+                          <div class="col-xs-7">
+                            <div [style.display]="!isImgHRBFSGActive ? 'block' : 'none'">
+                              <label class="frm_lbl_applied" for="sumAssured">Applied</label>
+
+                            </div>
+                            <label class="frm_lbl" for="sumAssured" style="display: none;">Sum Assured</label>
+                            <input formControlName="sumAssured" type="number" style="display: none;" class="form-control input-sm"
+                              readonly id="txt-sumassured" [disabled]="isImgGActive" (keyup)="removeError('HRBFS')"
+                              (click)="removeError('HRBFS')">
+                          </div>
+                          <div class="col-xs-5">
+                            <label class="frm_lbl" for="sumAssured">Premium</label>
+                            <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._protection.HRBFS"
+                              readonly id="txt-premium" [disabled]="isImgGActive">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-12" *ngIf="isGetShcbi == true" [ngClass]="{'disabled': activeRiders.includes('SHCBIS') == false}">
+                  <div class="benf_div1 container-fluid" formGroupName="SUHRBS">
+                    <div class="row">
+                      <div class="col-xs-5">
+                        <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveS($event, 'SUHRBS')"
+                          (change)="isActiveSUHRBS($event)" (click)="removeError('SUHRBS')">
+                        <label class="lbl" for="sumAssured">SHCBIS <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._shcbis}}</span></span></label>
+                        <div>
+                          <img [src]="imgSuhrbsGUrl" class=" img_active" [style.display]="isImgSUHRBSGActive ?'block'  : 'none'">
+                        </div>
+                        <div>
+                          <img [src]="imgSuhrbsUrl" class="img_active" [style.display]="isImgSUHRBSActive ? 'block' : 'none'">
+                        </div>
+                      </div>
+                      <div class="col-xs-7">
+                        <div class="row">
+                          <div class="col-xs-7">
+                            <div [style.display]="!isImgSUHRBSGActive ? 'block' : 'none'">
+                              <label class="frm_lbl_applied" for="sumAssured">Applied</label>
+
+                            </div>
+                            <label class="frm_lbl" for="sumAssured" style="display: none;">Sum Assured</label>
+                            <input formControlName="sumAssured" type="number" style="display: none;" class="form-control input-sm"
+                              id="txt-sumassured" readonly (keyup)="removeError('SUHRBS')" (click)="removeError('SUHRBS')">
+                            <div class="alert alert-danger" *ngIf="validateSUHRBS!=1">
+                              Error</div>
+                          </div>
+                          <div class="col-xs-5">
+                            <div *ngIf="validateSUHRBS==1">
+                              <label class="frm_lbl" for="sumAssured">Premium</label>
+                              <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._health.SUHRBS"
+                                readonly id="txt-premium" [disabled]="isImgGActive">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-12" *ngIf="isGetShcbf == true" [ngClass]="{'disabled': activeRiders.includes('SHCBFS') == false}">
+                  <div class="benf_div1 container-fluid" formGroupName="SHCBFS">
+                    <div class="row">
+                      <div class="col-xs-5">
+                        <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveSHCBFS($event)"
+                          (change)="onsetBenifAll($event,'SHCBFS')" (click)="removeError('SUHRBS')">
+                        <label class="lbl" for="sumAssured">SHCBFS <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._shcbfs}}</span></span></label>
+                        <div>
+                          <img [src]="imgShcbfsGUrl" class=" img_active" [style.display]="isImgSHCBFSGActive ?'block'  : 'none'">
+                        </div>
+                        <div>
+                          <img [src]="imgShcbfsUrl" class="img_active" [style.display]="isImgSHCBFSActive ? 'block' : 'none'">
+                        </div>
+                      </div>
+                      <div class="col-xs-7">
+                        <div class="row">
+                          <div class="col-xs-7">
+                            <div [style.display]="!isImgSHCBFSGActive ? 'block' : 'none'">
+                              <label class="frm_lbl_applied" for="sumAssured">Applied</label>
+
+                            </div>
+                            <label class="frm_lbl" for="sumAssured" style="display: none;">Sum Assured</label>
+                            <input formControlName="sumAssured" type="number" style="display: none;" class="form-control input-sm"
+                              id="txt-sumassured" readonly (keyup)="removeError('SHCBFS')" (click)="removeError('SHCBFS')">
+                            <div>
+                            </div>
+                            <div class="col-xs-5">
+                              <div>
+                                <label class="frm_lbl" for="sumAssured">Premium</label>
+                                <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._health.SHCBFS"
+                                  readonly id="txt-premium" [disabled]="isImgGActive">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('HBS') == false}">
+                  <div class="benf_div1 container-fluid" formGroupName="HBS">
+                    <div class="row">
+                      <div class="col-xs-5">
+                        <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveS($event, 'HBS')"
+                          (change)="isActiveHBS($event)" (click)="removeError('HBS')">
+                        <label class="lbl" for="sumAssured">HBS <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._hbs}}</span></span></label>
+                        <div>
+                          <img [src]="imgHbsGUrl" class=" img_active" [style.display]="isImgHBSGActive ?'block'  : 'none'">
+                        </div>
+                        <div>
+                          <img [src]="imgHbsUrl" class="img_active" [style.display]="isImgHBSActive ? 'block' : 'none'">
+                        </div>
+                      </div>
+                      <div class="col-xs-7">
+                        <div class="row">
+                          <div class="col-xs-7">
+                            <div [style.display]="!isImgHBSGActive ? 'block' : 'none'">
+                              <label class="frm_lbl_applied" for="sumAssured">Applied</label>
+
+                            </div>
+                            <label class="frm_lbl" for="sumAssured" style="display: none;">Sum Assured</label>
+                            <input formControlName="sumAssured" type="number" style="display: none;" class="form-control input-sm"
+                              id="txt-sumassured" [disabled]="isImgGActive" (keyup)="removeError('HBS')" (click)="removeError('HBS')"
+                              readonly>
+                            <div class="alert alert-danger" *ngIf="validateHBS!=1">
+                              Error</div>
+                          </div>
+                          <div class="col-xs-5">
+                            <div *ngIf="validateHBS==1">
+                              <label class="frm_lbl" for="sumAssured">Premium</label>
+                              <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._health.HBS"
+                                readonly id="txt-premium" [disabled]="isImgGActive">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('WPBS') == false}">
+                  <div class="benf_div1 container-fluid" formGroupName="WPBS">
+                    <div class="row">
+                      <div class="col-xs-5">
+                        <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveS($event, 'WPBS')"
+                          (change)="isActiveWPBS($event)" (click)="removeError('WPBS')">
+                        <label class="lbl" for="sumAssured">WPBS <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._wpbs}}</span></span></label>
+                        <div>
+                          <img [src]="imgwpbsGUrl" class=" img_active" [style.display]="isImgWPBSGActive ?'block'  : 'none'">
+                        </div>
+                        <div>
+                          <img [src]="imgwpbsUrl" class="img_active" [style.display]="isImgWPBSActive ? 'block' : 'none'">
+                        </div>
+                      </div>
+                      <div class="col-xs-7">
+                        <div class="row">
+                          <div class="col-xs-7">
+                            <div [style.display]="!isImgWPBSGActive ? 'block' : 'none'">
+                              <label class="frm_lbl_applied" for="sumAssured">Applied</label>
+
+                            </div>
+                          </div>
+                          <div class="col-xs-5">
+                            <label class="frm_lbl" for="sumAssured">Premium</label>
+                            <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._protection.WPBS"
+                              readonly id="txt-premium" [disabled]="isImgGActive">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+          </form>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="Children" *ngIf="activeCh == '1'">
+        <ng-template ngbTabContent>
+          <form class="form-horizontal" [formGroup]="abcForm">
+            <div class="content-div4" style="margin-top: 10px;">
+              <div *ngIf="activeCh==1">
+
+                <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('CIBC') == false}">
+                  <div class="benf_div1 container-fluid" formGroupName="CIBC">
+                    <div class="row">
+                      <div class="col-xs-5">
+                        <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveC($event, 'CIBC')"
+                          (change)="isActiveCIBC($event)" (click)="removeError('CIBC')">
+                        <label class="lbl" for="sumAssured">CIBC <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._cibc}}</span></span></label>
+                        <div>
+                          <img [src]="imgCibcGUrl" class=" img_active" [style.display]="isImgCIBCGActive ?'block'  : 'none'">
+                        </div>
+                        <div>
+                          <img [src]="imgCibcUrl" class="img_active" [style.display]="isImgCIBCActive ? 'block' : 'none'">
+                        </div>
+                      </div>
+                      <div class="col-xs-7">
+                        <div class="row">
+                          <div class="col-xs-7">
+                            <label class="frm_lbl" for="sumAssured">Sum Assured</label>
+                            <input formControlName="sumAssured" type="number" class="form-control input-sm" id="txt-sumassured"
+                              [disabled]="isImgGActive" (keyup)="removeError('CIBC')" (click)="removeError('CIBC')"
+                              (keyup.enter)="checkValidateCIBC()" (blur)="checkValidateCIBC()" currencyMask>
+                            <div class="alert alert-danger" *ngIf="validateCIBC!=1">
+                              Error</div>
+                          </div>
+                          <div class="col-xs-5">
+                            <div *ngIf="validateCIBC==1">
+                              <label class="frm_lbl" for="sumAssured">Premium</label>
+                              <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._health.CIBC"
+                                readonly id="txt-premium" [disabled]="isImgGActive">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-12" *ngIf="isGetHealthBenef == false">
+                  <div class="benf_div1 container-fluid" formGroupName="HCBC">
+                    <div class="row">
+                      <div class="col-xs-5">
+                        <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveHCBC($event)"
+                          (click)="removeError('HCBC')">
+                        <label class="lbl" for="sumAssured">HCBC <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._hcbc}}</span></span></label>
+                        <div>
+                          <img [src]="imgHrbicGUrl" class=" img_active" [style.display]="none">
+                        </div>
+                      </div>
+                      <div class="col-xs-7">
+                        <div class="row">
+                          <div class="col-xs-7">
+                            <label class="frm_lbl" for="sumAssured" style="display: none;">Sum Assured</label>
+                            <input formControlName="sumAssured" type="number" style="display: none;" class="form-control input-sm"
+                              id="txt-sumassured" [disabled]="isImgGActive" (keyup)="removeError('HCBC')" (click)="removeError('HCBC')"
+                              currencyMask>
+                          </div>
+                          <div class="col-xs-5">
+                            <div>
+                              <label class="frm_lbl" for="sumAssured">Premium</label>
+                              <input formControlName="premium" type="text" class="form-control input-sm" readonly id="txt-premium"
+                                [disabled]="isImgGActive">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-12" *ngIf="isGetHcbi == true" [ngClass]="{'disabled': activeRiders.includes('HCBIC') == false}">
+                  <div class="benf_div1 container-fluid" formGroupName="HRBIC">
+                    <div class="row">
+                      <div class="col-xs-5">
+                        <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveC($event, 'HRBIC')"
+                          (change)="isActiveHRBIC($event)" (click)="removeError('HRBIC')">
+                        <label class="lbl" for="sumAssured">HCBIC <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._hcbic}}</span></span></label>
+                        <div>
+                          <img [src]="imgHrbicGUrl" class=" img_active" [style.display]="isImgHRBICGActive ?'block'  : 'none'">
+                        </div>
+                        <div>
+                          <img [src]="imgHrbicUrl" class="img_active" [style.display]="isImgHRBICActive ? 'block' : 'none'">
+                        </div>
+                      </div>
+                      <div class="col-xs-7">
+                        <div class="row">
+                          <div class="col-xs-7">
+                            <div [style.display]="!isImgHRBICGActive ? 'block' : 'none'">
+                              <label class="frm_lbl_applied" for="sumAssured">Applied</label>
+
+                            </div>
+                            <label class="frm_lbl" for="sumAssured" style="display: none;">Sum Assured</label>
+                            <input formControlName="sumAssured" type="number" style="display: none;" type="text" class="form-control input-sm"
+                              (keyup.enter)="checkValidateHRBIC()" (blur)="checkValidateHRBIC()" (keyup)="removeError('HRBIC')"
+                              (click)="removeError('HRBIC')" id="txt-sumassured" [disabled]="isImgGActive" readonly>
+                            <div class="alert alert-danger" *ngIf="validateHRBIC!=1">
+                              Error</div>
+                          </div>
+                          <div class="col-xs-5">
+                            <div *ngIf="validateHRBIC==1">
+                              <label class="frm_lbl" for="sumAssured">Premium</label>
+                              <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._health.HRBIC"
+                                readonly id="txt-premium" [disabled]="isImgGActive">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-12" *ngIf="isGetHcbf == true" [ngClass]="{'disabled': activeRiders.includes('HCBFC') == false}">
+                  <div class="benf_div1 container-fluid" formGroupName="HRBFC">
+                    <div class="row">
+                      <div class="col-xs-5">
+                        <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveC($event, 'HRBFC')"
+                          (change)="isActiveHRBFC($event)" (click)="removeError('HRBFC')">
+                        <label class="lbl" for="sumAssured">HCBFC <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._hcbfc}}</span></span></label>
+                        <div>
+                          <img [src]="imgHrbfcGUrl" class=" img_active" [style.display]="isImgHRBFCGActive ?'block'  : 'none'">
+                        </div>
+                        <div>
+                          <img [src]="imgHrbfcUrl" class="img_active" [style.display]="isImgHRBFCActive ? 'block' : 'none'">
+                        </div>
+                      </div>
+                      <div class="col-xs-7">
+                        <div class="row">
+                          <div class="col-xs-7">
+                            <div [style.display]="!isImgHRBFCGActive ? 'block' : 'none'">
+                              <label class="frm_lbl_applied" for="sumAssured">Applied</label>
+
+                            </div>
+
+                            <label class="frm_lbl" for="sumAssured" style="display: none;">Sum Assured</label>
+                            <input formControlName="sumAssured" type="number" style="display: none;" class="form-control input-sm"
+                              readonly id="txt-sumassured" [disabled]="isImgGActive" (keyup)="removeError('HRBFC')"
+                              (click)="removeError('HRBFC')" currencyMask>
+                          </div>
+                          <div class="col-xs-5">
+                            <label class="frm_lbl" for="sumAssured">Premium</label>
+                            <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._protection.HRBFC"
+                              readonly id="txt-premium" [disabled]="isImgGActive">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-12" *ngIf="isGetShcbi == true" [ngClass]="{'disabled': activeRiders.includes('SHCBIC') == false}">
+                  <div class="benf_div1 container-fluid" formGroupName="SUHRBC">
+                    <div class="row">
+                      <div class="col-xs-5">
+                        <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveC($event, 'SUHRBC')"
+                          (change)="isActiveSUHRBC($event)" (click)="removeError('SUHRBC')">
+                        <label class="lbl" for="sumAssured">SHCBIC <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._shcbic}}</span></span></label>
+                        <div>
+                          <img [src]="imgSuhrbcGUrl" class=" img_active" [style.display]="isImgSUHRBCGActive ?'block'  : 'none'">
+                        </div>
+                        <div>
+                          <img [src]="imgSuhrbcUrl" class="img_active" [style.display]="isImgSUHRBCActive ? 'block' : 'none'">
+                        </div>
+                      </div>
+                      <div class="col-xs-7">
+                        <div class="row">
+                          <div class="col-xs-7">
+                            <div [style.display]="!isImgSUHRBCGActive ? 'block' : 'none'">
+                              <label class="frm_lbl_applied" for="sumAssured">Applied</label>
+
+                            </div>
+
+                            <label class="frm_lbl" for="sumAssured">Sum Assured</label>
+                            <input formControlName="sumAssured" type="number" style="display: none;" class="form-control input-sm"
+                              (keyup.enter)="checkValidateSUHRBC()" (blur)="checkValidateSUHRBC()" (keyup)="removeError('SUHRBC')"
+                              (click)="removeError('SUHRBC')" style="display: none;" id="txt-sumassured" [disabled]="isImgGActive"
+                              readonly>
+                            <div class="alert alert-danger" *ngIf="validateSUHRBC!=1">
+                              Error</div>
+                          </div>
+                          <div class="col-xs-5">
+                            <div *ngIf="validateSUHRBC==1">
+                              <label class="frm_lbl" for="sumAssured">Premium</label>
+                              <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._health.SUHRBC"
+                                readonly id="txt-premium" [disabled]="isImgGActive">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-12" *ngIf="isGetShcbf == true" [ngClass]="{'disabled': activeRiders.includes('SHCBFC') == false}">
+                  <div class="benf_div1 container-fluid" formGroupName="SHCBFC">
+                    <div class="row">
+                      <div class="col-xs-5">
+                        <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveSHCBFC($event)"
+                          (change)="onsetBenifC($event,'SHCBFC')" (click)="removeError('SHCBFC')">
+                        <label class="lbl" for="sumAssured">SHCBFC <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._shcbfc}}</span></span></label>
+                        <div>
+                          <img [src]="imgShcbfcGUrl" class=" img_active" [style.display]="isImgSHCBFCGActive ?'block'  : 'none'">
+                        </div>
+                        <div>
+                          <img [src]="imgShcbfcUrl" class="img_active" [style.display]="isImgSHCBFCActive ? 'block' : 'none'">
+                        </div>
+                      </div>
+                      <div class="col-xs-7">
+                        <div class="row">
+                          <div class="col-xs-7">
+                            <label class="frm_lbl" for="sumAssured">Sum Assured</label>
+                            <input formControlName="sumAssured" type="number" class="form-control input-sm" id="txt-sumassured"
+                              readonly (keyup)="removeError('SHCBFC')" (click)="removeError('SHCBFC')">
+                          </div>
+                          <div class="col-xs-5">
+                            <div>
+                              <label class="frm_lbl" for="sumAssured">Premium</label>
+                              <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._health.SHCBFC"
+                                readonly id="txt-premium" [disabled]="isImgGActive">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('HBC') == false}">
+                  <div class="benf_div1 container-fluid" formGroupName="HBC">
+                    <div class="row">
+                      <div class="col-xs-5">
+                        <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveC($event, 'HBC')"
+                          (change)="isActiveHBC($event)" (click)="removeError('HBC')">
+                        <label class="lbl" for="sumAssured">HBC <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._hbc}}</span></span></label>
+                        <div>
+                          <img [src]="imgHbcGUrl" class=" img_active" [style.display]="isImgHBCGActive ?'block'  : 'none'">
+                        </div>
+                        <div>
+                          <img [src]="imgHbcUrl" class="img_active" [style.display]="isImgHBCActive ? 'block' : 'none'">
+                        </div>
+                      </div>
+                      <div class="col-xs-7">
+                        <div class="row">
+                          <div class="col-xs-7">
+                            <div [style.display]="!isImgHBCGActive ? 'block' : 'none'">
+                              <label class="frm_lbl_applied" for="sumAssured">Applied</label>
+
+                            </div>
+
+                            <label class="frm_lbl" for="sumAssured" style="display: none;">Sum Assured</label>
+                            <input formControlName="sumAssured" type="number" style="display: none;" type="text" class="form-control input-sm"
+                              id="txt-sumassured" [disabled]="isImgGActive" (keyup)="removeError('HBC')" (click)="removeError('HBC')"
+                              readonly>
+                            <div class="alert alert-danger" *ngIf="validateHBC!=1">
+                              Error</div>
+                          </div>
+                          <div class="col-xs-5">
+                            <div *ngIf="validateHBC==1">
+                              <label class="frm_lbl" for="sumAssured">Premium</label>
+                              <input formControlName="premium" type="text" class="form-control input-sm" [(ngModel)]="summeryInfo._health.HBC"
+                                readonly id="txt-premium" [disabled]="isImgGActive">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </form>
+
+        </ng-template>
+      </ngb-tab> -->
+    </ngb-tabset>
+
+
+    <div>
+
+    </div>
+  </div>
+
+</div>

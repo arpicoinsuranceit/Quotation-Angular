@@ -67,7 +67,7 @@
                 <li *ngIf="productArray.includes('INVP')">
                   <a routerLink="quoinvp">INVP</a>
                 </li>
-                <li >
+                <li *ngIf="productArray.includes('ATP')">
                   <a routerLink="quoatp">ATP</a>
                 </li>
               </ul>

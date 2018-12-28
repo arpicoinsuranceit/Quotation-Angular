@@ -51,7 +51,7 @@
                 <table>
                   <tbody>
 
-                    <tr *ngIf="product == 'AIB' || product == 'AIP' || product == 'ASFP' || product == 'ASIP' ||
+                    <tr *ngIf="product == 'AIB' || product == 'AIP' || product == 'ASFP' || product == 'ASIP' ||  product == 'ATP' ||
                          product == 'ATRM' || product == 'DTA' || product == 'DTAP' || product == 'DTAPL' || product == 'END1' || product == 'INVP'">
                       <td style="width: 150px;">Paying Term </td>
                       <td>:</td>
@@ -82,7 +82,7 @@
                       <td>{{quo._plan._msfb.toLocaleString()}}</td>
                     </tr>
 
-                    <tr *ngIf="product == 'AIB' || product == 'AIP' || product == 'ARP' || product == 'ASFP' ||
+                    <tr *ngIf="product == 'AIB' || product == 'AIP' || product == 'ARP' || product == 'ASFP' || product == 'ATP' ||
                          product == 'ASIP' || product == 'ATRM' || product == 'DTA' || product == 'DTAP' || !product == 'DTAPL' || product == 'END1' || 
                          product == 'INVP' || product == 'ARTM'">
                       <td style="width: 150px;">Pay Frequency </td>
@@ -135,6 +135,12 @@
                       <td style="width: 150px;">Contribution </td>
                       <td>:</td>
                       <td>{{quo._plan.contribution.toLocaleString()}}</td>
+                    </tr>
+
+                    <tr *ngIf="product == 'ATP'">
+                      <td style="width: 150px;">Investment Amount </td>
+                      <td>:</td>
+                      <td>{{quo._plan._bsa.toLocaleString()}}</td>
                     </tr>
 
                     <tr>

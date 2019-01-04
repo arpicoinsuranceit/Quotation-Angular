@@ -95,7 +95,7 @@
                     <div class="row">
                       <div class="col-xs-5">
                         <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveS($event, 'JLB')"
-                          (change)="isActiveJLB($event)">
+                          (change)="isActiveJLB($event)" onclick="return false">
                         <label class="" for="sumAssured">JLB <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._jlb}}</span></span></label>
                         <div>
                           <img [src]="imgHbGUrl" class=" img_active" [style.display]="isImgJLBGActive ?'block'  : 'none'">
@@ -128,7 +128,7 @@
                     <div class="row">
                       <div class="col-xs-5">
                         <input formControlName="isActice" type="checkbox" class="" id="test-Active" (change)="isActiveS($event, 'TPDDTAS')"
-                          (change)="isActiveTPDDTAS($event)">
+                          (change)="isActiveTPDDTAS($event)" onclick="return false">
                         <label class="" for="sumAssured">TPDDTAS <span class="tooltip1">ⓘ <span class="tooltiptext">{{beneficts._tbddtas}}</span></span></label>
                         <div>
                           <img [src]="imgAdbsGUrl" class=" img_active" [style.display]="isImgTPDDTASGActive ?'block'  : 'none'">

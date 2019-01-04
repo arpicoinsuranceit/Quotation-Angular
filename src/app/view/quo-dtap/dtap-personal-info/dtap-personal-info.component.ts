@@ -157,6 +157,10 @@ export class DtapPersonalInfoComponent implements OnInit {
     }
   }
 
+  changeLoanType(){
+    this.clearbenefAll.emit(true);
+  }
+
   resetActivation() {
     this.activeSp = '2';
     this.activeS();

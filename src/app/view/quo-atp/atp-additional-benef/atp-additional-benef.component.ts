@@ -1971,7 +1971,7 @@ export class AtpAdditionalBenefComponent implements OnInit {
         this.abmForm.get('TPDB').get('sumAssured').setValue(this.abmForm.get('ADB').get('sumAssured').value);
       }
     } else {
-      swal("Error!", "ADB must be greater than or equal BSA and ADB must be less than or equal (BSA x 6) and ADB mod 25000 equal 0 Max value must be 25,000,000", "error");
+      swal("Error!", "ADB must be greater than or equal Investment Amount and ADB must be less than or equal (Investment Amount x 6) and ADB mod 25000 equal 0 Max value must be 25,000,000", "error");
 
     }
     this.allForms.abmForm = this.abmForm;
@@ -1993,7 +1993,7 @@ export class AtpAdditionalBenefComponent implements OnInit {
         this.checkValidateCIBC();
       }
     } else {
-      swal("Error!", "ATPB must be greater than or equal BSA and ATPB must be less than or equal (BSA x 10) and ATPB mod 25000 equal 0", "error");
+      swal("Error!", "ATPB must be greater than or equal Investment Amount and ATPB must be less than or equal (Investment Amount x 10) and ATPB mod 25000 equal 0", "error");
 
     }
     this.allForms.abmForm = this.abmForm;
@@ -2097,7 +2097,7 @@ export class AtpAdditionalBenefComponent implements OnInit {
 
     if (this.validateFEB == 1) {
     } else {
-      swal("Error!", "FEB must be greater than or equal 10,000 and less than or equal 75,000 and less than or equal 10% of BSA", "error");
+      swal("Error!", "FEB must be greater than or equal 10,000 and less than or equal 75,000 and less than or equal 10% of Investment Amount", "error");
     }
 
     this.allForms.abmForm = this.abmForm;

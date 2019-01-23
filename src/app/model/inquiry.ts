@@ -68,7 +68,9 @@ export class GeneralData {
     totalPremiun: number;
     quotationNum: string;
     proposalStatus : string;
-	proposalDescription : string;
+    proposalDescription : string;
+    sumAtRiskMain : number;
+    sumAtRiskSpouse : number;
 }
 
 export class MainlifeInquiry {

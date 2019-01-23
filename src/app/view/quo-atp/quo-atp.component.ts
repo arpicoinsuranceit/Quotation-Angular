@@ -198,6 +198,7 @@ export class QuoAtpComponent implements OnInit {
     }, error => { swal("Error", error.text(), "error") });
 
     this._plan._bsa = 200000;
+    this._plan.contribution = 200000;
     this._plan._frequance = "Single Premium";
     this._plan._term = 5;
     this.personalInfo._mainlife._mTitle = "MR";
@@ -486,7 +487,9 @@ export class QuoAtpComponent implements OnInit {
         return;
       }
 
-      if (this._plan._bsa < 200000 || Number.isNaN(this._plan._bsa)) {
+      console.log(this._plan.contribution);
+
+      if (this._plan.contribution < 200000 || Number.isNaN(this._plan.contribution)) {
         swal("Check Form Again", "Investment Amount must be greater than 200000...", "error")
           .then((value) => {
             document.getElementById("txt-bsa").classList.add("errors");
@@ -498,13 +501,14 @@ export class QuoAtpComponent implements OnInit {
 
       this._quotationCalculation._personalInfo.mPreviousSumAtRisk = this.sumAtRiskMain;
       this._quotationCalculation._personalInfo.sPreviousSumAtRisk = this.sumAtRiskSpouse;
+      this._quotationCalculation._personalInfo.bsa = this._plan.contribution;
       document.onkeydown = function (e) { return false; }
       this.isDisableDiv = true;
-      //console.log(this._quotationCalculation);
+      console.log(this._quotationCalculation);
       this.atpQuotationService.getQouAtpCal(this._quotationCalculation).subscribe(response => {
         document.onkeydown = function (e) { return true; }
         this.isDisableDiv = false;
-        //console.log(response.json());
+        console.log(response.json());
         if (response.json().errorExist == true) {
           swal("Error!", "Error exist in" + response.json().error, "error");
 
@@ -514,7 +518,8 @@ export class QuoAtpComponent implements OnInit {
         }
         this.summeryInfo._summery.healthBenMain = response.json().mainLifeHealthReq;
         this.summeryInfo._summery.healthBenSpouse = response.json().spouseHealthReq;
-        this.summeryInfo._summery.sumAssured = response.json().basicSumAssured.toLocaleString();
+        this.summeryInfo._summery.sumAssured = response.json().basicSumAssured;
+        this.summeryInfo._summery.invAmount = response.json().invesmantAmountAtp.toLocaleString();
         this.summeryInfo._summery.oc = response.json().extraOE.toLocaleString();
         this.summeryInfo._summery.withoutLoadingTot = response.json().withoutLoadingTot.toLocaleString();
         this.summeryInfo._summery.occuLodingTot = response.json().occuLodingTot.toLocaleString();
@@ -618,7 +623,7 @@ export class QuoAtpComponent implements OnInit {
       return;
     }
 
-    if (this._plan._bsa < 200000 || Number.isNaN(this._plan._bsa)) {
+    if (this._plan.contribution < 200000 || Number.isNaN(this._plan.contribution)) {
       swal("Check Form Again", "Investment Amount must be greater than 200000...", "error")
         .then((value) => {
           document.getElementById("txt-bsa").classList.add("errors");
@@ -631,6 +636,9 @@ export class QuoAtpComponent implements OnInit {
           document.getElementById("txt-term").focus();
         });
     } else {
+
+      console.log(this._invpSaveQuotation);
+      
       if (this.validity == true) {
         if (this.personalInfo._mainlife._mOccupation != "285") {
           if (this.activeSp == "1") {
@@ -720,7 +728,7 @@ export class QuoAtpComponent implements OnInit {
         return;
       }
 
-      if (this._plan._bsa < 200000 || Number.isNaN(this._plan._bsa)) {
+      if (this._plan.contribution < 200000 || Number.isNaN(this._plan.contribution)) {
         swal("Check Form Again", "Investment Amount must be greater than 200000...", "error")
           .then((value) => {
             document.getElementById("txt-bsa").classList.add("errors");
@@ -756,6 +764,7 @@ export class QuoAtpComponent implements OnInit {
         }
       }
       if (this.personalInfo._mainlife._mOccupation != "285") {
+        console.log(this._invpSaveQuotation);
         if (this.activeSp == "1") {
           if (this.personalInfo._spouse._sOccupation != "285") {
             this._invpSaveQuotation._personalInfo = this.personalInfo;
@@ -854,10 +863,13 @@ export class QuoAtpComponent implements OnInit {
     document.onkeydown = function (e) { return false; }
     this.isDisableDiv = true;
     this.atpQuotationService.getAtpQuotationDetailsForEdit(this.qdId).subscribe(response => {
+
+      console.log(response.json());
+
       document.onkeydown = function (e) { return true; }
       this.isDisableDiv = false;
 
-      //console.log(response.json());
+      console.log(response.json());
 
       if(sessionStorage.getItem("isUnderwriting") == "true"){
         this._mainLife=JSON.parse(sessionStorage.getItem("mainlife"));
@@ -880,6 +892,8 @@ export class QuoAtpComponent implements OnInit {
 
       let phone : string = this._mainLife._mMobile;
       this._mainLife._mMobile = phone.substr(1, 9);
+
+      console.log(response.json()._plan.contribution)
 
       this._plan = response.json()._plan;
 
@@ -910,7 +924,7 @@ export class QuoAtpComponent implements OnInit {
       this.riderDetails._sRiders = new Array();
       this.riderDetails._cRiders = new Array();
 
-      this._quotationCalculation._personalInfo.bsa = this.personalInfo._plan._bsa;
+      this._quotationCalculation._personalInfo.bsa = this.personalInfo._plan.contribution;
       this._quotationCalculation._personalInfo.frequance = this.personalInfo._plan._frequance;
       this._quotationCalculation._personalInfo.term = this.personalInfo._plan._term;
 

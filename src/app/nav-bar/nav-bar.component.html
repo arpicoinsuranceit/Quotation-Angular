@@ -13,8 +13,7 @@
         <div [ngbCollapse]="isCollapsed" class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li routerLinkActive="active current">
-                    <!-- <a routerLink="home" style="cursor:pointer;">Dashboard</a> -->
-                    <a (click)="loadDashboard()" style="cursor:pointer;">Dashboard</a>
+                    <a routerLink="home" style="cursor:pointer;">Dashboard</a>
                 </li>
                 <li ngbDropdown routerLinkActive="active current" class="dropdown">
                     <a ngbDropdownToggle class="dropdown-toggle" data-toggle="dropdown">Quotation
@@ -201,7 +200,7 @@
                         <!-- <li routerLinkActive="active current">
                             <a routerLink="orgchart">Org Chart</a>
                         </li> -->
-                        <li *ngIf="userType == 'BRN' || userType == 'BRANCH' || userType == 'ZONE' || userType == 'REGION'">
+                        <li *ngIf=" userType == 'ZONE' ">
                             <a routerLink="codetransfer">Pending Code Approvals</a>
                         </li>
 

@@ -193,6 +193,9 @@ export class LoadInquiriesComponent implements OnInit {
           this.inruiry.generalData.totalPremiun= res.totalPremiun;
           this.inruiry.generalData.proposalStatus= res.proposalStatus;
           this.inruiry.generalData.proposalDescription= res.proposalDescription;
+          this.inruiry.generalData.sumAtRiskMain= res.mainLifeSumAtRisk;
+          this.inruiry.generalData.sumAtRiskSpouse= res.spouseSumAtRisk;
+          
 
           this.inruiry.mainlifeInquiry.address = res.mainlifeAddress;
           this.inruiry.mainlifeInquiry.ageNext = res.mainLifeNextAge;

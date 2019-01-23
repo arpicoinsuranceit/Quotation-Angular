@@ -70,6 +70,7 @@ export class AtpPersonalInfoComponent implements OnInit {
     });
 
     this._plan._bsa = 200000;
+    this._plan.contribution = 200000;
     this._plan._frequance = "Single Premium";
     this._plan._term = 5;
     this._personalInfo._mainlife._mTitle = "MR";
@@ -220,7 +221,7 @@ export class AtpPersonalInfoComponent implements OnInit {
   }
 
   checkBSA() {
-    if (this._personalInfo._plan._bsa < 200000 || Number.isNaN(this._personalInfo._plan._bsa)) {
+    if (this._personalInfo._plan.contribution < 200000 || Number.isNaN(this._personalInfo._plan.contribution)) {
 
       if(Number.isNaN(this._personalInfo._plan._bsa)){
         this._personalInfo._plan._bsa=0;

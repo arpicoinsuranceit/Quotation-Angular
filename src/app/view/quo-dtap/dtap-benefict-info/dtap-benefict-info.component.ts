@@ -149,7 +149,7 @@ export class DtapBenefictInfoComponent implements OnInit {
       this.isImgTPDDTASGActive = false;
       this.isImgTPDDTASActive = true;
       this.absForm.get("TPDDTAS").get('sumAssured').setValue(this.bsa);
-      this.onsetBenif("", 'TPDDTAS');
+      this.onsetBenif("", 'TPDDTA');
     } else {
       this.isImgTPDDTASGActive = true;
       this.isImgTPDDTASActive = false;
@@ -174,39 +174,10 @@ export class DtapBenefictInfoComponent implements OnInit {
       this.isImgTPDDTAGActive = false;
       this.isImgTPDDTAActive = true;
       this.abmForm.get("TPDDTA").get('sumAssured').setValue(this.bsa);
-
-      if (this.activeSp == "1") {
-
-        this.isActiveS(e,'TPDDTAS')
-
-        this.isImgTPDDTASGActive = false;
-        this.isImgTPDDTASActive = true;
-        this.absForm.get('TPDDTAS').get('isActice').setValue(true);
-        this.absForm.get("TPDDTAS").get('sumAssured').setValue(this.bsa);
-
-        this.isActiveS(e,'JLB')
-
-        this.isImgJLBGActive = false;
-        this.isImgJLBActive = true;
-        this.absForm.get('JLB').get('isActice').setValue(true);
-        this.absForm.get("JLB").get('sumAssured').setValue(this.bsa);
-
-      }
-
       this.onsetBenif("", 'TPDDTA');
-      
     } else {
       this.isImgTPDDTAGActive = true;
       this.isImgTPDDTAActive = false;
-
-      this.absForm.get('TPDDTAS').get('sumAssured').setValue('0');
-      this.absForm.get('TPDDTAS').get('sumAssured').disable();
-      this.absForm.get('TPDDTAS').get('premium').setValue('0');
-      this.absForm.get('TPDDTAS').get('isActice').setValue(false);
-      
-      this.isImgTPDDTASActive = false;
-      this.isImgTPDDTASGActive = true;
-
       this.onsetBenif("", 'TPDDTA');
     }
   }
@@ -315,13 +286,19 @@ export class DtapBenefictInfoComponent implements OnInit {
                 "<th>Policy Year</th>"+
                 "<th>Out Term</th>"+
                 "<th>Sum at Risk</th>"+
+                "<th>Reduction</th>"+
+                "<th>Rate</th>"+
+                "<th>Premium</th>" + 
                 "</thead><tbody>";
                 
       for(let s=0; s<schedules.length; s++){
         let dtaShedule : DTAShedule = schedules[s];
         htmlTxt+="<tr><td>"+dtaShedule.polYear+"</td>"
               +"<td>"+dtaShedule.outyer+"</td>"
-              +"<td>"+parseInt(dtaShedule.outsum.toString())+"</td>"
+              +"<td>"+dtaShedule.outsum+"</td>"
+              +"<td>"+dtaShedule.lonred+"</td>"
+              +"<td>"+dtaShedule.prmrat+"</td>"
+              +"<td>"+dtaShedule.premum+"</td>"
               +"</tr>";
       }
 

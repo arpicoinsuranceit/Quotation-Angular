@@ -18,8 +18,8 @@
             <tr>
               <th class="center thead">Investment Amount</th>
               <td class="center thead">: {{personalInfo.bsa.toLocaleString()}}</td>
-              <!-- <th class="center thead">Premium (BSA) </th>
-              <td class="center thead">: {{summeryInfo._summery.sumAssured}}</td> -->
+              <th class="center thead">Basic Sum Assured </th>
+              <td class="center thead">: {{summeryInfo._summery.sumAssured.toLocaleString()}}</td>
             </tr>
           </tbody>
 
@@ -312,7 +312,7 @@
                 </div>
               </div>
 
-             <!-- <div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('MFIBD') == false}">
+              <!--<div class="col-sm-12" [ngClass]="{'disabled': activeRiders.includes('MFIBD') == false}">
                 <div class="benf_div1 container-fluid" formGroupName="MFIBD">
                   <div class="row">
                     <div class="col-xs-5">

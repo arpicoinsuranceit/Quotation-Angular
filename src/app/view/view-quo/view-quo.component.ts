@@ -40,7 +40,7 @@ export class ViewQuoComponent implements OnInit {
 
   viewQuotationDetails() {
     return this.viewQuoService.getQuotationDetails(this.quoNum).subscribe(response => {
-      //console.log(response.json());
+      console.log(response.json());
       this.quotationDetails = response.json();
       this.product=this.quotationDetails[0].productCode;
       this.quotationDetails = this.quotationDetails.sort();

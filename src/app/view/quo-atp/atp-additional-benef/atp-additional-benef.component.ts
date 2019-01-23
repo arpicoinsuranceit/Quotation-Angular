@@ -1961,7 +1961,7 @@ export class AtpAdditionalBenefComponent implements OnInit {
   }
 
   checkValidateADB() {
-    this.validateADB = this.benefitsValidations.validateadb(this.personalInfo.bsa, this.abmForm.get('ADB').get('sumAssured').value);
+    this.validateADB = this.benefitsValidations.validateadb(this.summeryInfo._summery.sumAssured, this.abmForm.get('ADB').get('sumAssured').value);
 
     if (this.validateADB == 1) {
       this.abmForm.get('PPDB').get('sumAssured').setValue(this.abmForm.get('ADB').get('sumAssured').value);
@@ -1981,7 +1981,10 @@ export class AtpAdditionalBenefComponent implements OnInit {
   }
 
   checkValidateATPB() {
-    this.validateATPB = this.benefitsValidations.validatteAtpb(this.personalInfo.bsa, this.abmForm.get('ATPB').get('sumAssured').value);
+
+    console.log(this.summeryInfo._summery.sumAssured);
+
+    this.validateATPB = this.benefitsValidations.validatteAtpb(this.summeryInfo._summery.sumAssured, this.abmForm.get('ATPB').get('sumAssured').value);
     if (this.validateATPB == 1) {
       if (this.abmForm.get('CIB').get('isActice').value) {
         this.checkValidateCIB();

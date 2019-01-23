@@ -13,7 +13,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: 'app/view/load-quo/load-quo.module#LoadQuoModule'
+    loadChildren: 'app/dashboard/dashboard.module#DashBoardModule'
   },
 
   {

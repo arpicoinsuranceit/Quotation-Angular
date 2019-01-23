@@ -20,6 +20,7 @@ export class Summery {
     pensionPremium1 =0.00;
     pensionPremium2 =0.00;
     pensionPremium3 =0.00;
+    invAmount = 0.0;
 }
 export class Health {
     CIB = 0;

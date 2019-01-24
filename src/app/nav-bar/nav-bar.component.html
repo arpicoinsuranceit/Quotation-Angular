@@ -204,6 +204,10 @@
                             <a routerLink="codetransfer">Pending Code Approvals</a>
                         </li>
 
+                        <li *ngIf=" userType == 'BRANCH' ">
+                            <a routerLink="codetransfer">Code Transfer</a>
+                        </li>
+
                         <li *ngIf="userType != 'IC' && userType != 'UNL' && userType != 'REGION'">
                             <a routerLink="commitment">Commitment</a>
                         </li>

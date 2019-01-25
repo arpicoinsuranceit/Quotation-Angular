@@ -99,7 +99,7 @@
                   </div>
                 </div>
 
-                <div class="row">
+                <div class="row" *ngIf="isSelectRow">
                   <div class="col-lg-5 col-md-5 col-xs-5 col-sm-5" style="margin-top: 10px;margin-left: 15px;box-shadow: 1px 1px 4px 1px #777777;background: #d6fcec;height: 200px;">
                     <div style="padding: 5px;height: 40px;border-bottom: 1px solid palegreen;text-align: center;" >
                       <h5><b>Existing Agent Details</b></h5>
@@ -142,11 +142,7 @@
                                     type="text"
                                     class="form-control"
                                     [(ngModel)]="transferAgentCode"
-                                    [ngbTypeahead]="search"
-                                    (focus)="focus$.next($event.target.value)"
-                                    (click)="click$.next($event.target.value)"
-                                    #instance="ngbTypeahead"
-                                    (keyup)="getAgents($event)" (blur)="loadNewAgentDetails()" (keyup.enter)="loadNewAgentDetails()"/>
+                                    (keyup)="getAgents($event)"/>
                                 </td>
                             </tr>
                             <tr>

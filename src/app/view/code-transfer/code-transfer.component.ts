@@ -1,14 +1,9 @@
-import { Observable } from 'rxjs/Observable';
 import { CodeTransferService } from './../../service/code-transfer/code-transfer.service';
 import { LoginService } from './../../service/login.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CodeTransfer } from './../../model/codetransfer';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import swal from 'sweetalert2';
-import { NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
-import { Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, map, filter, startWith } from 'rxjs/operators';
-import { merge } from 'rxjs/observable/merge';
 import { AgentModel } from '../../model/agentmodel';
 import { CodeTransferHelperModel } from '../../model/codetransferhelpermodel';
 import { CodeTransferModel } from '../../model/codetransfermodel';
@@ -44,8 +39,6 @@ export class CodeTransferComponent implements OnInit {
 
   transferAgentCode;
 
-  filteredAgents: Observable<any[]>;
-
   existingAgentCode;
   existingAgentName;
   existingBranch;
@@ -60,28 +53,15 @@ export class CodeTransferComponent implements OnInit {
     }
   }
 
-  @ViewChild('instance') instance: NgbTypeahead;
-  focus$ = new Subject<string>();
-  click$ = new Subject<string>();
-
-  search = (text$: Observable<string>) => {
-    const debouncedText$ = text$.pipe(debounceTime(200), distinctUntilChanged());
-    const clicksWithClosedPopup$ = this.click$.pipe(filter(() => !this.instance.isPopupOpen()));
-    const inputFocus$ = this.focus$;
-
-    return merge(debouncedText$, inputFocus$, clicksWithClosedPopup$).pipe(
-      map(term => (term === '' ? this.agentCodeArray
-        : this.agentCodeArray.filter(v => v.AgentCode.toLowerCase().indexOf(term.toLowerCase()) > -1)).slice(0, 10))
-    );
-  }
-
   ngOnInit() {
     this.userType = sessionStorage.getItem("userType");
-    this.getTransfers();
+    
     if(this.userType == "BRANCH"){
       this.loadCodePendingProposal();
       this.loadCanceledCodeTranPrp();
       this.loadPendingCodeTranPrp();
+    }else{
+      this.getTransfers();
     }
     
 
@@ -229,14 +209,8 @@ export class CodeTransferComponent implements OnInit {
     });
   }
 
-  filterAgents(id) {
-    return this.agentCodeArray.filter(agent =>
-      agent.AgentCode.toString().toLowerCase().indexOf(id.toString().toLowerCase()) === 0);
-  }
-
-
   getAgents(event) {
-    if (this.transferAgentCode.length == 2 && event.key != "Enter" && event.key != "ArrowUp"
+    if (this.transferAgentCode.length >= 2 && event.key != "Enter" && event.key != "ArrowUp"
       && event.key != "ArrowDown" && event.key != "ArrowLeft" && event.key != "ArrowRight" &&
       event.key != "Tab" && event.key != "Enter" && event.key != "Backspace") {
         this.isDisableDiv=true;
@@ -244,33 +218,80 @@ export class CodeTransferComponent implements OnInit {
       console.log(this.transferAgentCode);
       this.codeTransferService.getAgent(this.transferAgentCode).subscribe(response => {
         console.log(response.json());
-        for (let i in response.json()) {
-          let agnTemp = response.json()[i];
-          let agentModel: AgentModel = new AgentModel();
+        let htmlTxt="<div style=\"overflow-x:auto;\"><table class=\"table table-striped table-hover table-responsive\">";
+        // "<tr><th>Agent Code</th><th>Agent Name</th><th>Loc Code</th></tr>";
+          for (let i in response.json()) {
+            let agnTemp = response.json()[i];
+            let agentModel: AgentModel = new AgentModel();
 
-          agentModel.AgentCode = agnTemp.agentCode;
-          agentModel.AgentName = agnTemp.agentName;
-          agentModel.Location = agnTemp.location;
+            agentModel.AgentCode = agnTemp.agentCode;
+            agentModel.AgentName = agnTemp.agentName;
+            agentModel.Location = agnTemp.location;
 
-          agentModel.AgentCombine = agnTemp.agentCode + " | " + agnTemp.agentName + " | " + agnTemp.location;
+            agentModel.AgentCombine = agnTemp.agentCode + " | " + agnTemp.agentName + " | " + agnTemp.location;
 
-          this.agentCodeArray.push(agentModel);
+            htmlTxt+="<tr>"+
+                      "<td><input type=\"radio\" name=\"selectagent\" value=\""+agnTemp.agentCode+"\"></td>"+
+                      "<td>"+agnTemp.agentCode+"</td>"+
+                      "<td>"+agnTemp.agentName+"</td>"+
+                      "<td>"+agnTemp.location+"</td>"+
+                      "</tr>";
+
+            this.agentCodeArray.push(agentModel);
+          }
+      
+         htmlTxt+="</table></div>";
+
+        this.isDisableDiv=false;
+
+        if(this.agentCodeArray.length > 0){
+          swal({
+            title: 'Transfer Agents',
+            html: htmlTxt,
+            width: '450px',
+            showCancelButton: false,
+            showConfirmButton: true
+      
+          }).then((resp) => {
+            if (resp.value == true) {
+
+              let selectedagent="";
+
+              if(document.querySelector('input[name="selectagent"]:checked') != null){
+                selectedagent = document.querySelector('input[name="selectagent"]:checked').getAttribute("value");
+              }
+              
+
+              if(selectedagent.length == 4){
+                this.loadNewAgentDetails(selectedagent);
+              }else{
+                this.newAgentCode="";
+                this.newAgentName="";
+                this.newBranch="";
+                this.transferAgentCode="";
+              }
+              
+
+            }else{
+              if(this.transferAgentCode.length > 4){
+                this.newAgentCode="";
+                this.newAgentName="";
+                this.newBranch="";
+                this.transferAgentCode="";
+              }
+            }
+          });
         }
-
-        console.log(this.agentCodeArray);
-        // this.filteredAgents = this.transferAgentCode.valueChanges
-        //   .pipe(
-        //     startWith(''),
-        //     map(agent => this.filterAgents(agent))
-        //   );
-
-          this.isDisableDiv=false;
+        
+        
       });
       this.isDisableDiv=false;
     }
   }
 
-  loadNewAgentDetails(){
+
+  loadNewAgentDetails(agentCode){
+    this.transferAgentCode=agentCode;
     let code:string=this.transferAgentCode.toString();
 
     if(code.length == 4){
@@ -504,6 +525,7 @@ export class CodeTransferComponent implements OnInit {
     this.existingAgentCode="";
     this.existingAgentName="";
     this.existingBranch="";
+    this.loadCodePendingProposal();
   }
 
 }

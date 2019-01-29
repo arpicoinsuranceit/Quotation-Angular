@@ -8,6 +8,7 @@ import { AgentModel } from '../../model/agentmodel';
 import { CodeTransferHelperModel } from '../../model/codetransferhelpermodel';
 import { CodeTransferModel } from '../../model/codetransfermodel';
 import { SaveCodeTransfer } from '../../model/savecodeTransferModel';
+import { Session } from 'protractor';
 
 @Component({
   selector: 'app-code-transfer',
@@ -60,6 +61,7 @@ export class CodeTransferComponent implements OnInit {
       this.loadCodePendingProposal();
       this.loadCanceledCodeTranPrp();
       this.loadPendingCodeTranPrp();
+      this.getTransfers();
     }else{
       this.getTransfers();
     }
@@ -71,7 +73,7 @@ export class CodeTransferComponent implements OnInit {
     let user = this.loginService.currentUser;
 
     this.isDisableDiv = true;
-    this.codeTransferService.getAllTransfers(user).subscribe(resp => {
+    this.codeTransferService.getAllTransfers(user,sessionStorage.getItem("dashpara"),sessionStorage.getItem("userType")).subscribe(resp => {
       this.isDisableDiv = false;
       // console.log(resp.json());
       this.transferlist = new Array();

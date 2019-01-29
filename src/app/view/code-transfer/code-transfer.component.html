@@ -1,312 +1,301 @@
-<div class="mainBody" [ngClass]="{'disabled': isDisableDiv == true}">
-  <div class="main_div" [ngClass]="{'disabled': isDisableDiv == true}" *ngIf="userType == 'ZONE'">
-    <div class="header_div">
-      <h2>Pending Code Approvals</h2>
-    </div>
-    <div class="container-fluid content-div" style="margin-top: 10px; min-height: 600px;">
+<div class="mainBody" [ngClass]="{'disabled': isDisableDiv == true}" style="margin-top: 10px;">
+    <ngb-tabset>
+        <ngb-tab title="Pending Code Approvals">
+          <ng-template ngbTabContent>
+            <div class="main_div" [ngClass]="{'disabled': isDisableDiv == true}">
+              <div class="header_div">
+                <h2>Pending Code Approvals</h2>
+              </div>
+              <div class="container-fluid content-div" style="margin-top: 10px; min-height: 600px;">
 
-      <!-- <div style="min-height: 40px;">
-        <form class="form-inline" style="margin: 10px;" [formGroup]="form_search">
+                <div style="max-height: 500px; overflow-y: auto;">
 
-          <div class="form-group" style="padding-bottom: 10px;">
-            <select class="form-control" id="inlineFormCustomSelect" formControlName="column">
-              <option value="pprnum">Proposal No</option>
-              <option value="polnum">Policy No </option>
-              <option value="oldagn">Old Agent Code </option>
-              <option value="newagn">New Agent Code </option>
-            </select>
-          </div>
-          <div class="form-group" style="padding-bottom: 10px;">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search for..." formControlName="data">
-              <span class="input-group-btn">
-                <button class="btn btn-info" type="button" (click)="search()">Search</button>
-              </span>
-            </div>
-          </div>
-        </form>
-      </div> -->
-
-      <div style="max-height: 500px; overflow-y: auto;">
-
-        <table class="table table-striped table-responsive">
-          <tr>
-            <th>Branch</th>
-            <th>Policy No</th>
-            <th>Proposal No</th>
-            <th>Exist agent code </th>
-            <th>Request Agent Code</th>
-            <th>Reason</th>
-            <th>Req. By</th>
-            <th>Req. Date</th>
-            <th></th>
-            <th></th>
-          </tr>
-
-          <tr *ngFor="let item of transferlist">
-            <td>{{ item.locCode }}</td>
-            <td>{{ item.polNum }}</td>
-            <td>{{ item.pprNum }}</td>
-            <td>{{ item.oldAgentCode }}</td>
-            <td>{{ item.newAgentCode }}</td>
-            <td>{{ item.reason }}</td>
-            <td>{{ item.requestBy }}</td>
-            <td>{{ item.requestDate }}</td>
-            <td><input class="btn btn-info btn-xs" type="button" value="Approve" (click)="approve(item)"></td>
-            <td><input class="btn btn-danger btn-xs" type="button" value="Reject" (click)="reject(item)"></td>
-
-          </tr>
-        </table>
-      </div>
-
-
-    </div>
-  </div>
-
-  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" [ngClass]="{'disabled': isDisableDiv == true}" *ngIf="userType == 'BRANCH'" style="margin: 0;padding: 0;">
-    <div class="main_div" >
-      <div class="header_div">
-        <h2>Code Transfer</h2>
-      </div>
-      <div class="container-fluid content-div" style="margin-top: 10px; min-height: 500px;">
-        <ngb-tabset>
-          <ngb-tab title="Proposal">
-            <ng-template ngbTabContent>
-                <div style="margin-top: 10px;box-shadow: 1px 1px 4px 1px #777777;" >
-                  <div style="padding: 5px;height: 60px;">
-                    <h5><b>Code Pending Proposals</b></h5>
-                    <hr>
-                  </div>
-                  <div class="container-fluid content-div" style="margin: 0; min-height: 150px;overflow-x: auto;">
-                      <table class="table table-striped table-hover table-responsive" style="max-height: 110px;overflow-x: auto;">
-                        <tr>
-                          <th>Proposal No</th>
-                          <th>Branch </th>
-                          <th>Agent Code</th>
-                          <th>Agent Name</th>
-                          <th>Designation</th>
-                        </tr>
-              
-                        <tr *ngFor="let code of prpCodeTranArray" (dblclick)="loadDataToExisting(code.agentCode,code.agentName,code.branch,code.pprNum)">
-                          <td>{{ code.pprNum }}</td>
-                          <td>{{ code.branch }}</td>
-                          <td>{{ code.agentCode }}</td>
-                          <td>{{ code.agentName }}</td>
-                          <td>{{ code.designation }}</td>
-                        </tr>
-                      </table>
-
-                  </div>
-                </div>
-
-                <div class="row" *ngIf="isSelectRow">
-                  <div class="col-lg-5 col-md-5 col-xs-5 col-sm-5" style="margin-top: 10px;margin-left: 15px;box-shadow: 1px 1px 4px 1px #777777;background: #d6fcec;height: 200px;">
-                    <div style="padding: 5px;height: 40px;border-bottom: 1px solid palegreen;text-align: center;" >
-                      <h5><b>Existing Agent Details</b></h5>
-                    </div>
-                    <div class="container-fluid content-div" style="margin-top: 10px; min-height: 150px;overflow-x: auto;">
-                      <table style="width:100%;">
-                          <tr>
-                              <td>Agent Code</td>
-                              <td> : </td>
-                              <td>{{existingAgentCode}}</td>
-                          </tr>
-                          <tr>
-                              <td>Agent Name</td>
-                              <td> : </td>
-                              <td> {{existingAgentName}}</td>
-                          </tr>
-                          <tr>
-                              <td>Branch</td>
-                              <td> : </td>
-                              <td>{{existingBranch}}</td>
-                          </tr>
-                      </table>
-                    </div>
-                  </div>
-                  <div class="col-lg-1 col-md-1 col-xs-1 col-sm-1" style="margin-top: 10px;">
-
-                  </div>
-                  <div class="col-lg-5 col-md-5 col-xs-5 col-sm-5" style="margin-top: 10px;margin-left: 15px;box-shadow: 1px 1px 4px 1px #777777;background: #d6fcec;height: 200px;">
-                    <div style="padding: 5px;height: 40px;border-bottom: 1px solid palegreen;text-align: center;" >
-                      <h5><b>Transfer Agent Details</b></h5>
-                    </div>
-                    <div class="container-fluid content-div" style="margin-top: 10px; min-height: 150px;overflow-x: auto;">
-                        <table style="width:100%;">
-                            <tr>
-                                <td>Agent Code</td>
-                                <td> : </td>
-                                <td>
-                                    <input
-                                    id="typeahead-focus"
-                                    type="text"
-                                    class="form-control"
-                                    [(ngModel)]="transferAgentCode"
-                                    (keyup)="getAgents($event)"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Agent Name</td>
-                                <td>:</td>
-                                <td>{{newAgentName}}</td>
-                            </tr>
-                            <tr>
-                                <td>Branch</td>
-                                <td>:</td>
-                                <td>{{newBranch}}</td>
-                            </tr>
-                        </table>
-                    </div>
-                  </div>
-
-                </div>
-            </ng-template>
-          </ngb-tab>
-
-          <ngb-tab title="Policy">
-              <ng-template ngbTabContent>
-  
-              </ng-template>
-            </ngb-tab>
-        </ngb-tabset>
-
-        
-      </div>
-      <div class="header_div navbar-static-bottom" style="height: 50px;">
-        <input type="button" (click)="clearProp()" class="btn btn-info" value="Clear" style="margin-top: 7px; margin-left: 10px;background: rgb(240,183,161);
-        background: -moz-linear-gradient(top, rgba(240,183,161,1) 0%, rgba(140,51,16,1) 50%, rgba(117,34,1,1) 51%, rgba(191,110,78,1) 100%);
-        background: -webkit-linear-gradient(top, rgba(240,183,161,1) 0%,rgba(140,51,16,1) 50%,rgba(117,34,1,1) 51%,rgba(191,110,78,1) 100%);
-        background: linear-gradient(to bottom, rgba(240,183,161,1) 0%,rgba(140,51,16,1) 50%,rgba(117,34,1,1) 51%,rgba(191,110,78,1) 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0b7a1', endColorstr='#bf6e4e',GradientType=0 );"
-              >
-        <input type="button" class="btn btn-info" value="Save" style="margin-top: 7px; right: 0; background: rgb(59,103,158);float: right;margin-right: 10px;"
-              (click)="savePropCodeTransfer()" >
-      </div>
-    </div>
-  </div>
-
-  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" [ngClass]="{'disabled': isDisableDiv == true}" *ngIf="userType == 'BRANCH'" style="margin: 0;padding: 0;">
-    <div class="row">
-      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin: 0;padding: 0;">
-        <div class="main_div" >
-          <div class="header_div">
-            <h2>Pending Approvals</h2>
-          </div>
-          <div class="container-fluid content-div" style="margin-top: 10px; min-height: 240px;overflow-x: auto;">
-            <ngb-tabset>
-              <ngb-tab title="Proposal">
-                <ng-template ngbTabContent>
-                  <table class="table table-striped table-responsive" style="margin-top: 10px;max-height: 200px;overflow-x: auto;">
+                  <table class="table table-striped table-responsive">
                     <tr>
+                      <th>Branch</th>
+                      <th>Policy No</th>
                       <th>Proposal No</th>
-                      <th>Loc Code </th>
-                      <th>Existing Agent Code</th>
-                      <th>New Agent Code</th>
+                      <th>Exist agent code </th>
+                      <th>Request Agent Code</th>
+                      <th>Reason</th>
+                      <th>Req. By</th>
                       <th>Req. Date</th>
-                      <th>Status</th>
+                      <th></th>
+                      <th></th>
                     </tr>
-          
-                    <tr *ngFor="let item of pendingCodeTranPprArray">
-                      <td>{{ item.pprNum }}</td>
+
+                    <tr *ngFor="let item of transferlist">
                       <td>{{ item.locCode }}</td>
-                      <td>{{ item.oldAgentCode }}</td>
-                      <td>{{ item.newAgentCode }}</td>
-                      <td>{{ item.requestDate | date: 'dd/MM/yyyy'}}</td>
-                      <td>{{ item.status }}</td>
-                    </tr>
-                  </table>
-                </ng-template>
-              </ngb-tab>
-              <ngb-tab title="Policy">
-                <ng-template ngbTabContent>
-                    <table class="table table-striped table-responsive" style="margin-top: 10px;max-height: 200px;overflow-x: auto;">
-                        <tr>
-                          <th>Policy No</th>
-                          <th>Loc Code </th>
-                          <th>Existing Agent Code</th>
-                          <th>New Agent Code</th>
-                          <th>Req. Date</th>
-                          <th>Status</th>
-                        </tr>
-              
-                        <tr *ngFor="let item of pendingCodeTranPolArray">
-                          <td>{{ item.polNum }}</td>
-                          <td>{{ item.locCode }}</td>
-                          <td>{{ item.oldAgentCode }}</td>
-                          <td>{{ item.newAgentCode }}</td>
-                          <td>{{ item.requestDate | date: 'dd/MM/yyyy'}}</td>
-                          <td>{{ item.status }}</td>
-                        </tr>
-                      </table>
-                </ng-template>
-              </ngb-tab>
-            </ngb-tabset>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin: 0;padding: 0;">
-        <div class="main_div" >
-          <div class="header_div">
-            <h2>Rejected Approvals</h2>
-          </div>
-          <div class="container-fluid content-div" style="margin-top: 10px;min-height: 240px;overflow-x: auto;">
-            <ngb-tabset>
-              <ngb-tab title="Proposal">
-                <ng-template ngbTabContent>
-                  <table class="table table-striped table-responsive" style="margin-top: 10px;max-height: 200px;overflow-x: auto;">
-                    <tr>
-                      <th>Proposal No</th>
-                      <th>Existing Agent Code</th>
-                      <th>New Agent Code</th>
-                      <th>Canceled Reason</th>
-                      <th>Approved By</th>
-                      <th>Approved Date</th>
-                      <th>Req. Date</th>
-                    </tr>
-          
-                    <tr *ngFor="let item of canceledCodeTranPprArray">
+                      <td>{{ item.polNum }}</td>
                       <td>{{ item.pprNum }}</td>
                       <td>{{ item.oldAgentCode }}</td>
                       <td>{{ item.newAgentCode }}</td>
-                      <td>{{ item.approverRemark }}</td>
-                      <td>{{ item.approvedBy }}</td>
-                      <td>{{ item.approvedDate | date: 'dd/MM/yyyy'}}</td>
-                      <td>{{ item.requestDate | date: 'dd/MM/yyyy'}}</td>
+                      <td>{{ item.reason }}</td>
+                      <td>{{ item.requestBy }}</td>
+                      <td>{{ item.requestDate }}</td>
+                      <td><input class="btn btn-info btn-xs" type="button" value="Approve" (click)="approve(item)"></td>
+                      <td><input class="btn btn-danger btn-xs" type="button" value="Reject" (click)="reject(item)"></td>
+
                     </tr>
                   </table>
-                </ng-template>
-              </ngb-tab>
-              <ngb-tab title="Policy">
-                <ng-template ngbTabContent>
-                    <table class="table table-striped table-responsive" style="margin-top: 10px;max-height: 200px;overflow-x: auto;">
-                        <tr>
-                            <th>Policy No</th>
-                            <th>Existing Agent Code</th>
-                            <th>New Agent Code</th>
-                            <th>Canceled Reason</th>
-                            <th>Approved By</th>
-                            <th>Approved Date</th>
-                            <th>Req. Date</th>
-                        </tr>
-              
-                        <tr *ngFor="let item of canceledCodeTranPolArray">
-                          <td>{{ item.polNum }}</td>
-                          <td>{{ item.oldAgentCode }}</td>
-                          <td>{{ item.newAgentCode }}</td>
-                          <td>{{ item.approverRemark }}</td>
-                          <td>{{ item.approvedBy }}</td>
-                          <td>{{ item.approvedDate | date: 'dd/MM/yyyy'}}</td>
-                          <td>{{ item.requestDate | date: 'dd/MM/yyyy'}}</td>
-                        </tr>
-                      </table>
-                </ng-template>
-              </ngb-tab>
-            </ngb-tabset>
+                </div>
 
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+
+              </div>
+            </div>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab title="Code Transfer" *ngIf="userType == 'BRANCH'">
+          <ng-template ngbTabContent>
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" [ngClass]="{'disabled': isDisableDiv == true}" style="margin: 0;padding: 0;">
+                  <div class="main_div" >
+                    <div class="header_div">
+                      <h2>Code Transfer</h2>
+                    </div>
+                    <div class="container-fluid content-div" style="margin-top: 10px; min-height: 500px;">
+                      <ngb-tabset>
+                        <ngb-tab title="Proposal">
+                          <ng-template ngbTabContent>
+                              <div style="margin-top: 10px;box-shadow: 1px 1px 4px 1px #777777;" >
+                                <div style="padding: 5px;height: 60px;">
+                                  <h5><b>Code Pending Proposals</b></h5>
+                                  <hr>
+                                </div>
+                                <div class="container-fluid content-div" style="margin: 0; min-height: 150px;overflow-x: auto;">
+                                    <table class="table table-striped table-hover table-responsive" style="max-height: 110px;overflow-x: auto;">
+                                      <tr>
+                                        <th>Proposal No</th>
+                                        <th>Branch </th>
+                                        <th>Agent Code</th>
+                                        <th>Agent Name</th>
+                                        <th>Designation</th>
+                                      </tr>
+                            
+                                      <tr *ngFor="let code of prpCodeTranArray" (dblclick)="loadDataToExisting(code.agentCode,code.agentName,code.branch,code.pprNum)">
+                                        <td>{{ code.pprNum }}</td>
+                                        <td>{{ code.branch }}</td>
+                                        <td>{{ code.agentCode }}</td>
+                                        <td>{{ code.agentName }}</td>
+                                        <td>{{ code.designation }}</td>
+                                      </tr>
+                                    </table>
+              
+                                </div>
+                              </div>
+              
+                              <div class="row" *ngIf="isSelectRow">
+                                <div class="col-lg-5 col-md-5 col-xs-5 col-sm-5" style="margin-top: 10px;margin-left: 15px;box-shadow: 1px 1px 4px 1px #777777;background: #d6fcec;height: 200px;">
+                                  <div style="padding: 5px;height: 40px;border-bottom: 1px solid palegreen;text-align: center;" >
+                                    <h5><b>Existing Agent Details</b></h5>
+                                  </div>
+                                  <div class="container-fluid content-div" style="margin-top: 10px; min-height: 150px;overflow-x: auto;">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td>Agent Code</td>
+                                            <td> : </td>
+                                            <td>{{existingAgentCode}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Agent Name</td>
+                                            <td> : </td>
+                                            <td> {{existingAgentName}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Branch</td>
+                                            <td> : </td>
+                                            <td>{{existingBranch}}</td>
+                                        </tr>
+                                    </table>
+                                  </div>
+                                </div>
+                                <div class="col-lg-1 col-md-1 col-xs-1 col-sm-1" style="margin-top: 10px;">
+              
+                                </div>
+                                <div class="col-lg-5 col-md-5 col-xs-5 col-sm-5" style="margin-top: 10px;margin-left: 15px;box-shadow: 1px 1px 4px 1px #777777;background: #d6fcec;height: 200px;">
+                                  <div style="padding: 5px;height: 40px;border-bottom: 1px solid palegreen;text-align: center;" >
+                                    <h5><b>Transfer Agent Details</b></h5>
+                                  </div>
+                                  <div class="container-fluid content-div" style="margin-top: 10px; min-height: 150px;overflow-x: auto;">
+                                      <table style="width:100%;">
+                                          <tr>
+                                              <td>Agent Code</td>
+                                              <td> : </td>
+                                              <td>
+                                                  <input
+                                                  id="typeahead-focus"
+                                                  type="text"
+                                                  class="form-control"
+                                                  [(ngModel)]="transferAgentCode"
+                                                  (keyup)="getAgents($event)"/>
+                                              </td>
+                                          </tr>
+                                          <tr>
+                                              <td>Agent Name</td>
+                                              <td>:</td>
+                                              <td>{{newAgentName}}</td>
+                                          </tr>
+                                          <tr>
+                                              <td>Branch</td>
+                                              <td>:</td>
+                                              <td>{{newBranch}}</td>
+                                          </tr>
+                                      </table>
+                                  </div>
+                                </div>
+              
+                              </div>
+                          </ng-template>
+                        </ngb-tab>
+              
+                        <ngb-tab title="Policy">
+                            <ng-template ngbTabContent>
+                
+                            </ng-template>
+                          </ngb-tab>
+                      </ngb-tabset>
+              
+                      
+                    </div>
+                    <div class="header_div navbar-static-bottom" style="height: 50px;">
+                      <input type="button" (click)="clearProp()" class="btn btn-info" value="Clear" style="margin-top: 7px; margin-left: 10px;background: rgb(240,183,161);
+                      background: -moz-linear-gradient(top, rgba(240,183,161,1) 0%, rgba(140,51,16,1) 50%, rgba(117,34,1,1) 51%, rgba(191,110,78,1) 100%);
+                      background: -webkit-linear-gradient(top, rgba(240,183,161,1) 0%,rgba(140,51,16,1) 50%,rgba(117,34,1,1) 51%,rgba(191,110,78,1) 100%);
+                      background: linear-gradient(to bottom, rgba(240,183,161,1) 0%,rgba(140,51,16,1) 50%,rgba(117,34,1,1) 51%,rgba(191,110,78,1) 100%);
+                      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0b7a1', endColorstr='#bf6e4e',GradientType=0 );"
+                            >
+                      <input type="button" class="btn btn-info" value="Save" style="margin-top: 7px; right: 0; background: rgb(59,103,158);float: right;margin-right: 10px;"
+                            (click)="savePropCodeTransfer()" >
+                    </div>
+                  </div>
+                </div>
+              
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" [ngClass]="{'disabled': isDisableDiv == true}" style="margin: 0;padding: 0;">
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin: 0;padding: 0;">
+                      <div class="main_div" >
+                        <div class="header_div">
+                          <h2>Pending Approvals</h2>
+                        </div>
+                        <div class="container-fluid content-div" style="margin-top: 10px; min-height: 240px;overflow-x: auto;">
+                          <ngb-tabset>
+                            <ngb-tab title="Proposal">
+                              <ng-template ngbTabContent>
+                                <table class="table table-striped table-responsive" style="margin-top: 10px;max-height: 200px;overflow-x: auto;">
+                                  <tr>
+                                    <th>Proposal No</th>
+                                    <th>Loc Code </th>
+                                    <th>Existing Agent Code</th>
+                                    <th>New Agent Code</th>
+                                    <th>Req. Date</th>
+                                    <th>Status</th>
+                                  </tr>
+                        
+                                  <tr *ngFor="let item of pendingCodeTranPprArray">
+                                    <td>{{ item.pprNum }}</td>
+                                    <td>{{ item.locCode }}</td>
+                                    <td>{{ item.oldAgentCode }}</td>
+                                    <td>{{ item.newAgentCode }}</td>
+                                    <td>{{ item.requestDate | date: 'dd/MM/yyyy'}}</td>
+                                    <td>{{ item.status }}</td>
+                                  </tr>
+                                </table>
+                              </ng-template>
+                            </ngb-tab>
+                            <ngb-tab title="Policy">
+                              <ng-template ngbTabContent>
+                                  <table class="table table-striped table-responsive" style="margin-top: 10px;max-height: 200px;overflow-x: auto;">
+                                      <tr>
+                                        <th>Policy No</th>
+                                        <th>Loc Code </th>
+                                        <th>Existing Agent Code</th>
+                                        <th>New Agent Code</th>
+                                        <th>Req. Date</th>
+                                        <th>Status</th>
+                                      </tr>
+                            
+                                      <tr *ngFor="let item of pendingCodeTranPolArray">
+                                        <td>{{ item.polNum }}</td>
+                                        <td>{{ item.locCode }}</td>
+                                        <td>{{ item.oldAgentCode }}</td>
+                                        <td>{{ item.newAgentCode }}</td>
+                                        <td>{{ item.requestDate | date: 'dd/MM/yyyy'}}</td>
+                                        <td>{{ item.status }}</td>
+                                      </tr>
+                                    </table>
+                              </ng-template>
+                            </ngb-tab>
+                          </ngb-tabset>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin: 0;padding: 0;">
+                      <div class="main_div" >
+                        <div class="header_div">
+                          <h2>Rejected Approvals</h2>
+                        </div>
+                        <div class="container-fluid content-div" style="margin-top: 10px;min-height: 240px;overflow-x: auto;">
+                          <ngb-tabset>
+                            <ngb-tab title="Proposal">
+                              <ng-template ngbTabContent>
+                                <table class="table table-striped table-responsive" style="margin-top: 10px;max-height: 200px;overflow-x: auto;">
+                                  <tr>
+                                    <th>Proposal No</th>
+                                    <th>Existing Agent Code</th>
+                                    <th>New Agent Code</th>
+                                    <th>Canceled Reason</th>
+                                    <th>Approved By</th>
+                                    <th>Approved Date</th>
+                                    <th>Req. Date</th>
+                                  </tr>
+                        
+                                  <tr *ngFor="let item of canceledCodeTranPprArray">
+                                    <td>{{ item.pprNum }}</td>
+                                    <td>{{ item.oldAgentCode }}</td>
+                                    <td>{{ item.newAgentCode }}</td>
+                                    <td>{{ item.approverRemark }}</td>
+                                    <td>{{ item.approvedBy }}</td>
+                                    <td>{{ item.approvedDate | date: 'dd/MM/yyyy'}}</td>
+                                    <td>{{ item.requestDate | date: 'dd/MM/yyyy'}}</td>
+                                  </tr>
+                                </table>
+                              </ng-template>
+                            </ngb-tab>
+                            <ngb-tab title="Policy">
+                              <ng-template ngbTabContent>
+                                  <table class="table table-striped table-responsive" style="margin-top: 10px;max-height: 200px;overflow-x: auto;">
+                                      <tr>
+                                          <th>Policy No</th>
+                                          <th>Existing Agent Code</th>
+                                          <th>New Agent Code</th>
+                                          <th>Canceled Reason</th>
+                                          <th>Approved By</th>
+                                          <th>Approved Date</th>
+                                          <th>Req. Date</th>
+                                      </tr>
+                            
+                                      <tr *ngFor="let item of canceledCodeTranPolArray">
+                                        <td>{{ item.polNum }}</td>
+                                        <td>{{ item.oldAgentCode }}</td>
+                                        <td>{{ item.newAgentCode }}</td>
+                                        <td>{{ item.approverRemark }}</td>
+                                        <td>{{ item.approvedBy }}</td>
+                                        <td>{{ item.approvedDate | date: 'dd/MM/yyyy'}}</td>
+                                        <td>{{ item.requestDate | date: 'dd/MM/yyyy'}}</td>
+                                      </tr>
+                                    </table>
+                              </ng-template>
+                            </ngb-tab>
+                          </ngb-tabset>
+              
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+          </ng-template>
+        </ngb-tab>
+      </ngb-tabset>
+
+  
 
 </div>

@@ -200,12 +200,9 @@
                         <!-- <li routerLinkActive="active current">
                             <a routerLink="orgchart">Org Chart</a>
                         </li> -->
-                        <li *ngIf=" userType == 'ZONE' ">
-                            <a routerLink="codetransfer">Pending Code Approvals</a>
-                        </li>
 
-                        <li *ngIf=" userType == 'BRANCH' ">
-                            <a routerLink="codetransfer">Code Transfer</a>
+                        <li *ngIf=" userType == 'BRANCH' || userType == 'ZONE'">
+                            <a routerLink="codetransfer">Code Transfer & Approval</a>
                         </li>
 
                         <li *ngIf="userType != 'IC' && userType != 'UNL' && userType != 'REGION'">

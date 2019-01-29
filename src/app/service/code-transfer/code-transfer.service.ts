@@ -8,14 +8,28 @@ export class CodeTransferService {
 
   constructor(private http:Http) { }
 
-  getAllTransfers(user){
+  // getAllTransfers(user){
 
-    // let urlParams = new URLSearchParams();
-    // urlParams.append('userCode', user.userCode);
+  //   // let urlParams = new URLSearchParams();
+  //   // urlParams.append('userCode', user.userCode);
+  //   // urlParams.append('dashPara', dashPara);
+  //   // urlParams.append('userType', userType);
 
-    // console.log("user :  " + user.userCode);
+  //   console.log("user :  " + user.userCode);
 
-    return this.http.get("http://localhost:8084/code_transfer/getCodeTransfersToApprove/"+user.userCode);
+  //   return this.http.get("http://localhost:8084/code_transfer/getCodeTransfersToApprove/"+user.userCode);
+  // }
+
+  getAllTransfers(user,dashPara,userType){
+
+    let urlParams = new URLSearchParams();
+    urlParams.append('userCode', user.userCode);
+    urlParams.append('dashPara', dashPara);
+    urlParams.append('userType', userType);
+
+    console.log("user :  " + user.userCode);
+
+    return this.http.post("http://localhost:8084/code_transfer/getCodeTransfersToApprove/",urlParams);
   }
 
   approveTransfers(user, code, remark){

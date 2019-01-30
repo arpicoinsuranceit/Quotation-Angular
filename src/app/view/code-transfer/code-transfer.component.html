@@ -45,7 +45,7 @@
             </div>
           </ng-template>
         </ngb-tab>
-        <ngb-tab title="Code Transfer" *ngIf="userType == 'BRANCH'">
+        <ngb-tab title="Code Transfer" *ngIf="userType == 'BRANCH' || userType == 'REGION'">
           <ng-template ngbTabContent>
               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" [ngClass]="{'disabled': isDisableDiv == true}" style="margin: 0;padding: 0;">
                   <div class="main_div" >

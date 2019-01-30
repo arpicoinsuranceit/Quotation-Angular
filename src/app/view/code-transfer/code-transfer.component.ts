@@ -57,7 +57,7 @@ export class CodeTransferComponent implements OnInit {
   ngOnInit() {
     this.userType = sessionStorage.getItem("userType");
     
-    if(this.userType == "BRANCH"){
+    if(this.userType == "BRANCH" || this.userType == "REGION"){
       this.loadCodePendingProposal();
       this.loadCanceledCodeTranPrp();
       this.loadPendingCodeTranPrp();
@@ -314,7 +314,7 @@ export class CodeTransferComponent implements OnInit {
 
   loadCodePendingProposal(){
     this.isDisableDiv=true;
-    this.codeTransferService.loadCodePendingProposal(sessionStorage.getItem("Token")).subscribe(response =>{
+    this.codeTransferService.loadCodePendingProposal(sessionStorage.getItem("Token"),sessionStorage.getItem("userType"),sessionStorage.getItem("dashpara")).subscribe(response =>{
       console.log("//////////////////////////////");
       console.log(response.json());
       this.isDisableDiv=false;

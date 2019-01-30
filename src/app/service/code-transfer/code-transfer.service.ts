@@ -61,7 +61,12 @@ export class CodeTransferService {
     urlParams.append('token', token);
     urlParams.append('agentCode', agentCode);
     urlParams.append('branchCode', branchCode);
-    return this.http.post("http://localhost:8084/code_transfer/getAgentByBranch/", urlParams);
+    if(sessionStorage.getItem("userType") == "REGION"){
+      return this.http.post("http://localhost:8084/code_transfer/getAgentByRegion/", urlParams);
+    }else{
+      return this.http.post("http://localhost:8084/code_transfer/getAgentByBranch/", urlParams);
+    }
+    
   }
 
   getAgentDetails(agentCode){
@@ -69,7 +74,9 @@ export class CodeTransferService {
   }
   
   loadPendingCodeTranPrp(token){
-    return this.http.get("http://localhost:8084/code_transfer/getPendingCodeTransfersPrp/"+token);
+    let urlParams = new URLSearchParams();
+    urlParams.append('token', token);
+    return this.http.post("http://localhost:8084/code_transfer/getPendingCodeTransfersPrp",urlParams);
   }
 
   loadPendingCodeTranPol(token){
@@ -77,15 +84,21 @@ export class CodeTransferService {
   }
 
   loadCanceledCodeTranPrp(token){
-    return this.http.get("http://localhost:8084/code_transfer/getCanceledCodeTransfersPrp/"+token);
+    let urlParams = new URLSearchParams();
+    urlParams.append('token', token);
+    return this.http.post("http://localhost:8084/code_transfer/getCanceledCodeTransfersPrp",urlParams);
   }
 
   loadCanceledCodeTranPol(token){
     return this.http.get("http://localhost:8084/code_transfer/getCanceledCodeTransfersPol/"+token);
   }
 
-  loadCodePendingProposal(token){
-    return this.http.get("http://localhost:8084/code_transfer/getCodePendingProposalDetails/"+token);
+  loadCodePendingProposal(token,userType,dashPara){
+    let urlParams = new URLSearchParams();
+    urlParams.append('token', token);
+    urlParams.append('dashPara', dashPara);
+    urlParams.append('userType', userType);
+    return this.http.post("http://localhost:8084/code_transfer/getCodePendingProposalDetails",urlParams);
   }
 
   saveCodeTranPrp(saveCodeTransferModel){

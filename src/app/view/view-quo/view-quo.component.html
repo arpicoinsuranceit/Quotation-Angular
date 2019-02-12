@@ -369,7 +369,7 @@
                       </thead>
                       <tbody *ngFor="let child of quo._children">
                         <tr>
-                          <td scope="col">{{child._cTitle}}</td>
+                          <td scope="col">{{child._cTitle == 'M' ? 'Son' : 'Daughter' }}</td>
                           <td scope="col">{{child._cName}}</td>
                           <td scope="col">{{child._cAge}}</td>
                           <td scope="col">{{child._cDob}}</td>
